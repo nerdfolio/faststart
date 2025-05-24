@@ -1,0 +1,36 @@
+{
+	"name": "database",
+	"version": "0.1.0",
+	"description": "database, migrations, data scaffolding",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		".": "./src/db.ts",
+		"./schema/*": "./schema/*.ts"
+	},
+	"keywords": [],
+	"type": "module",
+	"scripts": {
+		"generate": "drizzle-kit generate",
+		"migrate": "wrangler d1 migrations apply DB",
+		"migrate-prod": "pnpm db:migrate --remote",
+		"studio": "drizzle-kit studio",
+		"studio-prod": "dotenvx run -f ../../.env -e NODE_ENV=production -- drizzle-kit studio"
+	},
+	"packageManager": "pnpm@10.10.0",
+	"dependencies": {
+		"drizzle-orm": "^0.43.1"
+	},
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"@dotenvx/dotenvx": "^1.44.1",
+		"@nerdfolio/drizzle-d1-helpers": "^0.1.1",
+		"drizzle-kit": "^0.31.1",
+		"drizzle-seed": "^0.3.1",
+		"typescript": "catalog:"
+	}
+}

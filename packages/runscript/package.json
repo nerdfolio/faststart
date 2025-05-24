@@ -1,0 +1,24 @@
+{
+	"name": "runscript",
+	"version": "0.1.0",
+	"description": "Utilities for running scripts that can affect the dev or remote servers",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"main": "src/index.ts",
+	"bin": "src/cli.ts",
+	"keywords": [],
+	"type": "module",
+	"scripts": {},
+	"packageManager": "pnpm@10.10.0",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"@inquirer/prompts": "^7.5.1",
+		"@nerdfolio/drizzle-d1-helpers": "^0.1.1",
+		"auth": "workspace:*",
+		"database": "workspace:*"
+	}
+}

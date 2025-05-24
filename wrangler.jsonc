@@ -1,0 +1,62 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "solid-startup",
+	"compatibility_date": "2025-04-29",
+	"compatibility_flags": ["nodejs_compat"],
+	"pages_build_output_dir": "./dist",
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "solid-startup",
+			"database_id": "af1e900f-06b9-4d71-9ed7-78639cd7dc79",
+			"preview_database_id": "solid-startup-local",
+			// NOTE: wrangler D1 migration table has a slightly different schema
+			// than drizzle migration table.
+			// D1 default table name "d1_migrations", schema: (id:int, name:text, applied_at:numeric).
+			// Drizzle default table name "__drizzle_migrations", schema: (id: numeric, hash:text, created_at: numeric)).
+			// Because of that, even if we use the same table name (__drizzle_migrations vs d1_migration),
+			// we still have a problem with the schema incompatibility.
+			//
+			"migrations_dir": "database/migrations",
+			"migrations_table": "__d1_migrations"
+		}
+	],
+	"vars": {}
+
+	/**
+	 * Smart Placement
+	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+	 */
+	// "placement": { "mode": "smart" },
+
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+
+	/**
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+
+	/**
+	 * Static Assets
+	 * https://developers.cloudflare.com/workers/static-assets/binding/
+	 */
+	// "assets": { "directory": "./public/", "binding": "ASSETS" },
+
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+}

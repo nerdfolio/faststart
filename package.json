@@ -1,0 +1,49 @@
+{
+	"name": "faststart",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "pnpm --filter solid-demo dev",
+		"build": "pnpm --filter solid-demo build",
+		"start": "pnpm --filter solid-demo start",
+		"preview": "pnpm --filter solid-demo preview",
+		"deploy": "pnpm --filter solid-demo run deploy",
+		"typegen": "wrangler types",
+		"test": "vitest run",
+		"test-watch": "vitest",
+		"test-ui": "vitest --ui",
+		"auth:generate-schema": "pnpx @better-auth/cli generate --output ./drizzle/schema/auth-schema.ts",
+		"ui:add": "pnpx solidui-cli@latest add",
+		"knip": "knip"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@iconify-json/lucide": "^1.2.44",
+		"@iconify-json/tabler": "^1.2.18",
+		"@inquirer/prompts": "^7.5.2",
+		"@solidjs/testing-library": "catalog:",
+		"@tailwindcss/vite": "^4.1.7",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/user-event": "^14.6.1",
+		"@types/lodash-es": "^4.17.12",
+		"@types/node": "^22.15.21",
+		"@vitest/ui": "3.1.4",
+		"globals": "^16.1.0",
+		"jsdom": "^26.1.0",
+		"knip": "^5.57.2",
+		"typescript": "catalog:",
+		"unplugin-icons": "catalog:",
+		"vinxi": "^0.5.6",
+		"vite": "^6.3.5",
+		"vite-plugin-doctest": "^1.1.1",
+		"vite-plugin-solid": "^2.11.6",
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "3.1.4",
+		"wrangler": "^4.16.1"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"packageManager": "pnpm@10.11.0+sha256.a69e9cb077da419d47d18f1dd52e207245b29cac6e076acedbeb8be3b1a67bd7"
+}
