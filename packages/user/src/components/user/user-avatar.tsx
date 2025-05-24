@@ -1,6 +1,6 @@
-import type { User } from "auth/auth-client"
+import type { User } from "auth/solidstart/auth-client"
+import { Avatar, AvatarFallback, AvatarImage } from "lib-ui/solid/avatar"
 import { type ComponentProps, splitProps } from "solid-js"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 
 function getAvatarFallback(user: User) {
 	return (user.name || user.email).slice(0, 2)

@@ -7,8 +7,8 @@ import {
 	NavigationMenuLink,
 	NavigationMenuTrigger,
 } from "lib-ui/solid/navigation-menu"
-import UserAvatar from "lib-ui/solid/user/user-avatar"
 import { Show } from "solid-js"
+import UserAvatar from "./user-avatar"
 
 export default function NavbarUserMenu() {
 	const signOut = useSignOut()

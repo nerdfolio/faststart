@@ -1,0 +1,29 @@
+{
+	"name": "user",
+	"version": "0.1.0",
+	"description": "user component and management",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		"./components/*": "./src/components/*.tsx"
+	},
+	"keywords": [],
+	"type": "module",
+	"scripts": {},
+	"packageManager": "pnpm@10.10.0",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"@solidjs/router": "catalog:",
+		"auth": "workspace:*",
+		"lib-ui": "workspace:*",
+		"solid-js": "catalog:"
+	},
+	"peerDependencies": {
+		"@solidjs/router": "catalog:",
+		"solid-js": "catalog:"
+	}
+}

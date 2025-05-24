@@ -17,7 +17,7 @@ import {
 	IconSparkes,
 } from "lib-ui/solid/icons"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "lib-ui/solid/sidebar"
-import UserMinicard from "../../user/user-minicard"
+import UserMinicard from "./user-minicard"
 
 export default function SidebarUserMenu() {
 	const signOut = useSignOut()
