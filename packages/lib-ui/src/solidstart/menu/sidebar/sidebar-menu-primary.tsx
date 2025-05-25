@@ -1,5 +1,4 @@
 "use client"
-import { A } from "@solidjs/router"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "lib-ui/solidstart/ui/collapsible"
 import { IconChevronRight } from "lib-ui/solidstart/ui/icons"
 import {
@@ -15,11 +14,12 @@ import {
 } from "lib-ui/solidstart/ui/sidebar"
 import SmartLink from "lib-ui/solidstart/ui/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
-import { cn, type NavMenu } from "../../../utils"
+import { type NavMenu, cn } from "../../../utils"
 
 export function SidebarMenuPrimary(
 	props: {
 		menu: NavMenu
+		linkClass?: string
 	} & ComponentProps<typeof SidebarGroup>
 ) {
 	return (
@@ -32,7 +32,7 @@ export function SidebarMenuPrimary(
 							<Show
 								when={item.subItems?.length}
 								fallback={
-									<SidebarMenuButton as={A} href={item.href}>
+									<SidebarMenuButton as={SmartLink} href={item.href} class={props.linkClass}>
 										{item.icon ? <item.icon /> : null}
 										<span>{item.title}</span>
 									</SidebarMenuButton>

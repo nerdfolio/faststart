@@ -7,7 +7,8 @@ import { SidebarMenuSecondary } from "./sidebar/sidebar-menu-secondary"
 
 export function MenuAsSidebarGroup(
 	props: {
-		menu: NavMenu
+		menu: NavMenu,
+		linkClass?: string
 	} & ComponentProps<typeof SidebarGroup>
 ) {
 	return (

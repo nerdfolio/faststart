@@ -2,7 +2,7 @@ import { A } from "@solidjs/router"
 import { type ComponentProps, splitProps } from "solid-js"
 import { IconExternalLink } from "./icons"
 
-export default function SmartLink(props: ComponentProps<"a"> & { markExternalLink?: boolean; href: string }) {
+export default function SmartLink(props: ComponentProps<typeof A> & { markExternalLink?: boolean }) {
 	const [local, rest] = splitProps(props, ["markExternalLink", "children"])
 
 	if (rest.href?.includes("://")) {

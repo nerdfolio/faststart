@@ -15,13 +15,6 @@ const navMenu: NavMenu = {
 }
 
 export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
-	const navLinks = [
-		{ href: "/about", title: "About" },
-		{ href: "/contact", title: "Contact" },
-		{ href: "/terms", title: "Terms" },
-		{ href: "/privacy", title: "Privacy Policy" },
-	]
-
 	const footerMenu = {
 		items: [
 			{ href: "/about", title: "About" },
