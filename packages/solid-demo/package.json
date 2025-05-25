@@ -27,6 +27,7 @@
 		"lodash-es": "^4.17.21",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
+		"user": "workspace:*",
 		"vinxi": "^0.5.6",
 		"zod": "catalog:"
 	},

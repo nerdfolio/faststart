@@ -12,9 +12,12 @@ import {
 import { primaryMenus, secondaryMenu } from "./sb-menu"
 import { SidebarPrimaryGroup } from "./sb-primary-group"
 import { SidebarSecondaryGroup } from "./sb-secondary-group"
-import SidebarUserMenu from "./sb-user-menu"
 
-export default function AppSidebar(props: ComponentProps<typeof Sidebar> & { AppBranding: JSXElement }) {
+type AppSidebarProps = ComponentProps<typeof Sidebar> & {
+	AppBranding: JSXElement
+	UserMenu: JSXElement
+}
+export default function AppSidebar(props: AppSidebarProps) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>
@@ -33,9 +36,7 @@ export default function AppSidebar(props: ComponentProps<typeof Sidebar> & { App
 				<SidebarSecondaryGroup items={secondaryMenu} class="mt-auto" />
 			</SidebarContent>
 
-			<SidebarFooter>
-				<SidebarUserMenu />
-			</SidebarFooter>
+			<SidebarFooter>{props.UserMenu}</SidebarFooter>
 		</Sidebar>
 	)
 }

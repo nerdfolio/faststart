@@ -1,9 +1,8 @@
 import { A } from "@solidjs/router"
-import NavbarUserMenu from "./navbar-user-menu"
 import { NavigationMenu, NavigationMenuTrigger } from "lib-ui/solid/navigation-menu"
 import type { ComponentProps, JSXElement } from "solid-js"
 
-export default function AppNavbar(props: ComponentProps<"div"> & { AppBranding: JSXElement }) {
+export default function AppNavbar(props: ComponentProps<"div"> & { AppBranding: JSXElement; UserMenu: JSXElement }) {
 	return (
 		<div class="flex justify-between px-8 py-2 border-b">
 			{props.AppBranding}
@@ -18,9 +17,7 @@ export default function AppNavbar(props: ComponentProps<"div"> & { AppBranding: 
 					Dashboard
 				</NavigationMenuTrigger>
 			</NavigationMenu>
-			<NavigationMenu>
-				<NavbarUserMenu />
-			</NavigationMenu>
+			<NavigationMenu>{props.UserMenu}</NavigationMenu>
 		</div>
 	)
 }

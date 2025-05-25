@@ -2,6 +2,7 @@ import NavLinks from "lib-ui/solid/blocks/nav-links"
 import { default as NBL } from "lib-ui/solid/blocks/navbar-layout"
 import AppSocials from "lib-ui/solid/blocks/social-links"
 import type { ComponentProps } from "solid-js"
+import NavbarUserMenu from "user/components/user/navbar-user-menu"
 import { AppBranding, copyrightStatement } from "~/components/app-branding"
 
 export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
@@ -20,7 +21,7 @@ export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 
 	return (
 		<NBL>
-			<NBL.Navbar AppBranding={<AppBranding href="/" />} />
+			<NBL.Navbar AppBranding={<AppBranding href="/" />} UserMenu={<NavbarUserMenu />} />
 			<NBL.ContentArea>{props.children}</NBL.ContentArea>
 			<NBL.Footer class="border-t-1">
 				<NavLinks links={navLinks} linkClass="text-muted-foreground hover:brightness-130" />
