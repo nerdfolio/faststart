@@ -1,4 +1,5 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
+import SidebarLayout from "lib-ui/solidstart/layouts/sidebar-layout"
 import {
 	IconBook,
 	IconDashboard,
@@ -7,8 +8,7 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "lib-ui/solid/icons"
-import { SidebarLayout } from "lib-ui/solid/layouts"
+} from "lib-ui/solidstart/ui/icons"
 import type { NavMenu } from "lib-ui/utils"
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"

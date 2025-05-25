@@ -7,12 +7,10 @@
 	"author": "taivo",
 	"exports": {
 		"./utils": "./src/utils.ts",
-		"./solid/*": "./src/solid/ui/*.tsx",
-		"./solid/blocks/*": "./src/solid/blocks/*.tsx",
-		"./solid/layouts": [
-			"./src/solid/layouts/index.tsx"
-		],
-		"./solidstart/*": "./src/solidstart/*.tsx"
+		"./solidstart/*": "./src/solidstart/*.tsx",
+		"./solidstart/ui/*": "./src/solid/ui/*.tsx",
+		"./solidstart/layouts/*": "./src/solidstart/layouts/*.tsx",
+		"./solidstart/menu/*": "./src/solidstart/menu/*.tsx"
 	},
 	"keywords": [],
 	"type": "module",

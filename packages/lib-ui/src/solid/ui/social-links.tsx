@@ -1,6 +1,6 @@
-import { IconBluesky, IconGithub, IconX } from "lib-ui/solid/icons"
 import { type ComponentProps, For } from "solid-js"
 import { cn } from "../../utils"
+import { IconBluesky, IconGithub, IconX } from "./icons"
 
 const ICON_MAP = {
 	github: IconGithub,

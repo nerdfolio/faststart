@@ -1,11 +1,11 @@
 "use client"
-import type { SidebarGroup } from "lib-ui/solid/sidebar"
+import type { SidebarGroup } from "lib-ui/solidstart/ui/sidebar"
 import { type ComponentProps, Match, Switch } from "solid-js"
 import type { NavMenu } from "../../utils"
-import { SidebarMenuPrimary } from "./sidebar-menu-renderer/sidebar-menu-primary"
-import { SidebarMenuSecondary } from "./sidebar-menu-renderer/sidebar-menu-secondary"
+import { SidebarMenuPrimary } from "./sidebar/sidebar-menu-primary"
+import { SidebarMenuSecondary } from "./sidebar/sidebar-menu-secondary"
 
-export function SidebarMenuRenderer(
+export function MenuAsSidebarGroup(
 	props: {
 		menu: NavMenu
 	} & ComponentProps<typeof SidebarGroup>

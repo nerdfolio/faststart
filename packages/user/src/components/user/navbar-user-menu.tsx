@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router"
 import { type User, useAuth, useSignOut } from "auth/solidstart/auth-client"
-import { IconLogout } from "lib-ui/solid/icons"
+import { IconLogout } from "lib-ui/solidstart/ui/icons"
 import {
 	NavigationMenuContent,
 	NavigationMenuItem,

@@ -8,7 +8,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "lib-ui/solid/sidebar"
+} from "lib-ui/solidstart/ui/sidebar"
 import type { NavMenu } from "../../../utils"
 
 /*

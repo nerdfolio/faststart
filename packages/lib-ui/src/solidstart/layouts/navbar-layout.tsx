@@ -1,6 +1,6 @@
 import type { ComponentProps } from "solid-js"
-import AppNavbar from "../../solidstart/app-navbar"
 import AppFooter from "./app-footer"
+import AppNavbar from "./app-navbar"
 
 export default function NavbarLayout(props: ComponentProps<"div">) {
 	return <div>{props.children}</div>

@@ -8,9 +8,9 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "lib-ui/solid/sidebar"
-import type { NavMenu } from "../../../utils"
-import { SidebarMenuRenderer } from "../../blocks/sidebar-menu-renderer"
+} from "lib-ui/solidstart/ui/sidebar"
+import { MenuAsSidebarGroup } from "../../solidstart/menu/menu-as-sidebar-group"
+import type { NavMenu } from "../../utils"
 
 type AppSidebarProps = ComponentProps<typeof Sidebar> & {
 	AppBranding: JSXElement
@@ -28,7 +28,7 @@ export default function AppSidebar(props: AppSidebarProps & { navMenu: NavMenu[]
 			</SidebarHeader>
 
 			<SidebarContent>
-				<For each={props.navMenu}>{(menu) => <SidebarMenuRenderer menu={menu} />}</For>
+				<For each={props.navMenu}>{(menu) => <MenuAsSidebarGroup menu={menu} />}</For>
 			</SidebarContent>
 
 			<SidebarFooter>{props.UserMenu}</SidebarFooter>

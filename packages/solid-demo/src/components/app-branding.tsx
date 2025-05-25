@@ -1,4 +1,4 @@
-import { IconSolidjs } from "lib-ui/solid/icons"
+import { IconSolidjs } from "lib-ui/solidstart/ui/icons"
 import { cn } from "lib-ui/utils"
 import type { ComponentProps } from "solid-js"
 

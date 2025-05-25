@@ -1,7 +1,7 @@
 "use client"
 import { A } from "@solidjs/router"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "lib-ui/solid/collapsible"
-import { IconChevronRight } from "lib-ui/solid/icons"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "lib-ui/solidstart/ui/collapsible"
+import { IconChevronRight } from "lib-ui/solidstart/ui/icons"
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -12,8 +12,8 @@ import {
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
-} from "lib-ui/solid/sidebar"
-import SmartLink from "lib-ui/solid/smart-link"
+} from "lib-ui/solidstart/ui/sidebar"
+import SmartLink from "lib-ui/solidstart/ui/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
 import type { NavMenu } from "../../../utils"
 
