@@ -15,7 +15,7 @@ import {
 } from "lib-ui/solidstart/ui/sidebar"
 import SmartLink from "lib-ui/solidstart/ui/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
-import type { NavMenu } from "../../../utils"
+import { cn, type NavMenu } from "../../../utils"
 
 export function SidebarMenuPrimary(
 	props: {
@@ -23,7 +23,7 @@ export function SidebarMenuPrimary(
 	} & ComponentProps<typeof SidebarGroup>
 ) {
 	return (
-		<SidebarGroup {...props} class={props.menu.rendererClass}>
+		<SidebarGroup {...props} class={cn(props.menu.rendererClass, props.class)}>
 			<SidebarGroupLabel>{props.menu.label}</SidebarGroupLabel>
 			<SidebarMenu>
 				<For each={props.menu.items}>
