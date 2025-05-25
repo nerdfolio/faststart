@@ -7,19 +7,18 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-export type NavItem = {
+
+export type NavMenuItem = {
 	title: string
 	href: string
+	tooltip?: string
 	icon?: Icon
 	isActive?: boolean
+	subItems?: NavMenuItem[]
 }
 
-export type NavMenu = NavItem & {
-	items?: NavItem[]
-}
-
-export type NavMenuGroup = {
-	groupLabel: string
-	renderer?: (props: { group: NavMenuGroup }) => JSXElement
-	menus: NavMenu[]
+export type NavMenu = {
+	label?: string
+	renderer?: (props: { group: NavMenu }) => JSXElement
+	items: NavMenuItem[]
 }
