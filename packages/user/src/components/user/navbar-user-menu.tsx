@@ -6,7 +6,7 @@ import {
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuTrigger,
-} from "lib-ui/solid/navigation-menu"
+} from "lib-ui/solidstart/ui/navigation-menu"
 import { Show } from "solid-js"
 import UserAvatar from "./user-avatar"
 

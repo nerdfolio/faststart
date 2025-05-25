@@ -1,7 +1,7 @@
 import { action, useNavigate, useSubmission } from "@solidjs/router"
-import { Button } from "lib-ui/solid/button"
-import { Input } from "lib-ui/solid/input"
-import Spinner from "lib-ui/solid/spinner"
+import Spinner from "lib-ui/solidstart/ui//spinner"
+import { Button } from "lib-ui/solidstart/ui/button"
+import { Input } from "lib-ui/solidstart/ui/input"
 import type { Setter } from "solid-js"
 import { signIn } from "../auth-client"
 

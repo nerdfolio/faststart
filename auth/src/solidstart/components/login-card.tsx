@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router"
-import { Card, CardContent, CardHeader, CardTitle } from "lib-ui/solid/card"
+import { Card, CardContent, CardHeader, CardTitle } from "lib-ui/solidstart/ui/card"
 import { cn } from "lib-ui/utils"
 import { type ComponentProps, Show, createSignal, splitProps } from "solid-js"
 import EmailPasswordForm from "./emailpassword-form"

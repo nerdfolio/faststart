@@ -1,5 +1,5 @@
 import { default as NBL } from "lib-ui/solidstart/layouts/navbar-layout"
-import NavLinks from "lib-ui/solidstart/nav-links"
+import { MenuAsNavLinks } from "lib-ui/solidstart/menu/menu-as-nav-links"
 import AppSocials from "lib-ui/solidstart/ui/social-links"
 import type { NavMenu } from "lib-ui/utils"
 import type { ComponentProps } from "solid-js"
@@ -22,6 +22,15 @@ export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 		{ href: "/privacy", title: "Privacy Policy" },
 	]
 
+	const footerMenu = {
+		items: [
+			{ href: "/about", title: "About" },
+			{ href: "/contact", title: "Contact" },
+			{ href: "/terms", title: "Terms" },
+			{ href: "/privacy", title: "Privacy Policy" },
+		],
+	}
+
 	const socialLinks = {
 		github: "https://github.com/solidjs/solid-start",
 		bluesky: "https://bsky.app/profile/solidjs.com",
@@ -33,7 +42,7 @@ export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 			<NBL.Navbar AppBranding={<AppBranding href="/" />} UserMenu={<NavbarUserMenu />} navMenu={navMenu} />
 			<NBL.ContentArea>{props.children}</NBL.ContentArea>
 			<NBL.Footer class="border-t-1">
-				<NavLinks links={navLinks} linkClass="text-muted-foreground hover:brightness-130" />
+				<MenuAsNavLinks menu={footerMenu} linkClass="text-muted-foreground hover:brightness-130" />
 				<AppSocials
 					class="flex flex-row gap-8 justify-center my-8"
 					linkClass="text-muted-foreground brightness-80 hover:brightness-130"
