@@ -1,4 +1,4 @@
-import { type ComponentProps, For, type JSXElement } from "solid-js"
+import { type ComponentProps, For, type JSXElement, Match, Switch } from "solid-js"
 
 import {
 	Sidebar,
@@ -9,7 +9,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solid/sidebar"
-import { primaryMenus, secondaryMenu } from "./sb-menu"
+import type { NavMenu } from "../../../utils"
 import { SidebarPrimaryGroup } from "./sb-primary-group"
 import { SidebarSecondaryGroup } from "./sb-secondary-group"
 
@@ -17,7 +17,7 @@ type AppSidebarProps = ComponentProps<typeof Sidebar> & {
 	AppBranding: JSXElement
 	UserMenu: JSXElement
 }
-export default function AppSidebar(props: AppSidebarProps) {
+export default function AppSidebar(props: AppSidebarProps & { navMenu: NavMenu[] }) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>
@@ -29,14 +29,23 @@ export default function AppSidebar(props: AppSidebarProps) {
 			</SidebarHeader>
 
 			<SidebarContent>
-				<For each={primaryMenus}>
-					{(menu) => <SidebarPrimaryGroup items={menu.items} groupLabel={menu.groupLabel} />}
+				<For each={props.navMenu}>
+					{(menu) => (
+						<Switch fallback={<div>Specify a menu renderer</div>}>
+							<Match when={menu.renderer === "primary"}>
+								<SidebarPrimaryGroup menu={menu} class={menu.renderClass} />
+							</Match>
+							<Match when={menu.renderer === "secondary"}>
+								<SidebarSecondaryGroup menu={menu} class={menu.rendererClass} />
+							</Match>
+						</Switch>
+					)}
 				</For>
-
-				<SidebarSecondaryGroup items={secondaryMenu} class="mt-auto" />
 			</SidebarContent>
 
 			<SidebarFooter>{props.UserMenu}</SidebarFooter>
 		</Sidebar>
 	)
 }
+
+//<SidebarSecondaryGroup items={secondaryMenu} class="mt-auto" />

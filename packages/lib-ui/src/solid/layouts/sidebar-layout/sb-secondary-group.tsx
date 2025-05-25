@@ -9,22 +9,22 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solid/sidebar"
-import type { NavMenuItem } from "./sb-menu"
+import type { NavMenu } from "../../../utils"
 
 /*
 Sidebar menu group with simpler items that has no subitem.
 Rendered smaller to be a secondary menu, typically at the bottom of sidebar.
 */
-export function SidebarSecondaryGroup(props: ComponentProps<typeof SidebarGroup> & { items: NavMenuItem[] }) {
+export function SidebarSecondaryGroup(props: ComponentProps<typeof SidebarGroup> & { menu: NavMenu }) {
 	return (
 		<SidebarGroup {...props}>
 			<SidebarGroupContent>
 				<SidebarMenu>
-					<For each={props.items}>
+					<For each={props.menu.items}>
 						{(item) => (
 							<SidebarMenuItem>
-								<SidebarMenuButton as={A} href={item.url} size="sm">
-									<item.icon />
+								<SidebarMenuButton as={A} href={item.href} size="sm">
+									{item.icon ? <item.icon /> : null}
 									<span>{item.title}</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>

@@ -15,33 +15,32 @@ import {
 } from "lib-ui/solid/sidebar"
 import SmartLink from "lib-ui/solid/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
-import type { NavMenuItem } from "./sb-menu"
+import type { NavMenu } from "../../../utils"
 
 export function SidebarPrimaryGroup(
 	props: {
-		groupLabel: string
-		items: NavMenuItem[]
+		menu: NavMenu
 	} & ComponentProps<typeof SidebarGroup>
 ) {
 	return (
 		<SidebarGroup {...props}>
-			<SidebarGroupLabel>{props.groupLabel}</SidebarGroupLabel>
+			<SidebarGroupLabel>{props.menu.label}</SidebarGroupLabel>
 			<SidebarMenu>
-				<For each={props.items}>
+				<For each={props.menu.items}>
 					{(item) => (
 						<SidebarMenuItem>
 							<Show
-								when={item.items?.length}
+								when={item.subItems?.length}
 								fallback={
-									<SidebarMenuButton as={A} href={item.url}>
-										<item.icon />
+									<SidebarMenuButton as={A} href={item.href}>
+										{item.icon ? <item.icon /> : null}
 										<span>{item.title}</span>
 									</SidebarMenuButton>
 								}
 							>
 								<Collapsible defaultOpen={item.isActive}>
 									<SidebarMenuButton as={CollapsibleTrigger}>
-										<item.icon />
+										{item.icon ? <item.icon /> : null}
 										<span>{item.title}</span>
 									</SidebarMenuButton>
 									<SidebarMenuAction as={CollapsibleTrigger} class="data-expanded:rotate-90">
@@ -51,10 +50,10 @@ export function SidebarPrimaryGroup(
 
 									<CollapsibleContent>
 										<SidebarMenuSub>
-											<For each={item.items} fallback={<div>Loading submenu...</div>}>
+											<For each={item.subItems} fallback={<div>Loading submenu...</div>}>
 												{(subItem) => (
 													<SidebarMenuSubItem>
-														<SidebarMenuSubButton as={SmartLink} href={subItem.url} markExternalLink>
+														<SidebarMenuSubButton as={SmartLink} href={subItem.href} markExternalLink>
 															<span>{subItem.title}</span>
 														</SidebarMenuSubButton>
 													</SidebarMenuSubItem>

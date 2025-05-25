@@ -19,6 +19,7 @@ export type NavMenuItem = {
 
 export type NavMenu = {
 	label?: string
-	renderer?: (props: { group: NavMenu }) => JSXElement
+	renderer?: "primary" | "secondary" | ((props: { menu: NavMenu }) => JSXElement)
+	rendererClass?: string
 	items: NavMenuItem[]
 }
