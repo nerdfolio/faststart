@@ -9,23 +9,23 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solidstart/ui/sidebar"
-import { type NavMenu, cn } from "../../../utils"
+import { type MenuItem, cn } from "../../../utils"
 
 /*
 Sidebar menu group with simpler items that has no subitem.
 Rendered smaller to be a secondary menu, typically at the bottom of sidebar.
 */
-export function SidebarMenuSecondary(props: ComponentProps<typeof SidebarGroup> & { menu: NavMenu }) {
+export function SidebarMenuSecondary(props: ComponentProps<typeof SidebarGroup> & { menu: MenuItem }) {
 	return (
 		<SidebarGroup {...props} class={cn(props.menu.rendererClass, props.class)}>
 			<SidebarGroupContent>
 				<SidebarMenu>
-					<For each={props.menu.items}>
+					<For each={props.menu.children}>
 						{(item) => (
 							<SidebarMenuItem>
-								<SidebarMenuButton as={A} href={item.href} size="sm">
+								<SidebarMenuButton as={A} href={item.href ?? ""} class={props.menu.itemsLinkClass} size="sm">
 									{item.icon ? <item.icon /> : null}
-									<span>{item.title}</span>
+									<span>{item.label}</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 						)}

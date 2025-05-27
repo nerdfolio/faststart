@@ -14,34 +14,33 @@ import {
 } from "lib-ui/solidstart/ui/sidebar"
 import SmartLink from "lib-ui/solidstart/ui/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
-import { type NavMenu, cn } from "../../../utils"
+import { type MenuItem, cn } from "../../../utils"
 
 export function SidebarMenuPrimary(
 	props: {
-		menu: NavMenu
-		linkClass?: string
+		menu: MenuItem
 	} & ComponentProps<typeof SidebarGroup>
 ) {
 	return (
 		<SidebarGroup {...props} class={cn(props.menu.rendererClass, props.class)}>
 			<SidebarGroupLabel>{props.menu.label}</SidebarGroupLabel>
 			<SidebarMenu>
-				<For each={props.menu.items}>
+				<For each={props.menu.children}>
 					{(item) => (
 						<SidebarMenuItem>
 							<Show
-								when={item.subItems?.length}
+								when={item.children?.length}
 								fallback={
-									<SidebarMenuButton as={SmartLink} href={item.href} class={props.linkClass}>
+									<SidebarMenuButton as={SmartLink} href={item.href ?? ""} class={props.menu.itemsLinkClass}>
 										{item.icon ? <item.icon /> : null}
-										<span>{item.title}</span>
+										<span>{item.label}</span>
 									</SidebarMenuButton>
 								}
 							>
 								<Collapsible defaultOpen={item.isActive}>
 									<SidebarMenuButton as={CollapsibleTrigger}>
 										{item.icon ? <item.icon /> : null}
-										<span>{item.title}</span>
+										<span>{item.label}</span>
 									</SidebarMenuButton>
 									<SidebarMenuAction as={CollapsibleTrigger} class="data-expanded:rotate-90">
 										<IconChevronRight />
@@ -50,11 +49,16 @@ export function SidebarMenuPrimary(
 
 									<CollapsibleContent>
 										<SidebarMenuSub>
-											<For each={item.subItems} fallback={<div>Loading submenu...</div>}>
+											<For each={item.children} fallback={<div>Loading submenu...</div>}>
 												{(subItem) => (
 													<SidebarMenuSubItem>
-														<SidebarMenuSubButton as={SmartLink} href={subItem.href} markExternalLink>
-															<span>{subItem.title}</span>
+														<SidebarMenuSubButton
+															as={SmartLink}
+															href={subItem.href ?? ""}
+															class={item.itemsLinkClass}
+															markExternalLink
+														>
+															<span>{subItem.label}</span>
 														</SidebarMenuSubButton>
 													</SidebarMenuSubItem>
 												)}

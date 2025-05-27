@@ -7,19 +7,40 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
+// export type NavMenuItem = {
+// 	title: string
+// 	href: string
+// 	tooltip?: string
+// 	icon?: Icon
+// 	isActive?: boolean
+// 	items?: NavMenuItem[]
+// 	itemsLinkClass?: string
+// }
 
-export type NavMenuItem = {
-	title: string
-	href: string
+// export type NavMenu = {
+// 	label?: string
+// 	renderer?: (props: { menu: NavMenu }) => JSXElement
+// 	rendererClass?: string
+// 	itemsLinkClass?: string //css class for use at the next level down
+// 	items: NavMenuItem[]
+// }
+
+type MenuItemData = {
+	label: string
+	href?: string
 	tooltip?: string
 	icon?: Icon
 	isActive?: boolean
-	subItems?: NavMenuItem[]
+	renderer?: (props: { menu: MenuItem }) => JSXElement
+	rendererClass?: string
+
+	itemsLinkClass?: string
 }
 
-export type NavMenu = {
-	label?: string
-	renderer?: "primary" | "secondary" | ((props: { menu: NavMenu }) => JSXElement)
-	rendererClass?: string
-	items: NavMenuItem[]
+export type MenuItem = MenuItemData & {
+	children?: MenuItem[]
+}
+
+export type MenuTree = {
+	children: MenuItem[]
 }

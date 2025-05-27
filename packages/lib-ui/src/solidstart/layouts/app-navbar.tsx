@@ -1,10 +1,10 @@
 import { NavigationMenu } from "lib-ui/solidstart/ui/navigation-menu"
 import { type ComponentProps, type JSXElement, Show } from "solid-js"
 import { MenuAsNavbarGroup } from "../../solidstart/menu/menu-as-navbar-group"
-import type { NavMenu } from "../../utils"
+import type { MenuTree } from "../../utils"
 
 export default function AppNavbar(
-	props: ComponentProps<"div"> & { AppBranding: JSXElement; UserMenu: JSXElement; navMenu: NavMenu }
+	props: ComponentProps<"div"> & { AppBranding: JSXElement; UserMenu: JSXElement; navMenu: MenuTree }
 ) {
 	return (
 		<div class="flex justify-between px-8 py-2 border-b">
