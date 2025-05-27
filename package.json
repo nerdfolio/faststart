@@ -19,19 +19,19 @@
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@iconify-json/lucide": "^1.2.44",
+		"@iconify-json/lucide": "^1.2.45",
 		"@iconify-json/tabler": "^1.2.18",
-		"@inquirer/prompts": "^7.5.2",
+		"@inquirer/prompts": "^7.5.3",
 		"@solidjs/testing-library": "catalog:",
 		"@tailwindcss/vite": "^4.1.7",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/user-event": "^14.6.1",
 		"@types/lodash-es": "^4.17.12",
-		"@types/node": "^22.15.21",
+		"@types/node": "^22.15.23",
 		"@vitest/ui": "3.1.4",
-		"globals": "^16.1.0",
+		"globals": "^16.2.0",
 		"jsdom": "^26.1.0",
-		"knip": "^5.57.2",
+		"knip": "^5.58.1",
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
 		"vinxi": "^0.5.6",
@@ -40,7 +40,7 @@
 		"vite-plugin-solid": "^2.11.6",
 		"vite-tsconfig-paths": "^5.1.4",
 		"vitest": "3.1.4",
-		"wrangler": "^4.16.1"
+		"wrangler": "^4.17.0"
 	},
 	"engines": {
 		"node": ">=22"
