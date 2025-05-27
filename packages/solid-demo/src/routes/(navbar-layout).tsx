@@ -1,12 +1,11 @@
 import { default as NBL } from "lib-ui/solidstart/layouts/navbar-layout"
 import { MenuAsNavLinks } from "lib-ui/solidstart/menu/menu-as-nav-links"
 import AppSocials from "lib-ui/solidstart/ui/social-links"
-import type { MenuTree } from "lib-ui/utils"
 import type { ComponentProps } from "solid-js"
 import NavbarUserMenu from "user/components/user/navbar-user-menu"
 import { AppBranding, copyrightStatement } from "~/components/app-branding"
 
-const navMenu: MenuTree = {
+const navMenu = {
 	children: [
 		{ label: "About", href: "/about" },
 		{ label: "Road map", href: "/roadmap" },
@@ -17,6 +16,7 @@ const navMenu: MenuTree = {
 export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 	const footerMenu = {
 		label: "",
+		linkClass: "text-muted-foreground hover:brightness-130",
 		children: [
 			{ href: "/about", label: "About" },
 			{ href: "/contact", label: "Contact" },

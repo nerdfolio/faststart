@@ -1,6 +1,7 @@
 import { type ComponentProps, For } from "solid-js"
 import SmartLink from "../../solid/ui/smart-link"
-import { type MenuItem, cn } from "../../utils"
+import { cn } from "../../utils"
+import type { MenuItem } from "./menu-type"
 
 export function MenuAsNavLinks(props: ComponentProps<"nav"> & { menu: MenuItem; linkClass?: string }) {
 	return (

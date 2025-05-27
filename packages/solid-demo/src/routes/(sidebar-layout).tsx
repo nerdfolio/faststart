@@ -1,6 +1,7 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
 import SidebarLayout from "lib-ui/solidstart/layouts/sidebar-layout"
-import { SidebarMenuPrimary, SidebarMenuSecondary } from "lib-ui/solidstart/menu/menu-as-sidebar-group"
+import { SidebarMenuPrimary } from "lib-ui/solidstart/menu/sidebar/sidebar-menu-primary"
+import { SidebarMenuSecondary } from "lib-ui/solidstart/menu/sidebar/sidebar-menu-secondary"
 import {
 	IconBook,
 	IconDashboard,
@@ -10,12 +11,12 @@ import {
 	IconRocket,
 	IconSparkes,
 } from "lib-ui/solidstart/ui/icons"
-import type { MenuItem } from "lib-ui/utils"
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
+import type { MenuTree } from "../../../lib-ui/src/solidstart/menu/menu-type"
 
-const pagesMenu: MenuItem = {
+const pagesMenu: MenuTree = {
 	label: "Pages",
 	renderer: SidebarMenuPrimary,
 	children: [
@@ -32,7 +33,7 @@ const pagesMenu: MenuItem = {
 	],
 }
 
-const guidesMenu: MenuItem = {
+const guidesMenu: MenuTree = {
 	label: "Guides",
 	renderer: SidebarMenuPrimary,
 	children: [
@@ -58,8 +59,7 @@ const guidesMenu: MenuItem = {
 	],
 }
 
-const secondaryMenu: MenuItem = {
-	label: "",
+const secondaryMenu: MenuTree = {
 	renderer: SidebarMenuSecondary,
 	rendererClass: "mt-auto",
 	children: [

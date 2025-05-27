@@ -1,6 +1,7 @@
 "use client"
-import { SidebarMenuPrimary } from "./sidebar/sidebar-menu-primary"
-import { SidebarMenuSecondary } from "./sidebar/sidebar-menu-secondary"
+
+import { For } from "solid-js"
+import type { MenuTree } from "./menu-type"
 
 // export function MenuAsSidebarGroup(
 // 	props: {
@@ -20,4 +21,10 @@ import { SidebarMenuSecondary } from "./sidebar/sidebar-menu-secondary"
 // 	)
 // }
 
-export { SidebarMenuPrimary, SidebarMenuSecondary }
+export default function MenuAsSidebarGroups(props: { menu: MenuTree; linkClass?: string }) {
+	return (
+		<For each={props.menu.children}>
+			{(menu) => (menu.renderer ? <menu.renderer menu={menu} /> : <div>Renderer not specified</div>)}
+		</For>
+	)
+}

@@ -1,7 +1,7 @@
 import { NavigationMenu } from "lib-ui/solidstart/ui/navigation-menu"
 import { type ComponentProps, type JSXElement, Show } from "solid-js"
 import { MenuAsNavbarGroup } from "../../solidstart/menu/menu-as-navbar-group"
-import type { MenuTree } from "../../utils"
+import type { MenuTree } from "../menu/menu-type"
 
 export default function AppNavbar(
 	props: ComponentProps<"div"> & { AppBranding: JSXElement; UserMenu: JSXElement; navMenu: MenuTree }
