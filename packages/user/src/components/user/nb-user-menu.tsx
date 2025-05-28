@@ -2,6 +2,7 @@ import { A } from "@solidjs/router"
 import { type User, useAuth, useSignOut } from "auth/solidstart/auth-client"
 import { IconLogout } from "lib-ui/solid/ui/icons"
 import {
+	NavigationMenu,
 	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
@@ -14,7 +15,7 @@ export default function NavbarUserMenu() {
 	const signOut = useSignOut()
 
 	return (
-		<div class="min-w-18 text-center">
+		<NavigationMenu class="min-w-18 text-center">
 			<Show when={!useAuth().isPending}>
 				<Show when={useAuth().user} fallback={<LoginTrigger />}>
 					<NavigationMenuItem>
@@ -29,7 +30,7 @@ export default function NavbarUserMenu() {
 					</NavigationMenuItem>
 				</Show>
 			</Show>
-		</div>
+		</NavigationMenu>
 	)
 }
 

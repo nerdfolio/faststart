@@ -1,6 +1,7 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
 import MenuAsSidebarGroupPrimary from "lib-ui/solid/nav-menu/as-sb-group-primary"
 import MenuAsSidebarGroupSecondary from "lib-ui/solid/nav-menu/as-sb-group-secondary"
+import NavMenus from "lib-ui/solid/nav-menu/index"
 import {
 	IconBook,
 	IconDashboard,
@@ -91,7 +92,11 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 	return (
 		<AuthRequired>
 			<SidebarLayout>
-				<SidebarLayout.Sidebar AppBranding={<AppBranding />} UserMenu={<SidebarUserMenu />} menus={menus} />
+				<SidebarLayout.Sidebar
+					Branding={<AppBranding />}
+					UserMenu={<SidebarUserMenu />}
+					Menus={<NavMenus menus={menus} />}
+				/>
 				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
 			</SidebarLayout>
 		</AuthRequired>

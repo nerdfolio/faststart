@@ -1,9 +1,10 @@
 import MenuAsNavLinks from "lib-ui/solid/nav-menu/as-nav-links"
 import MenuAsNavbarGroup from "lib-ui/solid/nav-menu/as-nb-group"
+import NavMenus from "lib-ui/solid/nav-menu/index"
 import SocialLinks from "lib-ui/solid/ui/social-links"
 import AA from "lib-ui/solidstart/aa"
 import type { ComponentProps } from "solid-js"
-import NavbarUserMenu from "user/components/user/navbar-user-menu"
+import NbUserMenu from "user/components/user/nb-user-menu"
 import { AppBranding, copyrightStatement } from "~/components/app-branding"
 import { default as NBL } from "../../../lib-ui/src/solid/layouts/navbar-layout"
 
@@ -29,7 +30,7 @@ const footerLinks = [
 export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 	return (
 		<NBL>
-			<NBL.Navbar AppBranding={<AppBranding href="/" />} UserMenu={<NavbarUserMenu />} menus={navMenus} />
+			<NBL.Navbar Branding={<AppBranding href="/" />} UserMenu={<NbUserMenu />} Menus={<NavMenus menus={navMenus} />} />
 			<NBL.ContentArea>{props.children}</NBL.ContentArea>
 			<NBL.Footer class="border-t-1">
 				<MenuAsNavLinks items={footerLinks} linkComponent={AA} linkClass="text-muted-foreground hover:brightness-130" />

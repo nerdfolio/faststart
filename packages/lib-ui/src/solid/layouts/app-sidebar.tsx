@@ -1,4 +1,4 @@
-import { type ComponentProps, For, type JSXElement } from "solid-js"
+import type { ComponentProps, JSXElement } from "solid-js"
 
 import {
 	Sidebar,
@@ -9,29 +9,24 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solid/ui/sidebar"
-import type { NavMenu } from "../nav-menu/type"
 
 type AppSidebarProps = ComponentProps<typeof Sidebar> & {
-	AppBranding: JSXElement
+	Branding: JSXElement
 	UserMenu: JSXElement
+	Menus: JSXElement
 }
-export default function AppSidebar(props: AppSidebarProps & { menus: NavMenu[] }) {
+export default function AppSidebar(props: AppSidebarProps) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>
-						<SidebarMenuButton size="lg" as={props.AppBranding} />
+						<SidebarMenuButton size="lg" as={props.Branding} />
 					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarHeader>
 
-			<SidebarContent>
-				<For each={props.menus}>
-					{(menu) => <menu.renderer label={menu.label} items={menu.items} class={menu.rendererClass} />}
-				</For>
-			</SidebarContent>
-
+			<SidebarContent>{props.Menus}</SidebarContent>
 			<SidebarFooter>{props.UserMenu}</SidebarFooter>
 		</Sidebar>
 	)
