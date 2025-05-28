@@ -1,5 +1,5 @@
 import type { ComponentProps, JSXElement } from "solid-js"
-import type { Icon } from "../ui/icons"
+import type { Icon } from "../icons"
 import type { LinkComponent } from "./default-link-component"
 
 type NavMenuItemData = {

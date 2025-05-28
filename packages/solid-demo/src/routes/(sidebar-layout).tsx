@@ -1,7 +1,4 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
-import MenuAsSidebarGroupPrimary from "lib-ui/solid/nav-menu/as-sb-group-primary"
-import MenuAsSidebarGroupSecondary from "lib-ui/solid/nav-menu/as-sb-group-secondary"
-import NavMenus from "lib-ui/solid/nav-menu/index"
 import {
 	IconBook,
 	IconDashboard,
@@ -10,8 +7,11 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "lib-ui/solid/ui/icons"
-import AA from "lib-ui/solidstart/aa"
+} from "lib-ui/solid/icons"
+import MenuAsSidebarGroupPrimary from "lib-ui/solid/nav-menu/as-sb-group-primary"
+import MenuAsSidebarGroupSecondary from "lib-ui/solid/nav-menu/as-sb-group-secondary"
+import NavMenus from "lib-ui/solid/nav-menu/index"
+import AA from "lib-ui/solid/start/aa"
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"

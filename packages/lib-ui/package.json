@@ -11,7 +11,7 @@
 		"./solid/ui/*": "./src/solid/ui/*.tsx",
 		"./solid/nav-menu/*": ["./src/solid/nav-menu/*.tsx", "./src/solid/nav-menu/*.ts"],
 		"./solid/layouts/*": "./src/solid/layouts/*.tsx",
-		"./solidstart/*": "./src/solidstart/*.tsx"
+		"./solid/start/*": "./src/solid/start/*.tsx"
 	},
 	"keywords": [],
 	"type": "module",

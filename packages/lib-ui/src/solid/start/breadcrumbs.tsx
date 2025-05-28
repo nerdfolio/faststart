@@ -1,6 +1,6 @@
-import { useCurrentMatches } from "@solidjs/router"
+import { A, useCurrentMatches } from "@solidjs/router"
 import { For, createMemo } from "solid-js"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../solid/ui/breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../ui/breadcrumb"
 
 export default function Breadcrumbs() {
 	const matches = useCurrentMatches()
@@ -15,7 +15,7 @@ export default function Breadcrumbs() {
 					{(crumb, idx) => (
 						<>
 							<BreadcrumbItem>
-								<BreadcrumbLink href="/" current={idx() === crumbs().length - 1}>
+								<BreadcrumbLink as={A} href="/" current={idx() === crumbs().length - 1}>
 									{crumb}
 								</BreadcrumbLink>
 							</BreadcrumbItem>

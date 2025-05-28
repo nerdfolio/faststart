@@ -1,5 +1,13 @@
 import { type User, useAuth, useSignOut } from "auth/solidstart/auth-client"
 import {
+	IconBadgeCheck,
+	IconBell,
+	IconChevronsUpDown,
+	IconCreditCard,
+	IconLogout,
+	IconSparkes,
+} from "lib-ui/solid/icons"
+import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -8,14 +16,6 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "lib-ui/solid/ui/dropdown-menu"
-import {
-	IconBadgeCheck,
-	IconBell,
-	IconChevronsUpDown,
-	IconCreditCard,
-	IconLogout,
-	IconSparkes,
-} from "lib-ui/solid/ui/icons"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "lib-ui/solid/ui/sidebar"
 import UserMinicard from "./user-minicard"
 
