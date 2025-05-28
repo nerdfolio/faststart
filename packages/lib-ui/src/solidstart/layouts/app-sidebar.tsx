@@ -1,4 +1,4 @@
-import type { ComponentProps, JSXElement } from "solid-js"
+import { type ComponentProps, For, type JSXElement } from "solid-js"
 
 import {
 	Sidebar,
@@ -9,14 +9,13 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solidstart/ui/sidebar"
-import MenuAsSidebarGroups from "../menu/menu-as-sidebar-groups"
-import type { MenuTree } from "../menu/menu-type"
+import type { Menu } from "../menu/menu-type"
 
 type AppSidebarProps = ComponentProps<typeof Sidebar> & {
 	AppBranding: JSXElement
 	UserMenu: JSXElement
 }
-export default function AppSidebar(props: AppSidebarProps & { menuTree: MenuTree }) {
+export default function AppSidebar(props: AppSidebarProps & { menus: Menu[] }) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>
@@ -28,7 +27,9 @@ export default function AppSidebar(props: AppSidebarProps & { menuTree: MenuTree
 			</SidebarHeader>
 
 			<SidebarContent>
-				<MenuAsSidebarGroups menu={props.menuTree} />
+				<For each={props.menus}>
+					{(menu) => <menu.renderer label={menu.label} items={menu.items} class={menu.rendererClass} />}
+				</For>
 			</SidebarContent>
 
 			<SidebarFooter>{props.UserMenu}</SidebarFooter>

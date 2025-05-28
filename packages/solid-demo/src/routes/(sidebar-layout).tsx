@@ -14,12 +14,12 @@ import {
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
-import type { MenuTree } from "../../../lib-ui/src/solidstart/menu/menu-type"
+import type { Menu } from "../../../lib-ui/src/solidstart/menu/menu-type"
 
-const pagesMenu: MenuTree = {
-	label: "Pages",
+const pagesMenu: Menu = {
 	renderer: SidebarMenuPrimary,
-	children: [
+	label: "Pages",
+	items: [
 		{
 			label: "Dashboard",
 			href: "/dashboard",
@@ -33,10 +33,11 @@ const pagesMenu: MenuTree = {
 	],
 }
 
-const guidesMenu: MenuTree = {
-	label: "Guides",
+const guidesMenu: Menu = {
 	renderer: SidebarMenuPrimary,
-	children: [
+	label: "Guides",
+
+	items: [
 		{
 			label: "SolidJS",
 			href: "#",
@@ -59,10 +60,10 @@ const guidesMenu: MenuTree = {
 	],
 }
 
-const secondaryMenu: MenuTree = {
+const secondaryMenu: Menu = {
 	renderer: SidebarMenuSecondary,
 	rendererClass: "mt-auto",
-	children: [
+	items: [
 		{
 			label: "Home",
 			href: "/",
@@ -82,14 +83,12 @@ const secondaryMenu: MenuTree = {
 }
 
 export default function ProtectedSidebarLayout(props: ParentProps) {
-	const menuTree = {
-		children: [pagesMenu, guidesMenu, secondaryMenu],
-	}
+	const menus = [pagesMenu, guidesMenu, secondaryMenu]
 
 	return (
 		<AuthRequired>
 			<SidebarLayout>
-				<SidebarLayout.Sidebar AppBranding={<AppBranding />} UserMenu={<SidebarUserMenu />} menuTree={menuTree} />
+				<SidebarLayout.Sidebar AppBranding={<AppBranding />} UserMenu={<SidebarUserMenu />} menus={menus} />
 				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
 			</SidebarLayout>
 		</AuthRequired>

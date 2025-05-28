@@ -3,10 +3,12 @@ import SmartLink from "../../solid/ui/smart-link"
 import { cn } from "../../utils"
 import type { MenuItem } from "./menu-type"
 
-export function MenuAsNavLinks(props: ComponentProps<"nav"> & { menu: MenuItem; linkClass?: string }) {
+export function MenuAsNavLinks(
+	props: ComponentProps<"nav"> & { items: MenuItem[]; label?: string; linkClass?: string }
+) {
 	return (
-		<nav class={cn("flex flex-wrap justify-center gap-10", props.menu.rendererClass, props.class)}>
-			<For each={props.menu.children}>
+		<nav class={cn("flex flex-wrap justify-center gap-10", props.class)}>
+			<For each={props.items}>
 				{(item) => (
 					<SmartLink href={item.href ?? ""} class={props.linkClass}>
 						{item.label}
