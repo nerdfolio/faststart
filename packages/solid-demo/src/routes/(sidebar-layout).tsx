@@ -37,8 +37,8 @@ const pagesMenu: NavMenu = {
 
 const guidesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,
+	linkComponent: AA,
 	label: "Guides",
-
 	items: [
 		{
 			label: "SolidJS",
@@ -64,6 +64,7 @@ const guidesMenu: NavMenu = {
 
 const secondaryMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupSecondary,
+	linkComponent: AA,
 	rendererClass: "mt-auto",
 	items: [
 		{

@@ -18,9 +18,9 @@ export type NavMenuItem = NavMenuItemData & {
 export type NavMenu = {
 	label?: string
 	renderer: (props: ComponentProps<"div"> & { items: NavMenuItem[]; label?: string; linkClass?: string }) => JSXElement
-	rendererVariant?: "primary" | "secondary"
+	linkComponent: LinkComponent
+
 	rendererClass?: string
-	linkComponent?: LinkComponent
 	linkClass?: string
 	items: NavMenuItem[]
 }

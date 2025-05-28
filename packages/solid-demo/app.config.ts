@@ -14,6 +14,11 @@ export default defineConfig({
 				copyrightStatement: "© 2025 Solid Demo, Inc. All rights reserved.",
 				// biome-ignore lint/nursery/noProcessEnv: <explanation>
 				version: process.env.npm_package_version,
+				socialLinks: {
+					github: "https://github.com/solidjs/solid-start",
+					bluesky: "https://bsky.app/profile/solidjs.com",
+					x: "https://x.com/solid_js",
+				}
 			},
 		}
 	})
