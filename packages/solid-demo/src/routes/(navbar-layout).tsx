@@ -1,26 +1,30 @@
 import { default as NBL } from "lib-ui/solidstart/layouts/navbar-layout"
 import { MenuAsNavLinks } from "lib-ui/solidstart/menu/menu-as-nav-links"
+import { MenuAsNavbarGroup } from "lib-ui/solidstart/menu/menu-as-navbar-group"
 import AppSocials from "lib-ui/solidstart/ui/social-links"
 import type { ComponentProps } from "solid-js"
 import NavbarUserMenu from "user/components/user/navbar-user-menu"
 import { AppBranding, copyrightStatement } from "~/components/app-branding"
 
-const navMenu = {
-	children: [
-		{ label: "About", href: "/about" },
-		{ label: "Road map", href: "/roadmap" },
-		{ label: "Dashboard", href: "/dashboard" },
-	],
-}
+const navMenus = [
+	{
+		renderer: MenuAsNavbarGroup,
+		items: [
+			{ label: "About", href: "/about" },
+			{ label: "Road map", href: "/roadmap" },
+			{ label: "Dashboard", href: "/dashboard" },
+		],
+	},
+]
+
+const footerLinks = [
+	{ href: "/about", label: "About" },
+	{ href: "/contact", label: "Contact" },
+	{ href: "/terms", label: "Terms" },
+	{ href: "/privacy", label: "Privacy Policy" },
+]
 
 export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
-	const footerLinks = [
-		{ href: "/about", label: "About" },
-		{ href: "/contact", label: "Contact" },
-		{ href: "/terms", label: "Terms" },
-		{ href: "/privacy", label: "Privacy Policy" },
-	]
-
 	const socialLinks = {
 		github: "https://github.com/solidjs/solid-start",
 		bluesky: "https://bsky.app/profile/solidjs.com",
@@ -29,7 +33,7 @@ export default function NavbarLayout(props: ComponentProps<typeof NBL>) {
 
 	return (
 		<NBL>
-			<NBL.Navbar AppBranding={<AppBranding href="/" />} UserMenu={<NavbarUserMenu />} navMenu={navMenu} />
+			<NBL.Navbar AppBranding={<AppBranding href="/" />} UserMenu={<NavbarUserMenu />} menus={navMenus} />
 			<NBL.ContentArea>{props.children}</NBL.ContentArea>
 			<NBL.Footer class="border-t-1">
 				<MenuAsNavLinks items={footerLinks} linkClass="text-muted-foreground hover:brightness-130" />
