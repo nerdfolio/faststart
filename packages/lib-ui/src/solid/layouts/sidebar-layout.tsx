@@ -1,5 +1,5 @@
-import { Separator } from "lib-ui/solidstart/ui/separator"
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "lib-ui/solidstart/ui/sidebar"
+import { Separator } from "lib-ui/solid/ui/separator"
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "lib-ui/solid/ui/sidebar"
 import type { ParentProps } from "solid-js"
 import type { ComponentProps } from "solid-js"
 import AppSidebar from "./app-sidebar"

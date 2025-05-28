@@ -1,7 +1,6 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
-import SidebarLayout from "lib-ui/solidstart/layouts/sidebar-layout"
-import { MenuAsSidebarGroupPrimary } from "lib-ui/solidstart/menu/as-sb-group-primary"
-import { MenuAsSidebarGroupSecondary } from "lib-ui/solidstart/menu/as-sb-group-secondary"
+import MenuAsSidebarGroupPrimary from "lib-ui/solid/nav-menu/as-sb-group-primary"
+import MenuAsSidebarGroupSecondary from "lib-ui/solid/nav-menu/as-sb-group-secondary"
 import {
 	IconBook,
 	IconDashboard,
@@ -10,14 +9,17 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "lib-ui/solidstart/ui/icons"
+} from "lib-ui/solid/ui/icons"
+import AA from "lib-ui/solidstart/aa"
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
-import type { Menu } from "../../../lib-ui/src/solidstart/menu/menu-type"
+import SidebarLayout from "../../../lib-ui/src/solid/layouts/sidebar-layout"
+import type { NavMenu } from "../../../lib-ui/src/solid/nav-menu/type"
 
-const pagesMenu: Menu = {
+const pagesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,
+	linkComponent: AA,
 	label: "Pages",
 	items: [
 		{
@@ -33,7 +35,7 @@ const pagesMenu: Menu = {
 	],
 }
 
-const guidesMenu: Menu = {
+const guidesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,
 	label: "Guides",
 
@@ -60,7 +62,7 @@ const guidesMenu: Menu = {
 	],
 }
 
-const secondaryMenu: Menu = {
+const secondaryMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupSecondary,
 	rendererClass: "mt-auto",
 	items: [

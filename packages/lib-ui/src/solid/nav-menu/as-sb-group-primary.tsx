@@ -1,6 +1,6 @@
 "use client"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "lib-ui/solidstart/ui/collapsible"
-import { IconChevronRight } from "lib-ui/solidstart/ui/icons"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "lib-ui/solid/ui/collapsible"
+import { IconChevronRight } from "lib-ui/solid/ui/icons"
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -11,18 +11,21 @@ import {
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
-} from "lib-ui/solidstart/ui/sidebar"
-import SmartLink from "lib-ui/solidstart/ui/smart-link"
+} from "lib-ui/solid/ui/sidebar"
 import { type ComponentProps, For, Show } from "solid-js"
-import type { MenuItem } from "./menu-type"
+import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
+import type { NavMenuItem } from "./type"
 
 export default function MenuAsSidebarGroupPrimary(
 	props: {
 		label?: string
-		items: MenuItem[]
+		items: NavMenuItem[]
+		linkComponent?: LinkComponent
 		linkClass?: string
 	} & ComponentProps<typeof SidebarGroup>
 ) {
+	const Link = props.linkComponent ?? DefaultLinkComponent
+
 	return (
 		<SidebarGroup {...props} class={props.class}>
 			<SidebarGroupLabel>{props.label}</SidebarGroupLabel>
@@ -33,7 +36,7 @@ export default function MenuAsSidebarGroupPrimary(
 							<Show
 								when={item.children?.length}
 								fallback={
-									<SidebarMenuButton as={SmartLink} href={item.href ?? ""} class={props.linkClass}>
+									<SidebarMenuButton as={Link} href={item.href ?? ""} class={props.linkClass}>
 										{item.icon ? <item.icon /> : null}
 										<span>{item.label}</span>
 									</SidebarMenuButton>
@@ -54,12 +57,7 @@ export default function MenuAsSidebarGroupPrimary(
 											<For each={item.children} fallback={<div>Loading submenu...</div>}>
 												{(subItem) => (
 													<SidebarMenuSubItem>
-														<SidebarMenuSubButton
-															as={SmartLink}
-															href={subItem.href ?? ""}
-															class={item.itemsLinkClass}
-															markExternalLink
-														>
+														<SidebarMenuSubButton as={Link} href={subItem.href ?? ""} class={item.itemsLinkClass}>
 															<span>{subItem.label}</span>
 														</SidebarMenuSubButton>
 													</SidebarMenuSubItem>

@@ -8,14 +8,14 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
-} from "lib-ui/solidstart/ui/sidebar"
-import type { Menu } from "../menu/menu-type"
+} from "lib-ui/solid/ui/sidebar"
+import type { NavMenu } from "../nav-menu/type"
 
 type AppSidebarProps = ComponentProps<typeof Sidebar> & {
 	AppBranding: JSXElement
 	UserMenu: JSXElement
 }
-export default function AppSidebar(props: AppSidebarProps & { menus: Menu[] }) {
+export default function AppSidebar(props: AppSidebarProps & { menus: NavMenu[] }) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>

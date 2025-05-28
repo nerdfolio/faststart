@@ -1,5 +1,5 @@
 import type { User } from "auth/solidstart/auth-client"
-import { Avatar, AvatarFallback, AvatarImage } from "lib-ui/solidstart/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "lib-ui/solid/ui/avatar"
 import { type ComponentProps, splitProps } from "solid-js"
 
 function getAvatarFallback(user: User) {
