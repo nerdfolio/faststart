@@ -3,7 +3,7 @@ import SmartLink from "../../solid/ui/smart-link"
 import { cn } from "../../utils"
 import type { MenuItem } from "./menu-type"
 
-export function MenuAsNavLinks(
+export default function MenuAsNavLinks(
 	props: ComponentProps<"nav"> & { items: MenuItem[]; label?: string; linkClass?: string }
 ) {
 	return (

@@ -9,13 +9,13 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "lib-ui/solidstart/ui/sidebar"
-import type { MenuItem } from "../menu-type"
+import type { MenuItem } from "./menu-type"
 
 /*
 Sidebar menu group with simpler items that has no subitem.
 Rendered smaller to be a secondary menu, typically at the bottom of sidebar.
 */
-export function SidebarMenuSecondary(
+export default function MenuAsSidebarGroupSecondary(
 	props: ComponentProps<typeof SidebarGroup> & { label?: string; items: MenuItem[]; linkClass?: string }
 ) {
 	return (

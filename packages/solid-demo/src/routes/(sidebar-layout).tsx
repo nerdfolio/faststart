@@ -1,7 +1,7 @@
 import AuthRequired from "auth/solidstart/components/auth-required"
 import SidebarLayout from "lib-ui/solidstart/layouts/sidebar-layout"
-import { SidebarMenuPrimary } from "lib-ui/solidstart/menu/sidebar/sidebar-menu-primary"
-import { SidebarMenuSecondary } from "lib-ui/solidstart/menu/sidebar/sidebar-menu-secondary"
+import { MenuAsSidebarGroupPrimary } from "lib-ui/solidstart/menu/as-sb-group-primary"
+import { MenuAsSidebarGroupSecondary } from "lib-ui/solidstart/menu/as-sb-group-secondary"
 import {
 	IconBook,
 	IconDashboard,
@@ -17,7 +17,7 @@ import { AppBranding } from "~/components/app-branding"
 import type { Menu } from "../../../lib-ui/src/solidstart/menu/menu-type"
 
 const pagesMenu: Menu = {
-	renderer: SidebarMenuPrimary,
+	renderer: MenuAsSidebarGroupPrimary,
 	label: "Pages",
 	items: [
 		{
@@ -34,7 +34,7 @@ const pagesMenu: Menu = {
 }
 
 const guidesMenu: Menu = {
-	renderer: SidebarMenuPrimary,
+	renderer: MenuAsSidebarGroupPrimary,
 	label: "Guides",
 
 	items: [
@@ -61,7 +61,7 @@ const guidesMenu: Menu = {
 }
 
 const secondaryMenu: Menu = {
-	renderer: SidebarMenuSecondary,
+	renderer: MenuAsSidebarGroupSecondary,
 	rendererClass: "mt-auto",
 	items: [
 		{

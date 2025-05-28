@@ -14,9 +14,9 @@ import {
 } from "lib-ui/solidstart/ui/sidebar"
 import SmartLink from "lib-ui/solidstart/ui/smart-link"
 import { type ComponentProps, For, Show } from "solid-js"
-import type { MenuItem } from "../menu-type"
+import type { MenuItem } from "./menu-type"
 
-export function SidebarMenuPrimary(
+export default function MenuAsSidebarGroupPrimary(
 	props: {
 		label?: string
 		items: MenuItem[]

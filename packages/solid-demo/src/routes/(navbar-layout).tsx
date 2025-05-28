@@ -1,6 +1,6 @@
 import { default as NBL } from "lib-ui/solidstart/layouts/navbar-layout"
-import { MenuAsNavLinks } from "lib-ui/solidstart/menu/menu-as-nav-links"
-import { MenuAsNavbarGroup } from "lib-ui/solidstart/menu/menu-as-navbar-group"
+import MenuAsNavLinks from "lib-ui/solidstart/menu/as-nav-links"
+import MenuAsNavbarGroup from "lib-ui/solidstart/menu/as-nb-group"
 import AppSocials from "lib-ui/solidstart/ui/social-links"
 import type { ComponentProps } from "solid-js"
 import NavbarUserMenu from "user/components/user/navbar-user-menu"
