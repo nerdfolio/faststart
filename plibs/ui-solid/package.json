@@ -6,12 +6,10 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./utils": "./src/utils.ts",
-		"./solid/*": "./src/solid/*.tsx",
-		"./solid/ui/*": "./src/solid/ui/*.tsx",
-		"./solid/nav-menu/*": ["./src/solid/nav-menu/*.tsx", "./src/solid/nav-menu/*.ts"],
-		"./solid/layouts/*": "./src/solid/layouts/*.tsx",
-		"./solid/start/*": "./src/solid/start/*.tsx"
+		"./*": ["./src/*.tsx", "./src/*.ts"],
+		"./ui/*": "./src/ui/*.tsx",
+		"./nav-menu/*": ["./src/nav-menu/*.tsx", "./src/nav-menu/*.ts"],
+		"./start/*": "./src/start/*.tsx"
 	},
 	"keywords": [],
 	"type": "module",
