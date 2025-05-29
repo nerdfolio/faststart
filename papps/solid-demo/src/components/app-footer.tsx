@@ -1,7 +1,7 @@
-import MenuAsNavLinks from "lib-ui/solid/nav-menu/as-nav-links"
-import AA from "lib-ui/solid/start/aa"
-import Footer from "lib-ui/solid/ui/footer"
-import SocialLinks from "lib-ui/solid/ui/social-links"
+import MenuAsNavLinks from "ui-solid/nav-menu/as-nav-links"
+import AA from "ui-solid/start/aa"
+import Footer from "ui-solid/ui/footer"
+import SocialLinks from "ui-solid/ui/social-links"
 import { copyrightStatement } from "./app-branding"
 
 const footerLinks = [

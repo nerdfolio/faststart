@@ -6,7 +6,8 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./*": ["./src/*.tsx", "./src/*.ts"],
+		"./*": ["./src/icons.tsx"],
+		"./utils": "./src/utils.ts",
 		"./ui/*": "./src/ui/*.tsx",
 		"./nav-menu/*": ["./src/nav-menu/*.tsx", "./src/nav-menu/*.ts"],
 		"./start/*": "./src/start/*.tsx"

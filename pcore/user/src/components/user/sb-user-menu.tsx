@@ -6,7 +6,7 @@ import {
 	IconCreditCard,
 	IconLogout,
 	IconSparkes,
-} from "lib-ui/solid/icons"
+} from "ui-solid/icons"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -15,8 +15,8 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "lib-ui/solid/ui/dropdown-menu"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "lib-ui/solid/ui/sidebar"
+} from "ui-solid/ui/dropdown-menu"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "ui-solid/ui/sidebar"
 import UserMinicard from "./user-minicard"
 
 export default function SidebarUserMenu() {

@@ -1,5 +1,5 @@
 import { type ComponentProps, For } from "solid-js"
-import { cn } from "../../utils"
+import { cn } from "../utils"
 import { IconBluesky, IconGithub, IconX } from "../icons"
 
 const ICON_MAP = {

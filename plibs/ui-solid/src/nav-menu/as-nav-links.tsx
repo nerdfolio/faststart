@@ -1,5 +1,5 @@
 import { type ComponentProps, For } from "solid-js"
-import { cn } from "../../utils"
+import { cn } from "../utils"
 import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 

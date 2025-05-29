@@ -1,4 +1,4 @@
-import AuthRequired from "auth/solidstart/components/auth-required"
+import type { ParentProps } from "solid-js"
 import {
 	IconBook,
 	IconDashboard,
@@ -7,16 +7,16 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "lib-ui/solid/icons"
-import MenuAsSidebarGroupPrimary from "lib-ui/solid/nav-menu/as-sb-group-primary"
-import MenuAsSidebarGroupSecondary from "lib-ui/solid/nav-menu/as-sb-group-secondary"
-import NavMenus from "lib-ui/solid/nav-menu/index"
-import AA from "lib-ui/solid/start/aa"
-import type { ParentProps } from "solid-js"
+} from "ui-solid/icons"
+import MenuAsSidebarGroupPrimary from "ui-solid/nav-menu/as-sb-group-primary"
+import MenuAsSidebarGroupSecondary from "ui-solid/nav-menu/as-sb-group-secondary"
+import NavMenus from "ui-solid/nav-menu/index"
+import AA from "ui-solid/start/aa"
+import AuthRequired from "user/components/auth/auth-required"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
-import type { NavMenu } from "../../../../pcore/lib-ui/src/solid/nav-menu/type"
-import SidebarLayout from "../../../../pcore/lib-ui/src/solid/start/sidebar-layout"
+import type { NavMenu } from "ui-solid/nav-menu/type"
+import SidebarLayout from "ui-solid/start/sidebar-layout"
 
 const pagesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,

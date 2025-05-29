@@ -1,4 +1,4 @@
-import { Separator } from "lib-ui/solid/ui/separator"
+import { Separator } from "ui-solid/ui/separator"
 import {
 	Sidebar,
 	SidebarContent,
@@ -10,7 +10,7 @@ import {
 	SidebarMenuItem,
 	SidebarProvider,
 	SidebarTrigger,
-} from "lib-ui/solid/ui/sidebar"
+} from "ui-solid/ui/sidebar"
 import type { JSXElement, ParentProps } from "solid-js"
 import type { ComponentProps } from "solid-js"
 import Breadcrumbs from "./breadcrumbs"

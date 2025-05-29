@@ -1,14 +1,14 @@
 import { A } from "@solidjs/router"
 import { type User, useAuth, useSignOut } from "auth/solidstart/auth-client"
-import { IconLogout } from "lib-ui/solid/icons"
+import { Show } from "solid-js"
+import { IconLogout } from "ui-solid/icons"
 import {
 	NavigationMenu,
 	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuTrigger,
-} from "lib-ui/solid/ui/navigation-menu"
-import { Show } from "solid-js"
+} from "ui-solid/ui/navigation-menu"
 import UserAvatar from "./user-avatar"
 
 export default function NavbarUserMenu() {

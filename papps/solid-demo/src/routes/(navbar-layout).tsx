@@ -1,11 +1,11 @@
-import MenuAsNavbarGroup from "lib-ui/solid/nav-menu/as-nb-group"
-import NavMenus from "lib-ui/solid/nav-menu/index"
-import AA from "lib-ui/solid/start/aa"
 import type { ComponentProps } from "solid-js"
+import MenuAsNavbarGroup from "ui-solid/nav-menu/as-nb-group"
+import NavMenus from "ui-solid/nav-menu/index"
+import AA from "ui-solid/start/aa"
+import { default as NBL } from "ui-solid/start/navbar-layout"
 import NavbarUserMenu from "user/components/user/nb-user-menu"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
-import { default as NBL } from "../../../../pcore/lib-ui/src/solid/start/navbar-layout"
 
 const navMenus = [
 	{

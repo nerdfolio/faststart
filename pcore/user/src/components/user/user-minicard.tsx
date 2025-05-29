@@ -1,5 +1,5 @@
 import type { User } from "auth/solidstart/auth-client"
-import { cn } from "lib-ui/utils"
+import { cn } from "ui-solid/utils"
 import UserAvatar from "./user-avatar"
 
 export default function UserMinicard(props: { user: User; class?: string }) {

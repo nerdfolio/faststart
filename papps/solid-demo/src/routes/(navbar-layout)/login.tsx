@@ -1,4 +1,4 @@
-import LoginCard from "auth/solidstart/components/login-card"
+import LoginCard from "user/components/auth/login-card"
 import { type ComponentProps, For } from "solid-js"
 import { AppBranding } from "~/components/app-branding"
 
