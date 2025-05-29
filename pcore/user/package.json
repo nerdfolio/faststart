@@ -18,11 +18,14 @@
 	},
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
-		"auth": "workspace:*",
 		"solid-js": "catalog:"
 	},
 	"peerDependencies": {
 		"@solidjs/router": "catalog:",
 		"solid-js": "catalog:"
+	},
+	"dependencies": {
+		"auth": "workspace:*",
+		"ui-solid": "workspace:*"
 	}
 }

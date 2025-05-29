@@ -18,7 +18,6 @@
 	"devDependencies": {
 		"@inquirer/prompts": "^7.5.1",
 		"@nerdfolio/drizzle-d1-helpers": "^0.1.1",
-		"auth": "workspace:*",
 		"database": "workspace:*"
 	}
 }

@@ -1,5 +1,4 @@
 packages:
-  - auth
   - database
   - plibs/*
   - pcore/*
