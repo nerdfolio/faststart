@@ -15,8 +15,8 @@ import AA from "lib-ui/solid/start/aa"
 import type { ParentProps } from "solid-js"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
-import SidebarLayout from "../../../lib-ui/src/solid/start/sidebar-layout"
-import type { NavMenu } from "../../../lib-ui/src/solid/nav-menu/type"
+import type { NavMenu } from "../../../../pcore/lib-ui/src/solid/nav-menu/type"
+import SidebarLayout from "../../../../pcore/lib-ui/src/solid/start/sidebar-layout"
 
 const pagesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,

@@ -16,8 +16,7 @@
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
 		"better-auth": "^1.2.8",
-		"database": "workspace:*",
-		"lib-ui": "workspace:*"
+		"database": "workspace:*"
 	},
 	"engines": {
 		"node": ">=22",

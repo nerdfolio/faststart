@@ -19,7 +19,6 @@
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
 		"auth": "workspace:*",
-		"lib-ui": "workspace:*",
 		"solid-js": "catalog:"
 	},
 	"peerDependencies": {

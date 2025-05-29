@@ -1,7 +1,9 @@
 packages:
   - auth
   - database
-  - packages/*
+  - plibs/*
+  - pcore/*
+  - papps/*
 
 catalog:
   typescript: "^5.8.3"
