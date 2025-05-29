@@ -1,5 +1,5 @@
 {
-  "name": "example-basic",
+  "name": "remult-todo",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
@@ -17,5 +17,9 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.27.1",
+    "@babel/plugin-transform-class-properties": "^7.27.1"
   }
 }
