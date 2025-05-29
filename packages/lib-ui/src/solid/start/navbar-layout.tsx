@@ -4,7 +4,7 @@ export default function NavbarLayout(props: ComponentProps<"div">) {
 	return <div>{props.children}</div>
 }
 
-NavbarLayout.Navbar = function AppNavbar(
+NavbarLayout.Navbar = function NB(
 	props: ComponentProps<"div"> & { Branding: JSXElement; UserMenu: JSXElement; Menus: JSXElement }
 ) {
 	return (

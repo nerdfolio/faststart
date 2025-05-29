@@ -5,7 +5,7 @@ import type { ComponentProps } from "solid-js"
 import NavbarUserMenu from "user/components/user/nb-user-menu"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
-import { default as NBL } from "../../../lib-ui/src/solid/layouts/navbar-layout"
+import { default as NBL } from "../../../lib-ui/src/solid/start/navbar-layout"
 
 const navMenus = [
 	{

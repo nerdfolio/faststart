@@ -1,12 +1,9 @@
 import { A, useCurrentMatches } from "@solidjs/router"
-import { For, createMemo } from "solid-js"
+import { For, Show, createMemo } from "solid-js"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../ui/breadcrumb"
 
 export default function Breadcrumbs() {
-	const matches = useCurrentMatches()
-
-	// Note: slice(1) to exclude the first "/"
-	const crumbs = createMemo(() => matches().slice(-1)[0].path.split("/").slice(1))
+	const crumbs = useBreadcrumbs()
 
 	return (
 		<Breadcrumb>
@@ -15,15 +12,24 @@ export default function Breadcrumbs() {
 					{(crumb, idx) => (
 						<>
 							<BreadcrumbItem>
-								<BreadcrumbLink as={A} href="/" current={idx() === crumbs().length - 1}>
-									{crumb}
-								</BreadcrumbLink>
+								<Show when={idx() < crumbs().length - 1} fallback={<BreadcrumbLink current>{crumb}</BreadcrumbLink>}>
+									<BreadcrumbLink as={A} href={`/${crumb}`}>
+										{crumb}
+									</BreadcrumbLink>
+									<BreadcrumbSeparator />
+								</Show>
 							</BreadcrumbItem>
-							{idx() === crumbs().length - 1 ? null : <BreadcrumbSeparator />}
 						</>
 					)}
 				</For>
 			</BreadcrumbList>
 		</Breadcrumb>
 	)
+}
+
+export function useBreadcrumbs() {
+	const matches = useCurrentMatches()
+
+	// Note: slice(1) to exclude the first "/"
+	return createMemo(() => matches().slice(-1)[0].path.split("/").slice(1))
 }
