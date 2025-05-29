@@ -1,15 +1,12 @@
 {
-	"name": "ui-solid",
+	"name": "ui-core",
 	"version": "0.1.0",
-	"description": "ui component and utilities that can be reuseable",
+	"description": "higher level ui component and utilities that is tailored to this monorepo",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./*": ["./src/*.tsx", "./src/*.ts"],
-		"./ui/*": "./src/ui/*.tsx",
-		"./nav-menu/*": ["./src/nav-menu/*.tsx", "./src/nav-menu/*.ts"],
-		"./start/*": "./src/start/*.tsx"
+		"./*": ["./src/*.tsx", "./src/*.ts"]
 	},
 	"keywords": [],
 	"type": "module",
@@ -41,6 +38,7 @@
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
-		"tailwind-merge": "^3.3.0"
+		"tailwind-merge": "^3.3.0",
+		"ui-solid": "workspace:*"
 	}
 }
