@@ -114,28 +114,6 @@ importers:
         specifier: ^4.17.0
         version: 4.17.0
 
-  auth:
-    dependencies:
-      better-auth:
-        specifier: ^1.2.8
-        version: 1.2.8
-      database:
-        specifier: workspace:*
-        version: link:../database
-      ui-solid:
-        specifier: workspace:*
-        version: link:../plibs/ui-solid
-    devDependencies:
-      '@solidjs/router':
-        specifier: 'catalog:'
-        version: 0.15.3(solid-js@1.9.7)
-      solid-js:
-        specifier: 'catalog:'
-        version: 1.9.7
-      typescript:
-        specifier: 'catalog:'
-        version: 5.8.3
-
   database:
     dependencies:
       drizzle-orm:
@@ -157,6 +135,27 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
+
+  papps/remult-todo:
+    dependencies:
+      '@solidjs/meta':
+        specifier: ^0.29.4
+        version: 0.29.4(solid-js@1.9.7)
+      '@solidjs/router':
+        specifier: ^0.15.0
+        version: 0.15.3(solid-js@1.9.7)
+      '@solidjs/start':
+        specifier: ^1.1.0
+        version: 1.1.4(@testing-library/jest-dom@6.6.3)(@types/node@22.15.24)(jiti@2.4.2)(lightningcss@1.30.1)(solid-js@1.9.7)(terser@5.40.0)(tsx@4.19.3)(vinxi@0.5.6(@libsql/client@0.15.6)(@netlify/blobs@8.2.0)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.6)(drizzle-orm@0.43.1(@libsql/client@0.15.6)(gel@2.0.2)(kysely@0.28.2)))(drizzle-orm@0.43.1(@libsql/client@0.15.6)(gel@2.0.2)(kysely@0.28.2))(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)(tsx@4.19.3))(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)(tsx@4.19.3))
+      remult:
+        specifier: ^3.0.4
+        version: 3.0.4
+      solid-js:
+        specifier: ^1.9.5
+        version: 1.9.7
+      vinxi:
+        specifier: ^0.5.3
+        version: 0.5.6(@libsql/client@0.15.6)(@netlify/blobs@8.2.0)(@types/node@22.15.24)(db0@0.3.2(@libsql/client@0.15.6)(drizzle-orm@0.43.1(@libsql/client@0.15.6)(gel@2.0.2)(kysely@0.28.2)))(drizzle-orm@0.43.1(@libsql/client@0.15.6)(gel@2.0.2)(kysely@0.28.2))(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)(tsx@4.19.3)
 
   papps/solid-demo:
     dependencies:
@@ -1816,6 +1815,9 @@ packages:
     resolution: {integrity: sha512-Qc40GDkaad9rZksSQr2l/V9UubigIHsW69g94Gswc2sKYB3XfJXfIfyV8WTJ67u6ZMXsZ7BH1msSC6Aen75mCg==}
     cpu: [x64]
     os: [win32]
+
+  '@paralleldrive/cuid2@2.2.2':
+    resolution: {integrity: sha512-ZOBkgDwEdoYVlSeRbYYXs0S9MejQofiVYoTbKzy/6GQa39/q5tQU2IX46+shYnUkpEl3wc+J6wRlar7r2EK2xA==}
 
   '@parcel/watcher-android-arm64@2.5.1':
     resolution: {integrity: sha512-KF8+j9nNbUN8vzOFDpRMsaKBHZ/mcjEjMToVMJOhTozkDonQFFrRcfdLWn6yWKCmJKmdVxSgHiYvTCef4/qcBA==}
@@ -4642,6 +4644,9 @@ packages:
     resolution: {integrity: sha512-DJnGAeenTdpMEH6uAJRK/uiyEIH9WVsUmoLwzudwGJUwZPp80PDBWPHXSAGNPwNvIXAbe7MSUB1zQFugFml66A==}
     engines: {node: '>=4'}
 
+  reflect-metadata@0.1.14:
+    resolution: {integrity: sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==}
+
   regex-recursion@5.1.1:
     resolution: {integrity: sha512-ae7SBCbzVNrIjgSbh7wMznPcQel1DNlDtzensnFxpiNpXt1U2ju/bHugH422r+4LAVS1FpW1YCwilmnNsjum9w==}
 
@@ -4653,6 +4658,9 @@ packages:
 
   remove-trailing-separator@1.1.0:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
+
+  remult@3.0.4:
+    resolution: {integrity: sha512-RcYbXt05BbQFoFxmiVOI/C4YPhceZM/AiViXeEBKqxN+rQCfhnXQS5MLcRx3CqRehSikXOpouWGhrPQ8GgL+Ag==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -5334,6 +5342,10 @@ packages:
 
   uuid@11.1.0:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
+  uuid@8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
   validate-html-nesting@1.2.2:
@@ -6901,6 +6913,10 @@ snapshots:
 
   '@oxc-resolver/binding-win32-x64-msvc@9.0.2':
     optional: true
+
+  '@paralleldrive/cuid2@2.2.2':
+    dependencies:
+      '@noble/hashes': 1.8.0
 
   '@parcel/watcher-android-arm64@2.5.1':
     optional: true
@@ -9923,6 +9939,8 @@ snapshots:
     dependencies:
       redis-errors: 1.2.0
 
+  reflect-metadata@0.1.14: {}
+
   regex-recursion@5.1.1:
     dependencies:
       regex: 5.1.1
@@ -9935,6 +9953,13 @@ snapshots:
       regex-utilities: 2.3.0
 
   remove-trailing-separator@1.1.0: {}
+
+  remult@3.0.4:
+    dependencies:
+      '@paralleldrive/cuid2': 2.2.2
+      reflect-metadata: 0.1.14
+      tslib: 2.8.1
+      uuid: 8.3.2
 
   require-directory@2.1.1: {}
 
@@ -10628,6 +10653,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@11.1.0: {}
+
+  uuid@8.3.2: {}
 
   validate-html-nesting@1.2.2: {}
 
