@@ -1,25 +1,26 @@
 {
-  "name": "remult-todo",
-  "type": "module",
-  "scripts": {
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
-    "version": "vinxi version"
-  },
-  "dependencies": {
-    "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.15.0",
-    "@solidjs/start": "^1.1.0",
-    "remult": "^3.0.4",
-    "solid-js": "^1.9.5",
-    "vinxi": "^0.5.3"
-  },
-  "engines": {
-    "node": ">=22"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.27.1",
-    "@babel/plugin-transform-class-properties": "^7.27.1"
-  }
+	"name": "remult-todo",
+	"type": "module",
+	"scripts": {
+		"dev": "dotenvx run -- vinxi dev",
+		"build": "vinxi build",
+		"start": "vinxi start",
+		"version": "vinxi version"
+	},
+	"dependencies": {
+		"@solidjs/meta": "^0.29.4",
+		"@solidjs/router": "^0.15.0",
+		"@solidjs/start": "^1.1.0",
+		"remult": "^3.0.4",
+		"remult-d1": "workspace:*",
+		"solid-js": "^1.9.5",
+		"vinxi": "^0.5.3"
+	},
+	"engines": {
+		"node": ">=22"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-decorators": "^7.27.1",
+		"@babel/plugin-transform-class-properties": "^7.27.1"
+	}
 }

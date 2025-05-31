@@ -30,20 +30,29 @@ export class D1HttpClient {
 
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	async execute(sql: string, params?: any) {
+		// as of June 2025: https://developers.cloudflare.com/d1/worker-api/prepared-statements/ says
+		// d1 currently does not support named parameters, so we need to convert to positional
+		const paramArray = Array.isArray(params) ? params : Object.entries(params)
+			.toSorted(([k1, _v1], [k2, _v2]) => Number.parseInt(k1) - Number.parseInt(k2))
+			.map(([_k, v]) => v)
+
+
 		const {
 			result: [page],
-		} = await this.#d1.raw(this.#databaseId, { sql, params, account_id: this.#accountId })
+		} = await this.#d1.raw(this.#databaseId, { sql, params: paramArray, account_id: this.#accountId })
 
 		return page.results as DatabaseRawResponse.Results
 	}
 }
 
 class D1HttpCommand implements SqlCommand {
-	values: Record<string, unknown> = {}
+	values: any = {}
 	i = 1
 	constructor(private d1Client: D1HttpClient) { }
 	async execute(sql: string): Promise<SqlResult> {
-		return new D1SqlResult(await this.d1Client.execute(sql, this.values))
+		console.log("SQL", sql)
+		console.log("VALUES", this.values)
+		return new D1SqlResult(await this.d1Client.execute(sql, []))
 	}
 
 	addParameterAndReturnSqlToken(val: unknown) {
