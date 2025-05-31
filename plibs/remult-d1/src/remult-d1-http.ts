@@ -1,58 +1,70 @@
-import type { Client, ResultSet } from "@libsql/client"
-import type Cloudflare from "cloudflare"
-import type { SqlCommand, SqlImplementation, SqlResult } from "remult"
+import Cloudflare from "cloudflare"
+import type { DatabaseRawResponse } from "cloudflare/resources/d1.mjs"
+import type { SqlCommand, SqlResult } from "remult"
 import { SqliteCoreDataProvider } from "remult/remult-sqlite-core-js"
-import { cast } from "./isOfType.js"
+
+export function createD1HttpDataProvider({ accountId, databaseId, apiToken }: { accountId: string; databaseId: string; apiToken: string }) {
+	return new D1HttpDataProvider(new D1HttpClient({ accountId, databaseId, apiToken }))
+}
 
 export class D1HttpDataProvider extends SqliteCoreDataProvider {
-	constructor(private cloudflare: Cloudflare) {
+	constructor(private d1Client: D1HttpClient) {
 		super(
-			() => new D1HttpCommand(cloudflare.d1.database, "ACCOUNT_ID", "DATABASE_ID"),
+			() => new D1HttpCommand(this.d1Client),
 			async () => { },
 			false
 		)
 	}
-	async transaction(action: (sql: SqlImplementation) => Promise<void>): Promise<void> {
-		const trans = await cast<Client>(this.cloudflare, "transaction").transaction()
-		try {
-			await action(new D1HttpDataProvider(trans))
-			await trans.commit()
-		} catch (err) {
-			await trans.rollback()
-			throw err
-		}
+}
+
+export class D1HttpClient {
+	#d1: Cloudflare["d1"]["database"]
+	#accountId: string
+	#databaseId: string
+
+	constructor({ accountId, databaseId, apiToken }: { accountId: string; databaseId: string; apiToken: string }) {
+		this.#d1 = new Cloudflare({ apiToken }).d1.database
+		this.#accountId = accountId
+		this.#databaseId = databaseId
+	}
+
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	async execute(sql: string, params?: any) {
+		const {
+			result: [page],
+		} = await this.#d1.raw(this.#databaseId, { sql, params, account_id: this.#accountId })
+
+		return page.results as DatabaseRawResponse.Results
 	}
 }
+
 class D1HttpCommand implements SqlCommand {
-	values: any = {}
+	values: Record<string, unknown> = {}
 	i = 1
-	constructor(private d1Client: Cloudflare["d1"]["database"], accountId: string, databaseId: string) { }
+	constructor(private d1Client: D1HttpClient) { }
 	async execute(sql: string): Promise<SqlResult> {
-		return new D1SqlResult(
-			await this.d1Client.raw(databaseId, { account_id: accountId, sql, params: this.values })
-			// await this.db.execute({
-			// 	sql,
-			// 	args: this.values,
-			// })
-		)
+		return new D1SqlResult(await this.d1Client.execute(sql, this.values))
 	}
-	addParameterAndReturnSqlToken(val: any) {
+
+	addParameterAndReturnSqlToken(val: unknown) {
 		return this.param(val)
 	}
-	param(val: any): string {
+
+	param(val: unknown): string {
 		if (val instanceof Date) val = val.valueOf()
 		if (typeof val === "boolean") val = val ? 1 : 0
-		const key = ":" + this.i++
+		const key = `:${this.i++}`
 		this.values[key.substring(1)] = val
 		return key
 	}
 }
 class D1SqlResult implements SqlResult {
-	constructor(private result: ResultSet) {
-		this.rows = result.rows
+	constructor(private result: DatabaseRawResponse.Results) { }
+
+	get rows() {
+		return this.result.rows ?? []
 	}
-	rows: any[]
 	getColumnKeyInResultForIndexInSelect(index: number): string {
-		return this.result.columns[index]
+		return this.result.columns?.[index] ?? ""
 	}
 }
