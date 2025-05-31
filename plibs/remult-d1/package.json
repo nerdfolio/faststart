@@ -1,31 +1,30 @@
 {
-	"name": "cloudflare-helpers",
+	"name": "remult-d1",
 	"version": "0.1.0",
-	"description": "database, migrations, data scaffolding",
+	"description": "d1 adapter for remult",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./solidstart/*": "./src/solidstart/*.ts"
+		"./*": "./src/*.ts"
 	},
 	"keywords": [],
 	"type": "module",
 	"scripts": {},
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
-		"lodash-es": "^4.17.21"
+		"@libsql/client": "^0.15.7",
+		"cloudflare": "^4.3.0"
 	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"@solidjs/start": "^1.1.4",
-		"solid-js": "catalog:",
+		"remult": "^3.0.4",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@solidjs/start": "^1.1.4",
-		"solid-js": "catalog:"
+		"remult": "^3.0.4"
 	}
 }
