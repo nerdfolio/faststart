@@ -1,10 +1,13 @@
 import Cloudflare from "cloudflare"
-import type { DatabaseRawResponse } from "cloudflare/resources/d1.mjs"
-import type { SqlCommand, SqlResult } from "remult"
+import { type SqlCommand, SqlDatabase, type SqlResult } from "remult"
 import { SqliteCoreDataProvider } from "remult/remult-sqlite-core-js"
 
-export function createD1HttpDataProvider({ accountId, databaseId, apiToken }: { accountId: string; databaseId: string; apiToken: string }) {
-	return new D1HttpDataProvider(new D1HttpClient({ accountId, databaseId, apiToken }))
+export function createD1HttpDataProvider({
+	accountId,
+	databaseId,
+	apiToken,
+}: { accountId: string; databaseId: string; apiToken: string }) {
+	return new SqlDatabase(new D1HttpDataProvider(new D1HttpClient({ accountId, databaseId, apiToken })))
 }
 
 export class D1HttpDataProvider extends SqliteCoreDataProvider {
@@ -29,19 +32,18 @@ export class D1HttpClient {
 	}
 
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	async execute(sql: string, params?: any) {
-		// as of June 2025: https://developers.cloudflare.com/d1/worker-api/prepared-statements/ says
-		// d1 currently does not support named parameters, so we need to convert to positional
-		const paramArray = Array.isArray(params) ? params : Object.entries(params)
-			.toSorted(([k1, _v1], [k2, _v2]) => Number.parseInt(k1) - Number.parseInt(k2))
-			.map(([_k, v]) => v)
-
-
+	async execute(sql: string, params?: any[]) {
 		const {
 			result: [page],
-		} = await this.#d1.raw(this.#databaseId, { sql, params: paramArray, account_id: this.#accountId })
+		} = await this.#d1.query(this.#databaseId, { sql, params, account_id: this.#accountId })
 
-		return page.results as DatabaseRawResponse.Results
+		// NOTE: d1 query endpoint returns the result as array of object with keys as column names.
+		// We're returning that now because the rest of remult seems to expect that.
+		// D1 also has a more efficient raw() endpoint that returns {columns: string[], rows: any[][]} that we may want
+		// to use eventually, and write code like fromRowToSql()
+		// at https://github.com/tursodatabase/libsql-client-ts/blob/main/packages/libsql-client/src/sqlite3.ts#L398
+		// to adapt the data
+		return page.results as Array<Record<string, unknown>>
 	}
 }
 
@@ -50,9 +52,13 @@ class D1HttpCommand implements SqlCommand {
 	i = 1
 	constructor(private d1Client: D1HttpClient) { }
 	async execute(sql: string): Promise<SqlResult> {
-		console.log("SQL", sql)
-		console.log("VALUES", this.values)
-		return new D1SqlResult(await this.d1Client.execute(sql, []))
+		// as of June 2025: https://developers.cloudflare.com/d1/worker-api/prepared-statements/ says
+		// d1 currently does not support named parameters, so we need to convert to positional
+		const params = Object.entries(this.values)
+			.toSorted(([k1, _v1], [k2, _v2]) => Number.parseInt(k1) - Number.parseInt(k2))
+			.map(([_k, v]) => v)
+
+		return new D1SqlResult(await this.d1Client.execute(sql, params))
 	}
 
 	addParameterAndReturnSqlToken(val: unknown) {
@@ -68,12 +74,14 @@ class D1HttpCommand implements SqlCommand {
 	}
 }
 class D1SqlResult implements SqlResult {
-	constructor(private result: DatabaseRawResponse.Results) { }
+	columns: string[]
 
-	get rows() {
-		return this.result.rows ?? []
+	constructor(public rows: Array<Record<string, unknown>> = []) {
+		// NOTE: are we guaranteed that when this is reached, rows is not empty?
+		this.columns = rows.length === 0 ? [] : Object.keys(rows[0])
 	}
+
 	getColumnKeyInResultForIndexInSelect(index: number): string {
-		return this.result.columns?.[index] ?? ""
+		return this.columns[index]
 	}
 }

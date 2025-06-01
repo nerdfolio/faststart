@@ -50,7 +50,8 @@
 			},
 			"nursery": {
 				"recommended": true,
-				"noProcessEnv": "error"
+				"noProcessEnv": "error",
+				"useConsistentMemberAccessibility": "off"
 			}
 		}
 	},
