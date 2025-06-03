@@ -31,11 +31,6 @@ export class D1HttpClient implements D1Client {
 	}
 
 	async execute(sql: string, params?: unknown[]) {
-		// return Array.fromAsync(this.#d1.query(this.#databaseId, {
-		// 	sql,
-		// 	params: params as string[],
-		// 	account_id: this.#accountId
-		// })).then((pages) => pages.flatMap((page) => page.results as D1RowObject[]))
 
 		return this.#d1.query(this.#databaseId, {
 			sql,
@@ -49,6 +44,5 @@ export class D1HttpClient implements D1Client {
 		// // // to use eventually, and write code like fromRowToSql()
 		// // // at https://github.com/tursodatabase/libsql-client-ts/blob/main/packages/libsql-client/src/sqlite3.ts#L398
 		// // // to adapt the data
-		// return pages.flatMap((page) => page.results as D1RowObject[])
 	}
 }
