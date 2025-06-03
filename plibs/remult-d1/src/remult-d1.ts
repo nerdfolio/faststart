@@ -35,23 +35,19 @@ export class D1BindingClient implements D1Client {
 	 */
 	constructor(private d1: D1Database) { }
 
-	async execute(sql: string, params?: unknown[]) {
+	async execute(sql: string, params: unknown[] = []) {
 		// https://developers.cloudflare.com/d1/worker-api/d1-database/
 		// https://developers.cloudflare.com/d1/worker-api/prepared-statements/
 		//
 		// Note: see if we should eventually take advantage of the raw() end point too.
 		const stmt = this.d1.prepare(sql)
-		const { results } = await (params ? stmt.bind(params) : stmt).run()
-
+		const { results } = await stmt.bind(...params).run()
 		return results
 	}
 }
 
 class D1Command implements SqlCommand {
 	#d1: D1Client
-
-	// as of June 2025: https://developers.cloudflare.com/d1/worker-api/prepared-statements/ says
-	// d1 currently does not support named parameters, so we need params as an array
 	#params: unknown[] = []
 
 	constructor(d1: D1Client) {
@@ -59,7 +55,8 @@ class D1Command implements SqlCommand {
 	}
 
 	async execute(sql: string): Promise<SqlResult> {
-		return new D1SqlResult(await this.#d1.execute(sql, this.#params))
+		const results = await this.#d1.execute(sql, this.#params)
+		return new D1SqlResult(results)
 	}
 
 	/** @deprecated use `param` instead*/
@@ -75,9 +72,9 @@ class D1Command implements SqlCommand {
 
 		this.#params.push(p)
 
-		// return key as 1-based array index prefixed by a colon to be compatible
-		// with other remult SqlCommand implementations
-		const key = `:${this.#params.length}`
+		// According to https://developers.cloudflare.com/d1/worker-api/prepared-statements/
+		// only the ordered "?NNN" and anonymous "?" param types are supported (although :AAAA seems to work too)
+		const key = `?${this.#params.length}`
 		return key
 	}
 }

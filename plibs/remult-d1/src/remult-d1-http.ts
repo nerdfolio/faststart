@@ -51,7 +51,7 @@ export class D1HttpClient implements D1Client {
 		this.#databaseId = databaseId
 	}
 
-	async execute(sql: string, params?: unknown[]) {
+	async execute(sql: string, params: unknown[] = []) {
 		return this.#d1.query(this.#databaseId, {
 			sql,
 			params: params as string[],
