@@ -1,8 +1,22 @@
 import Cloudflare from "cloudflare"
-import type { SqlCommand, SqlResult } from "remult"
+import { type SqlCommand, SqlDatabase, type SqlResult } from "remult"
 import { SqliteCoreDataProvider } from "remult/remult-sqlite-core-js"
 
+export function createD1DataProviderWithBinding(d1: D1Database) {
+	return new SqlDatabase(new D1DataProvider(new D1BindingClient(d1)))
+}
+
+type D1Credentials = { accountId: string; databaseId: string; apiToken: string }
+export function createD1DataProviderWithCredentials(creds: D1Credentials) {
+	return new SqlDatabase(new D1DataProvider(new D1HttpClient(creds)))
+}
+
 export class D1DataProvider extends SqliteCoreDataProvider {
+	/**
+	* For production or local d1 using binding
+	*
+	* const dataProvider = new SqlDatabase(new D1DataProvider(new D1BindingClient(d1)))
+	*/
 	constructor(private d1: D1Client) {
 		super(
 			() => new D1Command(this.d1),
@@ -56,7 +70,7 @@ export class D1HttpClient implements D1Client {
 	#accountId: string
 	#databaseId: string
 
-	constructor({ accountId, databaseId, apiToken }: { accountId: string; databaseId: string; apiToken: string }) {
+	constructor({ accountId, databaseId, apiToken }: D1Credentials) {
 		this.#d1 = new Cloudflare({ apiToken }).d1.database
 		this.#accountId = accountId
 		this.#databaseId = databaseId
