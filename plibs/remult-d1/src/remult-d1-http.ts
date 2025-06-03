@@ -9,10 +9,10 @@ export function createD1DataProviderWithCredentials(creds: D1Credentials) {
 
 
 /*
- * The most frequent use case of d1-http is for local development or for scripts called locally.
- * For those cases, it's annoying to have to worry about copying the correct databaseId from wrangler config.
+ * The primary use case of d1-http is for local development or for scripts called locally.
+ * For those cases, it's annoying to have to worry about copying the correct databaseId (uuid) from wrangler config.
  * This function is a dev-mode helper that uses wrangler to parse its config file and give us the databaseId from
- * the binding name. This function also simplifies account_id in a similar way
+ * the much simpler binding name. This function also simplifies account_id in a similar way
  */
 export async function devCreateD1DataProviderWithCredentials({ accountId, apiToken, databaseId, bindingName }: { accountId?: string, apiToken: string, databaseId?: string, bindingName?: string }) {
 	if (accountId && databaseId) {
