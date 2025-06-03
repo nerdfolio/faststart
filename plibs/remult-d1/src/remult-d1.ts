@@ -40,8 +40,7 @@ export class D1BindingClient implements D1Client {
 		// https://developers.cloudflare.com/d1/worker-api/prepared-statements/
 		//
 		// Note: see if we should eventually take advantage of the raw() end point too.
-		const stmt = this.d1.prepare(sql)
-		const { results } = await stmt.bind(...params).run()
+		const { results } = await this.d1.prepare(sql).bind(...params).run()
 		return results
 	}
 }
@@ -90,4 +89,10 @@ class D1SqlResult implements SqlResult {
 	getColumnKeyInResultForIndexInSelect(index: number): string {
 		return this.columns[index]
 	}
+}
+
+
+export async function devCreateD1DataProviderWithLocalBinding<Env>(bindingName: keyof Env) {
+	return import("wrangler").then(({ getPlatformProxy }) => getPlatformProxy<Env>()
+		.then(({ env }) => createD1DataProvider(env[bindingName] as D1Database)))
 }

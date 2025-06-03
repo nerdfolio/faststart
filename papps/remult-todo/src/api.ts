@@ -1,7 +1,5 @@
-import {
-	devCreateD1DataProviderWithCredentials,
-	devCreateD1DataProviderWithLocalBinding,
-} from "remult-d1/remult-d1-dev-helpers"
+import { devCreateD1DataProviderWithLocalBinding } from "remult-d1/remult-d1"
+import { devCreateD1DataProviderWithCredentials } from "remult-d1/remult-d1-http"
 import { remultApi } from "remult/remult-solid-start"
 import { getUser } from "./auth"
 import { Task } from "./shared/Task"
