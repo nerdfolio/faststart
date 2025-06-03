@@ -6,7 +6,10 @@ export class D1DataProvider extends SqliteCoreDataProvider {
 	constructor(private d1: D1Client) {
 		super(
 			() => new D1Command(this.d1),
-			async () => { },
+			async () => {
+				// afaik, d1 connection doesn't need closing,
+				// so this is just a noop
+			},
 		)
 	}
 }
