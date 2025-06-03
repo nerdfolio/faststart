@@ -3,7 +3,6 @@ import type { SqlCommand, SqlResult } from "remult"
 import { SqliteCoreDataProvider } from "remult/remult-sqlite-core-js"
 
 export class D1DataProvider extends SqliteCoreDataProvider {
-
 	constructor(private d1: D1Client) {
 		super(
 			() => new D1Command(this.d1),
@@ -38,6 +37,18 @@ export class D1BindingClient implements D1Client {
 }
 
 export class D1HttpClient implements D1Client {
+	/*
+	* Simple d1 client that internally uses a cloudflare sdk client along with
+	* d1 credentials to access D1 remotely
+	*
+	* const d1 = new D1HttpClient({
+	* 	accountId: process.env.CLOUDFLARE_ACCOUNT_ID,
+	* 	apiToken: process.env.CLOUDFLARE_D1_TOKEN,
+	*   databaseId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+	* })
+	*
+	*/
+
 	#d1: Cloudflare["d1"]["database"]
 	#accountId: string
 	#databaseId: string

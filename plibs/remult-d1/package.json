@@ -12,10 +12,6 @@
 	"type": "module",
 	"scripts": {},
 	"packageManager": "pnpm@10.10.0",
-	"dependencies": {
-		"@libsql/client": "^0.15.7",
-		"cloudflare": "^4.3.0"
-	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
@@ -23,10 +19,12 @@
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250601.0",
 		"@types/better-sqlite3": "^7.6.13",
+		"cloudflare": "^4.3.0",
 		"remult": "^3.0.4",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
+		"cloudflare": "^4.3.0",
 		"remult": "^3.0.4"
 	}
 }
