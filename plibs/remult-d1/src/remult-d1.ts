@@ -40,7 +40,7 @@ export class D1BindingClient implements D1Client {
 		// https://developers.cloudflare.com/d1/worker-api/prepared-statements/
 		//
 		// Note: see if we should eventually take advantage of the raw() end point too.
-		const { results } = await this.d1.prepare(sql).bind(...params).run()
+		const { results } = await this.d1.prepare(sql).bind(...params).run<D1RowObject>()
 		return results
 	}
 }
