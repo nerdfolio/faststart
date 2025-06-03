@@ -21,6 +21,7 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250601.0",
 		"@types/better-sqlite3": "^7.6.13",
 		"remult": "^3.0.4",
 		"typescript": "catalog:"
