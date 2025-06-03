@@ -31,18 +31,24 @@ export class D1HttpClient implements D1Client {
 	}
 
 	async execute(sql: string, params?: unknown[]) {
-		const {
-			// TODO: d1Http has pagination supports.
-			// need to figure out how remult handles pagination .. should we pull all pages here?
-			result: [page],
-		} = await this.#d1.query(this.#databaseId, { sql, params: params as string[], account_id: this.#accountId })
+		// return Array.fromAsync(this.#d1.query(this.#databaseId, {
+		// 	sql,
+		// 	params: params as string[],
+		// 	account_id: this.#accountId
+		// })).then((pages) => pages.flatMap((page) => page.results as D1RowObject[]))
 
-		// NOTE: d1 query endpoint returns the result as array of object with keys as column names.
-		// We're returning that now because the rest of remult seems to expect that.
-		// D1 also has a more efficient raw() endpoint that returns {columns: string[], rows: any[][]} that we may want
-		// to use eventually, and write code like fromRowToSql()
-		// at https://github.com/tursodatabase/libsql-client-ts/blob/main/packages/libsql-client/src/sqlite3.ts#L398
-		// to adapt the data
-		return page.results as D1RowObject[]
+		return this.#d1.query(this.#databaseId, {
+			sql,
+			params: params as string[],
+			account_id: this.#accountId,
+		}).then(({ result: pages }) => pages.flatMap((page) => page.results as D1RowObject[]))
+
+		// // // NOTE: d1 query endpoint returns the result as array of object with keys as column names.
+		// // // We're returning that now because the rest of remult seems to expect that.
+		// // // D1 also has a more efficient raw() endpoint that returns {columns: string[], rows: any[][]} that we may want
+		// // // to use eventually, and write code like fromRowToSql()
+		// // // at https://github.com/tursodatabase/libsql-client-ts/blob/main/packages/libsql-client/src/sqlite3.ts#L398
+		// // // to adapt the data
+		// return pages.flatMap((page) => page.results as D1RowObject[])
 	}
 }
