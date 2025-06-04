@@ -19,3 +19,4 @@ catalog:
   "@kobalte/tailwindcss": "^0.9.0"
   "cloudflare": "^4.3.0"
   "remult": "^3.0.4"
+  "better-auth": "^1.2.8"

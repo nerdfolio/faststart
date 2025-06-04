@@ -1,0 +1,27 @@
+{
+	"name": "remult-better-auth",
+	"version": "0.0.1",
+	"description": "Remult adapter for better-auth",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		"./*": "./src/*.ts"
+	},
+	"keywords": [],
+	"type": "module",
+	"scripts": {},
+	"packageManager": "pnpm@10.10.0",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"better-auth": "catalog:",
+		"remult": "catalog:"
+	},
+	"peerDependencies": {
+		"better-auth": "catalog:",
+		"remult": "catalog:"
+	}
+}
