@@ -19,10 +19,6 @@ function initD1Provider() {
 	return createD1DataProvider(env.DB)
 }
 
-// async function localD1() {
-// 	return getPlatformProxy().then(({ env }) => createD1DataProvider(env.DB))
-// }
-//
 // async function httpD1() {
 // 	return devCreateD1DataProviderWithCredentials({
 // 		accountId: process.env.CLOUDFLARE_ACCOUNT_ID ?? "",
