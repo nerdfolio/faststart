@@ -28,7 +28,7 @@
 		"@testing-library/user-event": "^14.6.1",
 		"@types/lodash-es": "^4.17.12",
 		"@types/node": "^22.15.29",
-		"@vitest/ui": "3.2.0",
+		"@vitest/ui": "3.2.1",
 		"globals": "^16.2.0",
 		"jsdom": "^26.1.0",
 		"knip": "^5.59.1",
@@ -39,8 +39,8 @@
 		"vite-plugin-doctest": "^1.1.1",
 		"vite-plugin-solid": "^2.11.6",
 		"vite-tsconfig-paths": "^5.1.4",
-		"vitest": "3.2.0",
-		"wrangler": "^4.18.0"
+		"vitest": "3.2.1",
+		"wrangler": "^4.19.1"
 	},
 	"engines": {
 		"node": ">=22"
