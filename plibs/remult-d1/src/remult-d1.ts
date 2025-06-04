@@ -90,9 +90,3 @@ class D1SqlResult implements SqlResult {
 		return this.columns[index]
 	}
 }
-
-
-export async function devCreateD1DataProviderWithLocalBinding<Env>(bindingName: keyof Env) {
-	return import("wrangler").then(({ getPlatformProxy }) => getPlatformProxy<Env>()
-		.then(({ env }) => createD1DataProvider(env[bindingName] as D1Database)))
-}

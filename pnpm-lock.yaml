@@ -157,6 +157,9 @@ importers:
       better-sqlite3:
         specifier: ^11.10.0
         version: 11.10.0
+      cloudflare-helpers:
+        specifier: workspace:*
+        version: link:../../plibs/cloudflare-helpers
       remult:
         specifier: ^3.0.4
         version: 3.0.4
@@ -312,7 +315,7 @@ importers:
         version: 7.5.3(@types/node@22.15.29)
       '@nerdfolio/drizzle-d1-helpers':
         specifier: ^0.1.1
-        version: 0.1.3(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.3.0(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
+        version: 0.1.4(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.3.0(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
       database:
         specifier: workspace:*
         version: link:../../database
@@ -375,6 +378,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      remult-d1:
+        specifier: workspace:*
+        version: link:../remult-d1
     devDependencies:
       '@solidjs/start':
         specifier: ^1.1.4
@@ -385,6 +391,9 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
+      wrangler:
+        specifier: ^4.18.0
+        version: 4.18.0(@cloudflare/workers-types@4.20250603.0)
 
   plibs/remult-d1:
     devDependencies:
@@ -403,9 +412,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
-      wrangler:
-        specifier: ^4.18.0
-        version: 4.18.0(@cloudflare/workers-types@4.20250603.0)
 
   plibs/ui-solid:
     dependencies:
@@ -1784,20 +1790,9 @@ packages:
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
 
-  '@nerdfolio/drizzle-d1-helpers@0.1.3':
-    resolution: {integrity: sha512-5b6sCyhAwKSWopZkM1PQSTKUO8gnQX2JTfzavNLImQoBMRHplOBALkAXzo9XGgFB1W5GV0/spTQPrr1KqAtUJg==}
-    engines: {node: '>=22', pnpm: '>=10'}
-
   '@nerdfolio/drizzle-d1-helpers@0.1.4':
     resolution: {integrity: sha512-oMWBID3pajBojOglYPxEOQXpgNNlsmLddvEp/EUDMSNm3i1TrZ2MjGUFKzBM3a3NKd6jn7UJn1s51cmF+3QR+Q==}
     engines: {node: '>=22', pnpm: '>=10'}
-
-  '@nerdfolio/drizzle-d1-proxy@0.1.2':
-    resolution: {integrity: sha512-tOHj83rttHaRezu60fQGoykQlzm7PgTL9z3kKDzP+p+nGFh8hAc+YGBtf2DVKSWF7Q+JtSWrTX+bwqk2pZHCwA==}
-    engines: {node: '>=22', pnpm: '>=10'}
-    peerDependencies:
-      cloudflare: ^4.3.0
-      drizzle-orm: ^0.43.1
 
   '@nerdfolio/drizzle-d1-proxy@0.1.4':
     resolution: {integrity: sha512-48dmGed/DdsPSZYXb3xpq2oF416cxj9u1Cns2S3KtldBGAl5J2mG+TOL+b2WnWeDK7vvsG//Z74ZY5UFWRZjog==}
@@ -7366,44 +7361,6 @@ snapshots:
   '@neon-rs/load@0.0.4':
     optional: true
 
-  '@nerdfolio/drizzle-d1-helpers@0.1.3(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.3.0(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)':
-    dependencies:
-      '@nerdfolio/drizzle-d1-proxy': 0.1.2(cloudflare@4.3.0(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))
-      drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
-      wrangler: 4.18.0(@cloudflare/workers-types@4.20250603.0)
-    transitivePeerDependencies:
-      - '@aws-sdk/client-rds-data'
-      - '@cloudflare/workers-types'
-      - '@electric-sql/pglite'
-      - '@libsql/client'
-      - '@libsql/client-wasm'
-      - '@neondatabase/serverless'
-      - '@op-engineering/op-sqlite'
-      - '@opentelemetry/api'
-      - '@planetscale/database'
-      - '@prisma/client'
-      - '@tidbcloud/serverless'
-      - '@types/better-sqlite3'
-      - '@types/pg'
-      - '@types/sql.js'
-      - '@vercel/postgres'
-      - '@xata.io/client'
-      - better-sqlite3
-      - bufferutil
-      - bun-types
-      - cloudflare
-      - expo-sqlite
-      - gel
-      - knex
-      - kysely
-      - mysql2
-      - pg
-      - postgres
-      - prisma
-      - sql.js
-      - sqlite3
-      - utf-8-validate
-
   '@nerdfolio/drizzle-d1-helpers@0.1.4(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.3.0(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)':
     dependencies:
       '@nerdfolio/drizzle-d1-proxy': 0.1.4(cloudflare@4.3.0(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))
@@ -7441,11 +7398,6 @@ snapshots:
       - sql.js
       - sqlite3
       - utf-8-validate
-
-  '@nerdfolio/drizzle-d1-proxy@0.1.2(cloudflare@4.3.0(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))':
-    dependencies:
-      cloudflare: 4.3.0(encoding@0.1.13)
-      drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
 
   '@nerdfolio/drizzle-d1-proxy@0.1.4(cloudflare@4.3.0(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250603.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))':
     dependencies:

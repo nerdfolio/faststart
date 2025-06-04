@@ -8,5 +8,6 @@ export default defineConfig({
 				["@babel/plugin-transform-class-properties"],
 			],
 		},
-	}
+	},
+	middleware: "./src/middleware.ts"
 })

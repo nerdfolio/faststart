@@ -13,5 +13,5 @@
 		"declaration": true,
 		"types": ["../../worker-configuration.d.ts", "vinxi/types/client"]
 	},
-	"include": ["src/**/*", "../../zztemp/remult-d1-http.ts"]
+	"include": ["src/**/*", "../../zztemp/remult-d1-http.ts", "../cloudflare-helpers/src/remult/remult-d1-dev-helpers.ts"]
 }

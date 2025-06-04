@@ -12,6 +12,7 @@
 		"@solidjs/router": "^0.15.0",
 		"@solidjs/start": "^1.1.0",
 		"better-sqlite3": "^11.10.0",
+		"cloudflare-helpers": "workspace:*",
 		"remult": "^3.0.4",
 		"remult-d1": "workspace:*",
 		"solid-js": "^1.9.5",
