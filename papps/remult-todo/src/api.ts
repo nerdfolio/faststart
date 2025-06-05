@@ -4,14 +4,22 @@ import { remultApi } from "remult/remult-solid-start"
 import { getUser } from "./auth"
 import { Task } from "./shared/Task"
 import { TasksController } from "./shared/TasksController"
+import { getPlatformProxy } from "wrangler"
 
 export const api = remultApi({
 	entities: [Task],
 	controllers: [TasksController],
 	getUser,
-	dataProvider: initD1Provider(),
+	dataProvider: initTestD1Provider(),
 	admin: true,
 })
+
+function initTestD1Provider(){
+	const {env} = await getPlatformProxy({})
+	return createD1DataProvider(env.DB)
+}
+
+
 
 function initD1Provider() {
 	const env = getServerEnv()

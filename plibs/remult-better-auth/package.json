@@ -18,10 +18,14 @@
 	},
 	"devDependencies": {
 		"better-auth": "catalog:",
-		"remult": "catalog:"
+		"drizzle-orm": "^0.43.1",
+		"remult": "catalog:",
+		"surrealdb": "^1.3.2"
 	},
 	"peerDependencies": {
 		"better-auth": "catalog:",
-		"remult": "catalog:"
+		"drizzle-orm": "^0.43.1",
+		"remult": "catalog:",
+		"surrealdb": "^1.3.2"
 	}
 }
