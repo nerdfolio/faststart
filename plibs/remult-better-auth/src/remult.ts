@@ -62,7 +62,7 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 					])
 
 					const orderBy = sortBy ? `ORDER BY ${sortBy.field} ${sortBy.direction}` : ""
-					const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} OFFSET ${offset}`.trim()
+					const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} ${offset ? `OFFSET ${offset}` : ""}`.trim()
 
 					const result = await command.execute(`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim())
 					return result.rows satisfies T[]
