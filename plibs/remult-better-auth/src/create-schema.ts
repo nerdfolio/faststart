@@ -36,7 +36,7 @@ function genEntityClass({ modelName, fields }: ModelSchema) {
 	return entity.replace("<FIELDS>", trimLines(modelFields.map((f) => genField({ ...f, modelName })).join("\n\n"), true))
 }
 
-function genField<T extends FieldType>({ modelName, fieldName, type, required, unique, references, __cuid, ...rest }: CustomFieldAttribute<T>) {
+function genField<T extends FieldType>({ modelName, fieldName, type, required, unique, references, __cuid }: CustomFieldAttribute<T>) {
 	let field = ""
 	const props = genFieldProps({
 		required,

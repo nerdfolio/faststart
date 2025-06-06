@@ -1,17 +1,13 @@
-import { type SQL, and, desc, eq, gt, gte, inArray, like, lt, lte, ne, or, sql } from "drizzle-orm"
+import { desc, eq, sql } from "drizzle-orm"
 
 import { BetterAuthError, type Where } from "better-auth"
 import { type AdapterDebugLogs, createAdapter } from "better-auth/adapters"
-import type { RemultServerCore } from "remult/server"
+import { type ClassType, SqlDatabase, dbNamesOf, repo } from "remult"
 import { createSchema } from "./create-schema"
+import { convertWhereClause } from "./utils"
 
 export interface RemultAdapterOptions {
-	/**
-	 * If the table names in the schema are plural.
-	 * @default false
-	 */
-	usePlural?: boolean
-
+	authEntities: Record<string, ClassType<unknown>>
 	/**
 	 * Enable debug logs for the adapter
 	 * @default false
@@ -19,58 +15,78 @@ export interface RemultAdapterOptions {
 	debugLogs?: AdapterDebugLogs
 }
 
-export function remultAdapter<T>(remultApi: RemultServerCore<T>, config: RemultAdapterOptions = {}) {
+export function remultAdapter({ authEntities, debugLogs = false }: RemultAdapterOptions) {
+	function getEntityClass(modelName: string) {
+		// NOTE: should request the entityInfo_key Symbol be exported by remult
+		const keySymbol = Symbol.for("entityInfo_key")
+		const entityClass = Object.values(authEntities).find((ent) => ent[keySymbol] === modelName)
+
+		if (!entityClass) {
+			throw new BetterAuthError(
+				`The model "${modelName}" was not found in the authEntities object. Please pass the authEntities directly to the adapter options.`
+			)
+		}
+		return entityClass
+	}
+
+	function getRepo(modelName: string) {
+		return repo(getEntityClass(modelName))
+	}
+
 	return createAdapter({
 		config: {
 			adapterId: "remult",
 			adapterName: "Remult Adapter",
-			usePlural: config.usePlural ?? false,
-			debugLogs: config.debugLogs ?? false,
+			debugLogs,
 		},
 		adapter: ({ getFieldName, debugLog }) => {
 			return {
 				createSchema,
 				async create({ model, data: values }) {
-					// const schemaModel = getSchema(model)
-					// checkMissingFields(schemaModel, model, values)
-					// const builder = db.insert(schemaModel).values(values)
-					// const returned = await withReturning(model, builder, values)
-					// return returned
+					const modelRepo = getRepo(model)
+					return modelRepo.create(values)
 				},
 				async findOne({ model, where }) {
-					// const schemaModel = getSchema(model)
-					// const clause = convertWhereClause(where, model)
-					// const res = await db
-					// 	.select()
-					// 	.from(schemaModel)
-					// 	.where(...clause)
-					// if (!res.length) return null
-					// return res[0]
+					const modelRepo = getRepo(model)
+					return modelRepo.findOne({
+						where: convertWhereClause(where),
+					})
 				},
 				async findMany({ model, where, sortBy, limit, offset }) {
-					// const schemaModel = getSchema(model)
-					// const clause = where ? convertWhereClause(where, model) : []
-					// const sortFn = sortBy?.direction === "desc" ? desc : asc
-					// const builder = db
-					// 	.select()
-					// 	.from(schemaModel)
-					// 	.limit(limit || 100)
-					// 	.offset(offset || 0)
-					// if (sortBy?.field) {
-					// 	builder.orderBy(sortFn(schemaModel[getFieldName({ model, field: sortBy?.field })]))
-					// }
-					// return (await builder.where(...clause)) as any[]
+					const modelRepo = getRepo(model)
+					if (offset) {
+						// NOTE: remult repo.find() only accepts limit + page but not offset
+						// so we have to do something manual here
+						const command = SqlDatabase.getDb().createCommand()
+						const [dbTable, filterSql] = await Promise.all([
+							dbNamesOf(modelRepo),
+							SqlDatabase.filterToRaw(modelRepo, convertWhereClause(where), command),
+						])
+
+						const orderBy = sortBy ? `ORDER BY ${sortBy.field} ${sortBy.direction}` : ""
+						const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} OFFSET ${offset}`.trim()
+
+						return command.execute(`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim())
+					}
+
+					return modelRepo.find({
+						where: where ? convertWhereClause(where) : undefined,
+						orderBy: sortBy ? { [sortBy.field]: sortBy.direction } : undefined,
+						limit,
+					})
 				},
 				async count({ model, where }) {
-					// const schemaModel = getSchema(model)
-					// const clause = where ? convertWhereClause(where, model) : []
-					// const res = await db
-					// 	.select({ count: count() })
-					// 	.from(schemaModel)
-					// 	.where(...clause)
-					// return res[0].count
+					const modelRepo = getRepo(model)
+					return modelRepo.count(convertWhereClause(where))
 				},
 				async update({ model, where, update: values }) {
+					const modelRepo = getRepo(model)
+					console.log("SINGLE UPDATE", model, where, values)
+					return modelRepo.updateMany({
+						where: convertWhereClause(where),
+						set: values as Record<string, unknown>,
+					})
+
 					// const schemaModel = getSchema(model)
 					// const clause = convertWhereClause(where, model)
 					// const builder = db
@@ -80,13 +96,11 @@ export function remultAdapter<T>(remultApi: RemultServerCore<T>, config: RemultA
 					// return await withReturning(model, builder, values as any, where)
 				},
 				async updateMany({ model, where, update: values }) {
-					// const schemaModel = getSchema(model)
-					// const clause = convertWhereClause(where, model)
-					// const builder = db
-					// 	.update(schemaModel)
-					// 	.set(values)
-					// 	.where(...clause)
-					// return await builder
+					const modelRepo = getRepo(model)
+					return modelRepo.updateMany({
+						where: convertWhereClause(where),
+						set: values as Record<string, unknown>,
+					})
 				},
 				async delete({ model, where }) {
 					// const schemaModel = getSchema(model)
@@ -120,92 +134,6 @@ function getSchema(model: string) {
 		)
 	}
 	return schemaModel
-}
-
-function convertWhereClause(where: Where[], model: string) {
-	const schemaModel = getSchema(model)
-	if (!where) return []
-	if (where.length === 1) {
-		const w = where[0]
-		if (!w) {
-			return []
-		}
-		const field = getFieldName({ model, field: w.field })
-		if (!schemaModel[field]) {
-			throw new BetterAuthError(
-				`The field "${w.field}" does not exist in the schema for the model "${model}". Please update your schema.`
-			)
-		}
-		if (w.operator === "in") {
-			if (!Array.isArray(w.value)) {
-				throw new BetterAuthError(`The value for the field "${w.field}" must be an array when using the "in" operator.`)
-			}
-			return [inArray(schemaModel[field], w.value)]
-		}
-
-		if (w.operator === "contains") {
-			return [like(schemaModel[field], `%${w.value}%`)]
-		}
-
-		if (w.operator === "starts_with") {
-			return [like(schemaModel[field], `${w.value}%`)]
-		}
-
-		if (w.operator === "ends_with") {
-			return [like(schemaModel[field], `%${w.value}`)]
-		}
-
-		if (w.operator === "lt") {
-			return [lt(schemaModel[field], w.value)]
-		}
-
-		if (w.operator === "lte") {
-			return [lte(schemaModel[field], w.value)]
-		}
-
-		if (w.operator === "ne") {
-			return [ne(schemaModel[field], w.value)]
-		}
-
-		if (w.operator === "gt") {
-			return [gt(schemaModel[field], w.value)]
-		}
-
-		if (w.operator === "gte") {
-			return [gte(schemaModel[field], w.value)]
-		}
-
-		return [eq(schemaModel[field], w.value)]
-	}
-	const andGroup = where.filter((w) => w.connector === "AND" || !w.connector)
-	const orGroup = where.filter((w) => w.connector === "OR")
-
-	const andClause = and(
-		...andGroup.map((w) => {
-			const field = getFieldName({ model, field: w.field })
-			if (w.operator === "in") {
-				if (!Array.isArray(w.value)) {
-					throw new BetterAuthError(
-						`The value for the field "${w.field}" must be an array when using the "in" operator.`
-					)
-				}
-				return inArray(schemaModel[field], w.value)
-			}
-			return eq(schemaModel[field], w.value)
-		})
-	)
-	const orClause = or(
-		...orGroup.map((w) => {
-			const field = getFieldName({ model, field: w.field })
-			return eq(schemaModel[field], w.value)
-		})
-	)
-
-	const clause: SQL<unknown>[] = []
-
-	if (andGroup.length) clause.push(andClause!)
-	if (orGroup.length) clause.push(orClause!)
-	return clause
 }
 
 function checkMissingFields(schema: Record<string, any>, model: string, values: Record<string, any>) {
