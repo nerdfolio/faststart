@@ -1,15 +1,22 @@
+import type { AdapterSchemaCreation } from "better-auth"
 import type { CustomAdapter } from "better-auth/adapters"
 import type { BetterAuthDbSchema, FieldAttribute, FieldType } from "better-auth/db"
 
 export const createSchema: CustomAdapter["createSchema"] = async ({ file, tables }) => {
-	console.log("USER TABLE", tables.user)
-	console.log("---------")
-	console.log(genSchemaFile(tables))
+	console.log("createSchema", file, tables)
+	const code = genSchemaFile(tables)
+	console.log("----------")
+	console.log(code)
+	return {
+		code,
+		path: file ?? "./auth-schema.ts",
+		overwrite: true,
+	} satisfies AdapterSchemaCreation
 }
 
 type ValueOf<T> = T[keyof T]
 type ModelSchema = ValueOf<BetterAuthDbSchema>
-type CustomFieldAttribute<T extends FieldType> = FieldAttribute<T> & { modelName: string, __cuid?: boolean }
+type CustomFieldAttribute<T extends FieldType> = FieldAttribute<T> & { modelName: string; __cuid?: boolean }
 
 const DEFAULT_ID_FIELD = { type: "string", fieldName: "id", __cuid: true } as CustomFieldAttribute<FieldType>
 
@@ -22,7 +29,6 @@ function genSchemaFile(tables: BetterAuthDbSchema) {
 }
 
 function genEntityClass({ modelName, fields }: ModelSchema) {
-
 	const entity = trimLines(`
 	@Entity('${modelName}', {})
 	export class ${classNameFromModelName(modelName)} {
@@ -30,13 +36,25 @@ function genEntityClass({ modelName, fields }: ModelSchema) {
 	}
 	`)
 
+	console.log(modelName, "HAS ID FIELD?", 'id' in fields)
+
 	// better-auth schema doesn't seem to have an id field, prepend it so it appears as the first field
-	const modelFields = ("id" in fields ? [] : [DEFAULT_ID_FIELD]).concat(Object.values(fields) as CustomFieldAttribute<FieldType>[])
+	const modelFields = ("id" in fields ? [] : [DEFAULT_ID_FIELD]).concat(
+		Object.values(fields) as CustomFieldAttribute<FieldType>[]
+	)
 
 	return entity.replace("<FIELDS>", trimLines(modelFields.map((f) => genField({ ...f, modelName })).join("\n\n"), true))
 }
 
-function genField<T extends FieldType>({ modelName, fieldName, type, required, unique, references, __cuid }: CustomFieldAttribute<T>) {
+function genField<T extends FieldType>({
+	modelName,
+	fieldName,
+	type,
+	required,
+	unique,
+	references,
+	__cuid,
+}: CustomFieldAttribute<T>) {
 	let field = ""
 	const props = genFieldProps({
 		required,
@@ -95,7 +113,7 @@ function genField<T extends FieldType>({ modelName, fieldName, type, required, u
 		const toClass = classNameFromModelName(references.model)
 		field = `${field.trim()}
 		@Relations.toOne<${fromClass}, ${toClass}>(() => ${toClass}, ${references.field})
-		${fieldName?.endsWith('Id') ? `${fieldName.slice(0, -2)} : ${toClass}` : ""}
+		${fieldName?.endsWith("Id") ? `${fieldName.slice(0, -2)} : ${toClass}` : ""}
 		`
 	}
 
@@ -110,7 +128,6 @@ function genFieldProps(props: Record<string, unknown>) {
 
 	return Object.keys(fieldProps).length > 0 ? `{${fieldProps}}` : ""
 }
-
 
 function classNameFromModelName(modelName: string) {
 	return modelName.charAt(0).toUpperCase() + modelName.slice(1)

@@ -1,7 +1,5 @@
-import { desc, eq, sql } from "drizzle-orm"
-
-import { BetterAuthError, type Where } from "better-auth"
-import { type AdapterDebugLogs, createAdapter } from "better-auth/adapters"
+import { BetterAuthError } from "better-auth"
+import { type AdapterDebugLogs, type CustomAdapter, createAdapter } from "better-auth/adapters"
 import { type ClassType, SqlDatabase, dbNamesOf, repo } from "remult"
 import { createSchema } from "./create-schema"
 import { convertWhereClause } from "./utils"
@@ -15,11 +13,11 @@ export interface RemultAdapterOptions {
 	debugLogs?: AdapterDebugLogs
 }
 
-export function remultAdapter({ authEntities, debugLogs = false }: RemultAdapterOptions) {
+export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 	function getEntityClass(modelName: string) {
 		// NOTE: should request the entityInfo_key Symbol be exported by remult
 		const keySymbol = Symbol.for("entityInfo_key")
-		const entityClass = Object.values(authEntities).find((ent) => ent[keySymbol] === modelName)
+		const entityClass = Object.values(adapterCfg.authEntities).find((ent) => ent[keySymbol] === modelName)
 
 		if (!entityClass) {
 			throw new BetterAuthError(
@@ -37,43 +35,44 @@ export function remultAdapter({ authEntities, debugLogs = false }: RemultAdapter
 		config: {
 			adapterId: "remult",
 			adapterName: "Remult Adapter",
-			debugLogs,
+			debugLogs: adapterCfg.debugLogs ?? false,
 		},
-		adapter: ({ getFieldName, debugLog }) => {
+		adapter: () => {
 			return {
 				createSchema,
 				async create({ model, data: values }) {
 					const modelRepo = getRepo(model)
-					return modelRepo.create(values)
+					return modelRepo.create(values) as Promise<typeof values>
 				},
-				async findOne({ model, where }) {
+				async findOne<T>({ model, where }: Parameters<CustomAdapter["findOne"]>[0]) {
 					const modelRepo = getRepo(model)
 					return modelRepo.findOne({
 						where: convertWhereClause(where),
-					})
+					}) as Promise<T>
 				},
-				async findMany({ model, where, sortBy, limit, offset }) {
+				async findMany<T>({ model, where, sortBy, limit, offset }: Parameters<CustomAdapter["findMany"]>[0]) {
 					const modelRepo = getRepo(model)
-					if (offset) {
-						// NOTE: remult repo.find() only accepts limit + page but not offset
-						// so we have to do something manual here
-						const command = SqlDatabase.getDb().createCommand()
-						const [dbTable, filterSql] = await Promise.all([
-							dbNamesOf(modelRepo),
-							SqlDatabase.filterToRaw(modelRepo, convertWhereClause(where), command),
-						])
 
-						const orderBy = sortBy ? `ORDER BY ${sortBy.field} ${sortBy.direction}` : ""
-						const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} OFFSET ${offset}`.trim()
+					// NOTE: remult repo.find() only accepts limit + page but not arbitrary offset
+					// so we have to do something manual here
+					const command = SqlDatabase.getDb().createCommand()
+					const [dbTable, filterSql] = await Promise.all([
+						dbNamesOf(modelRepo),
+						SqlDatabase.filterToRaw(modelRepo, convertWhereClause(where), command),
+					])
 
-						return command.execute(`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim())
-					}
+					const orderBy = sortBy ? `ORDER BY ${sortBy.field} ${sortBy.direction}` : ""
+					const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} OFFSET ${offset}`.trim()
 
-					return modelRepo.find({
-						where: where ? convertWhereClause(where) : undefined,
-						orderBy: sortBy ? { [sortBy.field]: sortBy.direction } : undefined,
-						limit,
-					})
+					const result = await command.execute(`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim())
+					return result.rows satisfies T[]
+
+					// if no offset given, just use the standard implementation
+					// return modelRepo.find({
+					// 	where: where ? convertWhereClause(where) : undefined,
+					// 	orderBy: sortBy ? { [sortBy.field]: sortBy.direction } : undefined,
+					// 	limit,
+					// })
 				},
 				async count({ model, where }) {
 					const modelRepo = getRepo(model)
@@ -82,18 +81,12 @@ export function remultAdapter({ authEntities, debugLogs = false }: RemultAdapter
 				async update({ model, where, update: values }) {
 					const modelRepo = getRepo(model)
 					console.log("SINGLE UPDATE", model, where, values)
-					return modelRepo.updateMany({
-						where: convertWhereClause(where),
-						set: values as Record<string, unknown>,
-					})
+					return modelRepo.update("zzzz", values as Record<string, unknown>) as Promise<typeof values>
 
-					// const schemaModel = getSchema(model)
-					// const clause = convertWhereClause(where, model)
-					// const builder = db
-					// 	.update(schemaModel)
-					// 	.set(values)
-					// 	.where(...clause)
-					// return await withReturning(model, builder, values as any, where)
+					// return modelRepo.updateMany({
+					// 	where: convertWhereClause(where),
+					// 	set: values as Record<string, unknown>,
+					// })
 				},
 				async updateMany({ model, where, update: values }) {
 					const modelRepo = getRepo(model)
@@ -103,99 +96,15 @@ export function remultAdapter({ authEntities, debugLogs = false }: RemultAdapter
 					})
 				},
 				async delete({ model, where }) {
-					// const schemaModel = getSchema(model)
-					// const clause = convertWhereClause(where, model)
-					// const builder = db.delete(schemaModel).where(...clause)
-					// return await builder
+					console.log("DELETE SINGLE", model, where)
+					await this.deleteMany({ model, where })
 				},
 				async deleteMany({ model, where }) {
-					// const schemaModel = getSchema(model)
-					// const clause = convertWhereClause(where, model)
-					// const builder = db.delete(schemaModel).where(...clause)
-					// return await builder
+					const modelRepo = getRepo(model)
+					return modelRepo.deleteMany({ where: convertWhereClause(where) })
 				},
-				options: config,
+				options: adapterCfg,
 			}
 		},
 	})
-}
-
-function getSchema(model: string) {
-	const schema = config.schema || db._.fullSchema
-	if (!schema) {
-		throw new BetterAuthError(
-			"Drizzle adapter failed to initialize. Schema not found. Please provide a schema object in the adapter options object."
-		)
-	}
-	const schemaModel = schema[model]
-	if (!schemaModel) {
-		throw new BetterAuthError(
-			`[# Drizzle Adapter]: The model "${model}" was not found in the schema object. Please pass the schema directly to the adapter options.`
-		)
-	}
-	return schemaModel
-}
-
-function checkMissingFields(schema: Record<string, any>, model: string, values: Record<string, any>) {
-	if (!schema) {
-		throw new BetterAuthError(
-			"Drizzle adapter failed to initialize. Schema not found. Please provide a schema object in the adapter options object."
-		)
-	}
-	for (const key in values) {
-		if (!schema[key]) {
-			throw new BetterAuthError(
-				`The field "${key}" does not exist in the "${model}" schema. Please update your drizzle schema or re-generate using "npx @better-auth/cli generate".`
-			)
-		}
-	}
-}
-
-async function withReturning(model: string, builder: any, data: Record<string, any>, where?: Where[]) {
-	if (config.provider !== "mysql") {
-		const c = await builder.returning()
-		return c[0]
-	}
-	await builder.execute()
-	const schemaModel = getSchema(model)
-	const builderVal = builder.config?.values
-
-	if (where?.length) {
-		const clause = convertWhereClause(where, model)
-		const res = await db
-			.select()
-			.from(schemaModel)
-			.where(...clause)
-		return res[0]
-	}
-
-	if (builderVal?.[0]?.id?.value) {
-		let tId = builderVal[0]?.id?.value
-		if (!tId) {
-			//get last inserted id
-			const lastInsertId = await db
-				.select({ id: sql`LAST_INSERT_ID()` })
-				.from(schemaModel)
-				.orderBy(desc(schemaModel.id))
-				.limit(1)
-			tId = lastInsertId[0].id
-		}
-		const res = await db.select().from(schemaModel).where(eq(schemaModel.id, tId)).limit(1).execute()
-		return res[0]
-	}
-
-	if (data.id) {
-		const res = await db.select().from(schemaModel).where(eq(schemaModel.id, data.id)).limit(1).execute()
-		return res[0]
-	}
-
-	// If the user doesn't have `id` as a field, then this will fail.
-	// We expect that they defined `id` in all of their models.
-	if (!("id" in schemaModel)) {
-		throw new BetterAuthError(
-			`The model "${model}" does not have an "id" field. Please use the "id" field as your primary key.`
-		)
-	}
-	const res = await db.select().from(schemaModel).orderBy(desc(schemaModel.id)).limit(1).execute()
-	return res[0]
 }
