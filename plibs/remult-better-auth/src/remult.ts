@@ -1,7 +1,7 @@
 import { BetterAuthError } from "better-auth"
 import { type AdapterDebugLogs, type CustomAdapter, createAdapter } from "better-auth/adapters"
-import { type ClassType, SqlDatabase, dbNamesOf, repo } from "remult"
-import { createSchema } from "./create-schema"
+import { type ClassType, SqlDatabase, repo } from "remult"
+import { createSchema } from "./generate-schema"
 import { convertWhereClause } from "./utils"
 
 export interface RemultAdapterOptions {
@@ -17,6 +17,7 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 	function getEntityClass(modelName: string) {
 		// NOTE: should request the entityInfo_key Symbol be exported by remult
 		const keySymbol = Symbol.for("entityInfo_key")
+		console.log("adapterCfg", adapterCfg)
 		const entityClass = Object.values(adapterCfg.authEntities).find((ent) => ent[keySymbol] === modelName)
 
 		if (!entityClass) {
@@ -56,15 +57,16 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 					// NOTE: remult repo.find() only accepts limit + page but not arbitrary offset
 					// so we have to do something manual here
 					const command = SqlDatabase.getDb().createCommand()
-					const [dbTable, filterSql] = await Promise.all([
-						dbNamesOf(modelRepo),
-						SqlDatabase.filterToRaw(modelRepo, convertWhereClause(where), command),
-					])
+
+					const filterSql = await SqlDatabase.filterToRaw(modelRepo, convertWhereClause(where), command)
 
 					const orderBy = sortBy ? `ORDER BY ${sortBy.field} ${sortBy.direction}` : ""
 					const limitOffset = `${limit ? `LIMIT ${limit} ` : ""} ${offset ? `OFFSET ${offset}` : ""}`.trim()
 
-					const result = await command.execute(`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim())
+					const dbTable = modelRepo.metadata.dbName
+					const result = await command.execute(
+						`SELECT * FROM ${dbTable} WHERE ${filterSql} ${orderBy} ${limitOffset}`.trim()
+					)
 					return result.rows satisfies T[]
 
 					// if no offset given, just use the standard implementation

@@ -1,14 +1,8 @@
 import { setTimeout } from "node:timers/promises"
-import { Task } from "./shared/Task"
+import { remultAdapter } from "remult-better-auth/remult"
 
 async function dev() {
 	await setTimeout(1)
-
-
-	console.dir(Task)
-	console.log(Object.getOwnPropertySymbols(Task))
-	const entityKey = Task[Symbol.for("entityInfo_key")]
-	console.log(entityKey, typeof entityKey)
 
 	// const api = remultApi({
 	// 	//entities: [Task],
@@ -38,5 +32,23 @@ async function dev() {
 	// console.log("DONE")
 }
 
-await dev()
+async function generateSchema() {
+	await setTimeout(1)
+
+	const adapter = remultAdapter({
+		authEntities: {},
+		debugLogs: {
+			// If your adapter config allows passing in debug logs, then pass this here.
+			isRunningAdapterTests: true, // This is our super secret flag to let us know to only log debug logs if a test fails.
+		},
+	})
+
+	const { createSchema } = adapter({})
+
+	if (createSchema) {
+		await createSchema({})
+	}
+}
+
+await generateSchema()
 process.exit(0)

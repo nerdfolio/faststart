@@ -3,12 +3,8 @@ import type { CustomAdapter } from "better-auth/adapters"
 import type { BetterAuthDbSchema, FieldAttribute, FieldType } from "better-auth/db"
 
 export const createSchema: CustomAdapter["createSchema"] = async ({ file, tables }) => {
-	console.log("createSchema", file, tables)
-	const code = genSchemaFile(tables)
-	console.log("----------")
-	console.log(code)
 	return {
-		code,
+		code: genSchemaCode(tables),
 		path: file ?? "./auth-schema.ts",
 		overwrite: true,
 	} satisfies AdapterSchemaCreation
@@ -20,7 +16,7 @@ type CustomFieldAttribute<T extends FieldType> = FieldAttribute<T> & { modelName
 
 const DEFAULT_ID_FIELD = { type: "string", fieldName: "id", __cuid: true } as CustomFieldAttribute<FieldType>
 
-function genSchemaFile(tables: BetterAuthDbSchema) {
+function genSchemaCode(tables: BetterAuthDbSchema) {
 	return trimLines(`
 	import {Entity, Fields, Relations} from 'remult'
 
