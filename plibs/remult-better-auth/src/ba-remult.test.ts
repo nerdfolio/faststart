@@ -1,14 +1,18 @@
 import { runAdapterTest } from "better-auth/adapters/test"
+import { InMemoryDataProvider, Remult } from "remult"
 import { afterAll, describe } from "vitest"
 import * as authSchema from "./auth-schema"
 import { remultAdapter } from "./ba-remult"
 
 describe("remult-better-auth adapter tests", async () => {
-	// const remult = await remultApi({
-	// 	entities: [Task],
+	// const _api = remultApi({
+	// 	//entities: [Task],
 	// 	//controllers: [TasksController],
 	// 	//dataProvider: devCreateD1DataProviderWithLocalBinding("DB"),
-	// }).getRemult()
+	// })
+
+	const serverRemult = new Remult()
+	serverRemult.dataProvider = new InMemoryDataProvider()
 
 	afterAll(async () => {
 		// Run DB cleanup here...
