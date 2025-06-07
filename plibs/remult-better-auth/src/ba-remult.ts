@@ -49,7 +49,8 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 				},
 				async create({ model, data: values }) {
 					const modelRepo = getRepo(model)
-					return modelRepo.create(values) as Promise<typeof values>
+					const entity = await modelRepo.create(values) as Record<string, unknown>
+					return entity.id
 				},
 				async findOne<T>({ model, where }: Parameters<CustomAdapter["findOne"]>[0]) {
 					const modelRepo = getRepo(model)
@@ -88,7 +89,8 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 				},
 				async update({ model, where, update: values }) {
 					const modelRepo = getRepo(model)
-					console.log("SINGLE UPDATE", model, where, values)
+					console.log("SINGLE UPDATEEEE", model, where, values)
+					if (1 === 1) throw new Error("BOOO")
 					return modelRepo.update("zzzz", values as Record<string, unknown>) as Promise<typeof values>
 
 					// return modelRepo.updateMany({
