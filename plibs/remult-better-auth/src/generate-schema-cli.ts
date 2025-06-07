@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises"
 import { setTimeout } from "node:timers/promises"
 import type { Adapter, BetterAuthOptions } from "better-auth"
-import { remultAdapter } from "./remult"
+import { remultAdapter } from "./ba-remult"
 export async function generateRemultSchema({ options, file }: { options: BetterAuthOptions; file?: string }) {
 	const adapter = remultAdapter({
 		authEntities: {},
