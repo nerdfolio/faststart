@@ -1,14 +1,4 @@
-import type { AdapterSchemaCreation } from "better-auth"
-import type { CustomAdapter } from "better-auth/adapters"
 import type { BetterAuthDbSchema, FieldAttribute, FieldType } from "better-auth/db"
-
-export const createSchema: CustomAdapter["createSchema"] = async ({ file, tables }) => {
-	return {
-		code: genSchemaCode(tables),
-		path: file ?? "./auth-schema.ts",
-		overwrite: true,
-	} satisfies AdapterSchemaCreation
-}
 
 type ValueOf<T> = T[keyof T]
 type ModelSchema = ValueOf<BetterAuthDbSchema>
@@ -16,7 +6,7 @@ type CustomFieldAttribute<T extends FieldType> = FieldAttribute<T> & { modelName
 
 const DEFAULT_ID_FIELD = { type: "string", fieldName: "id", __cuid: true } as CustomFieldAttribute<FieldType>
 
-function genSchemaCode(tables: BetterAuthDbSchema) {
+export function genSchemaCode(tables: BetterAuthDbSchema) {
 	return trimLines(`
 	import {Entity, Fields, Relations} from 'remult'
 
@@ -32,7 +22,7 @@ function genEntityClass({ modelName, fields }: ModelSchema) {
 	}
 	`)
 
-	console.log(modelName, "HAS ID FIELD?", 'id' in fields)
+	console.log(modelName, "HAS ID FIELD?", "id" in fields)
 
 	// better-auth schema doesn't seem to have an id field, prepend it so it appears as the first field
 	const modelFields = ("id" in fields ? [] : [DEFAULT_ID_FIELD]).concat(

@@ -1,7 +1,7 @@
 import { BetterAuthError } from "better-auth"
 import { type AdapterDebugLogs, type CustomAdapter, createAdapter } from "better-auth/adapters"
 import { type ClassType, SqlDatabase, repo } from "remult"
-import { createSchema } from "./generate-schema"
+import { genSchemaCode } from "./gen-schema-code"
 import { convertWhereClause } from "./utils"
 
 export interface RemultAdapterOptions {
@@ -40,7 +40,13 @@ export function remultAdapter(adapterCfg: RemultAdapterOptions) {
 		},
 		adapter: () => {
 			return {
-				createSchema,
+				async createSchema({ file, tables }) {
+					return {
+						code: genSchemaCode(tables),
+						path: file ?? "./auth-schema.ts",
+						overwrite: true,
+					}
+				},
 				async create({ model, data: values }) {
 					const modelRepo = getRepo(model)
 					return modelRepo.create(values) as Promise<typeof values>
