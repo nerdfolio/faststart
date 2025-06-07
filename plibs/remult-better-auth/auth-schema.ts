@@ -1,14 +1,14 @@
-import {Entity, Fields, Relations} from 'remult'
+import {Entity, Fields, Relations, Validators} from 'remult'
 
 @Entity('user', {})
 export class User {
-  @Fields.cuid()
-  id : string
+  @Fields.cuid({required: true})
+  id = ''
 
   @Fields.string({required: true})
   name = ''
 
-  @Fields.string({required: true, unique: true, email: true})
+  @Fields.string({required: true, validate: [Validators.unique(), Validators.email()]})
   email = ''
 
   @Fields.boolean({required: true})
@@ -18,29 +18,29 @@ export class User {
   image = ''
 
   @Fields.createdAt({required: true})
-  createdAt: new Date()
+  createdAt = new Date()
 
   @Fields.updatedAt({required: true})
-  updatedAt: new Date()
+  updatedAt = new Date()
 }
 
 
 @Entity('session', {})
 export class Session {
-  @Fields.cuid()
-  id : string
+  @Fields.cuid({required: true})
+  id = ''
 
   @Fields.date({required: true})
-  expiresAt: Date
+  expiresAt = new Date()
 
-  @Fields.string({required: true, unique: true})
+  @Fields.string({required: true, validate: [Validators.unique()]})
   token = ''
 
   @Fields.createdAt({required: true})
-  createdAt: new Date()
+  createdAt = new Date()
 
   @Fields.updatedAt({required: true})
-  updatedAt: new Date()
+  updatedAt = new Date()
 
   @Fields.string({required: false})
   ipAddress = ''
@@ -50,15 +50,15 @@ export class Session {
 
   @Fields.string({required: true})
   userId = ''
-  @Relations.toOne<Session, User>(() => User, id)
+  @Relations.toOne<Session, User>(() => User, "id")
   user : User
 }
 
 
 @Entity('account', {})
 export class Account {
-  @Fields.cuid()
-  id : string
+  @Fields.cuid({required: true})
+  id = ''
 
   @Fields.string({required: true})
   accountId = ''
@@ -68,7 +68,7 @@ export class Account {
 
   @Fields.string({required: true})
   userId = ''
-  @Relations.toOne<Account, User>(() => User, id)
+  @Relations.toOne<Account, User>(() => User, "id")
   user : User
 
   @Fields.string({required: false})
@@ -81,10 +81,10 @@ export class Account {
   idToken = ''
 
   @Fields.date({required: false})
-  accessTokenExpiresAt: Date
+  accessTokenExpiresAt = new Date()
 
   @Fields.date({required: false})
-  refreshTokenExpiresAt: Date
+  refreshTokenExpiresAt = new Date()
 
   @Fields.string({required: false})
   scope = ''
@@ -93,17 +93,17 @@ export class Account {
   password = ''
 
   @Fields.createdAt({required: true})
-  createdAt: new Date()
+  createdAt = new Date()
 
   @Fields.updatedAt({required: true})
-  updatedAt: new Date()
+  updatedAt = new Date()
 }
 
 
 @Entity('verification', {})
 export class Verification {
-  @Fields.cuid()
-  id : string
+  @Fields.cuid({required: true})
+  id = ''
 
   @Fields.string({required: true})
   identifier = ''
@@ -112,11 +112,11 @@ export class Verification {
   value = ''
 
   @Fields.date({required: true})
-  expiresAt: Date
+  expiresAt = new Date()
 
   @Fields.createdAt({required: false})
-  createdAt: new Date()
+  createdAt = new Date()
 
   @Fields.updatedAt({required: false})
-  updatedAt: new Date()
+  updatedAt = new Date()
 }

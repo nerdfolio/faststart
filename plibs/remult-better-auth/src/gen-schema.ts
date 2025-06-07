@@ -4,11 +4,11 @@ type ValueOf<T> = T[keyof T]
 type ModelSchema = ValueOf<BetterAuthDbSchema>
 type CustomFieldAttribute<T extends FieldType> = FieldAttribute<T> & { modelName: string; __cuid?: boolean }
 
-const DEFAULT_ID_FIELD = { type: "string", fieldName: "id", __cuid: true } as CustomFieldAttribute<FieldType>
+const DEFAULT_ID_FIELD = { type: "string", fieldName: "id", required: true, __cuid: true } as CustomFieldAttribute<FieldType>
 
 export function genSchemaCode(tables: BetterAuthDbSchema) {
 	return trimLines(`
-	import {Entity, Fields, Relations} from 'remult'
+	import {Entity, Fields, Relations, Validators} from 'remult'
 
 	<ENTITIES>
 	`).replace("<ENTITIES>", Object.values(tables).map(genEntityClass).join("\n\n\n"))
@@ -48,11 +48,15 @@ function genField<T extends FieldType>({
 		email: type === "string" && fieldName === "email" ? true : undefined,
 	})
 
+	if (fieldName?.startsWith("email")) {
+		console.log("FIELD:", fieldName, "type", type)
+	}
+
 	switch (type) {
 		case "string":
 			if (__cuid) {
 				field = `@Fields.cuid(${props})
-				${fieldName} : string
+				${fieldName} = ''
 				`
 			} else {
 				field = `@Fields.string(${props})
@@ -73,15 +77,15 @@ function genField<T extends FieldType>({
 		case "date":
 			if (fieldName === "createdAt") {
 				field = `@Fields.createdAt(${props})
-				${fieldName}: new Date()
+				${fieldName} = new Date()
 				`
 			} else if (fieldName === "updatedAt") {
 				field = `@Fields.updatedAt(${props})
-				${fieldName}: new Date()
+				${fieldName} = new Date()
 				`
 			} else {
 				field = `@Fields.date(${props})
-			  ${fieldName}: Date
+			  ${fieldName} = new Date()
 			  `
 			}
 			break
@@ -89,7 +93,9 @@ function genField<T extends FieldType>({
 			throw new Error(`Unimplemented field type: [${type}]`)
 	}
 
-	// append relation
+	//
+	// append relation definition
+	//
 	if (references) {
 		if (references.model !== "user") {
 			throw new Error(`Unknown references: ${JSON.stringify(references)}`)
@@ -98,7 +104,7 @@ function genField<T extends FieldType>({
 		const fromClass = classNameFromModelName(modelName)
 		const toClass = classNameFromModelName(references.model)
 		field = `${field.trim()}
-		@Relations.toOne<${fromClass}, ${toClass}>(() => ${toClass}, ${references.field})
+		@Relations.toOne<${fromClass}, ${toClass}>(() => ${toClass}, "${references.field}")
 		${fieldName?.endsWith("Id") ? `${fieldName.slice(0, -2)} : ${toClass}` : ""}
 		`
 	}
@@ -107,9 +113,24 @@ function genField<T extends FieldType>({
 }
 
 function genFieldProps(props: Record<string, unknown>) {
+	const validators: string[] = []
+
 	const fieldProps = Object.entries(props)
 		.filter(([_k, v]) => typeof v !== "undefined")
-		.map(([k, v]) => `${k}: ${v}`)
+		.map(([k, v]) => {
+			switch (k) {
+				case "unique":
+					validators.push("Validators.unique()")
+					return null
+				case "email":
+					validators.push("Validators.email()")
+					return null
+				default:
+					return typeof v !== "undefined" ? `${k}: ${v}` : ""
+			}
+		})
+		.filter((s) => !!s) // remove validator entries
+		.concat(validators.length > 0 ? [`validate: [${validators.join(", ")}]`] : [])  // merge validators in to one {validate: []...} entry
 		.join(", ")
 
 	return Object.keys(fieldProps).length > 0 ? `{${fieldProps}}` : ""
