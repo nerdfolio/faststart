@@ -1,8 +1,8 @@
 import { BetterAuthError } from "better-auth"
 import { type AdapterDebugLogs, type CustomAdapter, createAdapter } from "better-auth/adapters"
 import { type ClassType, SqlDatabase, repo } from "remult"
-import { genSchemaCode } from "./gen-schema-code"
-import { convertWhereClause } from "./utils"
+import { genSchemaCode } from "./gen-schema"
+import { convertWhereClause } from "./gen-where-clause"
 
 export interface RemultAdapterOptions {
 	authEntities: Record<string, ClassType<unknown>>

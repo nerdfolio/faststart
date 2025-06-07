@@ -1,30 +1,6 @@
 import { BetterAuthError } from "better-auth"
 import type { CleanedWhere } from "better-auth/adapters"
 
-function convertWhereOp({
-	operator,
-	value,
-	field,
-}: CleanedWhere): [string, typeof value | { [key: string]: typeof value }] {
-	const op = operator === "starts_with" ? "startsWith" : operator === "ends_with" ? "endsWith" : operator
-
-	switch (op) {
-		case "eq":
-			return [field, value]
-		case "ne":
-		case "lt":
-		case "lte":
-		case "gt":
-		case "gte":
-		case "in":
-		case "contains":
-			// $ne, $lt, $lte, $gt, $gte, $in, $contains, $startsWith, $endsWith
-			return [field, { [`$${operator}`]: value }]
-		default:
-			throw new BetterAuthError(`Unknown operator in where clause: ${JSON.stringify({ operator, value, field })}`)
-	}
-}
-
 export function convertWhereClause(where: CleanedWhere[] = []) {
 	// BetterAuth type CleanedWhere = {
 	// 	operator: "eq" | "ne" | "lt" | "lte" | "gt" | "gte" | "in" | "contains" | "starts_with" | "ends_with"
@@ -58,4 +34,28 @@ export function convertWhereClause(where: CleanedWhere[] = []) {
 	})
 
 	return Object.fromEntries(entries as [string, unknown][])
+}
+
+function convertWhereOp({
+	operator,
+	value,
+	field,
+}: CleanedWhere): [string, typeof value | { [key: string]: typeof value }] {
+	const op = operator === "starts_with" ? "startsWith" : operator === "ends_with" ? "endsWith" : operator
+
+	switch (op) {
+		case "eq":
+			return [field, value]
+		case "ne":
+		case "lt":
+		case "lte":
+		case "gt":
+		case "gte":
+		case "in":
+		case "contains":
+			// $ne, $lt, $lte, $gt, $gte, $in, $contains, $startsWith, $endsWith
+			return [field, { [`$${operator}`]: value }]
+		default:
+			throw new BetterAuthError(`Unknown operator in where clause: ${JSON.stringify({ operator, value, field })}`)
+	}
 }
