@@ -10,10 +10,12 @@
 	},
 	"keywords": [],
 	"type": "module",
-	"scripts": {},
+	"scripts": {
+		"generate-auth-models": "remult-better-auth generate --config ./src/better-auth/config.ts --output ./models/auth-models.ts"
+	},
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
-		"@nerdfolio/remult-better-auth": "^0.2.3",
+		"@nerdfolio/remult-better-auth": "^0.2.9",
 		"better-auth": "catalog:",
 		"drizzle-orm": "^0.43.1",
 		"remult": "catalog:",

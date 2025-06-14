@@ -1,24 +1,18 @@
 import { remultAdapter } from "@nerdfolio/remult-better-auth"
 import { type BetterAuthOptions, betterAuth } from "better-auth"
-import { createD1DataProvider as remultD1DataProvider } from "remult-d1/remult-d1"
 import { remultApi as initRemultApi } from "remult/remult-solid-start"
 import { coreBetterAuthConfig } from "./better-auth/config"
 
-export async function initSolidStartCore({
-	d1,
+export async function initJsonDbCore({
 	remultOpts,
 	betterAuthOpts,
 }: {
-	d1: D1Database
 	remultOpts: Omit<Parameters<typeof initRemultApi>[0], "dataProvider">
 	betterAuthOpts?: Omit<BetterAuthOptions, "database">
 }) {
 	"use server"
 
-	const remultApi = initRemultApi({
-		...remultOpts,
-		dataProvider: remultD1DataProvider(d1),
-	})
+	const remultApi = initRemultApi(remultOpts)
 
 	const auth = betterAuth({
 		...coreBetterAuthConfig,
