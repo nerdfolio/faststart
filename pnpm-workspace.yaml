@@ -1,6 +1,6 @@
 packages:
   - database
-  - core
+  - remult-core
   - plibs/*
   - pcore/*
   - papps/*
