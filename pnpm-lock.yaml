@@ -176,6 +176,9 @@ importers:
 
   papps/remult-todo:
     dependencies:
+      '@nerdfolio/remult-better-auth':
+        specifier: ^0.2.3
+        version: 0.2.3(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
       '@solidjs/meta':
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.7)
@@ -197,9 +200,6 @@ importers:
       remult:
         specifier: ^3.0.4
         version: 3.0.4
-      remult-better-auth:
-        specifier: workspace:*
-        version: link:../../plibs/remult-better-auth
       remult-d1:
         specifier: workspace:*
         version: link:../../plibs/remult-d1

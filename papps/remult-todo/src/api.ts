@@ -10,22 +10,3 @@ export const api = remultApi({
 	//dataProvider: initTestD1Provider(),
 	admin: true,
 })
-
-// async function initTestD1Provider() {
-// 	const { env } = await getPlatformProxy({})
-// 	return createD1DataProvider(env.DB)
-// }
-
-// function initD1Provider() {
-// 	const env = getServerEnv()
-// 	console.log("serverEnv....", getServerEnv())
-// 	return createD1DataProvider(env.DB)
-// }
-
-// async function httpD1() {
-// 	return devCreateD1DataProviderWithCredentials({
-// 		accountId: process.env.CLOUDFLARE_ACCOUNT_ID ?? "",
-// 		apiToken: process.env.CLOUDFLARE_D1_TOKEN ?? "",
-// 		bindingName: "DB",
-// 	})
-// }
