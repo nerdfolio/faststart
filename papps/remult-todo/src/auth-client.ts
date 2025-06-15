@@ -1,5 +1,5 @@
-import { createAuthClient } from "better-auth/client"
 import { anonymousClient, inferAdditionalFields } from "better-auth/client/plugins"
+import { createAuthClient } from "better-auth/solid"
 import type { auth } from "./auth"
 
 const { signIn, signOut, useSession } = createAuthClient({
