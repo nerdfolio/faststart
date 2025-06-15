@@ -9,18 +9,18 @@
 		"dev-remult": "tsx src/dev-remult.ts"
 	},
 	"dependencies": {
-		"@nerdfolio/remult-better-auth": "^0.2.3",
+		"@nerdfolio/remult-better-auth": "^0.2.10",
 		"@solidjs/meta": "^0.29.4",
-		"@solidjs/router": "^0.15.0",
-		"@solidjs/start": "^1.1.0",
+		"@solidjs/router": "^0.15.3",
+		"@solidjs/start": "^1.1.4",
 		"better-auth": "catalog:",
 		"better-sqlite3": "^11.10.0",
 		"cloudflare-helpers": "workspace:*",
-		"remult": "^3.0.4",
+		"remult": "catalog:",
 		"remult-core": "workspace:*",
 		"remult-d1": "workspace:*",
-		"solid-js": "^1.9.5",
-		"vinxi": "^0.5.3"
+		"solid-js": "^1.9.7",
+		"vinxi": "^0.5.7"
 	},
 	"engines": {
 		"node": ">=22"

@@ -1,12 +1,10 @@
-// src/routes/login.tsx
-
 import { action, redirect, useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
-import { signIn } from "~/auth-client"
+import { authClient } from "../auth-client"
 
 const loginAction = action(
 	async (_formData: FormData) =>
-		signIn.anonymous().then(({ error, data }) => {
+		authClient.signIn.anonymous().then(({ error, data }) => {
 			if (error) {
 				return new Error(error.message)
 			}
@@ -14,7 +12,7 @@ const loginAction = action(
 			console.log("user", data.user, "signed in")
 			throw redirect("/")
 		}),
-	"login-anon"
+	"login"
 )
 
 export default function Home() {

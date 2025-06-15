@@ -36,6 +36,7 @@ export default function Todo() {
 			})
 			.then(setTasks)
 	)
+	
 	return (
 		<main>
 			<Show when={taskRepo.metadata.apiInsertAllowed()}>

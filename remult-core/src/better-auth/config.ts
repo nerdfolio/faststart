@@ -1,5 +1,5 @@
 import type { BetterAuthOptions } from "better-auth"
-import { magicLink } from "better-auth/plugins"
+import { admin, magicLink } from "better-auth/plugins"
 import { logMagicLinkToServerConsole } from "./handlers/magic-link"
 
 type BetterAuthSchemaOptions = Pick<BetterAuthOptions, "user" | "account" | "session" | "verification">
@@ -20,6 +20,7 @@ export const coreBetterAuthConfig: BetterAuthOptions = {
 			sendMagicLink: logMagicLinkToServerConsole,
 			//disableSignUp: true
 		}),
+		admin(),
 	],
 }
 
@@ -28,4 +29,4 @@ export const coreBetterAuthConfig: BetterAuthOptions = {
 // This "auth" object is only used for that. To fully configure better-auth, we
 // need to create an "auth.ts" file and call betterAuth({ ...coreBetterAuthSchema, .... })
 // with the proper database adapter.
-export const auth = { options: coreBetterAuthSchema }
+export const auth = { options: coreBetterAuthConfig }

@@ -6,10 +6,15 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./*": ["./src/icons.tsx"],
+		"./*": [
+			"./src/icons.tsx"
+		],
 		"./utils": "./src/utils.ts",
 		"./ui/*": "./src/ui/*.tsx",
-		"./nav-menu/*": ["./src/nav-menu/*.tsx", "./src/nav-menu/*.ts"],
+		"./nav-menu/*": [
+			"./src/nav-menu/*.tsx",
+			"./src/nav-menu/*.ts"
+		],
 		"./start/*": "./src/start/*.tsx"
 	},
 	"keywords": [],
@@ -25,7 +30,7 @@
 	"devDependencies": {
 		"@kobalte/core": "catalog:",
 		"@kobalte/tailwindcss": "catalog:",
-		"@solidjs/router": "^0.15.3",
+		"@solidjs/router": "catalog:",
 		"class-variance-authority": "catalog:",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
@@ -42,6 +47,6 @@
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
-		"tailwind-merge": "^3.3.0"
+		"tailwind-merge": "^3.3.1"
 	}
 }

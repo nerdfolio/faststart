@@ -18,6 +18,8 @@ export function initRemultApiWithD1(d1: D1Database, opts: Omit<Parameters<typeof
 export function initRemultApiWithJsonDb(opts: Omit<Parameters<typeof remultApi>[0], "dataProvider">) {
 	"user server"
 
+	console.log("initRemultApiWithJsonDb", opts)
+
 	return remultApi(opts)
 }
 

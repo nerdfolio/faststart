@@ -8,11 +8,12 @@ import { TasksController } from "./shared/TasksController"
 export const api = initRemultApiWithJsonDb({
 	entities: [Task],
 	controllers: [TasksController],
-	getUser: getUserOnServer,
+	getUser: getUserInfo,
 	admin: true,
+	rootPath: "/api/r"
 })
 
-export async function getUserOnServer() {
+export async function getUserInfo() {
 	"user server"
 
 	const session = await getSession<{ userId: string }>({

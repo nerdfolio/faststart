@@ -15,7 +15,7 @@
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
 		"@solidjs/router": "catalog:",
-		"better-auth": "^1.2.8",
+		"better-auth": "catalog:",
 		"database": "workspace:*"
 	},
 	"engines": {

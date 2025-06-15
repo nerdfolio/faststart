@@ -20,14 +20,14 @@
 	},
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
-		"drizzle-orm": "^0.43.1"
+		"drizzle-orm": "^0.44.2"
 	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"@dotenvx/dotenvx": "^1.44.1",
+		"@dotenvx/dotenvx": "catalog:",
 		"@nerdfolio/drizzle-d1-helpers": "^0.1.4",
 		"drizzle-kit": "^0.31.1",
 		"drizzle-seed": "^0.3.1",

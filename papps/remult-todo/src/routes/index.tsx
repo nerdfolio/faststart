@@ -1,26 +1,24 @@
-// src/routes/index.tsx
-
-import { useNavigate } from "@solidjs/router"
-import { remult } from "remult"
+import { Navigate, useNavigate } from "@solidjs/router"
 import { Show } from "solid-js"
-import { signOut, useSession } from "../auth-client"
+import { authClient } from "../auth-client"
 import Todo from "../components/Todo.jsx"
 
 export default function Home() {
-	const session = useSession()
-	const authenticated = () => !!session().data?.user
+	const session = authClient.useSession()
 	const navigate = useNavigate()
 
 	return (
-		<Show when={authenticated()} fallback={<div>Not logged in</div>}>
-			<h1>Todos</h1>
-			<header>
-				Hello {remult.user?.name}
-				<button type="button" onClick={async () => signOut().then(() => navigate("/login"))}>
-					Logout
-				</button>
-			</header>
-			<Todo />
+		<Show when={!session().isPending}>
+			<Show when={session().data?.user} fallback={<Navigate href="/login" />}>
+				<h1>Todos</h1>
+				<header>
+					Hello {session().data?.user?.name}
+					<button type="button" onClick={async () => authClient.signOut().then(() => navigate("/login"))}>
+						Logout
+					</button>
+				</header>
+				<Todo />
+			</Show>
 		</Show>
 	)
 }
