@@ -2,7 +2,7 @@
 
 import { useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
-import { loginAction } from "../auth.js"
+import { loginAction } from "../_auth.js"
 
 export default function Home() {
 	const sub = useSubmission(loginAction)

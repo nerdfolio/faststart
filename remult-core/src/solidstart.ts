@@ -21,9 +21,8 @@ export function initRemultApiWithJsonDb(opts: Omit<Parameters<typeof remultApi>[
 	return remultApi(opts)
 }
 
-export function initBetterAuth(remult: Remult, opts: Omit<BetterAuthOptions, "database">) {
+export function initBetterAuth(remult: Remult, opts: Omit<BetterAuthOptions, "database"> = {}) {
 	"user server"
-
 	return betterAuth({
 		...coreBetterAuthConfig,
 		...opts,

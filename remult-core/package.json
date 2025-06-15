@@ -1,12 +1,13 @@
 {
-	"name": "core",
+	"name": "remult-core",
 	"version": "0.1.0",
 	"description": "database, migrations, data scaffolding",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		".": "./src/db.ts"
+		"./models/*": "./models/*.ts",
+		"./solidstart": "./src/solidstart.ts"
 	},
 	"keywords": [],
 	"type": "module",

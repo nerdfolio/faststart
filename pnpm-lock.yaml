@@ -200,6 +200,9 @@ importers:
       remult:
         specifier: ^3.0.4
         version: 3.0.5
+      remult-core:
+        specifier: workspace:*
+        version: link:../../remult-core
       remult-d1:
         specifier: workspace:*
         version: link:../../plibs/remult-d1
@@ -8458,7 +8461,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.15.31
+      '@types/node': 24.0.1
     optional: true
 
   '@types/yauzl@2.10.3':

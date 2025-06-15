@@ -3,7 +3,7 @@
 import { useNavigate } from "@solidjs/router"
 import { remult } from "remult"
 import { Show, createSignal, onMount } from "solid-js"
-import { getUser, logout } from "../auth.js"
+import { getUser, logout } from "../_auth.js"
 import Todo from "../components/Todo.jsx"
 
 export default function Home() {
