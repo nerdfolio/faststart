@@ -3,7 +3,7 @@
 
 	"configurations": [
 		{
-			"command": "pnpm dev",
+			"command": "pnpm --filter remult-todo dev",
 			"name": "Launch Program",
 			"request": "launch",
 			"type": "node-terminal",

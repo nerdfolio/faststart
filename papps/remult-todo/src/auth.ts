@@ -1,7 +1,7 @@
 import { anonymous } from "better-auth/plugins"
 import { initBetterAuth } from "remult-core/solidstart"
-import { api } from "./api"
+import { apiRemult } from "./api"
 
-export const auth = initBetterAuth(await api.getRemult(), {
+export const auth = initBetterAuth(apiRemult, {
 	plugins: [anonymous()],
 })

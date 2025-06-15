@@ -1,12 +1,10 @@
-// src/components/Todo.tsx
-
-import { repo } from "remult"
-import { For, Show, createSignal, onMount } from "solid-js"
+import { For, Show, createSignal } from "solid-js"
 import { createStore } from "solid-js/store"
+import { apiRemult } from "~/api"
 import { TasksController } from "~/shared/TasksController"
 import { Task } from "../shared/Task"
 
-const taskRepo = repo(Task)
+const taskRepo = apiRemult.repo(Task)
 
 export default function Todo() {
 	const [tasks, setTasks] = createStore<Task[]>([])
@@ -27,16 +25,16 @@ export default function Todo() {
 		await TasksController.setAllCompleted(completed)
 	}
 
-	onMount(() =>
-		taskRepo
-			.find({
-				limit: 20,
-				orderBy: { createdAt: "asc" },
-				//where: { completed: true },
-			})
-			.then(setTasks)
-	)
-	
+	// onMount(() =>
+	// 	taskRepo
+	// 		.find({
+	// 			limit: 20,
+	// 			orderBy: { createdAt: "asc" },
+	// 			//where: { completed: true },
+	// 		})
+	// 		.then(setTasks)
+	// )
+
 	return (
 		<main>
 			<Show when={taskRepo.metadata.apiInsertAllowed()}>

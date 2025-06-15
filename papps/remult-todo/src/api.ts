@@ -10,8 +10,12 @@ export const api = initRemultApiWithJsonDb({
 	controllers: [TasksController],
 	getUser: getUserInfo,
 	admin: true,
-	rootPath: "/api/r"
+	rootPath: "/api/r",
+	logApiEndPoints: true
 })
+
+export const apiRemult = await api.getRemult()
+apiRemult.apiClient.url = "/api/r"
 
 export async function getUserInfo() {
 	"user server"
