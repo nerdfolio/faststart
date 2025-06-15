@@ -12,7 +12,7 @@ export const api = initRemultApiWithJsonDb({
 	admin: true,
 })
 
-async function getUserOnServer() {
+export async function getUserOnServer() {
 	"user server"
 
 	const session = await getSession<{ userId: string }>({
