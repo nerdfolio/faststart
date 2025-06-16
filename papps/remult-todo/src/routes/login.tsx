@@ -1,6 +1,6 @@
 import { action, redirect, useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
-import { authClient } from "../auth-client"
+import { authClient } from "../client"
 
 const loginAction = action(
 	async (_formData: FormData) =>

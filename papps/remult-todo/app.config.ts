@@ -1,6 +1,9 @@
 import { defineConfig } from "@solidjs/start/config"
 
 export default defineConfig({
+	// vite: {
+	// 	define: {},
+	// },
 	solid: {
 		babel: {
 			plugins: [

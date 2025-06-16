@@ -5,17 +5,35 @@ import { getSession } from "vinxi/http"
 import { Task } from "./shared/Task"
 import { TasksController } from "./shared/TasksController"
 
-export const api = initRemultApiWithJsonDb({
+export const remultApi = initRemultApiWithJsonDb({
 	entities: [Task],
 	controllers: [TasksController],
 	getUser: getUserInfo,
 	admin: true,
-	rootPath: "/api/r",
-	logApiEndPoints: true
+	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
+	logApiEndPoints: true,
 })
 
-export const apiRemult = await api.getRemult()
-apiRemult.apiClient.url = "/api/r"
+// export const api = await initApi()
+
+// async function initApi() {
+// 	const api = initRemultApiWithJsonDb({
+// 		entities: [Task],
+// 		controllers: [TasksController],
+// 		getUser: getUserInfo,
+// 		admin: true,
+// 		rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
+// 		logApiEndPoints: true,
+// 	})
+
+// 	return {
+// 		...api,
+// 		remult: await api.getRemult().then((r) => {
+// 			r.apiClient.url = "/api/r"
+// 			return r
+// 		}),
+// 	} as RemultSolidStartServer & { remult: Remult }
+// }
 
 export async function getUserInfo() {
 	"user server"

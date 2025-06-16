@@ -1,3 +1,3 @@
-import { api } from '../../../api'
+import { remultApi } from '~/api'
 
-export const { POST, PUT, DELETE, GET } = api
+export const { POST, PUT, DELETE, GET } = remultApi
