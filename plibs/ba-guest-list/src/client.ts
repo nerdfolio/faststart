@@ -1,7 +1,7 @@
 import type { BetterAuthClientPlugin } from "better-auth"
 import type { guestList } from "."
 
-export const anonymousClient = () => {
+export const guestListClient = () => {
 	return {
 		id: "guest-list",
 		$InferServerPlugin: {} as ReturnType<typeof guestList>,

@@ -6,10 +6,14 @@ import type { EndpointContext } from "better-call"
 import { z } from "zod/v4-mini"
 import { getOrigin } from "./utils"
 
-export interface UserWithAnonymous extends User {
+export interface GuestUser extends User {
 	isAnonymous: boolean
 }
-export interface AnonymousOptions {
+export interface GuestListOptions {
+	/**
+	 * Name of the guest user
+	 */
+	name: string,
 	/**
 	 * Configure the domain name of the temporary email
 	 * address for anonymous users in the database.
@@ -22,7 +26,7 @@ export interface AnonymousOptions {
 	 */
 	onLinkAccount?: (data: {
 		anonymousUser: {
-			user: UserWithAnonymous & Record<string, unknown>
+			user: GuestUser & Record<string, unknown>
 			session: Session & Record<string, unknown>
 		}
 		newUser: {
@@ -65,7 +69,7 @@ export interface AnonymousOptions {
 // 	},
 // } satisfies AuthPluginSchema
 
-export const guestList = (options?: AnonymousOptions) => {
+export const guestList = (options?: GuestListOptions) => {
 	const ERROR_CODES = {
 		NAME_NOT_PROVIDED: "Guest name not provided",
 		FAILED_TO_CREATE_USER: "Failed to create user",
@@ -87,7 +91,7 @@ export const guestList = (options?: AnonymousOptions) => {
 							description: "Sign in as a guest with name only",
 							responses: {
 								200: {
-									description: "Sign in as a guest with name only",
+									description: "Sign in as a guest successful",
 									content: {
 										"application/json": {
 											schema: {
@@ -109,7 +113,9 @@ export const guestList = (options?: AnonymousOptions) => {
 					},
 				},
 				async (ctx) => {
-					if (!ctx.body.name) {
+					const { name } = ctx.body
+
+					if (!name) {
 						ctx.context.logger.error("Guest name not provided")
 						throw new APIError("UNAUTHORIZED", {
 							message: ERROR_CODES.NAME_NOT_PROVIDED,
@@ -119,7 +125,6 @@ export const guestList = (options?: AnonymousOptions) => {
 					const { emailDomainName = getOrigin(ctx.context.baseURL) } = options || {}
 
 					// generate email based the input name
-					const name = ctx.body.name
 					const email = `${name.toLowerCase()}.guest@${emailDomainName}`
 
 					const found = await ctx.context.internalAdapter.findUserByEmail(email)

@@ -133,5 +133,20 @@
     "banExpires": "2025-06-16T05:01:49.717Z",
     "theme": "",
     "isTest": false
+  },
+  {
+    "id": "4VXZ7nJq48D4Q2tkABnePQR6DUIa2xIK",
+    "name": "tom",
+    "email_address": "tom.guest@http://localhost:3000",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-17T08:42:44.084Z",
+    "updatedAt": "2025-06-17T08:42:44.084Z",
+    "role": "user",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-17T08:42:44.080Z",
+    "theme": "",
+    "isTest": false
   }
 ]

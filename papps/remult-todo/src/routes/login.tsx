@@ -3,8 +3,8 @@ import { Show } from "solid-js"
 import { authClient } from "~/lib/clients"
 
 const loginAction = action(
-	async (_formData: FormData) =>
-		authClient.signIn.anonymous().then(({ error, data }) => {
+	async (formData: FormData) =>
+		authClient.signIn.guestList({ name: formData.get("name")?.toString() ?? "" }).then(({ error, data }) => {
 			if (error) {
 				return new Error(error.message)
 			}
@@ -22,7 +22,7 @@ export default function Home() {
 			<h1>Login</h1>
 			<main>
 				<form action={loginAction} method="post">
-					<input type="text" name="username" placeholder="Just click signin" disabled />
+					<input type="text" name="name" placeholder="Guest name" />
 					<button type="submit">Sign in</button>
 				</form>
 				<Show when={sub.result?.message}>{sub.result?.message}</Show>

@@ -13,6 +13,7 @@
 		"@solidjs/meta": "^0.29.4",
 		"@solidjs/router": "^0.15.3",
 		"@solidjs/start": "^1.1.4",
+		"ba-guest-list": "workspace:*",
 		"better-auth": "catalog:",
 		"better-sqlite3": "^11.10.0",
 		"cloudflare-helpers": "workspace:*",

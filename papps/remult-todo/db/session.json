@@ -97,5 +97,16 @@
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
     "userId": "WXa3CMO2E26XQYoHhfrKlT8gXNUE3OX0",
     "impersonatedBy": ""
+  },
+  {
+    "id": "JV3Xcush4TxZtfPqbt7z1oMeooe3d17j",
+    "expiresAt": "2025-06-18T08:42:44.087Z",
+    "token": "mTlPXvIUmaZNb4bm9T0qCGmcvMlcVq3P",
+    "createdAt": "2025-06-17T08:42:44.089Z",
+    "updatedAt": "2025-06-17T08:42:44.089Z",
+    "ipAddress": "",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
+    "userId": "4VXZ7nJq48D4Q2tkABnePQR6DUIa2xIK",
+    "impersonatedBy": ""
   }
 ]
