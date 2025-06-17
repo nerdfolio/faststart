@@ -1,6 +1,6 @@
 import { action, redirect, useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
-import { authClient, AuthUser } from "~/lib/clients"
+import { authClient } from "~/lib/clients"
 
 const loginAction = action(
 	async (formData: FormData) =>
@@ -18,7 +18,7 @@ const loginAction = action(
 export default function Home() {
 	const sub = useSubmission(loginAction)
 	const s = authClient.useSession()
-	const user = () => s().data?.user ?? ({} as AuthUser)
+	const user = () => s().data?.user
 
 	return (
 		<>
@@ -27,7 +27,7 @@ export default function Home() {
 				<Show when={user()}>
 					<div>
 						<span>You're already logged in as:</span>
-						<span>{user().name}</span>
+						<span>{user()?.name}</span>
 					</div>
 				</Show>
 				<form action={loginAction} method="post">

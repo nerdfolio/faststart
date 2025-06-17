@@ -4,5 +4,10 @@ import { initBetterAuth } from "remult-core/solidstart"
 import { remultApi } from "./api"
 
 export const auth = initBetterAuth((await remultApi.getRemult()).dataProvider, {
-	plugins: [guestList()],
+	plugins: [
+		guestList({
+			allowNames: ["Alice", "Bob", "Charlie"],
+			revealNames: true
+		})
+	],
 })

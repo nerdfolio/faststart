@@ -8,7 +8,12 @@
 	"exports": {
 		"./*": "./src/*.ts"
 	},
-	"keywords": ["better-auth", "development", "authentication", "guest login"],
+	"keywords": [
+		"better-auth",
+		"development",
+		"authentication",
+		"guest login"
+	],
 	"type": "module",
 	"scripts": {},
 	"packageManager": "pnpm@10.10.0",
@@ -25,6 +30,7 @@
 	},
 	"dependencies": {
 		"better-call": "^1.0.9",
+		"lodash-es": "^4.17.21",
 		"zod": "catalog:"
 	}
 }

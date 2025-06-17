@@ -1,23 +1,29 @@
-import type { BetterAuthPlugin, User } from "better-auth"
+import type { BetterAuthPlugin } from "better-auth"
 import { APIError, createAuthEndpoint } from "better-auth/api"
 import { setSessionCookie } from "better-auth/cookies"
+import { capitalize } from "lodash-es"
 import { z } from "zod/v4-mini"
 import { getOrigin } from "./utils"
 
-export interface GuestUser extends User {
-	isAnonymous: boolean
-}
 export interface GuestListOptions {
-	/**
-	 * Name of the guest user
-	 */
-	name: string
 	/**
 	 * Configure the domain name of the temporary email
 	 * address for anonymous users in the database.
 	 * @default "baseURL"
 	 */
 	emailDomainName?: string
+
+	/**
+	 * List of accepted guest names
+	 */
+	allowNames: string[]
+
+	/**
+	 * Whether to reveal the guest list to the client.
+	 * Useful for demos
+	 */
+	revealNames?: boolean
+
 	/**
 	 * Custom schema for the anonymous plugin
 	 */
@@ -35,13 +41,21 @@ export interface GuestListOptions {
 // 	},
 // } satisfies AuthPluginSchema
 
+function formatName(name: string) {
+	return capitalize(name.replaceAll(/\s/g, ""))
+}
+
 export const guestList = (options?: GuestListOptions) => {
 	const ERROR_CODES = {
 		NAME_NOT_PROVIDED: "Guest name not provided",
+		NAME_NOT_ON_GUEST_LIST: "Your name is not on the guest list",
+		NAME_ONE_WORD_ONLY: "Please only use 1-word names",
 		FAILED_TO_CREATE_USER: "Failed to create user",
 		COULD_NOT_CREATE_SESSION: "Could not create session",
-		NO_REPEATED_SIGNIN: "No repeated signin allowed",
 	} as const
+
+	const cleanedGuestList = options?.allowNames.map(formatName) ?? []
+
 	return {
 		id: "guest-list",
 		endpoints: {
@@ -88,9 +102,26 @@ export const guestList = (options?: GuestListOptions) => {
 						})
 					}
 
+					if (name.trim().split(/\s+/).length > 1) {
+						ctx.context.logger.error("For simplicity, only one word names are allowed")
+						throw new APIError("UNAUTHORIZED", {
+							message: ERROR_CODES.NAME_ONE_WORD_ONLY,
+						})
+					}
+
+					const cleanedName = formatName(name)
+
+					if (!cleanedGuestList.includes(cleanedName)) {
+						throw new APIError("UNAUTHORIZED", {
+							message: options?.revealNames
+								? `Name not on list. Try: ${JSON.stringify(cleanedGuestList)}`
+								: ERROR_CODES.NAME_NOT_ON_GUEST_LIST,
+						})
+					}
+
 					// generate email based the input name
 					const { emailDomainName = getOrigin(ctx.context.baseURL) } = options ?? {}
-					const email = `${name.toLowerCase()}.guest@${emailDomainName}`
+					const email = `${cleanedName.toLowerCase().replaceAll(/\s/g, "")}.GUEST@${emailDomainName}`
 
 					const found = await ctx.context.internalAdapter.findUserByEmail(email)
 
@@ -100,7 +131,7 @@ export const guestList = (options?: GuestListOptions) => {
 								email,
 								emailVerified: false,
 								isAnonymous: true,
-								name,
+								name: cleanedName,
 								createdAt: new Date(),
 								updatedAt: new Date(),
 							},
