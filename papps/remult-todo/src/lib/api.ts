@@ -1,9 +1,9 @@
 import { BetterAuthError } from "better-auth"
 import type { UserInfo } from "remult"
 import { remultApi as solidStartRemultApi } from "remult/remult-solid-start"
+import { Task } from "../shared/Task"
+import { TasksController } from "../shared/TasksController"
 import { auth } from "./auth"
-import { Task } from "./shared/Task"
-import { TasksController } from "./shared/TasksController"
 
 export const remultApi = solidStartRemultApi({
 	entities: [Task],

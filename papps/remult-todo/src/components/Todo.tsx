@@ -1,6 +1,6 @@
 import { For, Show, createSignal, onMount } from "solid-js"
 import { createStore } from "solid-js/store"
-import { remultClient } from "~/client"
+import { remultClient } from "~/lib/clients"
 import { Task } from "~/shared/Task"
 import { TasksController } from "~/shared/TasksController"
 

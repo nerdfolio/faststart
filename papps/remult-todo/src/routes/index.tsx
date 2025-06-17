@@ -1,7 +1,7 @@
 import { useNavigate } from "@solidjs/router"
 import { Show } from "solid-js"
 import Todo from "~/components/Todo"
-import { authClient } from "../client"
+import { authClient } from "~/lib/clients"
 
 export default function Home() {
 	const session = authClient.useSession()
