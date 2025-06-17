@@ -1,14 +1,14 @@
 {
-	"name": "ba-guest",
+	"name": "ba-guest-list",
 	"version": "0.1.0",
-	"description": "Similar to anonymous, but with a name that will become the user id. Useful for testing",
+	"description": "Similar to anonymous, but with a name that must be on a guest list. Useful for testing",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
 		"./*": "./src/*.ts"
 	},
-	"keywords": [],
+	"keywords": ["better-auth", "development", "authentication", "guest login"],
 	"type": "module",
 	"scripts": {},
 	"packageManager": "pnpm@10.10.0",
@@ -24,6 +24,7 @@
 		"better-auth": "catalog:"
 	},
 	"dependencies": {
-		"better-call": "^1.0.9"
+		"better-call": "^1.0.9",
+		"zod": "catalog:"
 	}
 }

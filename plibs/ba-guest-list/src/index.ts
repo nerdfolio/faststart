@@ -1,20 +1,9 @@
-import type {
-	AuthContext,
-	AuthPluginSchema,
-	BetterAuthPlugin,
-	InferOptionSchema,
-	Session,
-	User,
-} from "better-auth"
-import {
-	APIError,
-	createAuthEndpoint,
-	createAuthMiddleware,
-	getSessionFromCtx,
-} from "better-auth/api"
+import type { AuthContext, BetterAuthPlugin, Session, User } from "better-auth"
+import { APIError, createAuthEndpoint, createAuthMiddleware, getSessionFromCtx } from "better-auth/api"
 import { parseSetCookieHeader, setSessionCookie } from "better-auth/cookies"
-import { mergeSchema } from "better-auth/db"
+//import { mergeSchema } from "better-auth/db"
 import type { EndpointContext } from "better-call"
+import { z } from "zod/v4-mini"
 import { getOrigin } from "./utils"
 
 export interface UserWithAnonymous extends User {
@@ -52,50 +41,53 @@ export interface AnonymousOptions {
 	 */
 	generateName?: (
 		ctx: EndpointContext<
-			"/sign-in/guest",
+			"/sign-in/guest-list",
 			{
 				method: "POST"
 			},
 			AuthContext
-		>,
+		>
 	) => string
 	/**
 	 * Custom schema for the anonymous plugin
 	 */
-	schema?: InferOptionSchema<typeof schema>
+	// schema?: InferOptionSchema<typeof schema>
 }
 
-const schema = {
-	user: {
-		fields: {
-			isAnonymous: {
-				type: "boolean",
-				required: false,
-			},
-		},
-	},
-} satisfies AuthPluginSchema
+// const schema = {
+// 	user: {
+// 		fields: {
+// 			isAnonymous: {
+// 				type: "boolean",
+// 				required: false,
+// 			},
+// 		},
+// 	},
+// } satisfies AuthPluginSchema
 
-export const guest = (options?: AnonymousOptions) => {
+export const guestList = (options?: AnonymousOptions) => {
 	const ERROR_CODES = {
+		NAME_NOT_PROVIDED: "Guest name not provided",
 		FAILED_TO_CREATE_USER: "Failed to create user",
 		COULD_NOT_CREATE_SESSION: "Could not create session",
-		ANONYMOUS_USERS_CANNOT_SIGN_IN_AGAIN_ANONYMOUSLY:
-			"Anonymous users cannot sign in again anonymously",
+		ANONYMOUS_USERS_CANNOT_SIGN_IN_AGAIN_ANONYMOUSLY: "Anonymous users cannot sign in again anonymously",
 	} as const
 	return {
-		id: "anonymous",
+		id: "guest-list",
 		endpoints: {
-			signInAnonymous: createAuthEndpoint(
-				"/sign-in/guest",
+			signInGuest: createAuthEndpoint(
+				"/sign-in/guest-list",
 				{
 					method: "POST",
+					body: z.object({
+						name: z.string(),
+					}),
 					metadata: {
 						openapi: {
-							description: "Sign in anonymously",
+							description: "Sign in as a guest with name only",
 							responses: {
 								200: {
-									description: "Sign in anonymously",
+									description: "Sign in as a guest with name only",
 									content: {
 										"application/json": {
 											schema: {
@@ -117,31 +109,46 @@ export const guest = (options?: AnonymousOptions) => {
 					},
 				},
 				async (ctx) => {
-					const { emailDomainName = getOrigin(ctx.context.baseURL) } =
-						options || {}
-					const id = ctx.context.generateId({ model: "user" })
-					const email = `temp-${id}@${emailDomainName}`
-					const name = options?.generateName?.(ctx) || "Guest"
-					const newUser = await ctx.context.internalAdapter.createUser(
-						{
-							email,
-							emailVerified: false,
-							isAnonymous: true,
-							name,
-							createdAt: new Date(),
-							updatedAt: new Date(),
-						},
-						ctx,
-					)
-					if (!newUser) {
-						throw ctx.error("INTERNAL_SERVER_ERROR", {
-							message: ERROR_CODES.FAILED_TO_CREATE_USER,
+					if (!ctx.body.name) {
+						ctx.context.logger.error("Guest name not provided")
+						throw new APIError("UNAUTHORIZED", {
+							message: ERROR_CODES.NAME_NOT_PROVIDED,
 						})
 					}
-					const session = await ctx.context.internalAdapter.createSession(
-						newUser.id,
-						ctx,
-					)
+
+					const { emailDomainName = getOrigin(ctx.context.baseURL) } = options || {}
+
+					// generate email based the input name
+					const name = ctx.body.name
+					const email = `${name.toLowerCase()}.guest@${emailDomainName}`
+
+					const found = await ctx.context.internalAdapter.findUserByEmail(email)
+
+					async function createNewUser() {
+						const newUser = await ctx.context.internalAdapter.createUser(
+							{
+								email,
+								emailVerified: false,
+								isAnonymous: true,
+								name,
+								createdAt: new Date(),
+								updatedAt: new Date(),
+							},
+							ctx
+						)
+						if (!newUser) {
+							throw ctx.error("INTERNAL_SERVER_ERROR", {
+								message: ERROR_CODES.FAILED_TO_CREATE_USER,
+							})
+						}
+
+						return newUser
+					}
+
+					const user = found ? found.user : await createNewUser()
+
+					const session = await ctx.context.internalAdapter.createSession(user.id, ctx, true)
+
 					if (!session) {
 						return ctx.json(null, {
 							status: 400,
@@ -150,22 +157,20 @@ export const guest = (options?: AnonymousOptions) => {
 							},
 						})
 					}
-					await setSessionCookie(ctx, {
-						session,
-						user: newUser,
-					})
+					await setSessionCookie(ctx, { session, user })
+
 					return ctx.json({
 						token: session.token,
 						user: {
-							id: newUser.id,
-							email: newUser.email,
-							emailVerified: newUser.emailVerified,
-							name: newUser.name,
-							createdAt: newUser.createdAt,
-							updatedAt: newUser.updatedAt,
+							id: user.id,
+							email: user.email,
+							emailVerified: user.emailVerified,
+							name: user.name,
+							createdAt: user.createdAt,
+							updatedAt: user.updatedAt,
 						},
 					})
-				},
+				}
 			),
 		},
 		hooks: {
@@ -202,21 +207,17 @@ export const guest = (options?: AnonymousOptions) => {
 						/**
 						 * Make sure the user had an anonymous session.
 						 */
-						const session = await getSessionFromCtx<{ isAnonymous: boolean }>(
-							ctx,
-							{
-								disableRefresh: true,
-							},
-						)
+						const session = await getSessionFromCtx<{ isAnonymous: boolean }>(ctx, {
+							disableRefresh: true,
+						})
 
 						if (!session || !session.user.isAnonymous) {
 							return
 						}
 
-						if (ctx.path === "/sign-in/guest") {
+						if (ctx.path === "/sign-in/guest-list") {
 							throw new APIError("BAD_REQUEST", {
-								message:
-									ERROR_CODES.ANONYMOUS_USERS_CANNOT_SIGN_IN_AGAIN_ANONYMOUSLY,
+								message: ERROR_CODES.ANONYMOUS_USERS_CANNOT_SIGN_IN_AGAIN_ANONYMOUSLY,
 							})
 						}
 						const newSession = ctx.context.newSession
@@ -236,7 +237,7 @@ export const guest = (options?: AnonymousOptions) => {
 				},
 			],
 		},
-		schema: mergeSchema(schema, options?.schema),
+		//schema: mergeSchema(schema, options?.schema),
 		$ERROR_CODES: ERROR_CODES,
 	} satisfies BetterAuthPlugin
 }

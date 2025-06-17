@@ -1,12 +1,12 @@
 import type { BetterAuthClientPlugin } from "better-auth"
-import type { guest } from "."
+import type { guestList } from "."
 
 export const anonymousClient = () => {
 	return {
-		id: "guest",
-		$InferServerPlugin: {} as ReturnType<typeof guest>,
+		id: "guest-list",
+		$InferServerPlugin: {} as ReturnType<typeof guestList>,
 		pathMethods: {
-			"/sign-in/anonymous": "POST",
+			"/sign-in/guest-list": "POST",
 		},
 	} satisfies BetterAuthClientPlugin
 }
