@@ -1,0 +1,29 @@
+{
+	"name": "ba-guest",
+	"version": "0.1.0",
+	"description": "Similar to anonymous, but with a name that will become the user id. Useful for testing",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		"./*": "./src/*.ts"
+	},
+	"keywords": [],
+	"type": "module",
+	"scripts": {},
+	"packageManager": "pnpm@10.10.0",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"better-auth": "catalog:",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"better-auth": "catalog:"
+	},
+	"dependencies": {
+		"better-call": "^1.0.9"
+	}
+}

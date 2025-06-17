@@ -6,16 +6,6 @@ import { TasksController } from "~/shared/TasksController"
 
 const taskRepo = remultClient.repo(Task)
 
-// export default function Todo() {
-// 	return <div>boo</div>
-// 	// const tasks = createAsync(() => api.remult.repo(Task).find({ limit: 20, orderBy: { createdAt: "asc" } }))
-// 	// console.log("tasks", tasks)
-// 	// return (
-// 	// 	<Suspense fallback={<div>Loading tasks...</div>}>
-// 	// 		<div> TODOS: {JSON.stringify(tasks())} </div>
-// 	// 	</Suspense>
-// 	//)
-// }
 
 export default function Todo() {
 	const [tasks, setTasks] = createStore<Task[]>([])

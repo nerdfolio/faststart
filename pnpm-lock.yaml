@@ -384,6 +384,19 @@ importers:
         specifier: 'catalog:'
         version: 1.9.7
 
+  plibs/ba-guest:
+    dependencies:
+      better-call:
+        specifier: ^1.0.9
+        version: 1.0.9
+    devDependencies:
+      better-auth:
+        specifier: 'catalog:'
+        version: 1.2.8
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+
   plibs/cloudflare-helpers:
     dependencies:
       lodash-es:
@@ -6045,9 +6058,6 @@ packages:
   zod@3.22.3:
     resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
 
-  zod@3.25.64:
-    resolution: {integrity: sha512-hbP9FpSZf7pkS7hRVUrOjhwKJNyampPgtXKc3AN6DsWtoHsg2Sb4SQaS4Tcay380zSwd2VPo9G9180emBACp5g==}
-
   zod@3.25.65:
     resolution: {integrity: sha512-kMyE2qsXK1p+TAvO7zsf5wMFiCejU3obrUDs9bR1q5CBKykfvp7QhhXrycUylMoOow0iEUSyjLlZZdCsHwSldQ==}
 
@@ -8309,7 +8319,7 @@ snapshots:
       jose: 5.10.0
       kysely: 0.28.2
       nanostores: 0.11.4
-      zod: 3.25.64
+      zod: 3.25.65
 
   better-call@1.0.9:
     dependencies:
@@ -11813,8 +11823,6 @@ snapshots:
       zod: 3.25.65
 
   zod@3.22.3: {}
-
-  zod@3.25.64: {}
 
   zod@3.25.65: {}
 
