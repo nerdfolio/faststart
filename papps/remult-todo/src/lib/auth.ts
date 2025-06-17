@@ -1,3 +1,5 @@
+"user server"
+
 import { anonymous } from "better-auth/plugins"
 import { initBetterAuth } from "remult-core/solidstart"
 import { remultApi } from "./api"
