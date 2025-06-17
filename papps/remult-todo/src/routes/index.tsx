@@ -1,4 +1,4 @@
-import { useNavigate } from "@solidjs/router"
+import { Navigate, useNavigate } from "@solidjs/router"
 import { Show } from "solid-js"
 import Todo from "~/components/Todo"
 import { authClient } from "~/lib/clients"
@@ -9,7 +9,7 @@ export default function Home() {
 
 	return (
 		<Show when={!session().isPending} fallback={<div>Loading session...</div>}>
-			<Show when={session().data?.user} fallback={<div>no user -- data: {JSON.stringify(session().data)}</div>}>
+			<Show when={session().data?.user} fallback={<Navigate href="/login" />}>
 				<h1>Todos</h1>
 				<header>
 					Hello {session().data?.user?.name}
