@@ -8,7 +8,7 @@ export default function Home() {
 	const navigate = useNavigate()
 
 	return (
-		<Show when={!session().isPending} fallback={<div>Loading session...</div>}>
+		<Show when={session().data} fallback={<div>Loading session...</div>}>
 			<Show when={session().data?.user} fallback={<Navigate href="/login" />}>
 				<h1>Todos</h1>
 				<header>
