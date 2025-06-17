@@ -1,4 +1,6 @@
-import { type SqlCommand, SqlDatabase, type SqlResult } from "remult"
+/// <reference types="@cloudflare/workers-types" />
+
+import { type SqlCommand, SqlDatabase, type SqlImplementation, type SqlResult } from "remult"
 import { SqliteCoreDataProvider } from "remult/remult-sqlite-core-js"
 
 export function createD1DataProvider(d1: D1Database) {
@@ -19,6 +21,15 @@ export class D1DataProvider extends SqliteCoreDataProvider {
 				// so this is just a noop
 			}
 		)
+	}
+
+	async transaction(
+		action: (sql: SqlImplementation) => Promise<void>,
+	): Promise<void> {
+		// As of June 2025, D1 doesn't support transactions
+		// Here we simply run the action without wrapping it in a transaction
+		// It means queries in action() will be run individually (this is the same decision prisma made)
+		await action(this)
 	}
 }
 
@@ -46,15 +57,15 @@ export class D1BindingClient implements D1Client {
 }
 
 class D1Command implements SqlCommand {
-	#d1: D1Client
-	#params: unknown[] = []
+	private d1: D1Client
+	private params: unknown[] = []
 
 	constructor(d1: D1Client) {
-		this.#d1 = d1
+		this.d1 = d1
 	}
 
 	async execute(sql: string): Promise<SqlResult> {
-		const results = await this.#d1.execute(sql, this.#params)
+		const results = await this.d1.execute(sql, this.params)
 		return new D1SqlResult(results)
 	}
 
@@ -69,11 +80,11 @@ class D1Command implements SqlCommand {
 		else if (typeof val === "boolean") p = val ? 1 : 0
 		else p = val
 
-		this.#params.push(p)
+		this.params.push(p)
 
 		// According to https://developers.cloudflare.com/d1/worker-api/prepared-statements/
 		// only the ordered "?NNN" and anonymous "?" param types are supported (although :AAAA seems to work too)
-		const key = `?${this.#params.length}`
+		const key = `?${this.params.length}`
 		return key
 	}
 }

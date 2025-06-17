@@ -1,6 +1,7 @@
 "user server"
 import { BetterAuthError } from "better-auth"
 import type { UserInfo } from "remult"
+import { Account, Session, User, Verification } from "remult-core/models/auth-models"
 import { createD1DataProvider } from "remult-d1/remult-d1"
 import { remultApi as solidStartRemultApi } from "remult/remult-solid-start"
 import { Task } from "../shared/Task"
@@ -8,8 +9,9 @@ import { TasksController } from "../shared/TasksController"
 import { auth } from "./auth"
 import { serverEnv } from "./env"
 
+const authEntities = [User, Session, Account, Verification]
 export const remultApi = solidStartRemultApi({
-	entities: [Task],
+	entities: [Task, ...authEntities],
 	controllers: [TasksController],
 	admin: true,
 	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,

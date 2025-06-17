@@ -1,29 +1,29 @@
 import Cloudflare from "cloudflare"
 import { SqlDatabase } from "remult"
-import { type D1Client, D1DataProvider, type D1RowObject } from "./remult-d1"
+import { type D1Client, D1DataProvider, type D1RowObject } from "./remult-d1.js"
 
 type D1Credentials = { accountId: string; apiToken: string; databaseId: string }
-export function createD1DataProviderWithCredentials(creds: D1Credentials) {
+export function createD1HttpDataProvider(creds: D1Credentials) {
 	return new SqlDatabase(new D1DataProvider(new D1HttpClient(creds)))
 }
 
 
 export class D1HttpClient implements D1Client {
-	#d1: Cloudflare["d1"]["database"]
-	#accountId: string
-	#databaseId: string
+	private d1: Cloudflare["d1"]["database"]
+	private accountId: string
+	private databaseId: string
 
 	constructor({ accountId, databaseId, apiToken }: D1Credentials) {
-		this.#d1 = new Cloudflare({ apiToken }).d1.database
-		this.#accountId = accountId
-		this.#databaseId = databaseId
+		this.d1 = new Cloudflare({ apiToken }).d1.database
+		this.accountId = accountId
+		this.databaseId = databaseId
 	}
 
 	async execute(sql: string, params: unknown[] = []) {
-		return this.#d1.query(this.#databaseId, {
+		return this.d1.query(this.databaseId, {
 			sql,
 			params: params as string[],
-			account_id: this.#accountId,
+			account_id: this.accountId,
 		}).then(({ result: pages }) => pages.flatMap((page) => page.results as D1RowObject[]))
 
 		// NOTE: d1 query endpoint returns the result as array of object with keys as column names.
