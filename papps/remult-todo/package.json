@@ -9,7 +9,6 @@
 		"dev-remult": "tsx src/dev-remult.ts"
 	},
 	"dependencies": {
-		"@nerdfolio/remult-better-auth": "^0.2.10",
 		"@solidjs/meta": "^0.29.4",
 		"@solidjs/router": "^0.15.3",
 		"@solidjs/start": "^1.1.4",

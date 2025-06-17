@@ -154,9 +154,6 @@ importers:
 
   papps/remult-todo:
     dependencies:
-      '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.10
-        version: 0.2.13(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
       '@solidjs/meta':
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.7)
@@ -387,39 +384,7 @@ importers:
         specifier: 'catalog:'
         version: 1.9.7
 
-  plibs/ba-guest:
-    dependencies:
-      better-call:
-        specifier: ^1.0.9
-        version: 1.0.9
-      zod:
-        specifier: 'catalog:'
-        version: 3.25.65
-    devDependencies:
-      better-auth:
-        specifier: 'catalog:'
-        version: 1.2.8
-      typescript:
-        specifier: 'catalog:'
-        version: 5.8.3
-
   plibs/ba-guest-list:
-    dependencies:
-      better-call:
-        specifier: ^1.0.9
-        version: 1.0.9
-      zod:
-        specifier: 'catalog:'
-        version: 3.25.65
-    devDependencies:
-      better-auth:
-        specifier: 'catalog:'
-        version: 1.2.8
-      typescript:
-        specifier: 'catalog:'
-        version: 5.8.3
-
-  plibs/better-auth-guest:
     dependencies:
       better-call:
         specifier: ^1.0.9
@@ -512,8 +477,8 @@ importers:
   remult-core:
     dependencies:
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.13
-        version: 0.2.13(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
+        specifier: ^0.2.14
+        version: 0.2.14(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
       better-auth:
         specifier: 'catalog:'
         version: 1.2.8
@@ -1709,8 +1674,8 @@ packages:
       cloudflare: ^4.3.0
       drizzle-orm: ^0.43.1
 
-  '@nerdfolio/remult-better-auth@0.2.13':
-    resolution: {integrity: sha512-kd0v3xw72iFGezSV/rmYeGuu4bTmSRdGL3tOWCZQuf1KDbeH8BlQxe5ykKziduiN/iSm3M9uRWv6wt9zWDcHpQ==}
+  '@nerdfolio/remult-better-auth@0.2.14':
+    resolution: {integrity: sha512-7oH86XmDTnoA/oLMEkJpubCQrt7MoQGfekaJy4Ue4rXL6u9SDn4XadaVFUEOECDEfm35b7LVSotNxDthhdczTQ==}
     engines: {node: '>=22', pnpm: '>=10'}
     hasBin: true
     peerDependencies:
@@ -7146,7 +7111,7 @@ snapshots:
       cloudflare: 4.3.0(encoding@0.1.13)
       drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250614.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
 
-  '@nerdfolio/remult-better-auth@0.2.13(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)':
+  '@nerdfolio/remult-better-auth@0.2.14(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)':
     dependencies:
       better-auth: 1.2.8
       c12: 3.0.4(magicast@0.3.5)

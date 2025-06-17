@@ -16,7 +16,7 @@
 	},
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
-		"@nerdfolio/remult-better-auth": "^0.2.13",
+		"@nerdfolio/remult-better-auth": "^0.2.14",
 		"better-auth": "catalog:",
 		"drizzle-orm": "^0.44.2",
 		"remult": "catalog:",

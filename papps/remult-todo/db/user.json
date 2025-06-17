@@ -148,5 +148,35 @@
     "banExpires": "2025-06-17T08:42:44.080Z",
     "theme": "",
     "isTest": false
+  },
+  {
+    "id": "kPMY3egX0Kp9ZoFXX4rk8Ou8h9pXixV4",
+    "name": "yum",
+    "email_address": "yum.guest@http://localhost:3000",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-17T10:20:09.013Z",
+    "updatedAt": "2025-06-17T10:20:09.013Z",
+    "role": "user",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-17T10:20:09.011Z",
+    "theme": "",
+    "isTest": false
+  },
+  {
+    "id": "mKoMdtAVShWvw8A21Lq1HCdQYOYFpxwp",
+    "name": "foo",
+    "email_address": "foo.guest@http://localhost:3000",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-17T10:22:59.004Z",
+    "updatedAt": "2025-06-17T10:22:59.004Z",
+    "role": "user",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-17T10:22:59.002Z",
+    "theme": "",
+    "isTest": false
   }
 ]
