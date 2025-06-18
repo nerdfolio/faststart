@@ -7,6 +7,8 @@ import type { auth } from "./auth"
 export const authClient = createAuthClient({
 	plugins: [guestListClient(), inferAdditionalFields<typeof auth>()],
 })
+
+export type SessionResponse = typeof authClient.$Infer.Session
 export type AuthSession = typeof authClient.$Infer.Session["session"]
 export type AuthUser = typeof authClient.$Infer.Session["user"]
 

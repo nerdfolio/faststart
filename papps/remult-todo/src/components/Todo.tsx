@@ -6,7 +6,6 @@ import { TasksController } from "~/shared/TasksController"
 
 const taskRepo = remultClient.repo(Task)
 
-
 export default function Todo() {
 	const [tasks, setTasks] = createStore<Task[]>([])
 	const [newTaskTitle, setNewTaskTitle] = createSignal("")
@@ -35,6 +34,9 @@ export default function Todo() {
 			})
 			.then(setTasks)
 	)
+
+	console.log("task repo meta data....", taskRepo.metadata)
+	console.log("api insert allowed....", taskRepo.metadata.apiInsertAllowed())
 
 	return (
 		<main>
