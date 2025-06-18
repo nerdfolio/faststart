@@ -28,8 +28,6 @@ export const remultApi = solidStartRemultApi({
 		} = s satisfies Session
 		const roles = "role" in s.user ? (s.user.role as string).split(",").map((r) => r.trim()) : ([] satisfies string[])
 
-		console.log("getUser", id, name, roles)
-
 		return { id, name, roles } satisfies UserInfo
 	},
 })

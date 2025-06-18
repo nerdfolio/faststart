@@ -1,11 +1,17 @@
 import { Navigate, useNavigate } from "@solidjs/router"
-import { Show } from "solid-js"
+import { Show, onMount } from "solid-js"
 import Todo from "~/components/Todo"
-import { authClient } from "~/lib/clients"
+import { authClient, remultClient } from "~/lib/clients"
 
 export default function Home() {
 	const s = authClient.useSession()
 	const navigate = useNavigate()
+
+	onMount(async () => {
+		if (!remultClient.user) {
+			await remultClient.initUser()
+		}
+	})
 
 	return (
 		<Show when={s().data} fallback={<div>Loading session...</div>}>

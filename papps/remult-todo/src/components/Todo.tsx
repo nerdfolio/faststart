@@ -35,9 +35,6 @@ export default function Todo() {
 			.then(setTasks)
 	)
 
-	console.log("task repo meta data....", taskRepo.metadata)
-	console.log("api insert allowed....", taskRepo.metadata.apiInsertAllowed())
-
 	return (
 		<main>
 			<Show when={taskRepo.metadata.apiInsertAllowed()}>

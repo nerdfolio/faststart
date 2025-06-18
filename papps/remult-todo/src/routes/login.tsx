@@ -1,17 +1,27 @@
 import { action, redirect, useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
-import { authClient } from "~/lib/clients"
+import { authClient, remultClient } from "~/lib/clients"
 
 const loginAction = action(
 	async (formData: FormData) =>
-		authClient.signIn.guestList({ name: formData.get("name")?.toString() ?? "" }).then(({ error, data }) => {
-			if (error) {
-				return new Error(error.message)
-			}
+		authClient.signIn
+			.guestList({
+				name: formData.get("name")?.toString() ?? "",
+				fetchOptions: {
+					async onSuccess() {
+						// TODO: this actually calls the server again to obain the user. Is there a way
+						// we can piggy back on the better-auth flow?
+						await remultClient.initUser()
+					}
+			} })
+			.then(({ error, data }) => {
+				if (error) {
+					return new Error(error.message)
+				}
 
-			console.log("user", data.user, "signed in")
-			throw redirect("/")
-		}),
+				console.log("user", data.user, "signed in")
+				throw redirect("/")
+			}),
 	"login"
 )
 
