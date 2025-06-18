@@ -12,22 +12,23 @@ type GuestWithRole = {
 
 export interface GuestListOptions {
 	/**
-	 * Configure the domain name of the temporary email
-	 * address for the guest users in the database.
-	 * @default "baseURL"
-	 */
-	emailDomainName?: string
-
-	/**
 	 * List of accepted guest names
 	 */
 	allowGuests: string[] | GuestWithRole[]
 
 	/**
-	 * Whether to reveal the guest list to the client.
-	 * Useful for demos
+	 * When true returns the list of guest names via the guestList.reveal() endpoint and via errors.
+	 * When false returns nothing.
+	 * @default false
 	 */
 	revealNames?: boolean
+
+	/**
+	 * Configure the domain name of the temporary email
+	 * address for the guest users in the database.
+	 * @default "baseURL"
+	 */
+	emailDomainName?: string
 
 	/**
 	 * Custom schema for the anonymous plugin
@@ -135,7 +136,7 @@ export const guestList = (options?: GuestListOptions) => {
 
 					// generate email based the input name
 					const { emailDomainName = getOrigin(ctx.context.baseURL) } = options ?? {}
-					const email = `${cleanedName.toLowerCase().replaceAll(/\s/g, "")}.guest@${emailDomainName}`
+					const email = `${cleanedName.toLowerCase().replaceAll(/\s/g, "")}.onguestlist@${emailDomainName}`
 
 					const found = await ctx.context.internalAdapter.findUserByEmail(email)
 
@@ -179,7 +180,7 @@ export const guestList = (options?: GuestListOptions) => {
 			),
 
 			revealGuestList: createAuthEndpoint(
-				"/guest-list/reveal",
+				"/sign-in/guest-list/reveal",
 				{
 					method: "GET",
 					metadata: {
