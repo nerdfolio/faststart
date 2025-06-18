@@ -1,4 +1,4 @@
-import { action, redirect, useSubmission } from "@solidjs/router"
+import { action, createAsync, redirect, useSubmission } from "@solidjs/router"
 import { Show } from "solid-js"
 import { authClient, remultClient } from "~/lib/clients"
 
@@ -12,8 +12,9 @@ const loginAction = action(
 						// TODO: this actually calls the server again to obain the user. Is there a way
 						// we can piggy back on the better-auth flow?
 						await remultClient.initUser()
-					}
-			} })
+					},
+				},
+			})
 			.then(({ error, data }) => {
 				if (error) {
 					return new Error(error.message)
@@ -30,6 +31,10 @@ export default function Home() {
 	const s = authClient.useSession()
 	const user = () => s().data?.user
 
+	const guestList = createAsync(async () =>
+		authClient.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
+	)
+
 	return (
 		<>
 			<h1>Login</h1>
@@ -41,7 +46,7 @@ export default function Home() {
 					</div>
 				</Show>
 				<form action={loginAction} method="post">
-					<input type="text" name="name" placeholder="Guest name" />
+					<input type="text" name="name" placeholder={guestList() ? `Try: ${guestList()}` : "Enter guest name"} />
 					<button type="submit">Sign in</button>
 				</form>
 				<Show when={sub.result?.message}>{sub.result?.message}</Show>

@@ -177,6 +177,36 @@ export const guestList = (options?: GuestListOptions) => {
 					return ctx.json({ token: session.token, user })
 				}
 			),
+
+			revealGuestList: createAuthEndpoint(
+				"/guest-list/reveal",
+				{
+					method: "GET",
+					metadata: {
+						openapi: {
+							description: "Reveal guest list if 'revealNames' is enabled. Empty array otherwise",
+							responses: {
+								200: {
+									description: "List of allowed guest names or empty array",
+									content: {
+										"application/json": {
+											schema: {
+												type: "array",
+												items: {
+													type: "string",
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				async (ctx) => {
+					return ctx.json(options?.revealNames ? Object.keys(guestLookup) : [])
+				}
+			)
 		},
 
 		//schema: mergeSchema(schema, options?.schema),
