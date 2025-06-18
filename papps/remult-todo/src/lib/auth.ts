@@ -6,7 +6,11 @@ import { remultApi } from "./api"
 export const auth = initBetterAuth((await remultApi.getRemult()).dataProvider, {
 	plugins: [
 		guestList({
-			allowNames: ["Alice", "Bob", "Charlie"],
+			allowGuests: [
+				{ name: "Alice", role: "admin" },
+				{ name: "Bob", role: "user" },
+				{ name: "Charlie", role: "user" },
+			],
 			revealNames: true
 		})
 	],

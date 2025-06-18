@@ -1,16 +1,16 @@
 [
   {
-    "id": "KAmKUnvOosUAVfNBmC7bv5yfvgW8bD9v",
+    "id": "kkbW9iuNUzI3oHpIKIH7DnrTa9mJB5fb",
     "name": "Alice",
     "email_address": "alice.guest@http://localhost:3000",
     "emailVerified": false,
     "image": "",
-    "createdAt": "2025-06-17T23:41:35.563Z",
-    "updatedAt": "2025-06-17T23:41:35.563Z",
-    "role": "user",
+    "createdAt": "2025-06-18T00:41:25.982Z",
+    "updatedAt": "2025-06-18T00:41:25.982Z",
+    "role": "admin",
     "banned": false,
     "banReason": "",
-    "banExpires": "2025-06-17T23:41:35.560Z",
+    "banExpires": "2025-06-18T00:41:25.977Z",
     "theme": "",
     "isTest": false
   }

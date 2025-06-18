@@ -5,10 +5,15 @@ import { capitalize } from "lodash-es"
 import { z } from "zod/v4-mini"
 import { getOrigin } from "./utils"
 
+type GuestWithRole = {
+	name: string,
+	role: string //comma-separated string
+}
+
 export interface GuestListOptions {
 	/**
 	 * Configure the domain name of the temporary email
-	 * address for anonymous users in the database.
+	 * address for the guest users in the database.
 	 * @default "baseURL"
 	 */
 	emailDomainName?: string
@@ -16,7 +21,7 @@ export interface GuestListOptions {
 	/**
 	 * List of accepted guest names
 	 */
-	allowNames: string[]
+	allowGuests: string[] | GuestWithRole[]
 
 	/**
 	 * Whether to reveal the guest list to the client.
@@ -54,7 +59,15 @@ export const guestList = (options?: GuestListOptions) => {
 		COULD_NOT_CREATE_SESSION: "Could not create session",
 	} as const
 
-	const cleanedGuestList = options?.allowNames.map(formatName) ?? []
+	const guestLookup = Object.fromEntries(
+		(options?.allowGuests ?? [])
+			.map((entry) => typeof entry === "string" ? { name: entry, role: "" } : entry)
+			.filter(entry => !!entry && entry.name)
+			.map(({ name, role }) => [formatName(name), {
+				name: formatName(name),
+				role: (role ?? "").split(",").map(s => s.trim()).join(",")
+			}])
+	)
 
 	return {
 		id: "guest-list",
@@ -98,7 +111,8 @@ export const guestList = (options?: GuestListOptions) => {
 					if (!name) {
 						ctx.context.logger.error("Guest name not provided")
 						throw new APIError("UNAUTHORIZED", {
-							message: ERROR_CODES.NAME_NOT_PROVIDED,
+							message: options?.revealNames
+								? `Guest name not provided. Try: ${JSON.stringify(Object.keys(guestLookup))}` : ERROR_CODES.NAME_NOT_PROVIDED,
 						})
 					}
 
@@ -111,17 +125,17 @@ export const guestList = (options?: GuestListOptions) => {
 
 					const cleanedName = formatName(name)
 
-					if (!cleanedGuestList.includes(cleanedName)) {
+					if (!guestLookup[cleanedName]) {
 						throw new APIError("UNAUTHORIZED", {
 							message: options?.revealNames
-								? `Name not on list. Try: ${JSON.stringify(cleanedGuestList)}`
+								? `Name not on list. Try: ${JSON.stringify(Object.keys(guestLookup))}`
 								: ERROR_CODES.NAME_NOT_ON_GUEST_LIST,
 						})
 					}
 
 					// generate email based the input name
 					const { emailDomainName = getOrigin(ctx.context.baseURL) } = options ?? {}
-					const email = `${cleanedName.toLowerCase().replaceAll(/\s/g, "")}.GUEST@${emailDomainName}`
+					const email = `${cleanedName.toLowerCase().replaceAll(/\s/g, "")}.guest@${emailDomainName}`
 
 					const found = await ctx.context.internalAdapter.findUserByEmail(email)
 
@@ -130,8 +144,8 @@ export const guestList = (options?: GuestListOptions) => {
 							{
 								email,
 								emailVerified: false,
-								isAnonymous: true,
 								name: cleanedName,
+								role: guestLookup[cleanedName].role,
 								createdAt: new Date(),
 								updatedAt: new Date(),
 							},
@@ -160,17 +174,7 @@ export const guestList = (options?: GuestListOptions) => {
 					}
 					await setSessionCookie(ctx, { session, user })
 
-					return ctx.json({
-						token: session.token,
-						user: {
-							id: user.id,
-							email: user.email,
-							emailVerified: user.emailVerified,
-							name: user.name,
-							createdAt: user.createdAt,
-							updatedAt: user.updatedAt,
-						},
-					})
+					return ctx.json({ token: session.token, user })
 				}
 			),
 		},
