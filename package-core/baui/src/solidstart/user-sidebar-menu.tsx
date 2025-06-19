@@ -10,8 +10,8 @@ import {
 } from "../solid-ui/dropdown-menu"
 import { IconBell, IconCreditCard, IconLogout, IconMoodCheck, IconSelector, IconSparkles } from "../solid-ui/icons"
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../solid-ui/sidebar"
+import UserMinicard from "../solid-ui/user-minicard"
 import type { BetterAuthClient } from "./types"
-import UserMinicard from "./user-minicard"
 
 export default function UserSidebarMenu(props: { authClient: BetterAuthClient }) {
 	//const signOut = useSignOut()

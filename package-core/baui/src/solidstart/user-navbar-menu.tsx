@@ -9,7 +9,7 @@ import {
 	NavigationMenuLink,
 	NavigationMenuTrigger,
 } from "../solid-ui/navigation-menu"
-import UserAvatar from "../solid-ui/user-avatar"
+import { UserAvatar } from "../solid-ui/user-avatar"
 import type { BetterAuthClient } from "./types"
 
 export default function UserNavbarMenu(props: { authClient: BetterAuthClient }) {
