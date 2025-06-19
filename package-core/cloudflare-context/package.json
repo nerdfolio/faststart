@@ -6,8 +6,7 @@
 	"license": "UNLICENSED",
 	"author": "taivo@github",
 	"exports": {
-		"./solidstart/*": "./src/solidstart/*.ts",
-		"./remult/*": "./src/_remult/*.ts"
+		"./solidstart/*": "./src/solidstart/*.ts"
 	},
 	"keywords": [],
 	"type": "module",

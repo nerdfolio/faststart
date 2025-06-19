@@ -15,9 +15,6 @@ catalogs:
     '@kobalte/tailwindcss':
       specifier: ^0.9.0
       version: 0.9.0
-    '@nerdfolio/remult-better-auth':
-      specifier: ^0.2.14
-      version: 0.2.14
     '@solidjs/meta':
       specifier: ^0.29.4
       version: 0.29.4
@@ -148,8 +145,8 @@ importers:
         specifier: ^0.0.7
         version: 0.0.7(better-auth@1.2.8)
       '@nerdfolio/remult-better-auth':
-        specifier: 'catalog:'
-        version: 0.2.14(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
+        specifier: ^0.2.15
+        version: 0.2.15(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
       '@solidjs/meta':
         specifier: 'catalog:'
         version: 0.29.4(solid-js@1.9.7)
@@ -329,14 +326,11 @@ importers:
   package-core/remult-core:
     dependencies:
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.14
-        version: 0.2.14(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)
+        specifier: ^0.2.15
+        version: 0.2.15(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.4)
       better-auth:
-        specifier: 'catalog:'
-        version: 1.2.8
-      drizzle-orm:
-        specifier: ^0.44.2
-        version: 0.44.2(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
+        specifier: ^1.2.9
+        version: 1.2.9
       remult:
         specifier: 'catalog:'
         version: 3.0.4
@@ -1826,6 +1820,14 @@ packages:
       better-auth: ^1.2.8
       remult: ^3.0.4
 
+  '@nerdfolio/remult-better-auth@0.2.15':
+    resolution: {integrity: sha512-MjwLLl0MO2U53nfOIIaMGEMrCFmNS6GKdnamxNkWSnU1nJ7P8dGSl0dyNvXm7dbALgo7OYw61iku+vw9jMCmGg==}
+    engines: {node: '>=22', pnpm: '>=10'}
+    hasBin: true
+    peerDependencies:
+      better-auth: ^1.2.8
+      remult: ^3.0.4
+
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
 
@@ -2957,6 +2959,9 @@ packages:
 
   better-auth@1.2.8:
     resolution: {integrity: sha512-y8ry7ZW3/3ZIr82Eo1zUDtMzdoQlFnwNuZ0+b0RxoNZgqmvgTIc/0tCDC7NDJerqSu4UCzer0dvYxBsv3WMIGg==}
+
+  better-auth@1.2.9:
+    resolution: {integrity: sha512-WLqBXDzuaCQetQctLGC5oTfGmL32zUvxnM4Y+LZkhwseMaZWq5EKI+c/ZATgz2YkFt7726q659PF8CfB9P1VuA==}
 
   better-call@1.0.9:
     resolution: {integrity: sha512-Qfm0gjk0XQz0oI7qvTK1hbqTsBY4xV2hsHAxF8LZfUYl3RaECCIifXuVqtPpZJWvlCCMlQSvkvhhyuApGUba6g==}
@@ -7381,6 +7386,24 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
+  '@nerdfolio/remult-better-auth@0.2.15(better-auth@1.2.8)(magicast@0.3.5)(remult@3.0.4)':
+    dependencies:
+      better-auth: 1.2.8
+      c12: 3.0.4(magicast@0.3.5)
+      citty: 0.1.6
+      remult: 3.0.4
+    transitivePeerDependencies:
+      - magicast
+
+  '@nerdfolio/remult-better-auth@0.2.15(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.4)':
+    dependencies:
+      better-auth: 1.2.9
+      c12: 3.0.4(magicast@0.3.5)
+      citty: 0.1.6
+      remult: 3.0.4
+    transitivePeerDependencies:
+      - magicast
+
   '@netlify/binary-info@1.0.0': {}
 
   '@netlify/blobs@8.2.0':
@@ -8772,6 +8795,21 @@ snapshots:
   base64-js@1.5.1: {}
 
   better-auth@1.2.8:
+    dependencies:
+      '@better-auth/utils': 0.2.5
+      '@better-fetch/fetch': 1.1.18
+      '@noble/ciphers': 0.6.0
+      '@noble/hashes': 1.8.0
+      '@simplewebauthn/browser': 13.1.0
+      '@simplewebauthn/server': 13.1.1
+      better-call: 1.0.9
+      defu: 6.1.4
+      jose: 5.10.0
+      kysely: 0.28.2
+      nanostores: 0.11.4
+      zod: 3.25.67
+
+  better-auth@1.2.9:
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18

@@ -5,12 +5,11 @@
 		"dev": "dotenvx run -- vinxi dev",
 		"build": "vinxi build",
 		"start": "vinxi start",
-		"version": "vinxi version",
-		"dev-remult": "tsx src/dev-remult.ts"
+		"version": "vinxi version"
 	},
 	"dependencies": {
 		"@nerdfolio/ba-guest-list": "^0.0.7",
-		"@nerdfolio/remult-better-auth": "catalog:",
+		"@nerdfolio/remult-better-auth": "^0.2.15",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
