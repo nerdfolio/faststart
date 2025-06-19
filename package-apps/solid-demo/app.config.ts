@@ -12,7 +12,7 @@ export default defineConfig({
 				name: "Solid Demo",
 				legalName: "Solid Demo, Inc.",
 				copyrightStatement: "© 2025 Solid Demo, Inc. All rights reserved.",
-				// biome-ignore lint/nursery/noProcessEnv: <explanation>
+				// biome-ignore lint/style/noProcessEnv: whatev
 				version: process.env.npm_package_version,
 				socialLinks: {
 					github: "https://github.com/solidjs/solid-start",
@@ -21,8 +21,15 @@ export default defineConfig({
 				}
 			},
 		}
-	})
-	,
+	}),
+	solid: {
+		babel: {
+			plugins: [
+				["@babel/plugin-proposal-decorators", { version: "legacy" }],
+				["@babel/plugin-transform-class-properties"],
+			],
+		}
+	},
 	server: {
 		preset: "cloudflare-pages",
 		compatibilityDate: "2025-04-29",

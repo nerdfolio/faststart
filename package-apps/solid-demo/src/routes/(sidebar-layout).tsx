@@ -11,12 +11,11 @@ import {
 import MenuAsSidebarGroupPrimary from "ui-solid/nav-menu/as-sb-group-primary"
 import MenuAsSidebarGroupSecondary from "ui-solid/nav-menu/as-sb-group-secondary"
 import NavMenus from "ui-solid/nav-menu/index"
+import type { NavMenu } from "ui-solid/nav-menu/type"
 import AA from "ui-solid/start/aa"
-import AuthRequired from "user/components/auth/auth-required"
+import SidebarLayout from "ui-solid/start/sidebar-layout"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
-import type { NavMenu } from "ui-solid/nav-menu/type"
-import SidebarLayout from "ui-solid/start/sidebar-layout"
 
 const pagesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,
@@ -90,15 +89,13 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [pagesMenu, guidesMenu, secondaryMenu]
 
 	return (
-		<AuthRequired>
-			<SidebarLayout>
-				<SidebarLayout.Sidebar
-					Branding={<AppBranding />}
-					UserMenu={<SidebarUserMenu />}
-					Menus={<NavMenus menus={menus} />}
-				/>
-				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
-			</SidebarLayout>
-		</AuthRequired>
+		<SidebarLayout>
+			<SidebarLayout.Sidebar
+				Branding={<AppBranding />}
+				UserMenu={<SidebarUserMenu />}
+				Menus={<NavMenus menus={menus} />}
+			/>
+			<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
+		</SidebarLayout>
 	)
 }

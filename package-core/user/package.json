@@ -23,5 +23,8 @@
 	"peerDependencies": {
 		"@solidjs/router": "catalog:",
 		"solid-js": "catalog:"
+	},
+	"dependencies": {
+		"ui-solid": "workspace:*"
 	}
 }

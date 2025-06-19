@@ -1,6 +1,6 @@
+import type { ComponentProps } from "solid-js"
 import { IconSolidjs } from "ui-solid/icons"
 import { cn } from "ui-solid/utils"
-import type { ComponentProps } from "solid-js"
 
 export const appName = __APP_INFO__.name
 export const appLegalName = __APP_INFO__.legalName

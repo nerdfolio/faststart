@@ -1,9 +1,7 @@
 import { Navigate } from "@solidjs/router"
-import { useAuth } from "auth/solidstart/auth-client"
-import { Show } from "solid-js"
 import type { ParentProps } from "solid-js"
+import { Show } from "solid-js"
 import { IconSpinner } from "ui-solid/icons"
-
 export default function AuthRequired(props: ParentProps & { loginUrl?: string }) {
 	return (
 		<Show

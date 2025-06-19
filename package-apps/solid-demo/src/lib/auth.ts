@@ -1,14 +1,18 @@
-import { initServerAuth } from "auth"
-import { db } from "./db"
+"user server"
+import { guestList } from "@nerdfolio/ba-guest-list"
+import { initBetterAuth } from "remult-core/solidstart"
+import { remultApi } from "./remult-api"
 
-//
-// NOTE: Per better-auth docs, `src/lib/auth.ts` is one of the few locations this file can be
-// so don't just move it anywhere. Consult https://www.better-auth.com/docs/installation for more info.
-//
-export const auth = initServerAuth(db, {
-	emailAndPassword: {
-		enabled: true,
-		requireEmailVerification: false,
-		autoSignIn: true,
-	},
+export const auth = initBetterAuth((remultApi.getRemult()), {
+	plugins: [
+		guestList({
+			allowGuests: [
+				{ name: "Alice", role: "admin" },
+				{ name: "Bob", role: "user" },
+				{ name: "Charlie", role: "user" },
+			],
+			revealNames: true,
+			emailDomainName: "example.com"
+		})
+	],
 })

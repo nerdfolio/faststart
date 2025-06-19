@@ -2,7 +2,8 @@ import { useLocation, useNavigate } from "@solidjs/router"
 import { inferAdditionalFields, magicLinkClient } from "better-auth/client/plugins"
 import { createAuthClient } from "better-auth/solid"
 import type { initServerAuth } from "./auth-server"
-export type { User, Session } from "better-auth"
+
+export type { Session, User } from "better-auth"
 
 const { signIn, signOut, useSession } = createAuthClient({
 	plugins: [
