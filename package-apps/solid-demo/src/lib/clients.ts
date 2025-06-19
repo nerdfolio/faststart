@@ -1,11 +1,15 @@
 import { guestListClient } from "@nerdfolio/ba-guest-list"
-import { inferAdditionalFields } from "better-auth/client/plugins"
+import { inferAdditionalFields, magicLinkClient } from "better-auth/client/plugins"
 import { createAuthClient } from "better-auth/solid"
 import { Remult } from "remult"
 import type { auth } from "./auth"
 
 export const authClient = createAuthClient({
-	plugins: [guestListClient(), inferAdditionalFields<typeof auth>()],
+	plugins: [
+		guestListClient(),
+		magicLinkClient(),
+		inferAdditionalFields<typeof auth>()
+	],
 })
 
 export type SessionResponse = typeof authClient.$Infer.Session

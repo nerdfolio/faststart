@@ -1,0 +1,43 @@
+{
+	"name": "baui",
+	"version": "0.1.0",
+	"description": "better-auth ui: ui components for better-auth",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		"./solidstart/*": "./src/solidstart/*.ts"
+	},
+	"keywords": [],
+	"type": "module",
+	"scripts": {},
+	"packageManager": "pnpm@10.10.0",
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"@kobalte/core": "catalog:",
+		"@solidjs/router": "catalog:",
+		"better-auth": "catalog:",
+		"class-variance-authority": "catalog:",
+		"clsx": "^2.1.1",
+		"solid-js": "catalog:",
+		"solid-ui": "^2.5.1",
+		"tailwind-merge": "^3.3.1",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"@kobalte/core": "catalog:",
+		"@solidjs/router": "catalog:",
+		"better-auth": "catalog:",
+		"class-variance-authority": "catalog:",
+		"clsx": "^2.1.1",
+		"solid-js": "catalog:",
+		"solid-ui": "^2.5.1",
+		"tailwind-merge": "^3.3.1"
+	},
+	"dependencies": {
+		"@tabler/icons-solidjs": "^3.34.0"
+	}
+}

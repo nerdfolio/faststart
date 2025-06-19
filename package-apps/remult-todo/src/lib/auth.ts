@@ -11,8 +11,7 @@ export const auth = initBetterAuth((remultApi.getRemult()), {
 				{ name: "Bob", role: "user" },
 				{ name: "Charlie", role: "user" },
 			],
-			revealNames: true,
-			emailDomainName: "example.com"
+			revealNames: true
 		})
 	],
 })
