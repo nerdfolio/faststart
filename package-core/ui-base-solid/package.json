@@ -1,5 +1,5 @@
 {
-	"name": "ui-solid",
+	"name": "ui-base-solid",
 	"version": "0.1.0",
 	"description": "ui component and utilities that can be reuseable",
 	"private": true,

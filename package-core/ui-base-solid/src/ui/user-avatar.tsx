@@ -1,13 +1,18 @@
-import type { User } from "better-auth"
 import { type ComponentProps, splitProps } from "solid-js"
+import { cn } from "../utils"
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar"
-import { cn } from "./utils"
 
-function getAvatarFallback(user: User) {
-	return (user.name || user.email).slice(0, 2)
+export type AvatarUser = {
+	image?: string
+	name?: string
+	email?: string
 }
 
-function UserAvatar(props: { user: User } & ComponentProps<typeof Avatar>) {
+function getAvatarFallback({ name, email }: AvatarUser) {
+	return (name || email || "--").slice(0, 2)
+}
+
+function UserAvatar(props: { user: AvatarUser } & ComponentProps<typeof Avatar>) {
 	const [local, rest] = splitProps(props, ["user"])
 	return (
 		<Avatar {...rest}>
@@ -17,7 +22,7 @@ function UserAvatar(props: { user: User } & ComponentProps<typeof Avatar>) {
 	)
 }
 
-function UserMinicard(props: { user: User; class?: string }) {
+function UserAvatarCard(props: { user: AvatarUser; class?: string }) {
 	return (
 		<div class={cn("flex items-center gap-2", props.class)}>
 			<UserAvatar user={props.user} class="size-8 rounded-lg" />
@@ -29,4 +34,4 @@ function UserMinicard(props: { user: User; class?: string }) {
 	)
 }
 
-export { UserAvatar, UserMinicard }
+export { UserAvatar, UserAvatarCard }

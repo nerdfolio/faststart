@@ -1,9 +1,9 @@
 import { action, useNavigate, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
-import type { BetterAuthClient } from "~/solidstart/types"
-import { Button } from "../../solid-ui/button"
-import { Input } from "../../solid-ui/input"
-import { Spinner } from "../../solid-ui/spinner"
+import { Button } from "ui-base-solid/ui/button"
+import { Input } from "ui-base-solid/ui/input"
+import Spinner from "ui-base-solid/ui/spinner"
+import type { BetterAuthClient } from "../types"
 
 export default function EmailPasswordForm(props: {
 	callbackUrl: string

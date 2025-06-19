@@ -1,4 +1,14 @@
-import type { User } from "better-auth"
+import type { Accessor } from "solid-js"
+import {
+	IconBell,
+	IconCreditCard,
+	IconLogout,
+	IconMoodCheck,
+	IconSelector,
+	IconSparkles,
+} from "../../../baui/src/solid-ui/icons"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../../../baui/src/solid-ui/sidebar"
+import type { BetterAuthClient } from "../../../baui/src/solidstart/types"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -7,17 +17,10 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "../solid-ui/dropdown-menu"
-import { IconBell, IconCreditCard, IconLogout, IconMoodCheck, IconSelector, IconSparkles } from "../solid-ui/icons"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../solid-ui/sidebar"
-import UserMinicard from "../solid-ui/user-minicard"
-import type { BetterAuthClient } from "./types"
+} from "../ui/dropdown-menu"
+import { type AvatarUser, UserAvatarCard } from "../ui/user-avatar"
 
-export default function UserSidebarMenu(props: { authClient: BetterAuthClient }) {
-	//const signOut = useSignOut()
-
-	const s = props.authClient.useSession()
-
+export default function UserSidebarMenu(props: { signOut: () => Promise<void>; user: Accessor<AvatarUser> }) {
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
@@ -27,13 +30,13 @@ export default function UserSidebarMenu(props: { authClient: BetterAuthClient })
 							size="lg"
 							class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 						>
-							<UserMinicard user={s().data?.user as User} />
+							<UserAvatarCard user={props.user() as AvatarUser} />
 							<IconSelector class="ml-auto size-4" />
 						</SidebarMenuButton>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent class="min-w-56 rounded-lg">
 						<DropdownMenuLabel class="p-0 font-normal">
-							<UserMinicard user={s().data?.user as User} class="px-1 py-1.5" />
+							<UserAvatarCard user={props.user() as AvatarUser} class="px-1 py-1.5" />
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
@@ -58,7 +61,7 @@ export default function UserSidebarMenu(props: { authClient: BetterAuthClient })
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={() => props.authClient.signOut()}>
+						<DropdownMenuItem onClick={() => props.signOut()}>
 							<IconLogout />
 							Log out
 						</DropdownMenuItem>

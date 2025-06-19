@@ -38,6 +38,7 @@
 		"tailwind-merge": "^3.3.1"
 	},
 	"dependencies": {
-		"@tabler/icons-solidjs": "^3.34.0"
+		"@tabler/icons-solidjs": "^3.34.0",
+		"ui-base-solid": "workspace:*"
 	}
 }

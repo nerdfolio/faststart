@@ -195,9 +195,6 @@ importers:
       '@solidjs/start':
         specifier: 'catalog:'
         version: 1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.0)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.0)(tsx@4.19.4)(yaml@2.8.0))
-      baui:
-        specifier: workspace:*
-        version: link:../../package-core/baui
       better-auth:
         specifier: 'catalog:'
         version: 1.2.9
@@ -222,9 +219,6 @@ importers:
       tw-animate-css:
         specifier: 'catalog:'
         version: 1.3.4
-      ui-solid:
-        specifier: workspace:*
-        version: link:../../package-core/ui-solid
       vinxi:
         specifier: 'catalog:'
         version: 0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.0)(tsx@4.19.4)(yaml@2.8.0)
@@ -308,6 +302,9 @@ importers:
       '@tabler/icons-solidjs':
         specifier: ^3.34.0
         version: 3.34.0(solid-js@1.9.7)
+      ui-base-solid:
+        specifier: workspace:*
+        version: link:../ui-base-solid
     devDependencies:
       '@kobalte/core':
         specifier: 'catalog:'
@@ -399,6 +396,40 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4(@cloudflare/workers-types@4.20250619.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.4.1(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
 
+  package-core/ui-base-solid:
+    dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^3.3.1
+        version: 3.3.1
+    devDependencies:
+      '@kobalte/core':
+        specifier: 'catalog:'
+        version: 0.13.10(solid-js@1.9.7)
+      '@kobalte/tailwindcss':
+        specifier: 'catalog:'
+        version: 0.9.0(tailwindcss@4.1.10)
+      '@solidjs/router':
+        specifier: 'catalog:'
+        version: 0.15.3(solid-js@1.9.7)
+      class-variance-authority:
+        specifier: 'catalog:'
+        version: 0.7.1
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.7
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.1.10
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.3
+      unplugin-icons:
+        specifier: 'catalog:'
+        version: 22.1.0(@vue/compiler-sfc@3.5.17)
+
   package-core/ui-core:
     dependencies:
       clsx:
@@ -432,53 +463,6 @@ importers:
       unplugin-icons:
         specifier: 'catalog:'
         version: 22.1.0(@vue/compiler-sfc@3.5.17)
-
-  package-core/ui-solid:
-    dependencies:
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      tailwind-merge:
-        specifier: ^3.3.1
-        version: 3.3.1
-    devDependencies:
-      '@kobalte/core':
-        specifier: 'catalog:'
-        version: 0.13.10(solid-js@1.9.7)
-      '@kobalte/tailwindcss':
-        specifier: 'catalog:'
-        version: 0.9.0(tailwindcss@4.1.10)
-      '@solidjs/router':
-        specifier: 'catalog:'
-        version: 0.15.3(solid-js@1.9.7)
-      class-variance-authority:
-        specifier: 'catalog:'
-        version: 0.7.1
-      solid-js:
-        specifier: 'catalog:'
-        version: 1.9.7
-      tailwindcss:
-        specifier: 'catalog:'
-        version: 4.1.10
-      typescript:
-        specifier: 'catalog:'
-        version: 5.8.3
-      unplugin-icons:
-        specifier: 'catalog:'
-        version: 22.1.0(@vue/compiler-sfc@3.5.17)
-
-  package-core/user:
-    dependencies:
-      ui-solid:
-        specifier: workspace:*
-        version: link:../ui-solid
-    devDependencies:
-      '@solidjs/router':
-        specifier: 'catalog:'
-        version: 0.15.3(solid-js@1.9.7)
-      solid-js:
-        specifier: 'catalog:'
-        version: 1.9.7
 
 packages:
 
