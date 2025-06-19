@@ -1,6 +1,6 @@
 import type { ComponentProps, JSXElement } from "solid-js"
 import type { Icon } from "../icons"
-import type { LinkComponent } from "./default-link-component"
+import type { LinkComponent } from "../ui/default-link"
 
 type NavMenuItemData = {
 	label: string

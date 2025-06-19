@@ -1,7 +1,7 @@
 import { For } from "solid-js"
 import type { NavMenu } from "./type"
 
-export default function NavMenus(props: { menus: NavMenu[] }) {
+export function NavMenus(props: { menus: NavMenu[] }) {
 	return (
 		<For each={props.menus}>
 			{(menu) => (
@@ -10,3 +10,6 @@ export default function NavMenus(props: { menus: NavMenu[] }) {
 		</For>
 	)
 }
+
+export { default as UserNavbarMenu } from "./user-navbar-menu"
+export { default as UserSidebarMenu } from "./user-sidebar-menu"

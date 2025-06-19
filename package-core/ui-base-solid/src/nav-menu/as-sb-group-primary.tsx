@@ -2,6 +2,7 @@
 import { type ComponentProps, For, Show } from "solid-js"
 import { IconChevronRight } from "../icons"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
+import DefaultLink, { type LinkComponent } from "../ui/default-link"
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -13,7 +14,6 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "../ui/sidebar"
-import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 
 export default function MenuAsSidebarGroupPrimary(
@@ -24,7 +24,7 @@ export default function MenuAsSidebarGroupPrimary(
 		linkClass?: string
 	} & ComponentProps<typeof SidebarGroup>
 ) {
-	const Link = props.linkComponent ?? DefaultLinkComponent
+	const Link = props.linkComponent ?? DefaultLink
 
 	return (
 		<SidebarGroup {...props} class={props.class}>

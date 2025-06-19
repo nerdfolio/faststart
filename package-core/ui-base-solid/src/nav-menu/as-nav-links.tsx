@@ -1,6 +1,6 @@
 import { type ComponentProps, For } from "solid-js"
+import DefaultLink, { type LinkComponent } from "../ui/default-link"
 import { cn } from "../utils"
-import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 
 export default function MenuAsNavLinks(
@@ -11,7 +11,7 @@ export default function MenuAsNavLinks(
 		linkClass?: string
 	}
 ) {
-	const Link = props.linkComponent ?? DefaultLinkComponent
+	const Link = props.linkComponent ?? DefaultLink
 
 	return (
 		<nav class={cn("flex flex-wrap justify-center gap-10", props.class)}>

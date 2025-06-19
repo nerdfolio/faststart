@@ -1,6 +1,6 @@
 import type { ComponentProps, JSXElement } from "solid-js"
 
-export default function DefaultLinkComponent(props: ComponentProps<"a">) {
+export default function DefaultLink(props: ComponentProps<"a">) {
 	return <a {...props} />
 }
 

@@ -1,5 +1,7 @@
 import { type Accessor, Show } from "solid-js"
 import { IconLogout } from "../icons"
+import type { LinkComponent } from "../ui/default-link"
+import DefaultLink from "../ui/default-link"
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -8,8 +10,6 @@ import {
 	NavigationMenuTrigger,
 } from "../ui/navigation-menu"
 import { type AvatarUser, UserAvatar } from "../ui/user-avatar"
-import type { LinkComponent } from "./default-link-component"
-import DefaultLinkComponent from "./default-link-component"
 
 export default function UserNavbarMenu(props: {
 	user: Accessor<AvatarUser>
@@ -17,7 +17,7 @@ export default function UserNavbarMenu(props: {
 	signOut: () => Promise<void>
 	Link: LinkComponent
 }) {
-	const Link = props.Link ?? DefaultLinkComponent
+	const Link = props.Link ?? DefaultLink
 	const loginTrigger = (
 		<NavigationMenuTrigger as={Link} href="/login">
 			Log in

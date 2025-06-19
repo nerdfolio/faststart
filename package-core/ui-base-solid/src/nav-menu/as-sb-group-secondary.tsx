@@ -1,8 +1,7 @@
 import type { ComponentProps } from "solid-js"
 import { For } from "solid-js"
-
+import DefaultLink, { type LinkComponent } from "../ui/default-link"
 import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
-import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 
 /*
@@ -17,7 +16,7 @@ export default function MenuAsSidebarGroupSecondary(
 		linkClass?: string
 	}
 ) {
-	const Link = props.linkComponent ?? DefaultLinkComponent
+	const Link = props.linkComponent ?? DefaultLink
 
 	return (
 		<SidebarGroup {...props} class={props.class}>
