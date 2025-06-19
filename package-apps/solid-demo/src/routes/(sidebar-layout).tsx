@@ -1,3 +1,4 @@
+import { AuthRequired } from "baui/solidstart"
 import type { ParentProps } from "solid-js"
 import {
 	IconBook,
@@ -16,6 +17,7 @@ import AA from "ui-solid/start/aa"
 import SidebarLayout from "ui-solid/start/sidebar-layout"
 import SidebarUserMenu from "user/components/user/sb-user-menu"
 import { AppBranding } from "~/components/app-branding"
+import { authClient } from "~/lib/clients"
 
 const pagesMenu: NavMenu = {
 	renderer: MenuAsSidebarGroupPrimary,
@@ -89,13 +91,15 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [pagesMenu, guidesMenu, secondaryMenu]
 
 	return (
-		<SidebarLayout>
-			<SidebarLayout.Sidebar
-				Branding={<AppBranding />}
-				UserMenu={<SidebarUserMenu />}
-				Menus={<NavMenus menus={menus} />}
-			/>
-			<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
-		</SidebarLayout>
+		<AuthRequired authClient={authClient}>
+			<SidebarLayout>
+				<SidebarLayout.Sidebar
+					Branding={<AppBranding />}
+					UserMenu={<SidebarUserMenu />}
+					Menus={<NavMenus menus={menus} />}
+				/>
+				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
+			</SidebarLayout>
+		</AuthRequired>
 	)
 }

@@ -2,11 +2,12 @@ import { defineConfig } from "@solidjs/start/config"
 import tailwindcss from "@tailwindcss/vite"
 import Icons from "unplugin-icons/vite"
 import { mergeConfig } from "vite"
+import tsconfigPaths from "vite-tsconfig-paths"
 import { viteBaseConfig } from "../../root-config"
 
 export default defineConfig({
 	vite: mergeConfig(viteBaseConfig, {
-		plugins: [tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
+		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
 		define: {
 			__APP_INFO__: {
 				name: "Solid Demo",
@@ -18,9 +19,9 @@ export default defineConfig({
 					github: "https://github.com/solidjs/solid-start",
 					bluesky: "https://bsky.app/profile/solidjs.com",
 					x: "https://x.com/solid_js",
-				}
+				},
 			},
-		}
+		},
 	}),
 	solid: {
 		babel: {
@@ -28,7 +29,7 @@ export default defineConfig({
 				["@babel/plugin-proposal-decorators", { version: "legacy" }],
 				["@babel/plugin-transform-class-properties"],
 			],
-		}
+		},
 	},
 	server: {
 		preset: "cloudflare-pages",
@@ -37,5 +38,5 @@ export default defineConfig({
 			external: ["node:async_hooks"],
 		},
 	},
-	middleware: "./src/middleware.ts"
+	middleware: "./src/middleware.ts",
 })

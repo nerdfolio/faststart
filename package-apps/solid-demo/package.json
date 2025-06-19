@@ -19,6 +19,7 @@
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
+		"baui": "workspace:*",
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
 		"cloudflare-context": "workspace:*",

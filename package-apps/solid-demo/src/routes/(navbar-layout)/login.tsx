@@ -1,12 +1,14 @@
+import { LoginCard } from "baui/solidstart"
 import { type ComponentProps, For } from "solid-js"
 import { AppBranding } from "~/components/app-branding"
+import { authClient } from "~/lib/clients"
 
 export default function LoginPage() {
 	return (
 		<div class="flex min-h-[75svh] flex-col items-center justify-center">
 			<div class="flex w-full max-w-sm flex-col gap-6">
 				<AppBranding class="text-muted-foreground" />
-				<div>put login card here</div>
+				<LoginCard authClient={authClient} />
 				<DemoCredentials class="self-center text-muted-foreground text-sm mt-4" />
 			</div>
 		</div>

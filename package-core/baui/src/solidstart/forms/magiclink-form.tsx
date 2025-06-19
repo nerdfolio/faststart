@@ -1,9 +1,9 @@
 import { action, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
-import { Button } from "~/solid-ui/button"
-import { Input } from "~/solid-ui/input"
-import Spinner from "~/solid-ui/spinner"
 import type { BetterAuthClient } from "~/solidstart/types"
+import { Button } from "../../solid-ui/button"
+import { Input } from "../../solid-ui/input"
+import Spinner from "../../solid-ui/spinner"
 
 export default function MagicLinkForm(props: {
 	callbackUrl: string
