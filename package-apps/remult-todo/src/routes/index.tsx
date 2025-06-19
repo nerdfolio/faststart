@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "@solidjs/router"
-import { Show, onMount } from "solid-js"
+import { onMount, Show } from "solid-js"
 import Todo from "~/components/Todo"
 import { authClient, remultClient } from "~/lib/clients"
 

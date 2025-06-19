@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CnOVcatSvIHO6fYytPxs2il391xrnFVC",
+    "name": "Bob",
+    "email_address": "bob.onguestlist@example.com",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-19T05:48:38.310Z",
+    "updatedAt": "2025-06-19T05:48:38.310Z",
+    "role": "user",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-19T05:48:38.307Z",
+    "theme": "",
+    "isTest": false
+  },
+  {
+    "id": "1gNuZ6MXmcKw4BGUQJrxeJtvYIyjyYDA",
+    "name": "Alice",
+    "email_address": "alice.onguestlist@example.com",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-19T06:53:57.485Z",
+    "updatedAt": "2025-06-19T06:53:57.485Z",
+    "role": "admin",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-19T06:53:57.483Z",
+    "theme": "",
+    "isTest": false
+  }
+]

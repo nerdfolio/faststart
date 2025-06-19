@@ -16,7 +16,7 @@
 	},
 	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
-		"@nerdfolio/remult-better-auth": "^0.2.15",
+		"@nerdfolio/remult-better-auth": "^0.2.16",
 		"better-auth": "^1.2.9",
 		"remult": "catalog:"
 	},

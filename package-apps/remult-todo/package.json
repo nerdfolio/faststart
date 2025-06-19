@@ -8,8 +8,8 @@
 		"version": "vinxi version"
 	},
 	"dependencies": {
-		"@nerdfolio/ba-guest-list": "^0.0.7",
-		"@nerdfolio/remult-better-auth": "^0.2.15",
+		"@nerdfolio/ba-guest-list": "^0.0.8",
+		"@nerdfolio/remult-better-auth": "^0.2.16",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",

@@ -14,3 +14,4 @@ export type AuthUser = typeof authClient.$Infer.Session["user"]
 
 
 export const remultClient = new Remult({ url: import.meta.env.VITE_REMULT_ROOT_PATH })
+console.log("remultClient.apiClient", remultClient.apiClient)

@@ -24,7 +24,8 @@
 				"useConsistentMemberAccessibility": "off"
 			},
 			"complexity": {
-				"recommended": true
+				"recommended": true,
+				"noStaticOnlyClass": "off" // remult declares a bunch of static only classes
 			},
 			"security": {
 				"recommended": true
