@@ -1,7 +1,6 @@
 import { A } from "@solidjs/router"
 import { type Accessor, Show } from "solid-js"
-import { IconLogout } from "../../../baui/src/solid-ui/icons"
-import type { BetterAuthClient } from "../../../baui/src/solidstart/types"
+import { IconLogout } from "../icons"
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -21,7 +20,7 @@ export default function UserNavbarMenu(props: {
 			<Show when={props.user()} fallback={<NavTrigger href={props.signInUrl} title="Log in" />}>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger class="p-0 rounded-full w-fit animate-in fade-in duration-2000">
-						<UserAvatar user={s().data?.user as AvatarUser} />
+						<UserAvatar user={props.user() as AvatarUser} />
 					</NavigationMenuTrigger>
 					<NavigationMenuContent class="w-40 p-0">
 						<NavigationMenuLink onClick={() => props.signOut()} class="flex flex-row justify-between">

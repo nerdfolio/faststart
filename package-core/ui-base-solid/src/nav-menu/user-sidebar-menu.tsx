@@ -1,14 +1,5 @@
 import type { Accessor } from "solid-js"
-import {
-	IconBell,
-	IconCreditCard,
-	IconLogout,
-	IconMoodCheck,
-	IconSelector,
-	IconSparkles,
-} from "../../../baui/src/solid-ui/icons"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../../../baui/src/solid-ui/sidebar"
-import type { BetterAuthClient } from "../../../baui/src/solidstart/types"
+import { IconBadgeCheck, IconBell, IconCreditCard, IconLogout, IconSelector, IconSparkes } from "../icons"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -18,6 +9,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
 import { type AvatarUser, UserAvatarCard } from "../ui/user-avatar"
 
 export default function UserSidebarMenu(props: { signOut: () => Promise<void>; user: Accessor<AvatarUser> }) {
@@ -41,14 +33,14 @@ export default function UserSidebarMenu(props: { signOut: () => Promise<void>; u
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
-								<IconSparkles />
+								<IconSparkes />
 								Upgrade to Pro
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
-								<IconMoodCheck />
+								<IconBadgeCheck />
 								Account
 							</DropdownMenuItem>
 							<DropdownMenuItem>

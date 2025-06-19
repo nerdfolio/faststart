@@ -13,7 +13,6 @@
 // lucide icons
 //
 export { default as IconBadgeCheck } from "~icons/lucide/badge-check"
-export { default as IconChevronsUpDown } from "~icons/lucide/chevrons-up-down"
 export { default as IconBell } from "~icons/tabler/bell"
 export { default as IconBook } from "~icons/tabler/book"
 export { default as IconBluesky } from "~icons/tabler/brand-bluesky"
@@ -40,6 +39,7 @@ export { default as IconMail } from "~icons/tabler/mail"
 export { default as IconMathXPlusY } from "~icons/tabler/math-x-plus-y"
 export { default as IconRocket } from "~icons/tabler/rocket"
 export { default as IconSearch } from "~icons/tabler/search"
+export { default as IconSelector } from "~icons/tabler/selector"
 export { default as IconSettings } from "~icons/tabler/settings"
 export { default as IconSparkes } from "~icons/tabler/sparkles"
 export { default as IconTerminal } from "~icons/tabler/terminal-2"
