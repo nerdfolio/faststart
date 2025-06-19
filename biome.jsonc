@@ -21,7 +21,8 @@
 			"style": {
 				"recommended": true,
 				"noProcessEnv": "error",
-				"useConsistentMemberAccessibility": "off"
+				"useConsistentMemberAccessibility": "off",
+				"noNonNullAssertion": "off"
 			},
 			"complexity": {
 				"recommended": true,

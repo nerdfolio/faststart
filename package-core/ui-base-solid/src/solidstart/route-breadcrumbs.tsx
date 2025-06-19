@@ -1,5 +1,8 @@
 import { useCurrentMatches } from "@solidjs/router"
 import { createMemo } from "solid-js"
+import { Breadcrumbs } from "../ui/breadcrumbs"
+
+export const RouteBreadcrumbs = () => <Breadcrumbs crumbs={useBreadcrumbs()} />
 
 export function useBreadcrumbs() {
 	const matches = useCurrentMatches()

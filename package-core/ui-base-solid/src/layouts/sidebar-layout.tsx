@@ -1,4 +1,6 @@
-import { Separator } from "ui-solid/ui/separator"
+import { type Accessor, type ComponentProps, type JSXElement, type ParentProps, Show } from "solid-js"
+import { Breadcrumbs } from "../ui/breadcrumbs"
+import { Separator } from "../ui/separator"
 import {
 	Sidebar,
 	SidebarContent,
@@ -10,10 +12,7 @@ import {
 	SidebarMenuItem,
 	SidebarProvider,
 	SidebarTrigger,
-} from "ui-solid/ui/sidebar"
-import type { JSXElement, ParentProps } from "solid-js"
-import type { ComponentProps } from "solid-js"
-import Breadcrumbs from "./breadcrumbs"
+} from "../ui/sidebar"
 
 export default function SidebarLayout(props: ParentProps) {
 	return <SidebarProvider>{props.children}</SidebarProvider>
@@ -42,14 +41,20 @@ SidebarLayout.Sidebar = function SB(
 	)
 }
 
-SidebarLayout.ContentArea = (props: ComponentProps<typeof SidebarInset>) => {
+SidebarLayout.ContentArea = (
+	props: ComponentProps<typeof SidebarInset> & {
+		crumbs?: Accessor<string[]>
+	}
+) => {
 	return (
 		<SidebarInset>
 			<header class="flex h-16 shrink-0 items-center gap-2">
 				<div class="flex items-center gap-2 px-4">
 					<SidebarTrigger class="-ml-1" />
 					<Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
-					<Breadcrumbs />
+					<Show when={props.crumbs}>
+						<Breadcrumbs crumbs={props.crumbs!} />
+					</Show>
 				</div>
 			</header>
 			{props.children}

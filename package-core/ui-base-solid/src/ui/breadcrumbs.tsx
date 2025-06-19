@@ -3,7 +3,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import type { LinkComponent } from "./default-link"
 import DefaultLink from "./default-link"
 
-export default function Breadcrumbs(props: { crumbs: Accessor<string[]>; Link?: LinkComponent }) {
+export function Breadcrumbs(props: { crumbs: Accessor<string[]>; Link?: LinkComponent }) {
 	const Link = props.Link ?? DefaultLink
 	return (
 		<Breadcrumb>
