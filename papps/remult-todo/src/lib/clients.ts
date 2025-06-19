@@ -1,4 +1,4 @@
-import { guestListClient } from "ba-guest-list/client"
+import { guestListClient } from "@nerdfolio/ba-guest-list"
 import { inferAdditionalFields } from "better-auth/client/plugins"
 import { createAuthClient } from "better-auth/solid"
 import { Remult } from "remult"

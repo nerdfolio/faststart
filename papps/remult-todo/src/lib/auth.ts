@@ -1,7 +1,7 @@
 "user server"
-import { guestList } from "ba-guest-list/index"
 import { initBetterAuth } from "remult-core/solidstart"
 import { remultApi } from "./api"
+import { guestList } from "@nerdfolio/ba-guest-list"
 
 export const auth = initBetterAuth((await remultApi.getRemult()).dataProvider, {
 	plugins: [

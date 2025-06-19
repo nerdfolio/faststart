@@ -154,6 +154,9 @@ importers:
 
   papps/remult-todo:
     dependencies:
+      '@nerdfolio/ba-guest-list':
+        specifier: ^0.0.4
+        version: 0.0.4(better-auth@1.2.8)
       '@solidjs/meta':
         specifier: ^0.29.4
         version: 0.29.4(solid-js@1.9.7)
@@ -163,9 +166,6 @@ importers:
       '@solidjs/start':
         specifier: ^1.1.4
         version: 1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250614.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250614.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.42.0)(tsx@4.19.4))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.42.0)(tsx@4.19.4))
-      ba-guest-list:
-        specifier: workspace:*
-        version: link:../../plibs/ba-guest-list
       better-auth:
         specifier: 'catalog:'
         version: 1.2.8
@@ -1665,6 +1665,11 @@ packages:
 
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
+
+  '@nerdfolio/ba-guest-list@0.0.4':
+    resolution: {integrity: sha512-WzzYa8iE0ahm8CvZuxYQmtCMBCb19Qn/SoiOImbtlymAMI9cZ9xK0oPgq1RIcl8WD3IecVJjotPprPUN2JgzSw==}
+    peerDependencies:
+      better-auth: 1.2.9
 
   '@nerdfolio/drizzle-d1-helpers@0.1.4':
     resolution: {integrity: sha512-oMWBID3pajBojOglYPxEOQXpgNNlsmLddvEp/EUDMSNm3i1TrZ2MjGUFKzBM3a3NKd6jn7UJn1s51cmF+3QR+Q==}
@@ -6067,6 +6072,9 @@ packages:
   zod@3.25.65:
     resolution: {integrity: sha512-kMyE2qsXK1p+TAvO7zsf5wMFiCejU3obrUDs9bR1q5CBKykfvp7QhhXrycUylMoOow0iEUSyjLlZZdCsHwSldQ==}
 
+  zod@3.25.67:
+    resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
+
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
@@ -7071,6 +7079,12 @@ snapshots:
   '@neon-rs/load@0.0.4':
     optional: true
 
+  '@nerdfolio/ba-guest-list@0.0.4(better-auth@1.2.8)':
+    dependencies:
+      better-auth: 1.2.8
+      lodash-es: 4.17.21
+      zod: 3.25.67
+
   '@nerdfolio/drizzle-d1-helpers@0.1.4(@cloudflare/workers-types@4.20250614.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(cloudflare@4.3.0(encoding@0.1.13))(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)':
     dependencies:
       '@nerdfolio/drizzle-d1-proxy': 0.1.4(cloudflare@4.3.0(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250614.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))
@@ -7208,7 +7222,7 @@ snapshots:
       unixify: 1.0.0
       urlpattern-polyfill: 8.0.2
       yargs: 17.7.2
-      zod: 3.25.65
+      zod: 3.25.67
     transitivePeerDependencies:
       - encoding
       - rollup
@@ -11831,5 +11845,7 @@ snapshots:
   zod@3.22.3: {}
 
   zod@3.25.65: {}
+
+  zod@3.25.67: {}
 
   zwitch@2.0.4: {}

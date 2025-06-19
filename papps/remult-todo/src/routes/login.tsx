@@ -32,7 +32,7 @@ export default function Home() {
 	const user = () => s().data?.user
 
 	const guestList = createAsync(async () =>
-		authClient.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
+		authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
 	)
 
 	return (
