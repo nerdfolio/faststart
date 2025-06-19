@@ -15,10 +15,7 @@
 		"@solidjs/start": "^1.1.4",
 		"better-auth": "catalog:",
 		"better-sqlite3": "^11.10.0",
-		"cloudflare-helpers": "workspace:*",
 		"remult": "catalog:",
-		"remult-core": "workspace:*",
-		"remult-d1": "workspace:*",
 		"solid-js": "^1.9.7",
 		"vinxi": "^0.5.7"
 	},

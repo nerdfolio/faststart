@@ -1,9 +1,6 @@
 packages:
-  - database
-  - remult-core
-  - plibs/*
-  - pcore/*
-  - papps/*
+  - package-apps/*
+  - package-core/*
 
 catalog:
   typescript: "^5.8.3"

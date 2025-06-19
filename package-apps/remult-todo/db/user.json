@@ -1,0 +1,32 @@
+[
+  {
+    "id": "REVXZ80bhI8BNTdo037Q3KIifKxKW5EF",
+    "name": "Bob",
+    "email_address": "bob.onguestlist@http://localhost:3000",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-19T00:29:02.482Z",
+    "updatedAt": "2025-06-19T00:29:02.482Z",
+    "role": "user",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-19T00:29:02.478Z",
+    "theme": "",
+    "isTest": false
+  },
+  {
+    "id": "X3tTtJQRDPJ2IK7jX76qJgJw7jYxrwY2",
+    "name": "Alice",
+    "email_address": "alice.onguestlist@http://localhost:3000",
+    "emailVerified": false,
+    "image": "",
+    "createdAt": "2025-06-19T00:30:47.887Z",
+    "updatedAt": "2025-06-19T00:30:47.887Z",
+    "role": "admin",
+    "banned": false,
+    "banReason": "",
+    "banExpires": "2025-06-19T00:30:47.887Z",
+    "theme": "",
+    "isTest": false
+  }
+]

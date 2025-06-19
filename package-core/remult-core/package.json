@@ -19,8 +19,7 @@
 		"@nerdfolio/remult-better-auth": "^0.2.14",
 		"better-auth": "catalog:",
 		"drizzle-orm": "^0.44.2",
-		"remult": "catalog:",
-		"remult-d1": "workspace:*"
+		"remult": "catalog:"
 	},
 	"engines": {
 		"node": ">=22",
