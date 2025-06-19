@@ -1,13 +1,13 @@
 {
-	"name": "cloudflare-helpers",
+	"name": "cloudflare-context",
 	"version": "0.1.0",
-	"description": "database, migrations, data scaffolding",
+	"description": "utils to access cloudflare context for relevant frameworks",
 	"private": true,
 	"license": "UNLICENSED",
-	"author": "taivo",
+	"author": "taivo@github",
 	"exports": {
 		"./solidstart/*": "./src/solidstart/*.ts",
-		"./remult/*": "./src/remult/*.ts"
+		"./remult/*": "./src/_remult/*.ts"
 	},
 	"keywords": [],
 	"type": "module",
