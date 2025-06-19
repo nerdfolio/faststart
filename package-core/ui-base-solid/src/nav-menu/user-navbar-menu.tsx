@@ -1,4 +1,3 @@
-import { A } from "@solidjs/router"
 import { type Accessor, Show } from "solid-js"
 import { IconLogout } from "../icons"
 import {
@@ -9,15 +8,25 @@ import {
 	NavigationMenuTrigger,
 } from "../ui/navigation-menu"
 import { type AvatarUser, UserAvatar } from "../ui/user-avatar"
+import type { LinkComponent } from "./default-link-component"
+import DefaultLinkComponent from "./default-link-component"
 
 export default function UserNavbarMenu(props: {
 	user: Accessor<AvatarUser>
 	signInUrl: string
 	signOut: () => Promise<void>
+	Link: LinkComponent
 }) {
+	const Link = props.Link ?? DefaultLinkComponent
+	const loginTrigger = (
+		<NavigationMenuTrigger as={Link} href="/login">
+			Log in
+		</NavigationMenuTrigger>
+	)
+
 	return (
 		<NavigationMenu class="min-w-18 text-center">
-			<Show when={props.user()} fallback={<NavTrigger href={props.signInUrl} title="Log in" />}>
+			<Show when={props.user()} fallback={loginTrigger}>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger class="p-0 rounded-full w-fit animate-in fade-in duration-2000">
 						<UserAvatar user={props.user() as AvatarUser} />
@@ -30,13 +39,5 @@ export default function UserNavbarMenu(props: {
 				</NavigationMenuItem>
 			</Show>
 		</NavigationMenu>
-	)
-}
-
-function NavTrigger(props: { href: string; title: string }) {
-	return (
-		<NavigationMenuTrigger as={A} href={props.href}>
-			{props.title}
-		</NavigationMenuTrigger>
 	)
 }

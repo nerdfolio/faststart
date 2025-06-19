@@ -17,28 +17,19 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"@kobalte/core": "catalog:",
 		"@solidjs/router": "catalog:",
 		"better-auth": "catalog:",
-		"class-variance-authority": "catalog:",
-		"clsx": "^2.1.1",
 		"solid-js": "catalog:",
 		"solid-ui": "^2.5.1",
-		"tailwind-merge": "^3.3.1",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@kobalte/core": "catalog:",
 		"@solidjs/router": "catalog:",
 		"better-auth": "catalog:",
-		"class-variance-authority": "catalog:",
-		"clsx": "^2.1.1",
 		"solid-js": "catalog:",
-		"solid-ui": "^2.5.1",
-		"tailwind-merge": "^3.3.1"
+		"solid-ui": "^2.5.1"
 	},
 	"dependencies": {
-		"@tabler/icons-solidjs": "^3.34.0",
 		"ui-base-solid": "workspace:*"
 	}
 }

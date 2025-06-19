@@ -1,6 +1,5 @@
-import { NavigationMenu } from "@kobalte/core/navigation-menu"
-import { NavigationMenuTrigger } from "ui-solid/ui/navigation-menu"
 import { For } from "solid-js"
+import { NavigationMenu, NavigationMenuTrigger } from "../ui/navigation-menu"
 import type { LinkComponent } from "./default-link-component"
 import DefaultLinkComponent from "./default-link-component"
 import type { NavMenuItem } from "./type"

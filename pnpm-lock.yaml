@@ -299,37 +299,22 @@ importers:
 
   package-core/baui:
     dependencies:
-      '@tabler/icons-solidjs':
-        specifier: ^3.34.0
-        version: 3.34.0(solid-js@1.9.7)
       ui-base-solid:
         specifier: workspace:*
         version: link:../ui-base-solid
     devDependencies:
-      '@kobalte/core':
-        specifier: 'catalog:'
-        version: 0.13.10(solid-js@1.9.7)
       '@solidjs/router':
         specifier: 'catalog:'
         version: 0.15.3(solid-js@1.9.7)
       better-auth:
         specifier: 'catalog:'
         version: 1.2.9
-      class-variance-authority:
-        specifier: 'catalog:'
-        version: 0.7.1
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
       solid-ui:
         specifier: ^2.5.1
         version: 2.5.1(encoding@0.1.13)(web-streams-polyfill@3.3.3)
-      tailwind-merge:
-        specifier: ^3.3.1
-        version: 3.3.1
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
@@ -2103,14 +2088,6 @@ packages:
 
   '@swc/helpers@0.5.17':
     resolution: {integrity: sha512-5IKx/Y13RsYd+sauPb2x+U/xZikHjolzfuDgTAl/Tdf3Q8rslRvC19NKDLgAJQ6wsqADk10ntlv08nPFw/gO/A==}
-
-  '@tabler/icons-solidjs@3.34.0':
-    resolution: {integrity: sha512-O6RI1dz4o2MhsyMUk4tELySY25deyB+cHsREwQdYynB+8K9CncVgi9vlpG7lE14lmJ64edduDpCkMxqKdev5jQ==}
-    peerDependencies:
-      solid-js: ^1.4.7
-
-  '@tabler/icons@3.34.0':
-    resolution: {integrity: sha512-jtVqv0JC1WU2TTEBN32D9+R6mc1iEBuPwLnBsWaR02SIEciu9aq5806AWkCHuObhQ4ERhhXErLEK7Fs+tEZxiA==}
 
   '@tailwindcss/node@4.1.10':
     resolution: {integrity: sha512-2ACf1znY5fpRBwRhMgj9ZXvb2XZW8qs+oTfotJ2C5xR0/WNL7UHZ7zXl6s+rUqedL1mNi+0O+WQr5awGowS3PQ==}
@@ -7764,13 +7741,6 @@ snapshots:
   '@swc/helpers@0.5.17':
     dependencies:
       tslib: 2.8.1
-
-  '@tabler/icons-solidjs@3.34.0(solid-js@1.9.7)':
-    dependencies:
-      '@tabler/icons': 3.34.0
-      solid-js: 1.9.7
-
-  '@tabler/icons@3.34.0': {}
 
   '@tailwindcss/node@4.1.10':
     dependencies:

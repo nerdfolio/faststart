@@ -1,7 +1,7 @@
 import type { ComponentProps } from "solid-js"
 import { For } from "solid-js"
 
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "ui-solid/ui/sidebar"
+import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
 import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 

@@ -1,5 +1,7 @@
 "use client"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "ui-solid/ui/collapsible"
+import { type ComponentProps, For, Show } from "solid-js"
+import { IconChevronRight } from "../icons"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 import {
 	SidebarGroup,
 	SidebarGroupLabel,
@@ -10,9 +12,7 @@ import {
 	SidebarMenuSub,
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
-} from "ui-solid/ui/sidebar"
-import { type ComponentProps, For, Show } from "solid-js"
-import { IconChevronRight } from "../icons"
+} from "../ui/sidebar"
 import DefaultLinkComponent, { type LinkComponent } from "./default-link-component"
 import type { NavMenuItem } from "./type"
 
