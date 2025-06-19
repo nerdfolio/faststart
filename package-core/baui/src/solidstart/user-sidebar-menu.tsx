@@ -1,12 +1,4 @@
-import { type User, useAuth, useSignOut } from "auth/solidstart/auth-client"
-import {
-	IconBadgeCheck,
-	IconBell,
-	IconChevronsUpDown,
-	IconCreditCard,
-	IconLogout,
-	IconSparkes,
-} from "ui-solid/icons"
+import type { User } from "better-auth"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -15,12 +7,16 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "ui-solid/ui/dropdown-menu"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "ui-solid/ui/sidebar"
+} from "../solid-ui/dropdown-menu"
+import { IconBell, IconCreditCard, IconLogout, IconMoodCheck, IconSelector, IconSparkles } from "../solid-ui/icons"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../solid-ui/sidebar"
+import type { BetterAuthClient } from "./types"
 import UserMinicard from "./user-minicard"
 
-export default function SidebarUserMenu() {
-	const signOut = useSignOut()
+export default function UserSidebarMenu(props: { authClient: BetterAuthClient }) {
+	//const signOut = useSignOut()
+
+	const s = props.authClient.useSession()
 
 	return (
 		<SidebarMenu>
@@ -31,25 +27,25 @@ export default function SidebarUserMenu() {
 							size="lg"
 							class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
 						>
-							<UserMinicard user={useAuth().user as User} />
-							<IconChevronsUpDown class="ml-auto size-4" />
+							<UserMinicard user={s().data?.user as User} />
+							<IconSelector class="ml-auto size-4" />
 						</SidebarMenuButton>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent class="min-w-56 rounded-lg">
 						<DropdownMenuLabel class="p-0 font-normal">
-							<UserMinicard user={useAuth().user as User} class="px-1 py-1.5" />
+							<UserMinicard user={s().data?.user as User} class="px-1 py-1.5" />
 						</DropdownMenuLabel>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
-								<IconSparkes />
+								<IconSparkles />
 								Upgrade to Pro
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuGroup>
 							<DropdownMenuItem>
-								<IconBadgeCheck />
+								<IconMoodCheck />
 								Account
 							</DropdownMenuItem>
 							<DropdownMenuItem>
@@ -62,7 +58,7 @@ export default function SidebarUserMenu() {
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={signOut}>
+						<DropdownMenuItem onClick={() => props.authClient.signOut()}>
 							<IconLogout />
 							Log out
 						</DropdownMenuItem>

@@ -1,6 +1,6 @@
-import type { User } from "auth/solidstart/auth-client"
-import { cn } from "ui-solid/utils"
-import UserAvatar from "./user-avatar"
+import type { User } from "better-auth"
+import UserAvatar from "../solid-ui/user-avatar"
+import { cn } from "../solid-ui/utils"
 
 export default function UserMinicard(props: { user: User; class?: string }) {
 	return (

@@ -1,2 +1,5 @@
 export { default as AuthRequired } from "./auth-required"
 export { default as LoginCard } from "./login-card"
+export { default as UserMinicard } from "./user-minicard"
+export { default as UserNavbarMenu } from "./user-navbar-menu"
+export { default as SidebarUserMenu } from "./user-sidebar-menu"
