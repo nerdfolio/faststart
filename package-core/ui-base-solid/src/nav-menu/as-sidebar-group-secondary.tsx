@@ -2,7 +2,7 @@ import type { ComponentProps } from "solid-js"
 import { For } from "solid-js"
 import DefaultLink, { type LinkComponent } from "../ui/default-link"
 import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
-import type { NavMenuItem } from "./type"
+import type { NavMenuItem } from "./types"
 
 /*
 Sidebar menu group with simpler items that has no subitem.

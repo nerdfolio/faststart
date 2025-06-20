@@ -1,7 +1,7 @@
 import { type ComponentProps, For } from "solid-js"
 import DefaultLink, { type LinkComponent } from "../ui/default-link"
 import { cn } from "../utils"
-import type { NavMenuItem } from "./type"
+import type { NavMenuItem } from "./types"
 
 export default function MenuAsNavLinks(
 	props: ComponentProps<"nav"> & {

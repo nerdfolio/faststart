@@ -19,6 +19,7 @@
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
+		"baui": "workspace:*",
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
 		"cloudflare-context": "workspace:*",
@@ -27,6 +28,7 @@
 		"remult-core": "workspace:*",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
+		"ui-base-solid": "workspace:*",
 		"vinxi": "catalog:",
 		"zod": "catalog:"
 	},

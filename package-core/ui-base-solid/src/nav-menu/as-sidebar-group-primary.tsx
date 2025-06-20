@@ -14,7 +14,7 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "../ui/sidebar"
-import type { NavMenuItem } from "./type"
+import type { NavMenuItem } from "./types"
 
 export default function MenuAsSidebarGroupPrimary(
 	props: {

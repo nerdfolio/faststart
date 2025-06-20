@@ -7,15 +7,13 @@
 	"author": "taivo",
 	"exports": {
 		"./*": [
-			"./src/icons.tsx"
+			"./src/*.tsx",
+			"./src/*.ts"
 		],
-		"./utils": "./src/utils.ts",
+		"./layouts": "./src/layouts/index.tsx",
+		"./nav-menu": "./src/nav-menu/index.tsx",
 		"./ui/*": "./src/ui/*.tsx",
-		"./nav-menu/*": [
-			"./src/nav-menu/*.tsx",
-			"./src/nav-menu/*.ts"
-		],
-		"./start/*": "./src/start/*.tsx"
+		"./solidstart/*": "./src/solidstart/*.tsx"
 	},
 	"keywords": [],
 	"type": "module",

@@ -2,7 +2,7 @@ import { For } from "solid-js"
 import type { LinkComponent } from "../ui/default-link"
 import DefaultLink from "../ui/default-link"
 import { NavigationMenu, NavigationMenuTrigger } from "../ui/navigation-menu"
-import type { NavMenuItem } from "./type"
+import type { NavMenuItem } from "./types"
 
 export default function MenuAsNavbarGroup(props: {
 	items: NavMenuItem[]

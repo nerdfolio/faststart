@@ -3,7 +3,7 @@ import { cn } from "../utils"
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar"
 
 export type AvatarUser = {
-	image?: string
+	image?: string | null
 	name?: string
 	email?: string
 }

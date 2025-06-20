@@ -1,5 +1,5 @@
 import { AuthRequired } from "baui/solidstart"
-import type { ParentProps } from "solid-js"
+import type { Accessor, ParentProps } from "solid-js"
 import {
 	IconBook,
 	IconDashboard,
@@ -8,14 +8,17 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "ui-solid/icons"
-import MenuAsSidebarGroupPrimary from "ui-solid/nav-menu/as-sb-group-primary"
-import MenuAsSidebarGroupSecondary from "ui-solid/nav-menu/as-sb-group-secondary"
-import NavMenus from "ui-solid/nav-menu/index"
-import type { NavMenu } from "ui-solid/nav-menu/type"
-import AA from "ui-solid/start/aa"
-import SidebarLayout from "ui-solid/start/sidebar-layout"
-import SidebarUserMenu from "user/components/user/sb-user-menu"
+} from "ui-base-solid/icons"
+import { SidebarLayout } from "ui-base-solid/layouts"
+import {
+	MenuAsSidebarGroupPrimary,
+	MenuAsSidebarGroupSecondary,
+	type NavMenu,
+	NavMenus,
+	UserSidebarMenu,
+} from "ui-base-solid/nav-menu"
+import AA from "ui-base-solid/solidstart/aa"
+import type { AvatarUser } from "ui-base-solid/ui/user-avatar"
 import { AppBranding } from "~/components/app-branding"
 import { authClient } from "~/lib/clients"
 
@@ -90,12 +93,15 @@ const secondaryMenu: NavMenu = {
 export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [pagesMenu, guidesMenu, secondaryMenu]
 
+	const s = authClient.useSession()
+	const user: Accessor<AvatarUser | undefined> = () => s().data?.user
+
 	return (
 		<AuthRequired authClient={authClient}>
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
-					UserMenu={<SidebarUserMenu />}
+					UserMenu={<UserSidebarMenu user={user} signOut={authClient.signOut} />}
 					Menus={<NavMenus menus={menus} />}
 				/>
 				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>

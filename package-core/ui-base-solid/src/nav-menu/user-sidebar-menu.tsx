@@ -12,7 +12,10 @@ import {
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
 import { type AvatarUser, UserAvatarCard } from "../ui/user-avatar"
 
-export default function UserSidebarMenu(props: { signOut: () => Promise<void>; user: Accessor<AvatarUser> }) {
+export default function UserSidebarMenu(props: {
+	signOut: () => Promise<unknown>
+	user: Accessor<AvatarUser | undefined | null>
+}) {
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
