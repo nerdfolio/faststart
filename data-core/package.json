@@ -7,7 +7,7 @@
 	"author": "taivo",
 	"exports": {
 		"./models/*": "./src/models/*.ts",
-		"./solidstart": "./src/solidstart.ts"
+		"./glue/*": "./src/glue/*.ts"
 	},
 	"keywords": [],
 	"type": "module",
@@ -23,6 +23,7 @@
 		"typescript": "catalog:"
 	},
 	"dependencies": {
+		"better-auth": "catalog:",
 		"remult": "catalog:"
 	}
 }
