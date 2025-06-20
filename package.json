@@ -19,7 +19,7 @@
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.0",
-		"@iconify-json/lucide": "^1.2.50",
+		"@iconify-json/lucide": "^1.2.51",
 		"@iconify-json/tabler": "^1.2.19",
 		"@inquirer/prompts": "^7.5.3",
 		"@solidjs/testing-library": "catalog:",
