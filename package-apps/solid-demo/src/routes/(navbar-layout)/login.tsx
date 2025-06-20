@@ -1,5 +1,5 @@
-import { LoginCard } from "baui/solidstart"
 import { type ComponentProps, For } from "solid-js"
+import { LoginCard } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import { authClient } from "~/lib/clients"
 

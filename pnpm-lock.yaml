@@ -216,6 +216,9 @@ importers:
       '@nerdfolio/ba-guest-list':
         specifier: ^0.0.8
         version: 0.0.8(better-auth@1.2.9)
+      '@nerdfolio/remult-better-auth':
+        specifier: ^0.2.16
+        version: 0.2.16(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.5)
       '@solidjs/meta':
         specifier: 'catalog:'
         version: 0.29.4(solid-js@1.9.7)
