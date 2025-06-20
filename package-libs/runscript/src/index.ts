@@ -1,5 +1,4 @@
 import { confirm } from "@inquirer/prompts"
-import { initServerAuth } from "auth"
 import { type BoundD1, D1Helper, type ProxyD1 } from "@nerdfolio/drizzle-d1-helpers"
 
 export type { CliParams } from "./common"

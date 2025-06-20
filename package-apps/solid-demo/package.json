@@ -23,6 +23,7 @@
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
 		"cloudflare-context": "workspace:*",
+		"data-core": "workspace:*",
 		"lodash-es": "^4.17.21",
 		"remult": "catalog:",
 		"tailwindcss": "catalog:",
