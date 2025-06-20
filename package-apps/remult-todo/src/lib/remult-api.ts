@@ -2,9 +2,8 @@
 import { makeGetRequestUser } from "auth-core/solidstart/auth-server"
 import { baToRemultUser } from "data-core/glue/remult-ba"
 import { Account, Session, User, Verification } from "data-core/models/auth-models"
+import { Task, TasksController } from "data-core/models/task"
 import { remultApi as solidStartRemultApi } from "remult/remult-solid-start"
-import { Task } from "../shared/Task"
-import { TasksController } from "../shared/TasksController"
 import { auth } from "./auth"
 
 const authEntities = [User, Session, Account, Verification]

@@ -1,8 +1,7 @@
-import { For, Show, createSignal, onMount } from "solid-js"
+import { Task, TasksController } from "data-core/models/task"
+import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { remultClient } from "~/lib/clients"
-import { Task } from "~/shared/Task"
-import { TasksController } from "~/shared/TasksController"
 
 const taskRepo = remultClient.repo(Task)
 
