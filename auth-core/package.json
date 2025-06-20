@@ -11,14 +11,14 @@
 	"keywords": [],
 	"type": "module",
 	"packageManager": "pnpm@10.10.0",
-	"dependencies": {
-		"better-auth": "catalog:"
-	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
 		"typescript": "catalog:"
+	},
+	"dependencies": {
+		"better-auth": "catalog:"
 	}
 }

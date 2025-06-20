@@ -1,9 +1,14 @@
 "user server"
 import { guestList } from "@nerdfolio/ba-guest-list"
-import { initBetterAuth } from "remult-core/solidstart"
+import { remultAdapter } from "@nerdfolio/remult-better-auth"
+import { initBetterAuth } from "auth-core/solidstart/auth-server"
+import { Account, Session, User, Verification } from "data-core/models/auth-models"
 import { remultApi } from "./remult-api"
 
-export const auth = initBetterAuth((remultApi.getRemult()), {
+export const auth = initBetterAuth({
+	database: remultAdapter(remultApi.getRemult(), {
+		authEntities: { User, Session, Account, Verification }
+	}),
 	plugins: [
 		guestList({
 			allowGuests: [
@@ -11,7 +16,7 @@ export const auth = initBetterAuth((remultApi.getRemult()), {
 				{ name: "Bob", role: "user" },
 				{ name: "Charlie", role: "user" },
 			],
-			revealNames: true
-		})
+			revealNames: true,
+		}),
 	],
 })

@@ -7,7 +7,6 @@
 	"author": "taivo",
 	"exports": {
 		"./models/*": "./src/models/*.ts",
-		"./better-auth": "./src/better-auth/index.ts",
 		"./solidstart": "./src/solidstart.ts"
 	},
 	"keywords": [],
@@ -16,14 +15,14 @@
 		"generate-auth-models": "remult-better-auth generate --config ./src/better-auth/config.ts --output ./models/auth-models.ts"
 	},
 	"packageManager": "pnpm@10.10.0",
-	"dependencies": {
-		"remult": "catalog:"
-	},
 	"engines": {
 		"node": ">=22",
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
 		"typescript": "catalog:"
+	},
+	"dependencies": {
+		"remult": "catalog:"
 	}
 }

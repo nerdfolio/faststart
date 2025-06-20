@@ -1,4 +1,3 @@
-import { AuthRequired } from "baui/solidstart"
 import type { Accessor, ParentProps } from "solid-js"
 import {
 	IconBook,
@@ -19,6 +18,7 @@ import {
 } from "ui-base-solid/nav-menu"
 import AA from "ui-base-solid/solidstart/aa"
 import type { AvatarUser } from "ui-base-solid/ui/user-avatar"
+import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import { authClient } from "~/lib/clients"
 
