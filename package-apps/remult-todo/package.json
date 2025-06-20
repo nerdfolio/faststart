@@ -16,7 +16,6 @@
 		"better-auth": "catalog:",
 		"cloudflare-context": "workspace:*",
 		"remult": "catalog:",
-		"remult-core": "workspace:*",
 		"solid-js": "catalog:",
 		"vinxi": "catalog:"
 	},

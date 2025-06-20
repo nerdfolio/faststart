@@ -1,1 +1,0 @@
-export { toSolidStartHandler } from "better-auth/solid-start"

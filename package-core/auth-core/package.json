@@ -1,0 +1,24 @@
+{
+	"name": "auth-core",
+	"version": "0.1.0",
+	"description": "authentication core",
+	"private": true,
+	"license": "UNLICENSED",
+	"author": "taivo",
+	"exports": {
+		"./solidstart/*": "./src/better-auth/solidstart/*.ts"
+	},
+	"keywords": [],
+	"type": "module",
+	"packageManager": "pnpm@10.10.0",
+	"dependencies": {
+		"better-auth": "catalog:"
+	},
+	"engines": {
+		"node": ">=22",
+		"pnpm": ">=10"
+	},
+	"devDependencies": {
+		"typescript": "catalog:"
+	}
+}
