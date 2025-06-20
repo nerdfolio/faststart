@@ -11,6 +11,7 @@ export function NavMenus(props: { menus: NavMenu[] }) {
 	)
 }
 
+export { default as MenuAsNavLinks } from "./as-nav-links"
 export { default as MenuAsNavbarGroup } from "./as-navbar-group"
 export { default as MenuAsSidebarGroupPrimary } from "./as-sidebar-group-primary"
 export { default as MenuAsSidebarGroupSecondary } from "./as-sidebar-group-secondary"

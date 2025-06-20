@@ -1,7 +1,7 @@
-import MenuAsNavLinks from "ui-solid/nav-menu/as-nav-links"
-import AA from "ui-solid/start/aa"
-import Footer from "ui-solid/ui/footer"
-import SocialLinks from "ui-solid/ui/social-links"
+import { MenuAsNavLinks } from "ui-base-solid/nav-menu"
+import AA from "ui-base-solid/solidstart/aa"
+import Footer from "ui-base-solid/ui/footer"
+import SocialLinks from "ui-base-solid/ui/social-links"
 import { copyrightStatement } from "./app-branding"
 
 const footerLinks = [
@@ -14,7 +14,7 @@ const footerLinks = [
 export default function AppFooter() {
 	return (
 		<Footer class="border-t-1">
-			<MenuAsNavLinks items={footerLinks} linkComponent={AA} linkClass="text-muted-foreground hover:brightness-130" />
+			<MenuAsNavLinks items={footerLinks} Link={AA} linkClass="text-muted-foreground hover:brightness-130" />
 			<SocialLinks
 				class="flex flex-row gap-8 justify-center my-8"
 				linkClass="text-muted-foreground brightness-80 hover:brightness-130"
