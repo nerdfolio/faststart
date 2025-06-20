@@ -17,6 +17,6 @@ export const remultApi = solidStartRemultApi({
 			name,
 			id,
 			roles: role.split(",").map((r) => r.trim()),
-		}),
+		})
 	}),
 })
