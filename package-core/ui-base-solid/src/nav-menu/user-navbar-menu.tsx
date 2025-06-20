@@ -11,7 +11,7 @@ import {
 import { type AvatarUser, UserAvatar } from "../ui/user-avatar"
 
 export default function UserNavbarMenu(props: {
-	user: Accessor<AvatarUser>
+	user: Accessor<AvatarUser | undefined>
 	signInUrl: string
 	signOut: () => Promise<unknown>
 	Link: LinkComponent

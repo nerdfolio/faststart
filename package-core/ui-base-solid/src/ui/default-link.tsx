@@ -4,4 +4,7 @@ export default function DefaultLink(props: ComponentProps<"a">) {
 	return <a {...props} />
 }
 
-export type LinkComponent = (props: ComponentProps<"a">) => JSXElement
+type LinkProps = ComponentProps<"a"> & {
+	href: string
+}
+export type LinkComponent = (props: LinkProps) => JSXElement
