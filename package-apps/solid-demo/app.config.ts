@@ -33,7 +33,7 @@ export default defineConfig({
 	},
 	server: {
 		preset: "cloudflare-pages",
-		compatibilityDate: "2025-04-29",
+		compatibilityDate: "2025-06-20",
 		rollupConfig: {
 			external: ["node:async_hooks"],
 		},

@@ -1,11 +1,10 @@
-import { BetterAuthError, type BetterAuthOptions, betterAuth } from "better-auth"
+import { type BetterAuthOptions, betterAuth } from "better-auth"
 import { admin, magicLink } from "better-auth/plugins"
 import { logMagicLinkToServerConsole } from "./handlers/magic-link"
 
 type BetterAuthSchemaOptions = Pick<BetterAuthOptions, "user" | "account" | "session" | "verification">
 export const coreBetterAuthSchema: BetterAuthSchemaOptions = {
 	user: {
-		fields: { email: "email_address" },
 		additionalFields: {
 			theme: { type: "string" },
 			isTest: { type: "boolean", defaultValue: false },
@@ -32,21 +31,6 @@ export function initBetterAuth(opts: BetterAuthOptions) {
 		...opts,
 		plugins,
 	})
-}
-
-type BetterAuthService = ReturnType<typeof initBetterAuth>
-export function makeGetRequestUser<U, BAS extends BetterAuthService = BetterAuthService>(
-	auth: BAS, { transformUser }: { transformUser?: (user: typeof auth.$Infer.Session["user"] & { role?: string }) => U }
-) {
-	return async function getRequestUser({ request }: { request: Request }) {
-		const s = await auth.api.getSession({ headers: request.headers })
-
-		if (!s) {
-			throw new BetterAuthError("getRequestUser: No session found in request.", JSON.stringify(request))
-		}
-
-		return transformUser ? transformUser(s.user) : s.user
-	}
 }
 
 

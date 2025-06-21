@@ -1,13 +1,15 @@
 {
-	"name": "data-core",
+	"name": "fastcore",
 	"version": "0.1.0",
-	"description": "database, migrations, data scaffolding",
+	"description": "core server-side code for database, migrations, data scaffolding, auth to get a monorepo set up apps quickly started",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./models/*": "./src/models/*.ts",
-		"./glue/*": "./src/glue/*.ts"
+		"./auth/*": "./auth/*.ts",
+		"./utils/*": "./utils/*.ts",
+		"./models/*": "./models/*.ts",
+		"./data-scaffold/*": "./data-scaffold/*.ts"
 	},
 	"keywords": [],
 	"type": "module",

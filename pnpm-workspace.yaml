@@ -1,6 +1,5 @@
 packages:
-  - data-core
-  - auth-core
+  - fastcore
   - package-apps/*
   - package-libs/*
 

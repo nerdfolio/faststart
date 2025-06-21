@@ -1,4 +1,4 @@
-import { Task, TasksController } from "data-core/models/task"
+import { Task, TasksController } from "fastcore/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { remultClient } from "~/lib/clients"

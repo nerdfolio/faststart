@@ -13,10 +13,9 @@
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
-		"auth-core": "workspace:*",
 		"better-auth": "catalog:",
 		"cloudflare-context": "workspace:*",
-		"data-core": "workspace:*",
+		"fastcore": "workspace:*",
 		"remult": "catalog:",
 		"solid-js": "catalog:",
 		"vinxi": "catalog:"
