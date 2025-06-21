@@ -17,7 +17,7 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20250619.0",
+		"@cloudflare/workers-types": "^4.20250620.0",
 		"@types/better-sqlite3": "^7.6.13",
 		"cloudflare": "catalog:",
 		"remult": "catalog:",

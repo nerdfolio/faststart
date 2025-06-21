@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@dotenvx/dotenvx':
-      specifier: ^1.44.2
-      version: 1.44.2
+      specifier: ^1.45.1
+      version: 1.45.1
     '@kobalte/core':
       specifier: ^0.13.9
       version: 0.13.10
@@ -22,14 +22,14 @@ catalogs:
       specifier: ^0.15.3
       version: 0.15.3
     '@solidjs/start':
-      specifier: ^1.1.4
-      version: 1.1.4
+      specifier: ^1.1.5
+      version: 1.1.5
     '@solidjs/testing-library':
       specifier: ^0.8.10
       version: 0.8.10
     better-auth:
-      specifier: ^1.2.9
-      version: 1.2.9
+      specifier: ^1.2.10
+      version: 1.2.10
     class-variance-authority:
       specifier: ^0.7.1
       version: 0.7.1
@@ -67,11 +67,11 @@ importers:
     dependencies:
       '@dotenvx/dotenvx':
         specifier: 'catalog:'
-        version: 1.44.2
+        version: 1.45.1
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.3
+        version: 2.0.3
       '@iconify-json/lucide':
         specifier: ^1.2.51
         version: 1.2.51
@@ -136,27 +136,14 @@ importers:
         specifier: 3.2.4
         version: 3.2.4(@types/node@24.0.3)(@vitest/ui@3.2.4)(jiti@2.4.2)(jsdom@26.1.0)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0)
       wrangler:
-        specifier: ^4.20.3
-        version: 4.20.3(@cloudflare/workers-types@4.20250620.0)
-
-  fast-core:
-    dependencies:
-      better-auth:
-        specifier: 'catalog:'
-        version: 1.2.9
-      remult:
-        specifier: 'catalog:'
-        version: 3.0.5
-    devDependencies:
-      typescript:
-        specifier: 'catalog:'
-        version: 5.8.3
+        specifier: ^4.20.5
+        version: 4.20.5(@cloudflare/workers-types@4.20250620.0)
 
   fastcore:
     dependencies:
       better-auth:
         specifier: 'catalog:'
-        version: 1.2.9
+        version: 1.2.10
       remult:
         specifier: 'catalog:'
         version: 3.0.5
@@ -169,10 +156,10 @@ importers:
     dependencies:
       '@nerdfolio/ba-guest-list':
         specifier: ^0.0.8
-        version: 0.0.8(better-auth@1.2.9)
+        version: 0.0.8(better-auth@1.2.10)
       '@nerdfolio/remult-better-auth':
         specifier: ^0.2.16
-        version: 0.2.16(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.5)
+        version: 0.2.16(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
       '@solidjs/meta':
         specifier: 'catalog:'
         version: 0.29.4(solid-js@1.9.7)
@@ -181,10 +168,10 @@ importers:
         version: 0.15.3(solid-js@1.9.7)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
+        version: 1.1.5(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       better-auth:
         specifier: 'catalog:'
-        version: 1.2.9
+        version: 1.2.10
       cloudflare-context:
         specifier: workspace:*
         version: link:../../package-libs/cloudflare-context
@@ -218,10 +205,10 @@ importers:
         version: 0.9.0(tailwindcss@4.1.10)
       '@nerdfolio/ba-guest-list':
         specifier: ^0.0.8
-        version: 0.0.8(better-auth@1.2.9)
+        version: 0.0.8(better-auth@1.2.10)
       '@nerdfolio/remult-better-auth':
         specifier: ^0.2.16
-        version: 0.2.16(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.5)
+        version: 0.2.16(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
       '@solidjs/meta':
         specifier: 'catalog:'
         version: 0.29.4(solid-js@1.9.7)
@@ -230,10 +217,10 @@ importers:
         version: 0.15.3(solid-js@1.9.7)
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
+        version: 1.1.5(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       better-auth:
         specifier: 'catalog:'
-        version: 1.2.9
+        version: 1.2.10
       class-variance-authority:
         specifier: 'catalog:'
         version: 0.7.1
@@ -343,7 +330,7 @@ importers:
     devDependencies:
       '@solidjs/start':
         specifier: 'catalog:'
-        version: 1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
+        version: 1.1.5(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
@@ -351,13 +338,13 @@ importers:
         specifier: 'catalog:'
         version: 5.8.3
       wrangler:
-        specifier: ^4.20.3
-        version: 4.20.3(@cloudflare/workers-types@4.20250620.0)
+        specifier: ^4.20.5
+        version: 4.20.5(@cloudflare/workers-types@4.20250620.0)
 
   package-libs/remult-d1:
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^4.20250619.0
+        specifier: ^4.20250620.0
         version: 4.20250620.0
       '@types/better-sqlite3':
         specifier: ^7.6.13
@@ -426,7 +413,7 @@ importers:
         version: 0.15.3(solid-js@1.9.7)
       better-auth:
         specifier: 'catalog:'
-        version: 1.2.9
+        version: 1.2.10
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
@@ -622,58 +609,10 @@ packages:
   '@better-fetch/fetch@1.1.18':
     resolution: {integrity: sha512-rEFOE1MYIsBmoMJtQbl32PGHHXuG2hDxvEd7rUHE0vCBoFQVSDqaVs9hkZEtHCxRoY+CljXKFCOuJ8uxqw1LcA==}
 
-  '@biomejs/biome@2.0.0':
-    resolution: {integrity: sha512-BlUoXEOI/UQTDEj/pVfnkMo8SrZw3oOWBDrXYFT43V7HTkIUDkBRY53IC5Jx1QkZbaB+0ai1wJIfYwp9+qaJTQ==}
+  '@biomejs/biome@2.0.3':
+    resolution: {integrity: sha512-OOzzVGDdAtSTofyqfYx4j5ZAlCHWx5kCf/tbmAu6otWyMoxWyzLeIn4o9+2yc81GWgxDAKygcG4mVwsqd7e2Tw==}
     engines: {node: '>=14.21.3'}
     hasBin: true
-
-  '@biomejs/cli-darwin-arm64@2.0.0':
-    resolution: {integrity: sha512-QvqWYtFFhhxdf8jMAdJzXW+Frc7X8XsnHQLY+TBM1fnT1TfeV/v9vsFI5L2J7GH6qN1+QEEJ19jHibCY2Ypplw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@biomejs/cli-darwin-x64@2.0.0':
-    resolution: {integrity: sha512-5JFhls1EfmuIH4QGFPlNpxJQFC6ic3X1ltcoLN+eSRRIPr6H/lUS1ttuD0Fj7rPgPhZqopK/jfH8UVj/1hIsQw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@biomejs/cli-linux-arm64-musl@2.0.0':
-    resolution: {integrity: sha512-Bxsz8ki8+b3PytMnS5SgrGV+mbAWwIxI3ydChb/d1rURlJTMdxTTq5LTebUnlsUWAX6OvJuFeiVq9Gjn1YbCyA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-arm64@2.0.0':
-    resolution: {integrity: sha512-BAH4QVi06TzAbVchXdJPsL0Z/P87jOfes15rI+p3EX9/EGTfIjaQ9lBVlHunxcmoptaA5y1Hdb9UYojIhmnjIw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64-musl@2.0.0':
-    resolution: {integrity: sha512-tiQ0ABxMJb9I6GlfNp0ulrTiQSFacJRJO8245FFwE3ty3bfsfxlU/miblzDIi+qNrgGsLq5wIZcVYGp4c+HXZA==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-linux-x64@2.0.0':
-    resolution: {integrity: sha512-09PcOGYTtkopWRm6mZ/B6Mr6UHdkniUgIG/jLBv+2J8Z61ezRE+xQmpi3yNgUrFIAU4lPA9atg7mhvE/5Bo7Wg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [linux]
-
-  '@biomejs/cli-win32-arm64@2.0.0':
-    resolution: {integrity: sha512-vrTtuGu91xNTEQ5ZcMJBZuDlqr32DWU1r14UfePIGndF//s2WUAmer4FmgoPgruo76rprk37e8S2A2c0psXdxw==}
-    engines: {node: '>=14.21.3'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@biomejs/cli-win32-x64@2.0.0':
-    resolution: {integrity: sha512-2USVQ0hklNsph/KIR72ZdeptyXNnQ3JdzPn3NbjI4Sna34CnxeiYAaZcZzXPDl5PYNFBivV4xmvT3Z3rTmyDBg==}
-    engines: {node: '>=14.21.3'}
-    cpu: [x64]
-    os: [win32]
 
   '@cloudflare/kv-asset-handler@0.4.0':
     resolution: {integrity: sha512-+tv3z+SPp+gqTIcImN9o0hqE9xyfQjI1XD9pL6NuKjua9B1y7mNYv0S9cP+QEbA4ppVgGZEmKOvHX5G5Ei1CVA==}
@@ -779,8 +718,8 @@ packages:
     resolution: {integrity: sha512-Ahk1N+s7urkgj7WvvUND5f8GiWEPfUw0D41hdElaqLgu8wZScI8gdI0q+qWw5N1d35x7GCRH2uk9mi+Uzo9M3g==}
     engines: {node: '>=14.0'}
 
-  '@dotenvx/dotenvx@1.44.2':
-    resolution: {integrity: sha512-2C44+G2dch4cB6zw7+oGQ9VcFQuuVhc5xOzfVvY7iUEj2PRhiVMIB6SpNMK1V5TvpdqrAqCYFjclK18Mh9vwNQ==}
+  '@dotenvx/dotenvx@1.45.1':
+    resolution: {integrity: sha512-wKHPD+/NMMJVBPg3i98uD9jsURDy+Ck6RQRiWf39TlOAzC+Ge1FkmDk3sgeljYZxA3qF6E7SJmvRqC70XQuuVA==}
     hasBin: true
 
   '@ecies/ciphers@0.2.3':
@@ -2080,10 +2019,10 @@ packages:
     peerDependencies:
       solid-js: ^1.8.6
 
-  '@solidjs/start@1.1.4':
-    resolution: {integrity: sha512-ma1TBYqoTju87tkqrHExMReM5Z/+DTXSmi30CCTavtwuR73Bsn4rVGqm528p4sL2koRMfAuBMkrhuttjzhL68g==}
+  '@solidjs/start@1.1.5':
+    resolution: {integrity: sha512-yQknZf4mN4ZFqG6HkDrDDuCg7NnphkQ0jevxXQdfJAffvMixwjTsp4zlFF95t+GIKANYmuGr+1vntGqkGu7tWw==}
     peerDependencies:
-      vinxi: ^0.5.3
+      vinxi: ^0.5.7
 
   '@solidjs/testing-library@0.8.10':
     resolution: {integrity: sha512-qdeuIerwyq7oQTIrrKvV0aL9aFeuwTd86VYD3afdq5HYEwoox1OBTJy4y8A3TFZr8oAR0nujYgCzY/8wgHGfeQ==}
@@ -2201,8 +2140,8 @@ packages:
     resolution: {integrity: sha512-u7ubq1xPBtNiU7Fm+EOWlVWdgFLzuKOa1thhqdscVn8R4dNMUd1VoOjZ6AKmLw201VaUhFtlX+u0pjzI6szX7A==}
     engines: {node: '>=12'}
 
-  '@tanstack/server-functions-plugin@1.121.26':
-    resolution: {integrity: sha512-sWrboLyry52HYaO1HM69VZUCNYoXK9E+0sY8cse9H33LSsU3jo/wc+dtcqhriaUthF//0RZcmVD11oOhOwJZpA==}
+  '@tanstack/server-functions-plugin@1.121.21':
+    resolution: {integrity: sha512-a05fzK+jBGacsSAc1vE8an7lpBh4H0PyIEcivtEyHLomgSeElAJxm9E2It/0nYRZ5Lh23m0okbhzJNaYWZpAOg==}
     engines: {node: '>=12'}
 
   '@testing-library/dom@10.4.0':
@@ -2606,8 +2545,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  better-auth@1.2.9:
-    resolution: {integrity: sha512-WLqBXDzuaCQetQctLGC5oTfGmL32zUvxnM4Y+LZkhwseMaZWq5EKI+c/ZATgz2YkFt7726q659PF8CfB9P1VuA==}
+  better-auth@1.2.10:
+    resolution: {integrity: sha512-nEj1RG4DdLUuJiV5CR93ORyPCptGRBwksaPPCkUtGo9ka+UIlTpaiKoTaTqVLLYlqwX4bOj9tJ32oBNdf2G3Kg==}
 
   better-call@1.0.9:
     resolution: {integrity: sha512-Qfm0gjk0XQz0oI7qvTK1hbqTsBY4xV2hsHAxF8LZfUYl3RaECCIifXuVqtPpZJWvlCCMlQSvkvhhyuApGUba6g==}
@@ -2694,8 +2633,8 @@ packages:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
 
-  caniuse-lite@1.0.30001723:
-    resolution: {integrity: sha512-1R/elMjtehrFejxwmexeXAtae5UO9iSyFn6G/I806CYC/BLyyBk1EPhrKBkWhy6wM6Xnm47dSJQec+tLJ39WHw==}
+  caniuse-lite@1.0.30001724:
+    resolution: {integrity: sha512-WqJo7p0TbHDOythNTqYujmaJTvtYRZrjpP8TCvH6Vb9CYJerJNKamKzIWOM4BkQatWj9H2lYulpdAQNBe7QhNA==}
 
   canonicalize@1.0.8:
     resolution: {integrity: sha512-0CNTVCLZggSh7bc5VkX5WWPWO+cyZbNd07IHIsSXLia/eAq+r836hgk+8BKoEh7949Mda87VUOitx5OddVj64A==}
@@ -2940,8 +2879,8 @@ packages:
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
 
-  cssstyle@4.4.0:
-    resolution: {integrity: sha512-W0Y2HOXlPkb2yaKrCVRjinYKciu/qSLEmK0K9mcfDei3zwlnHFEHAs/Du3cIRwPqY+J4JsiBzUjoHyc8RsJ03A==}
+  cssstyle@4.5.0:
+    resolution: {integrity: sha512-/7gw8TGrvH/0g564EnhgFZogTMVe+lifpB7LWU+PEsiq5o83TUXR3fDbzTRXOJhoJwck5IS9ez3Em5LNMMO2aw==}
     engines: {node: '>=18'}
 
   csstype@3.1.3:
@@ -3510,8 +3449,8 @@ packages:
     resolution: {integrity: sha512-/kP8CAwxzLVEeFrMm4kMmy4CCDlpipyA7MYLVrdJIkV0fYF0UaigQHRsxHiuY/GEea+bh4KSv3TIlgr+2UL6bw==}
     engines: {node: '>=12.0.0'}
 
-  exsolve@1.0.6:
-    resolution: {integrity: sha512-Q05uIdxhPBVBwK29gcPsl2K220xSBy52TZQPdeYWE0zOs8jM+yJ6y5h7jm6cpAo1p+OOMZRIj/Ftku4EQQBLnQ==}
+  exsolve@1.0.7:
+    resolution: {integrity: sha512-VO5fQUzZtI6C+vx4w/4BWJpg3s/5l+6pRQEHzFRM8WFi4XffSP1Z+4qi7GbjWbvRQEbdIco5mIMq+zX4rPuLrw==}
 
   external-editor@3.1.0:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
@@ -4381,8 +4320,8 @@ packages:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
 
-  miniflare@4.20250617.1:
-    resolution: {integrity: sha512-NjwKVzPGCAUgkCOJxHBwgV2Obu3g4/wAJE0JaA9whcYip4VAJwQ1fU9TMtoKLY91jD9ANR221+CqLyqxennjqg==}
+  miniflare@4.20250617.3:
+    resolution: {integrity: sha512-j+LZycT11UdlVeNdaqD0XdNnYnqAL+wXmboz+tNPFgTq6zhD489Ujj3BfSDyEHDCA9UFBLbkc5ByGWBh+pYZ5Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -5904,10 +5843,10 @@ packages:
       yaml:
         optional: true
 
-  vitefu@1.0.6:
-    resolution: {integrity: sha512-+Rex1GlappUyNN6UfwbVZne/9cYC4+R2XDk9xkNXBKMw6HQagdX9PgZ8V2v1WUSK1wfBLp7qbI1+XSNIlB1xmA==}
+  vitefu@1.0.7:
+    resolution: {integrity: sha512-eRWXLBbJjW3X5z5P5IHcSm2yYbYRPb2kQuc+oqsbAl99WB5kVsPbiiox+cymo8twTzifA6itvhr2CmjnaZZp0Q==}
     peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0
     peerDependenciesMeta:
       vite:
         optional: true
@@ -6016,8 +5955,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  wrangler@4.20.3:
-    resolution: {integrity: sha512-ugvmi43CFPbjeQFfhU7EqE1V0ek6ZFv80jzwHcPk/7jPFmOA4ahT5uUU1ga5ZP6vz6lUuG2bLnyl1T5qJah0cg==}
+  wrangler@4.20.5:
+    resolution: {integrity: sha512-tmiyt2vBHszhdzJEDbCpFLU2RiV7/QzvGMV07Zaz4ptqiU2h/lTojyNJAugPpSFNiOuY+k0g3ENNTDQqoUkMFA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     peerDependencies:
@@ -6405,40 +6344,7 @@ snapshots:
 
   '@better-fetch/fetch@1.1.18': {}
 
-  '@biomejs/biome@2.0.0':
-    optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.0.0
-      '@biomejs/cli-darwin-x64': 2.0.0
-      '@biomejs/cli-linux-arm64': 2.0.0
-      '@biomejs/cli-linux-arm64-musl': 2.0.0
-      '@biomejs/cli-linux-x64': 2.0.0
-      '@biomejs/cli-linux-x64-musl': 2.0.0
-      '@biomejs/cli-win32-arm64': 2.0.0
-      '@biomejs/cli-win32-x64': 2.0.0
-
-  '@biomejs/cli-darwin-arm64@2.0.0':
-    optional: true
-
-  '@biomejs/cli-darwin-x64@2.0.0':
-    optional: true
-
-  '@biomejs/cli-linux-arm64-musl@2.0.0':
-    optional: true
-
-  '@biomejs/cli-linux-arm64@2.0.0':
-    optional: true
-
-  '@biomejs/cli-linux-x64-musl@2.0.0':
-    optional: true
-
-  '@biomejs/cli-linux-x64@2.0.0':
-    optional: true
-
-  '@biomejs/cli-win32-arm64@2.0.0':
-    optional: true
-
-  '@biomejs/cli-win32-x64@2.0.0':
-    optional: true
+  '@biomejs/biome@2.0.3': {}
 
   '@cloudflare/kv-asset-handler@0.4.0':
     dependencies:
@@ -6524,7 +6430,7 @@ snapshots:
     transitivePeerDependencies:
       - web-streams-polyfill
 
-  '@dotenvx/dotenvx@1.44.2':
+  '@dotenvx/dotenvx@1.45.1':
     dependencies:
       commander: 11.1.0
       dotenv: 16.5.0
@@ -7156,9 +7062,9 @@ snapshots:
   '@neon-rs/load@0.0.4':
     optional: true
 
-  '@nerdfolio/ba-guest-list@0.0.8(better-auth@1.2.9)':
+  '@nerdfolio/ba-guest-list@0.0.8(better-auth@1.2.10)':
     dependencies:
-      better-auth: 1.2.9
+      better-auth: 1.2.10
       lodash-es: 4.17.21
       zod: 3.25.67
 
@@ -7166,7 +7072,7 @@ snapshots:
     dependencies:
       '@nerdfolio/drizzle-d1-proxy': 0.1.4(cloudflare@4.4.1(encoding@0.1.13))(drizzle-orm@0.43.1(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))
       drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
-      wrangler: 4.20.3(@cloudflare/workers-types@4.20250620.0)
+      wrangler: 4.20.5(@cloudflare/workers-types@4.20250620.0)
     transitivePeerDependencies:
       - '@aws-sdk/client-rds-data'
       - '@cloudflare/workers-types'
@@ -7205,9 +7111,9 @@ snapshots:
       cloudflare: 4.4.1(encoding@0.1.13)
       drizzle-orm: 0.43.1(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7)
 
-  '@nerdfolio/remult-better-auth@0.2.16(better-auth@1.2.9)(magicast@0.3.5)(remult@3.0.5)':
+  '@nerdfolio/remult-better-auth@0.2.16(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)':
     dependencies:
-      better-auth: 1.2.9
+      better-auth: 1.2.10
       c12: 3.0.4(magicast@0.3.5)
       citty: 0.1.6
       remult: 3.0.5
@@ -7748,9 +7654,9 @@ snapshots:
     dependencies:
       solid-js: 1.9.7
 
-  '@solidjs/start@1.1.4(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))':
+  '@solidjs/start@1.1.5(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))':
     dependencies:
-      '@tanstack/server-functions-plugin': 1.121.26(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
+      '@tanstack/server-functions-plugin': 1.121.21(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       '@vinxi/plugin-directives': 0.5.1(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       '@vinxi/server-components': 0.5.1(vinxi@0.5.7(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250620.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
       defu: 6.1.4
@@ -7879,7 +7785,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tanstack/server-functions-plugin@1.121.26(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))':
+  '@tanstack/server-functions-plugin@1.121.21(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))':
     dependencies:
       '@babel/code-frame': 7.26.2
       '@babel/core': 7.27.4
@@ -8409,7 +8315,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  better-auth@1.2.9:
+  better-auth@1.2.10:
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18
@@ -8477,7 +8383,7 @@ snapshots:
 
   browserslist@4.25.0:
     dependencies:
-      caniuse-lite: 1.0.30001723
+      caniuse-lite: 1.0.30001724
       electron-to-chromium: 1.5.171
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.0)
@@ -8507,7 +8413,7 @@ snapshots:
       confbox: 0.2.2
       defu: 6.1.4
       dotenv: 16.5.0
-      exsolve: 1.0.6
+      exsolve: 1.0.7
       giget: 2.0.0
       jiti: 2.4.2
       ohash: 2.0.11
@@ -8558,7 +8464,7 @@ snapshots:
 
   camelcase@8.0.0: {}
 
-  caniuse-lite@1.0.30001723: {}
+  caniuse-lite@1.0.30001724: {}
 
   canonicalize@1.0.8: {}
 
@@ -8787,7 +8693,7 @@ snapshots:
 
   css.escape@1.5.1: {}
 
-  cssstyle@4.4.0:
+  cssstyle@4.5.0:
     dependencies:
       '@asamuzakjp/css-color': 3.2.0
       rrweb-cssom: 0.8.0
@@ -9177,7 +9083,7 @@ snapshots:
 
   expect-type@1.2.1: {}
 
-  exsolve@1.0.6: {}
+  exsolve@1.0.7: {}
 
   external-editor@3.1.0:
     dependencies:
@@ -9729,7 +9635,7 @@ snapshots:
 
   jsdom@26.1.0:
     dependencies:
-      cssstyle: 4.4.0
+      cssstyle: 4.5.0
       data-urls: 5.0.0
       decimal.js: 10.5.0
       html-encoding-sniffer: 4.0.0
@@ -10100,7 +10006,7 @@ snapshots:
 
   min-indent@1.0.1: {}
 
-  miniflare@4.20250617.1:
+  miniflare@4.20250617.3:
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       acorn: 8.14.0
@@ -10265,7 +10171,7 @@ snapshots:
       esbuild: 0.25.5
       escape-string-regexp: 5.0.0
       etag: 1.8.1
-      exsolve: 1.0.6
+      exsolve: 1.0.7
       globby: 14.1.0
       gzip-size: 7.0.0
       h3: 1.15.3
@@ -10602,7 +10508,7 @@ snapshots:
   pkg-types@2.1.0:
     dependencies:
       confbox: 0.2.2
-      exsolve: 1.0.6
+      exsolve: 1.0.7
       pathe: 2.0.3
 
   postcss-values-parser@6.0.2(postcss@8.5.6):
@@ -11543,7 +11449,7 @@ snapshots:
   unenv@2.0.0-rc.17:
     dependencies:
       defu: 6.1.4
-      exsolve: 1.0.6
+      exsolve: 1.0.7
       ohash: 2.0.11
       pathe: 2.0.3
       ufo: 1.6.1
@@ -11823,7 +11729,7 @@ snapshots:
       solid-js: 1.9.7
       solid-refresh: 0.6.3(solid-js@1.9.7)
       vite: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0)
-      vitefu: 1.0.6(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
+      vitefu: 1.0.7(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0))
     optionalDependencies:
       '@testing-library/jest-dom': 6.6.3
     transitivePeerDependencies:
@@ -11857,7 +11763,7 @@ snapshots:
       tsx: 4.19.4
       yaml: 2.8.0
 
-  vitefu@1.0.6(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0)):
+  vitefu@1.0.7(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0)):
     optionalDependencies:
       vite: 6.3.5(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.19.4)(yaml@2.8.0)
 
@@ -11986,13 +11892,13 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20250617.0
       '@cloudflare/workerd-windows-64': 1.20250617.0
 
-  wrangler@4.20.3(@cloudflare/workers-types@4.20250620.0):
+  wrangler@4.20.5(@cloudflare/workers-types@4.20250620.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.0
       '@cloudflare/unenv-preset': 2.3.3(unenv@2.0.0-rc.17)(workerd@1.20250617.0)
       blake3-wasm: 2.1.5
       esbuild: 0.25.4
-      miniflare: 4.20250617.1
+      miniflare: 4.20250617.3
       path-to-regexp: 6.3.0
       unenv: 2.0.0-rc.17
       workerd: 1.20250617.0
