@@ -13,6 +13,6 @@ export const remultApi = solidStartRemultApi({
 	admin: true,
 	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
 	logApiEndPoints: true,
-	// dataProvider: createD1DataProvider(serverEnv.DB),
+	//dataProvider: createD1DataProvider(serverEnv.DB),
 	getUser: makeGetRequestUser(auth, { transformUser: baToRemultUser }),
 })
