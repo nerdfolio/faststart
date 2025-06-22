@@ -14,7 +14,7 @@
 	"keywords": [],
 	"type": "module",
 	"scripts": {
-		"generate-auth-models": "remult-better-auth generate --config ./src/better-auth/config.ts --output ./models/auth-models.ts"
+		"generate-auth": "pnpx @better-auth/cli generate --config ./utils/auth-gen.ts --output ./models/auth-models.ts"
 	},
 	"packageManager": "pnpm@10.10.0",
 	"engines": {
@@ -25,6 +25,7 @@
 		"typescript": "catalog:"
 	},
 	"dependencies": {
+		"@nerdfolio/remult-better-auth": "^0.2.18",
 		"better-auth": "catalog:",
 		"remult": "catalog:"
 	}

@@ -3,7 +3,7 @@
 
 	"configurations": [
 		{
-			"command": "pnpm --filter remult-todo dev",
+			"command": "pnpm --filter fastcore generate-auth-models",
 			"name": "Launch Program",
 			"request": "launch",
 			"type": "node-terminal",
