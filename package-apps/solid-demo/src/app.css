@@ -1,4 +1,4 @@
-@import "tailwindcss" source("../../");
+@import "tailwindcss" source("../../../"); /*source points to monorepo root*/
 @import "tw-animate-css";
 @plugin "@kobalte/tailwindcss";
 
