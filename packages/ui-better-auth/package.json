@@ -20,14 +20,12 @@
 		"@solidjs/router": "catalog:",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:",
-		"solid-ui": "^2.5.1",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
 		"@solidjs/router": "catalog:",
 		"better-auth": "catalog:",
-		"solid-js": "catalog:",
-		"solid-ui": "^2.5.1"
+		"solid-js": "catalog:"
 	},
 	"dependencies": {
 		"ui-base-solid": "workspace:*"
