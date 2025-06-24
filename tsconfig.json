@@ -1,3 +1,17 @@
 {
-	"extends": "./tsconfig.base.json"
+	"extends": "./tsconfig.base.json",
+	"references": [
+		{ "path": "fastcore" },
+		{ "path": "fastapps/remult-todo" },
+		{ "path": "fastapps/solid-demo" },
+		{ "path": "packages/cloudflare-context" },
+		{ "path": "packages/remult-d1" },
+		{ "path": "packages/runscript" },
+		{ "path": "packages/ui-base-solid" },
+		{ "path": "packages/ui-better-auth" }
+	]
 }
+
+//"paths": {
+//	"~/*": ["./src/*"]
+//}

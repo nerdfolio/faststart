@@ -4,17 +4,16 @@
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"composite": true,
+		"declaration": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
-		"jsx": "preserve",
-		"jsxImportSource": "solid-js",
-		"allowJs": true,
+		"allowJs": false,
 		"strict": true,
 		"noEmit": true,
-		"types": ["vinxi/types/client", "vitest/globals", "@testing-library/jest-dom", "unplugin-icons/types/solid"],
-		"isolatedModules": true,
-		"paths": {
-			"~/*": ["./src/*"]
-		}
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"types": ["vinxi/types/client", "vitest/globals", "@testing-library/jest-dom", "unplugin-icons/types/solid"]
 	}
 }

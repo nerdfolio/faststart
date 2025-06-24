@@ -1,17 +1,3 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"allowSyntheticDefaultImports": true,
-		"resolveJsonModule": true,
-		"esModuleInterop": true,
-		"jsx": "preserve",
-		"allowJs": true,
-		"strict": true,
-		"noEmit": true,
-		"declaration": true,
-		"types": ["../../worker-configuration.d.ts", "vinxi/types/client"]
-	},
-	"include": ["src/**/*"]
+	"extends": "../../tsconfig.base.json"
 }
