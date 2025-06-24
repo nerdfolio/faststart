@@ -2,7 +2,7 @@ import { type ParseArgsOptionsConfig, parseArgs } from "node:util"
 
 export type CliParams = {
 	args: string[]
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// biome-ignore lint/suspicious/noExplicitAny: whatev
 	options: Record<string, any>
 }
 

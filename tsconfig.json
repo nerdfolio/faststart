@@ -11,7 +11,3 @@
 		{ "path": "packages/ui-better-auth" }
 	]
 }
-
-//"paths": {
-//	"~/*": ["./src/*"]
-//}
