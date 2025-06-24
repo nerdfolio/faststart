@@ -11,7 +11,7 @@
 		"esModuleInterop": true,
 		"allowJs": false,
 		"strict": true,
-		"noEmit": true,
+		//"noEmit": true,
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"types": ["vinxi/types/client", "vitest/globals", "@testing-library/jest-dom", "unplugin-icons/types/solid"],

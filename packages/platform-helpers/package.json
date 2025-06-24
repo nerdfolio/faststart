@@ -1,12 +1,13 @@
 {
-	"name": "cloudflare-context",
+	"name": "platform-helpers",
 	"version": "0.1.0",
-	"description": "utils to access cloudflare context for relevant frameworks",
+	"description": "helpers for platforms like cloudflare to simplify working with various frameworks like solidstart",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo@github",
 	"exports": {
-		"./solidstart/*": "./src/solidstart/*.ts"
+		"./cloudflare/*": "./src/cloudflare/*.ts",
+		"./cloudflare/solidstart": "./src/cloudflare/solidstart/index.ts"
 	},
 	"keywords": [],
 	"type": "module",

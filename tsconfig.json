@@ -4,7 +4,7 @@
 		{ "path": "fastcore" },
 		{ "path": "fastapps/remult-todo" },
 		{ "path": "fastapps/solid-demo" },
-		{ "path": "packages/cloudflare-context" },
+		{ "path": "packages/platform-helpers" },
 		{ "path": "packages/remult-d1" },
 		{ "path": "packages/runscript" },
 		{ "path": "packages/ui-base-solid" },

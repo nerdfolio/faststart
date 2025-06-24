@@ -1,5 +1,5 @@
 import type { FetchEvent } from "@solidjs/start/server"
-import { type RequestEvent, getRequestEvent } from "solid-js/web"
+import { getRequestEvent, type RequestEvent } from "solid-js/web"
 
 export function getServerEnv() {
 	"use server"
