@@ -2,7 +2,7 @@
 
 import path from "node:path"
 import { setTimeout } from "node:timers/promises"
-import { type CliParams, parseCommandLine } from "./common"
+import { type CliParams, parseCommandLine } from "../packages/runscript/src/common"
 
 async function main() {
 	const { args, options } = parseCommandLine({
