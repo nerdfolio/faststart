@@ -22,76 +22,8 @@ import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import { authClient } from "~/lib/clients"
 
-const pagesMenu: NavMenu = {
-	renderer: MenuAsSidebarGroupPrimary,
-	linkComponent: AA,
-	label: "Pages",
-	items: [
-		{
-			label: "Dashboard",
-			href: "/dashboard",
-			icon: IconDashboard,
-		},
-		{
-			label: "Counter",
-			href: "/counter",
-			icon: IconMathXPlusY,
-		},
-	],
-}
-
-const guidesMenu: NavMenu = {
-	renderer: MenuAsSidebarGroupPrimary,
-	linkComponent: AA,
-	label: "Guides",
-	items: [
-		{
-			label: "SolidJS",
-			href: "#",
-			icon: IconSparkes,
-			children: [
-				{ label: "Getting started", href: "https://www.solidjs.com/guides/getting-started" },
-				{ label: "Tutorial", href: "https://www.solidjs.com/tutorial/introduction_basics" },
-				{ label: "Examples", href: "https://www.solidjs.com/examples" },
-			],
-		},
-		{
-			label: "Solid Start",
-			href: "#",
-			icon: IconRocket,
-			children: [
-				{ label: "Getting started", href: "https://docs.solidjs.com/solid-start/getting-started" },
-				{ label: "Solid Router", href: "https://docs.solidjs.com/solid-router" },
-			],
-		},
-	],
-}
-
-const secondaryMenu: NavMenu = {
-	renderer: MenuAsSidebarGroupSecondary,
-	linkComponent: AA,
-	rendererClass: "mt-auto",
-	items: [
-		{
-			label: "Home",
-			href: "/",
-			icon: IconHome,
-		},
-		{
-			label: "About",
-			href: "/about",
-			icon: IconBook,
-		},
-		{
-			label: "Road map",
-			href: "/roadmap",
-			icon: IconListCheck,
-		},
-	],
-}
-
 export default function ProtectedSidebarLayout(props: ParentProps) {
-	const menus = [pagesMenu, guidesMenu, secondaryMenu]
+	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
 	const s = authClient.useSession()
 	const user: Accessor<AvatarUser | undefined> = () => s().data?.user
@@ -108,4 +40,79 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 			</SidebarLayout>
 		</AuthRequired>
 	)
+}
+
+function getPagesMenu() {
+	const pagesMenu: NavMenu = {
+		renderer: MenuAsSidebarGroupPrimary,
+		linkComponent: AA,
+		label: "Pages",
+		items: [
+			{
+				label: "Dashboard",
+				href: "/dashboard",
+				icon: IconDashboard,
+			},
+			{
+				label: "Counter",
+				href: "/counter",
+				icon: IconMathXPlusY,
+			},
+		],
+	}
+	return pagesMenu
+}
+
+function getGuidesMenu() {
+	return {
+		renderer: MenuAsSidebarGroupPrimary,
+		linkComponent: AA,
+		label: "Guides",
+		items: [
+			{
+				label: "SolidJS",
+				href: "#",
+				icon: IconSparkes,
+				children: [
+					{ label: "Getting started", href: "https://www.solidjs.com/guides/getting-started" },
+					{ label: "Tutorial", href: "https://www.solidjs.com/tutorial/introduction_basics" },
+					{ label: "Examples", href: "https://www.solidjs.com/examples" },
+				],
+			},
+			{
+				label: "Solid Start",
+				href: "#",
+				icon: IconRocket,
+				children: [
+					{ label: "Getting started", href: "https://docs.solidjs.com/solid-start/getting-started" },
+					{ label: "Solid Router", href: "https://docs.solidjs.com/solid-router" },
+				],
+			},
+		],
+	} as NavMenu
+}
+
+function getSecondaryMenu() {
+	return {
+		renderer: MenuAsSidebarGroupSecondary,
+		linkComponent: AA,
+		rendererClass: "mt-auto",
+		items: [
+			{
+				label: "Home",
+				href: "/",
+				icon: IconHome,
+			},
+			{
+				label: "About",
+				href: "/about",
+				icon: IconBook,
+			},
+			{
+				label: "Road map",
+				href: "/roadmap",
+				icon: IconListCheck,
+			},
+		],
+	} as NavMenu
 }
