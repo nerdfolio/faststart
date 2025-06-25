@@ -8,6 +8,7 @@ import type { BetterAuthClient } from "./types"
 
 export default function LoginCard(
 	props: ComponentProps<"div"> & {
+		callbackUrl: string
 		authClient: BetterAuthClient
 		magicLink?: boolean
 		emailPassword?: boolean
@@ -16,10 +17,11 @@ export default function LoginCard(
 	const [local, rest] = splitProps(props, ["class", "magicLink", "emailPassword"])
 
 	const { magicLink = true, emailPassword = false } = local
-	const callbackURL = "/dashboard" as const
 
 	const [errorMsg, setErrorMsg] = createSignal("")
 	const [successMsg, setSuccessMsg] = createSignal("")
+
+	console.log("props", props)
 
 	return (
 		<div class={cn("flex flex-col gap-6", local.class)} {...rest}>
@@ -33,7 +35,7 @@ export default function LoginCard(
 						<Show when={emailPassword}>
 							<EmailPasswordForm
 								authClient={props.authClient}
-								callbackUrl={callbackURL}
+								callbackUrl={props.callbackUrl}
 								setErrorMsg={setErrorMsg}
 								setSuccessMsg={setSuccessMsg}
 							/>
@@ -41,7 +43,7 @@ export default function LoginCard(
 						<Show when={magicLink}>
 							<MagicLinkForm
 								authClient={props.authClient}
-								callbackUrl={callbackURL}
+								callbackUrl={props.callbackUrl}
 								setErrorMsg={setErrorMsg}
 								setSuccessMsg={setSuccessMsg}
 							/>

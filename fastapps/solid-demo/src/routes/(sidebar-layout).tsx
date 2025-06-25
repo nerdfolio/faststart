@@ -29,7 +29,7 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 	const user: Accessor<AvatarUser | undefined> = () => s().data?.user
 
 	return (
-		<AuthRequired authClient={authClient}>
+		<AuthRequired session={s}>
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
