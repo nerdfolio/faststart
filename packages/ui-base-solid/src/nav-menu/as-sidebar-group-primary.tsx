@@ -16,7 +16,7 @@ import {
 } from "../ui/sidebar"
 import type { NavMenuItem } from "./types"
 
-export default function MenuAsSidebarGroupPrimary(
+export function MenuAsSidebarGroupPrimary(
 	props: {
 		label?: string
 		items: NavMenuItem[]

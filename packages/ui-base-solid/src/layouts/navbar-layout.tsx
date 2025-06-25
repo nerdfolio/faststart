@@ -1,6 +1,6 @@
 import type { ComponentProps, JSXElement } from "solid-js"
 
-export default function NavbarLayout(props: ComponentProps<"div">) {
+export function NavbarLayout(props: ComponentProps<"div">) {
 	return <div>{props.children}</div>
 }
 

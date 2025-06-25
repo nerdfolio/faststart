@@ -17,6 +17,7 @@
 		"@kobalte/tailwindcss": "catalog:",
 		"@nerdfolio/ba-guest-list": "^0.0.8",
 		"@nerdfolio/remult-better-auth": "^0.2.18",
+		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
@@ -28,7 +29,6 @@
 		"remult": "catalog:",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
-		"ui-base-solid": "workspace:*",
 		"ui-better-auth": "workspace:*",
 		"vinxi": "catalog:",
 		"zod": "catalog:"

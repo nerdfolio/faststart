@@ -10,7 +10,7 @@ import {
 } from "../ui/navigation-menu"
 import { type AvatarUser, UserAvatar } from "../ui/user-avatar"
 
-export default function UserNavbarMenu(props: {
+export function UserNavbarMenu(props: {
 	user: Accessor<AvatarUser | undefined>
 	signInUrl: string
 	signOut: () => Promise<unknown>

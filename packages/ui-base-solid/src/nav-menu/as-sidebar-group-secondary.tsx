@@ -8,7 +8,7 @@ import type { NavMenuItem } from "./types"
 Sidebar menu group with simpler items that has no subitem.
 Rendered smaller to be a secondary menu, typically at the bottom of sidebar.
 */
-export default function MenuAsSidebarGroupSecondary(
+export function MenuAsSidebarGroupSecondary(
 	props: ComponentProps<typeof SidebarGroup> & {
 		label?: string
 		items: NavMenuItem[]

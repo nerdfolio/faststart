@@ -6,7 +6,6 @@
 		{ "path": "fastapps/solid-demo" },
 		{ "path": "packages/platform-helpers" },
 		{ "path": "packages/remult-d1" },
-		{ "path": "packages/runscript" },
 		{ "path": "packages/ui-base-solid" },
 		{ "path": "packages/ui-better-auth" }
 	]

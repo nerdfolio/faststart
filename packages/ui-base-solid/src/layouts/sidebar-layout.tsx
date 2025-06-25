@@ -14,7 +14,7 @@ import {
 	SidebarTrigger,
 } from "../ui/sidebar"
 
-export default function SidebarLayout(props: ParentProps) {
+export function SidebarLayout(props: ParentProps) {
 	return <SidebarProvider>{props.children}</SidebarProvider>
 }
 

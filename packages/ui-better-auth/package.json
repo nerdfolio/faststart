@@ -28,6 +28,6 @@
 		"solid-js": "catalog:"
 	},
 	"dependencies": {
-		"ui-base-solid": "workspace:*"
+		"@nerdfolio/ui-base-solid": "workspace:*"
 	}
 }

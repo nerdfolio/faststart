@@ -1,4 +1,3 @@
-import type { Accessor, ParentProps } from "solid-js"
 import {
 	IconBook,
 	IconDashboard,
@@ -7,17 +6,18 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "ui-base-solid/icons"
-import { SidebarLayout } from "ui-base-solid/layouts"
+} from "@nerdfolio/ui-base-solid/icons"
+import { SidebarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import {
 	MenuAsSidebarGroupPrimary,
 	MenuAsSidebarGroupSecondary,
 	type NavMenu,
 	NavMenus,
 	UserSidebarMenu,
-} from "ui-base-solid/nav-menu"
-import AA from "ui-base-solid/solidstart/aa"
-import type { AvatarUser } from "ui-base-solid/ui/user-avatar"
+} from "@nerdfolio/ui-base-solid/nav-menu"
+import { AA } from "@nerdfolio/ui-base-solid/solidstart"
+import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
+import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import { authClient } from "~/lib/clients"

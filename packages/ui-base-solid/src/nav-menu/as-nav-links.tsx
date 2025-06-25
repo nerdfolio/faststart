@@ -3,7 +3,7 @@ import type { LinkComponent } from "../ui/default-link"
 import { cn } from "../utils"
 import type { NavMenuItem } from "./types"
 
-export default function MenuAsNavLinks(
+export function MenuAsNavLinks(
 	props: ComponentProps<"nav"> & {
 		items: NavMenuItem[]
 		label?: string

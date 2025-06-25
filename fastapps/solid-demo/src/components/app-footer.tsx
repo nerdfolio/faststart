@@ -1,7 +1,6 @@
-import { MenuAsNavLinks } from "ui-base-solid/nav-menu"
-import AA from "ui-base-solid/solidstart/aa"
-import Footer from "ui-base-solid/ui/footer"
-import SocialLinks from "ui-base-solid/ui/social-links"
+import { MenuAsNavLinks } from "@nerdfolio/ui-base-solid/nav-menu"
+import { AA } from "@nerdfolio/ui-base-solid/solidstart"
+import { Footer, SocialLinks } from "@nerdfolio/ui-base-solid/ui"
 import { copyrightStatement } from "./app-branding"
 
 const footerLinks = [

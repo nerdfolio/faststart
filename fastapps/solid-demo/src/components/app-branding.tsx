@@ -1,6 +1,6 @@
+import { IconSolidjs } from "@nerdfolio/ui-base-solid/icons"
+import { cn } from "@nerdfolio/ui-base-solid/utils"
 import type { ComponentProps } from "solid-js"
-import { IconSolidjs } from "ui-base-solid/icons"
-import { cn } from "ui-base-solid/utils"
 
 export const appName = __APP_INFO__.name
 export const appLegalName = __APP_INFO__.legalName

@@ -1,8 +1,6 @@
+import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, useNavigate, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
-import { Button } from "ui-base-solid/ui/button"
-import { Input } from "ui-base-solid/ui/input"
-import Spinner from "ui-base-solid/ui/spinner"
 import type { BetterAuthClient } from "../types"
 
 export default function EmailPasswordForm(props: {

@@ -1,6 +1,6 @@
 import { type ComponentProps, For } from "solid-js"
-import { cn } from "../utils"
 import { IconBluesky, IconGithub, IconX } from "../icons"
+import { cn } from "../utils"
 
 const ICON_MAP = {
 	github: IconGithub,
@@ -9,7 +9,7 @@ const ICON_MAP = {
 } as const
 type SocialType = keyof typeof ICON_MAP
 
-export default function SocialLinks(
+export function SocialLinks(
 	props: ComponentProps<"div"> & { linkClass?: string; socialLinks: Record<SocialType, string> }
 ) {
 	return (

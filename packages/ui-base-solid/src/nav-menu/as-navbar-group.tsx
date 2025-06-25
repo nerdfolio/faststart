@@ -4,11 +4,7 @@ import DefaultLink from "../ui/default-link"
 import { NavigationMenu, NavigationMenuTrigger } from "../ui/navigation-menu"
 import type { NavMenuItem } from "./types"
 
-export default function MenuAsNavbarGroup(props: {
-	items: NavMenuItem[]
-	linkComponent?: LinkComponent
-	linkClass?: string
-}) {
+export function MenuAsNavbarGroup(props: { items: NavMenuItem[]; linkComponent?: LinkComponent; linkClass?: string }) {
 	const Link = props.linkComponent ?? DefaultLink
 	return (
 		<NavigationMenu class="flex">
