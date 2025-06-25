@@ -1,2 +1,2 @@
-export { default as NavbarLayout } from "./navbar-layout"
-export { default as SidebarLayout } from "./sidebar-layout"
+export * from './navbar-layout';
+export * from './sidebar-layout';

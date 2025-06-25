@@ -1,21 +1,50 @@
 {
 	"name": "ui-base-solid",
 	"version": "0.1.0",
-	"description": "ui component and utilities that can be reuseable",
+	"description": "ui component and utilities that can be reuseable for solidjs",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./*": "./src/*.tsx",
+		"./icons": "./src/icons.tsx",
 		"./utils": "./src/utils.ts",
 		"./layouts": "./src/layouts/index.tsx",
 		"./nav-menu": "./src/nav-menu/index.tsx",
-		"./ui/*": "./src/ui/*.tsx",
-		"./solidstart/*": "./src/solidstart/*.tsx"
+		"./ui": "./src/ui/index.tsx",
+		"./solidstart": "./src/solidstart/index.tsx"
+	},
+	"publishConfig": {
+		"exports": {
+			"./ui": {
+				"import": "./dist/ui.js",
+				"types": "./dist/ui.d.ts"
+			},
+			"./layouts": {
+				"import": "./dist/layouts.js",
+				"types": "./dist/layouts.d.ts"
+			},
+			"./nav-menu": {
+				"import": "./dist/nav-menu.js",
+				"types": "./dist/nav-menu.d.ts"
+			},
+			"./solidstart": {
+				"import": "./dist/solidstart.js",
+				"types": "./dist/solidstart.d.ts"
+			},
+			"./icons": {
+				"import": "./dist/icons.js",
+				"types": "./dist/icons.d.ts"
+			},
+			"./utils": {
+				"import": "./dist/utils.js",
+				"types": "./dist/utils.d.ts"
+			}
+		}
 	},
 	"keywords": [],
 	"type": "module",
 	"scripts": {
+		"build": "barrelize && vite build",
 		"solid-ui:add": "pnpx solidui-cli@latest add"
 	},
 	"packageManager": "pnpm@10.10.0",
@@ -27,11 +56,14 @@
 		"@kobalte/core": "catalog:",
 		"@kobalte/tailwindcss": "catalog:",
 		"@solidjs/router": "catalog:",
+		"barrelize": "^1.6.1",
 		"class-variance-authority": "catalog:",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
 		"typescript": "catalog:",
-		"unplugin-icons": "catalog:"
+		"unplugin-icons": "catalog:",
+		"vite": "^6.3.5",
+		"vite-plugin-dts": "^4.5.4"
 	},
 	"peerDependencies": {
 		"@kobalte/core": "catalog:",

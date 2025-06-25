@@ -1,0 +1,41 @@
+{
+	"$schema": "node_modules/barrelize/schema.json",
+	"barrels": [
+		{
+			"root": "src/ui",
+			"name": "index.tsx",
+			"include": ["**/*.ts", "**/*.tsx"],
+			"exclude": ["**/*.test.ts", "**/*.test.tsx", "index.tsx"],
+			"replace": {
+				"/\\.tsx?$/": ""
+			}
+		},
+		{
+			"root": "src/layouts",
+			"name": "index.tsx",
+			"include": ["**/*.ts", "**/*.tsx"],
+			"exclude": ["**/*.test.ts", "**/*.test.tsx", "index.tsx"],
+			"replace": {
+				"/\\.tsx?$/": ""
+			}
+		},
+		{
+			"root": "src/nav-menu",
+			"name": "index.tsx",
+			"include": ["**/*.ts", "**/*.tsx"],
+			"exclude": ["**/*.test.ts", "**/*.test.tsx", "index.tsx"],
+			"replace": {
+				"/\\.tsx?$/": ""
+			}
+		},
+		{
+			"root": "src/solidstart",
+			"name": "index.tsx",
+			"include": ["**/*.ts", "**/*.tsx"],
+			"exclude": ["**/*.test.ts", "**/*.test.tsx", "index.tsx"],
+			"replace": {
+				"/\\.tsx?$/": ""
+			}
+		}
+	]
+}
