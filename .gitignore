@@ -29,6 +29,7 @@ node_modules
 # Temp
 gitignore
 zztemp
+zzdb
 
 # System Files
 .DS_Store

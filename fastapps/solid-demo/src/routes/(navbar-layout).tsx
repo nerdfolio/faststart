@@ -1,5 +1,5 @@
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
-import { MenuAsNavbarGroup, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
+import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
 import { A } from "@solidjs/router"
 import type { ComponentProps } from "solid-js"
