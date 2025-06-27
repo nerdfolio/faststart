@@ -2,12 +2,13 @@ import { defineConfig } from "@solidjs/start/config"
 import tailwindcss from "@tailwindcss/vite"
 import Icons from "unplugin-icons/vite"
 import { mergeConfig } from "vite"
+import nodePolyfills from "vite-plugin-node-stdlib-browser"
 import tsconfigPaths from "vite-tsconfig-paths"
 import { viteBaseConfig } from "../../root-config"
 
 export default defineConfig({
 	vite: mergeConfig(viteBaseConfig, {
-		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
+		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true }), nodePolyfills()],
 		define: {
 			__APP_INFO__: {
 				name: "Solid Demo",
@@ -28,7 +29,7 @@ export default defineConfig({
 			plugins: [
 				["@babel/plugin-proposal-decorators", { version: "legacy" }],
 				["@babel/plugin-transform-class-properties"],
-				["@babel/plugin-transform-private-methods"]
+				["@babel/plugin-transform-private-methods"],
 			],
 		},
 	},

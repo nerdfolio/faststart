@@ -4,6 +4,7 @@ import { Account, Session, User, Verification } from "fastcore/models/auth-model
 import { Task, TasksController } from "fastcore/models/task"
 import { baToRemultUser } from "fastcore/utils/remult-ba"
 import { remultApi as solidStartRemultApi } from "remult/remult-solid-start"
+import { JsonFileDataProvider } from "remult/server"
 import { auth } from "./auth"
 
 export const remultApi = solidStartRemultApi({
@@ -12,6 +13,7 @@ export const remultApi = solidStartRemultApi({
 	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
 	logApiEndPoints: true,
 	admin: true,
+	dataProvider: new JsonFileDataProvider(import.meta.env.VITE_REMULT_DB_PATH),
 	// dataProvider: createD1DataProvider(serverEnv.DB),
 	getUser: makeGetRequestUser(auth, { transformUser: baToRemultUser }),
 })

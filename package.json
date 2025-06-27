@@ -35,7 +35,6 @@
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
 		"vinxi": "catalog:",
-		"vite": "^7.0.0",
 		"vite-plugin-doctest": "^1.1.1",
 		"vite-plugin-solid": "^2.11.7",
 		"vite-tsconfig-paths": "^5.1.4",
