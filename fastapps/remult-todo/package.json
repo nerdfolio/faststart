@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"@nerdfolio/ba-guest-list": "^0.0.9",
-		"@nerdfolio/remult-better-auth": "^0.2.18",
+		"@nerdfolio/remult-better-auth": "^0.2.19",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",

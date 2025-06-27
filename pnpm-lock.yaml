@@ -145,8 +145,8 @@ importers:
         specifier: ^0.0.9
         version: 0.0.9(better-auth@1.2.10)
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.18
-        version: 0.2.18(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
+        specifier: ^0.2.19
+        version: 0.2.19(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
       '@solidjs/meta':
         specifier: 'catalog:'
         version: 0.29.4(solid-js@1.9.7)
@@ -194,8 +194,8 @@ importers:
         specifier: ^0.0.9
         version: 0.0.9(better-auth@1.2.10)
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.18
-        version: 0.2.18(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
+        specifier: ^0.2.19
+        version: 0.2.19(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
       '@nerdfolio/ui-base-solid':
         specifier: workspace:*
         version: link:../../packages/ui-base-solid
@@ -312,8 +312,8 @@ importers:
   fastcore:
     dependencies:
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.2.18
-        version: 0.2.18(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
+        specifier: ^0.2.19
+        version: 0.2.19(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)
       better-auth:
         specifier: 'catalog:'
         version: 1.2.10
@@ -1494,8 +1494,8 @@ packages:
     peerDependencies:
       better-auth: 1.2.9
 
-  '@nerdfolio/remult-better-auth@0.2.18':
-    resolution: {integrity: sha512-6GE4XGaOPle4r97Ic3UvAY0v1MwYMgR5jolHgGiqSInspeIuGYJGXePI+z8Cf/eO2DoMID0AO5mHUQ//XJ6foA==}
+  '@nerdfolio/remult-better-auth@0.2.19':
+    resolution: {integrity: sha512-Gdl6991k/DXbZFZKH8HszxCK0QnESFM654LVSwPsvNWeZnQ5PKfYE4BoEP9xp4WEJluiQNhWAXhXvtwAWjvE4w==}
     engines: {node: '>=22', pnpm: '>=10'}
     hasBin: true
     peerDependencies:
@@ -6992,7 +6992,7 @@ snapshots:
       lodash-es: 4.17.21
       zod: 3.25.67
 
-  '@nerdfolio/remult-better-auth@0.2.18(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)':
+  '@nerdfolio/remult-better-auth@0.2.19(better-auth@1.2.10)(magicast@0.3.5)(remult@3.0.5)':
     dependencies:
       better-auth: 1.2.10
       c12: 3.0.4(magicast@0.3.5)
