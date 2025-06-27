@@ -47,5 +47,10 @@
 	"packageManager": "pnpm@10.12.1+sha256.889bac470ec93ccc3764488a19d6ba8f9c648ad5e50a9a6e4be3768a5de387a3",
 	"dependencies": {
 		"@dotenvx/dotenvx": "catalog:"
+	},
+	"pnpm": {
+		"overrides": {
+			"jose": "6.0.11"
+		}
 	}
 }
