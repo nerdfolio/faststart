@@ -27,6 +27,8 @@ export const coreBetterAuthConfig = {
 // }
 
 export function initBetterAuth(opts: BetterAuthOptions) {
+	"user server"
+
 	const plugins = [...(coreBetterAuthConfig.plugins ?? []), ...(opts.plugins ?? [])]
 	const mergedOpts = {
 		...coreBetterAuthConfig,

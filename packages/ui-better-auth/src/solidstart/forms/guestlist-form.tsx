@@ -1,6 +1,6 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
-import type { Setter } from "solid-js"
+import { type Setter, Suspense } from "solid-js"
 import type { BetterAuthClient } from "../types"
 
 export default function GuestListForm(props: {
@@ -15,7 +15,6 @@ export default function GuestListForm(props: {
 
 	const signInAction = action(
 		async (formData: FormData) => {
-			console.log("SignInAction----")
 			const { error } = await props.authClient.signIn.guestList({
 				name: formData.get("name")?.toString() ?? "",
 				fetchOptions: {
@@ -26,7 +25,6 @@ export default function GuestListForm(props: {
 			})
 
 			if (error) {
-				console.log("error", error)
 				props.setErrorMsg(error?.message ?? error.statusText)
 			} else {
 				formRef.reset()
@@ -39,25 +37,30 @@ export default function GuestListForm(props: {
 
 	const submission = useSubmission(signInAction)
 
-	const guestNames = createAsync(async () => {
-		const names = await props.authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
-		console.log("guest names", names)
-		return names
-	})
+	const placeholder = createAsync<string>(
+		async () => {
+			const names = await props.authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
+			console.log("guest names:", names)
+			return names
+		},
+		{ initialValue: "Enter guest name" }
+	)
 
 	return (
-		<form action={signInAction} method="post" ref={formRef}>
-			<div class="flex flex-col gap-6">
-				<Input name="name" placeholder={guestNames()} required />
-				<Button type="submit" class="w-full relative" disabled={submission.pending}>
-					Sign in
-					{submission.pending ? (
-						<span class="absolute w-full px-2 place-items-end">
-							<Spinner />
-						</span>
-					) : null}
-				</Button>
-			</div>
-		</form>
+		<Suspense>
+			<form action={signInAction} method="post" ref={formRef}>
+				<div class="flex flex-col gap-6">
+					<Input name="name" placeholder={placeholder()} required />
+					<Button type="submit" class="w-full relative" disabled={submission.pending}>
+						Sign in
+						{submission.pending ? (
+							<span class="absolute w-full px-2 place-items-end">
+								<Spinner />
+							</span>
+						) : null}
+					</Button>
+				</div>
+			</form>
+		</Suspense>
 	)
 }
