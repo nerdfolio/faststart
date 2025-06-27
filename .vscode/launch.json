@@ -3,7 +3,7 @@
 
 	"configurations": [
 		{
-			"command": "pnpm --filter fastcore generate-auth-models",
+			"command": "pnpm --filter solid-demo dev",
 			"name": "Launch Program",
 			"request": "launch",
 			"type": "node-terminal",

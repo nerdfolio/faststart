@@ -15,6 +15,7 @@ export default function GuestListForm(props: {
 
 	const signInAction = action(
 		async (formData: FormData) => {
+			console.log("SignInAction----")
 			const { error } = await props.authClient.signIn.guestList({
 				name: formData.get("name")?.toString() ?? "",
 				fetchOptions: {
@@ -32,7 +33,7 @@ export default function GuestListForm(props: {
 			}
 		},
 		{
-			name: "signInGuestList",
+			name: "signInGuest",
 		}
 	)
 
