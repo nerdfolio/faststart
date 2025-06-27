@@ -47,7 +47,7 @@ export default function GuestListForm(props: {
 	return (
 		<form action={signInAction} method="post" ref={formRef}>
 			<div class="flex flex-col gap-6">
-				<Input name="name" placeholder={guestNames() ?? "Enter guest name"} required />
+				<Input name="name" placeholder={guestNames()} required />
 				<Button type="submit" class="w-full relative" disabled={submission.pending}>
 					Sign in
 					{submission.pending ? (
