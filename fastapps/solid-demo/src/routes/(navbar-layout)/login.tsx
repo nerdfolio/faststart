@@ -8,7 +8,7 @@ export default function LoginPage() {
 		<div class="flex min-h-[75svh] flex-col items-center justify-center">
 			<div class="flex w-full max-w-sm flex-col gap-6">
 				<AppBranding class="text-muted-foreground" />
-				<LoginCard authClient={authClient} callbackUrl="/dashboard" />
+				<LoginCard authClient={authClient} successUrl="/dashboard" guestList />
 				<DemoCredentials class="self-center text-muted-foreground text-sm mt-4" />
 			</div>
 		</div>

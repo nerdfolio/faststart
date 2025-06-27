@@ -1,9 +1,9 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
-import { action, useNavigate, useSubmission } from "@solidjs/router"
+import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
 import type { BetterAuthClient } from "../types"
 
-export default function EmailPasswordForm(props: {
+export default function GuestListForm(props: {
 	successUrl: string
 	authClient: BetterAuthClient
 	setErrorMsg: Setter<string>
@@ -15,35 +15,39 @@ export default function EmailPasswordForm(props: {
 
 	const signInAction = action(
 		async (formData: FormData) => {
-			const { error } = await props.authClient.signIn.email({
-				email: formData.get("email")?.toString() ?? "",
-				password: formData.get("password")?.toString() ?? "",
+			const { error } = await props.authClient.signIn.guestList({
+				name: formData.get("name")?.toString() ?? "",
 				fetchOptions: {
 					onSuccess() {
-						// email signin's callbackURL doesn't work, so we navigate manually
 						navigate(props.successUrl)
 					},
 				},
 			})
 
 			if (error) {
+				console.log("error", error)
 				props.setErrorMsg(error?.message ?? error.statusText)
 			} else {
 				formRef.reset()
 			}
 		},
 		{
-			name: "signInWithEmailPassword",
+			name: "signInGuestList",
 		}
 	)
 
 	const submission = useSubmission(signInAction)
 
+	const guestNames = createAsync(async () => {
+		const names = await props.authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
+		console.log("guest names", names)
+		return names
+	})
+
 	return (
 		<form action={signInAction} method="post" ref={formRef}>
 			<div class="flex flex-col gap-6">
-				<Input name="email" type="email" placeholder="m@example.com" required />
-				<Input name="password" type="password" placeholder="password" required />
+				<Input name="name" placeholder={guestNames() ?? "Enter guest name"} required />
 				<Button type="submit" class="w-full relative" disabled={submission.pending}>
 					Sign in
 					{submission.pending ? (

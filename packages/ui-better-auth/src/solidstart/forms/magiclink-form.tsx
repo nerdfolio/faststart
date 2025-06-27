@@ -4,7 +4,7 @@ import type { Setter } from "solid-js"
 import type { BetterAuthClient } from "~/solidstart/types"
 
 export default function MagicLinkForm(props: {
-	callbackUrl: string
+	successUrl: string
 	authClient: BetterAuthClient
 	setErrorMsg: Setter<string>
 	setSuccessMsg: Setter<string>
@@ -15,7 +15,7 @@ export default function MagicLinkForm(props: {
 		async (formData: FormData) => {
 			const { error } = await props.authClient.signIn.magicLink({
 				email: formData.get("email")?.toString() ?? "",
-				callbackURL: props.callbackUrl,
+				callbackURL: props.successUrl,
 			})
 
 			if (error) {

@@ -6,13 +6,12 @@ import { baToRemultUser } from "fastcore/utils/remult-ba"
 import { remultApi as solidStartRemultApi } from "remult/remult-solid-start"
 import { auth } from "./auth"
 
-const authEntities = [User, Session, Account, Verification]
 export const remultApi = solidStartRemultApi({
-	entities: [Task, ...authEntities],
+	entities: [Task, User, Session, Account, Verification],
 	controllers: [TasksController],
-	// admin: true,
 	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
 	logApiEndPoints: true,
+	admin: true,
 	// dataProvider: createD1DataProvider(serverEnv.DB),
 	getUser: makeGetRequestUser(auth, { transformUser: baToRemultUser }),
 })
