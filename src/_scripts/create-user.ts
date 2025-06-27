@@ -1,7 +1,7 @@
 import { confirm, input, password } from "@inquirer/prompts"
+import { initAuthApi, withDatabase } from "local-script"
 import { z } from "zod"
 import { setupUsers } from "../database/scaffolding/users"
-import { initAuthApi, withDatabase } from "local-script"
 
 export default async function createUser(args: string[]) {
 	const dbTarget = args.includes("--remote") ? "remote" : "local"
