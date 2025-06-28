@@ -1,5 +1,6 @@
 import {
 	IconBook,
+	IconCheckList,
 	IconDashboard,
 	IconHome,
 	IconListCheck,
@@ -15,7 +16,7 @@ import {
 	NavMenus,
 	UserSidebarMenu,
 } from "@nerdfolio/ui-base-solid/nav-menu"
-import { AA } from "@nerdfolio/ui-base-solid/solidstart"
+import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
 import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
 import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired } from "ui-better-auth/solidstart"
@@ -36,7 +37,7 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 					UserMenu={<UserSidebarMenu user={user} signOut={authClient.signOut} />}
 					Menus={<NavMenus menus={menus} />}
 				/>
-				<SidebarLayout.ContentArea>{props.children}</SidebarLayout.ContentArea>
+				<SidebarLayout.ContentArea crumbs={useBreadcrumbs()}>{props.children}</SidebarLayout.ContentArea>
 			</SidebarLayout>
 		</AuthRequired>
 	)
@@ -57,6 +58,11 @@ function getPagesMenu() {
 				label: "Counter",
 				href: "/counter",
 				icon: IconMathXPlusY,
+			},
+			{
+				label: "Todos",
+				href: "/todos",
+				icon: IconCheckList,
 			},
 		],
 	}

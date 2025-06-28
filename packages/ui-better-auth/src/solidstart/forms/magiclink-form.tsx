@@ -26,7 +26,7 @@ export default function MagicLinkForm(props: {
 			}
 		},
 		{
-			name: "signInWithMagicLink",
+			name: "signInMagicLink",
 		}
 	)
 

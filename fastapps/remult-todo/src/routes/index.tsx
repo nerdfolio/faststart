@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from "@solidjs/router"
 import { onMount, Show } from "solid-js"
-import Todo from "~/components/Todo"
+import Todo from "../../../solid-demo/src/components/todos"
 import { authClient, remultClient } from "~/lib/clients"
 
 export default function Home() {

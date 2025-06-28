@@ -5,7 +5,7 @@ import { remultClient } from "~/lib/clients"
 
 const taskRepo = remultClient.repo(Task)
 
-export default function Todo() {
+export default function Todos() {
 	const [tasks, setTasks] = createStore<Task[]>([])
 	const [newTaskTitle, setNewTaskTitle] = createSignal("")
 
