@@ -1,5 +1,5 @@
 "user server"
-import { makeGetRequestUser } from "fastcore/auth/utils"
+import { BetterAuthError } from "better-auth"
 import { Account, Session, User, Verification } from "fastcore/models/auth-models"
 import { Task, TasksController } from "fastcore/models/task"
 import { baToRemultUser } from "fastcore/utils/remult-ba"
@@ -14,5 +14,13 @@ export const remultApi = solidStartRemultApi({
 	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
 	logApiEndPoints: true,
 	//dataProvider: createD1DataProvider(serverEnv.DB),
-	getUser: makeGetRequestUser(auth, { transformUser: baToRemultUser }),
+	getUser: async ({ request }: { request: Request }) => {
+		const s = await auth.api.getSession({ headers: request.headers })
+
+		if (!s) {
+			throw new BetterAuthError("getUser: No session found in request.", JSON.stringify(request))
+		}
+
+		return baToRemultUser(s.user)
+	},
 })
