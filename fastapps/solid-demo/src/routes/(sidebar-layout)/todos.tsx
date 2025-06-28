@@ -1,10 +1,8 @@
-import { onMount, Show } from "solid-js"
+import { onMount } from "solid-js"
 import Todos from "~/components/todos"
-import { authClient, remultClient } from "~/lib/clients"
+import { remultClient } from "~/lib/clients"
 
-export default function Home() {
-	const s = authClient.useSession()
-
+export default function TodosPage() {
 	onMount(async () => {
 		if (!remultClient.user) {
 			await remultClient.initUser()
@@ -12,8 +10,14 @@ export default function Home() {
 	})
 
 	return (
-		<Show when={!s().isPending} fallback={<div>Loading session...</div>}>
-			<Todos />
-		</Show>
+		<div class="place-items-center">
+			<h1>
+				Hello {remultClient.user?.name}. Your roles: {JSON.stringify(remultClient.user?.roles)}
+			</h1>
+
+			<div>
+				<Todos />
+			</div>
+		</div>
 	)
 }

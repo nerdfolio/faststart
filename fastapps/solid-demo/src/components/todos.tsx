@@ -1,3 +1,4 @@
+import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { Task, TasksController } from "fastcore/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
@@ -38,14 +39,15 @@ export default function Todos() {
 		<main>
 			<Show when={taskRepo.metadata.apiInsertAllowed()}>
 				<form onSubmit={addTask}>
-					<input
+					<Input
 						value={newTaskTitle()}
 						placeholder="What needs to be done?"
 						onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
 					/>
-					<button type="submit">Add</button>
+					<Button type="submit">Add</Button>
 				</form>
 			</Show>
+
 			<For each={tasks}>
 				{(task, i) => {
 					async function setCompleted(completed: boolean) {
