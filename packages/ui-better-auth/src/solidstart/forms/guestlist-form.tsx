@@ -1,6 +1,6 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
-import { type Setter, Suspense } from "solid-js"
+import { createDeferred, type Setter, Suspense } from "solid-js"
 import type { LoginStatus } from "../login-card"
 import type { BetterAuthClient } from "../types"
 
@@ -17,17 +17,13 @@ export default function GuestListForm(props: {
 		async (formData: FormData) => {
 			const { error } = await props.authClient.signIn.guestList({
 				name: formData.get("name")?.toString() ?? "",
-				fetchOptions: {
-					onSuccess() {
-						navigate(props.successUrl)
-					},
-				},
 			})
 
 			if (error) {
 				props.setStatus({ error })
 			} else {
 				formRef.reset()
+				navigate(props.successUrl)
 			}
 		},
 		{

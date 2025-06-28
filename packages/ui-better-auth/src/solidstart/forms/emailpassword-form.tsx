@@ -18,18 +18,13 @@ export default function EmailPasswordForm(props: {
 			const { error } = await props.authClient.signIn.email({
 				email: formData.get("email")?.toString() ?? "",
 				password: formData.get("password")?.toString() ?? "",
-				fetchOptions: {
-					onSuccess() {
-						// email signin's callbackURL doesn't work, so we navigate manually
-						navigate(props.successUrl)
-					},
-				},
 			})
 
 			if (error) {
 				props.setStatus({ error })
 			} else {
 				formRef.reset()
+				navigate(props.successUrl)
 			}
 		},
 		{
