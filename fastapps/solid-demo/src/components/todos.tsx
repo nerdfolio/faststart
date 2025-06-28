@@ -1,4 +1,4 @@
-import { IconDeviceFloppy, IconTrash } from "@nerdfolio/ui-base-solid/icons"
+import { IconDeviceFloppy, IconPlus, IconTrash } from "@nerdfolio/ui-base-solid/icons"
 import { Alert, Button, Checkbox, Input } from "@nerdfolio/ui-base-solid/ui"
 import { Task, TasksController } from "fastcore/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
@@ -38,25 +38,21 @@ export default function Todos() {
 
 	return (
 		<main class="flex flex-col gap-4 min-w-xl">
-			<Show
-				when={taskRepo.metadata.apiInsertAllowed()}
-				fallback={<Alert class="text-muted-foreground">You don't have permission to create tasks</Alert>}
-			>
-				<form onSubmit={addTask} class="w-full">
-					<div class="flex w-full items-center gap-2">
-						<Input
-							type="text"
-							name="task"
-							value={newTaskTitle()}
-							placeholder="What needs to be done?"
-							onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
-						/>
-						<Button type="submit" variant="outline">
-							Add
-						</Button>
-					</div>
-				</form>
-			</Show>
+			<form onSubmit={addTask} class="w-full">
+				<div class="flex w-full items-center gap-2">
+					<Input
+						type="text"
+						name="task"
+						disabled={!taskRepo.metadata.apiInsertAllowed()}
+						value={newTaskTitle()}
+						placeholder={taskRepo.metadata.apiInsertAllowed() ? "What needs to be done?" : "Task creation disabled"}
+						onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
+					/>
+					<Button type="submit" variant="outline" disabled={!taskRepo.metadata.apiInsertAllowed()}>
+						<IconPlus />
+					</Button>
+				</div>
+			</form>
 
 			<For each={tasks}>
 				{(task, i) => {
@@ -86,11 +82,11 @@ export default function Todos() {
 						<div class="flex w-full items-center gap-2">
 							<Checkbox checked={task.completed} onChange={setCompleted} />
 							<Input value={task.title} onInput={(e) => setTasks(i(), "title", e.target.value)} />
-							<Button size="sm" type="button" onClick={saveTask}>
+							<Button size="sm" type="button" variant="outline" onClick={saveTask}>
 								<IconDeviceFloppy />
 							</Button>
 							<Show when={taskRepo.metadata.apiDeleteAllowed()}>
-								<Button size="sm" type="button" onClick={deleteTask}>
+								<Button size="sm" type="button" variant="outline" onClick={deleteTask}>
 									<IconTrash />
 								</Button>
 							</Show>
@@ -109,9 +105,7 @@ export default function Todos() {
 			</div>
 
 			<div class="flex flex-row gap-2 justify-end text-muted-foreground text-sm">
-				<span>{remultClient.user?.name}</span>
-				:
-				<span>{remultClient.user?.roles?.join(", ")}</span>
+				<span>{remultClient.user?.name}</span>:<span>{remultClient.user?.roles?.join(", ")}</span>
 			</div>
 		</main>
 	)
