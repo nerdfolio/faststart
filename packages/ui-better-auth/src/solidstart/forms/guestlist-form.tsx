@@ -3,11 +3,10 @@ import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router
 import { type Setter, Suspense } from "solid-js"
 import type { BetterAuthClient } from "../types"
 
-export default function GuestListForm(props: {
+export default function GuestListForm<S>(props: {
 	successUrl: string
 	authClient: BetterAuthClient
-	setErrorMsg: Setter<string>
-	setSuccessMsg: Setter<string>
+	setStatus: Setter<S>
 }) {
 	let formRef!: HTMLFormElement
 
@@ -25,7 +24,7 @@ export default function GuestListForm(props: {
 			})
 
 			if (error) {
-				props.setErrorMsg(error?.message ?? error.statusText)
+				props.setStatus(error)
 			} else {
 				formRef.reset()
 			}

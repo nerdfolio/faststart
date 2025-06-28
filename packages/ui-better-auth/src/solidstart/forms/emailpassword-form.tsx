@@ -6,7 +6,7 @@ import type { BetterAuthClient } from "../types"
 export default function EmailPasswordForm(props: {
 	successUrl: string
 	authClient: BetterAuthClient
-	setErrorMsg: Setter<string>
+	setError: Setter<unknown>
 	setSuccessMsg: Setter<string>
 }) {
 	let formRef!: HTMLFormElement
@@ -27,7 +27,7 @@ export default function EmailPasswordForm(props: {
 			})
 
 			if (error) {
-				props.setErrorMsg(error?.message ?? error.statusText)
+				props.setError(error)
 			} else {
 				formRef.reset()
 			}
