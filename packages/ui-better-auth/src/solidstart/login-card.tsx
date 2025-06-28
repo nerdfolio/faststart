@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@nerdfolio/ui-base-solid/ui"
 import { cn } from "@nerdfolio/ui-base-solid/utils"
 import { A } from "@solidjs/router"
-import type { BetterAuthError } from "better-auth"
 import { type ComponentProps, createSignal, Show, splitProps } from "solid-js"
 import EmailPasswordForm from "./forms/emailpassword-form"
 import GuestListForm from "./forms/guestlist-form"
@@ -54,7 +53,7 @@ export default function LoginCard(
 						<Show when={local.emailPassword}>
 							<EmailPasswordForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
 						</Show>
-						
+
 						<Show when={local.guestList}>
 							<GuestListForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
 						</Show>
