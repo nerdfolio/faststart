@@ -36,7 +36,7 @@ export default function Todos() {
 	)
 
 	return (
-		<main>
+		<main class="flex flex-col gap-4">
 			<Show
 				when={taskRepo.metadata.apiInsertAllowed()}
 				fallback={<Alert>You don't have permission to create tasks</Alert>}
@@ -77,28 +77,28 @@ export default function Todos() {
 
 					return (
 						<div>
-							<input type="checkbox" checked={task.completed} oninput={(e) => setCompleted(e.target.checked)} />
-							<input value={task.title} onInput={(e) => setTasks(i(), "title", e.target.value)} />
-							<button type="button" onClick={saveTask}>
+							<Input type="checkbox" checked={task.completed} oninput={(e) => setCompleted(e.target.checked)} />
+							<Input value={task.title} onInput={(e) => setTasks(i(), "title", e.target.value)} />
+							<Button type="button" onClick={saveTask}>
 								Save
-							</button>
+							</Button>
 							<Show when={taskRepo.metadata.apiDeleteAllowed()}>
-								<button type="button" onClick={deleteTask}>
+								<Button type="button" onClick={deleteTask}>
 									Delete
-								</button>
+								</Button>
 							</Show>
 						</div>
 					)
 				}}
 			</For>
 
-			<div>
-				<button type="button" onClick={() => setAllCompleted(true)}>
+			<div class="flex flex-row gap-2 justify-between">
+				<Button type="button" onClick={() => setAllCompleted(true)}>
 					Set All Completed
-				</button>
-				<button type="button" onClick={() => setAllCompleted(false)}>
+				</Button>
+				<Button type="button" onClick={() => setAllCompleted(false)}>
 					Set All Uncompleted
-				</button>
+				</Button>
 			</div>
 		</main>
 	)
