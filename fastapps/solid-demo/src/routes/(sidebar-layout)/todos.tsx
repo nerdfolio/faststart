@@ -11,10 +11,6 @@ export default function TodosPage() {
 
 	return (
 		<div class="place-items-center">
-			<h1>
-				Hello {remultClient.user?.name}. Your roles: {JSON.stringify(remultClient.user?.roles)}
-			</h1>
-
 			<div>
 				<Todos />
 			</div>

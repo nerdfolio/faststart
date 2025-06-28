@@ -1,4 +1,4 @@
-import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
+import { Alert, Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { Task, TasksController } from "fastcore/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
@@ -37,7 +37,10 @@ export default function Todos() {
 
 	return (
 		<main>
-			<Show when={taskRepo.metadata.apiInsertAllowed()}>
+			<Show
+				when={taskRepo.metadata.apiInsertAllowed()}
+				fallback={<Alert>You don't have permission to create tasks</Alert>}
+			>
 				<form onSubmit={addTask}>
 					<Input
 						value={newTaskTitle()}
