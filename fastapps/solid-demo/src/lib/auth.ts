@@ -21,3 +21,7 @@ export const auth = initBetterAuth({
 		}),
 	],
 })
+
+export function getAuth() {
+	return auth
+}

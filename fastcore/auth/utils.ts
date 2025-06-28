@@ -7,6 +7,7 @@ export function makeGetRequestUser<U, BAS extends BetterAuthService = BetterAuth
 	{ transformUser }: { transformUser?: (user: (typeof auth.$Infer.Session)["user"] & { role?: string }) => U }
 ) {
 	return async function getRequestUser({ request }: { request: Request }) {
+		console.log("getRequestUser auttthhhh", auth)
 		const s = await auth.api.getSession({ headers: request.headers })
 
 		if (!s) {
