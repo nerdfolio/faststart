@@ -2,12 +2,12 @@ import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
 import type { BetterAuthClient } from "~/solidstart/types"
+import type { LoginStatus } from "../login-card"
 
 export default function MagicLinkForm(props: {
 	successUrl: string
 	authClient: BetterAuthClient
-	setErrorMsg: Setter<string>
-	setSuccessMsg: Setter<string>
+	setStatus: Setter<LoginStatus>
 }) {
 	let formRef!: HTMLFormElement
 
@@ -19,11 +19,10 @@ export default function MagicLinkForm(props: {
 			})
 
 			if (error) {
-				console.error("error", error)
-				props.setErrorMsg(error?.message ?? error.statusText)
+				props.setStatus({ error })
 			} else {
 				formRef.reset()
-				props.setSuccessMsg(`Check ${formData.get("email")} for your magic link.`)
+				props.setStatus({ message: `Check ${formData.get("email")} for your magic link.` })
 			}
 		},
 		{

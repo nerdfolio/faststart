@@ -1,12 +1,13 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
 import { type Setter, Suspense } from "solid-js"
+import type { LoginStatus } from "../login-card"
 import type { BetterAuthClient } from "../types"
 
-export default function GuestListForm<S>(props: {
+export default function GuestListForm(props: {
 	successUrl: string
 	authClient: BetterAuthClient
-	setStatus: Setter<S>
+	setStatus: Setter<LoginStatus>
 }) {
 	let formRef!: HTMLFormElement
 
@@ -24,7 +25,7 @@ export default function GuestListForm<S>(props: {
 			})
 
 			if (error) {
-				props.setStatus(error)
+				props.setStatus({ error })
 			} else {
 				formRef.reset()
 			}
@@ -39,7 +40,6 @@ export default function GuestListForm<S>(props: {
 	const placeholder = createAsync<string>(
 		async () => {
 			const names = await props.authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
-			console.log("guest names:", names)
 			return names
 		},
 		{ initialValue: "Enter guest name" }

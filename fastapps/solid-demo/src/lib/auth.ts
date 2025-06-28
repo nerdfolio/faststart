@@ -17,6 +17,7 @@ export const auth = initBetterAuth({
 				{ name: "Charlie", role: "user" },
 			],
 			revealNames: true,
+			emailDomainName: "example.com",
 		}),
 	],
 })

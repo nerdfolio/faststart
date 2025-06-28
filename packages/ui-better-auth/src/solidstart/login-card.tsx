@@ -8,6 +8,16 @@ import GuestListForm from "./forms/guestlist-form"
 import MagicLinkForm from "./forms/magiclink-form"
 import type { BetterAuthClient } from "./types"
 
+export type LoginStatus = {
+	error?: {
+		code?: string
+		message?: string
+		status: number
+		statusText: string
+	}
+	message?: string
+}
+
 export default function LoginCard(
 	props: ComponentProps<"div"> & {
 		successUrl: string
@@ -26,24 +36,7 @@ export default function LoginCard(
 		"guestList",
 	])
 
-	/*
-	{"code":"NAME_NOT_ON_LIST_TRY_ALICEBOBCHARLIE",
-	"message":"Name not on list. Try: [\"Alice\",\"Bob\",\"Charlie\"]",
-	"status":401,
-	"statusText":"UNAUTHORIZED"}
-	*/
-
-	type LoginStatus = {
-		error?: {
-			code: string
-			message?: string
-			status: number
-			statusText: string
-		}
-		message?: string
-	}
-
-	const [status, setStatus] = createSignal<LoginStatus>()
+	const [status, setStatus] = createSignal<LoginStatus>({})
 
 	return (
 		<div class={cn("flex flex-col gap-2", local.class)} {...rest}>
@@ -54,13 +47,22 @@ export default function LoginCard(
 
 				<CardContent>
 					<div class="flex flex-col gap-12">
+						<Show when={local.magicLink}>
+							<MagicLinkForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
+						</Show>
+
+						<Show when={local.emailPassword}>
+							<EmailPasswordForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
+						</Show>
+						
 						<Show when={local.guestList}>
 							<GuestListForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
 						</Show>
 					</div>
 				</CardContent>
 			</Card>
-			<div class="min-h-8">
+
+			<div class="min-h-8 text-center">
 				{status()?.error ? (
 					<p class="text-sm text-red-500 pt-2">{status()?.error?.message ?? status()?.error?.statusText}</p>
 				) : null}
@@ -73,18 +75,3 @@ export default function LoginCard(
 		</div>
 	)
 }
-
-/*
-
-<Show when={local.emailPassword}>
-							<EmailPasswordForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
-						</Show>
-						<Show when={local.magicLink}>
-							<MagicLinkForm authClient={props.authClient} successUrl={props.successUrl} setStatus={setStatus} />
-						</Show>
-						<div>
-						{errorMsg() ? <p class="text-sm text-red-500 pt-2">{errorMsg()}</p> : null}
-						{successMsg() ? <p class="text-sm text-green-500 pt-2">{successMsg()}</p> : null}
-					</div>
-			</div>
-*/

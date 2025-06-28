@@ -1,13 +1,13 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, useNavigate, useSubmission } from "@solidjs/router"
 import type { Setter } from "solid-js"
+import type { LoginStatus } from "../login-card"
 import type { BetterAuthClient } from "../types"
 
 export default function EmailPasswordForm(props: {
 	successUrl: string
 	authClient: BetterAuthClient
-	setError: Setter<unknown>
-	setSuccessMsg: Setter<string>
+	setStatus: Setter<LoginStatus>
 }) {
 	let formRef!: HTMLFormElement
 
@@ -27,13 +27,13 @@ export default function EmailPasswordForm(props: {
 			})
 
 			if (error) {
-				props.setError(error)
+				props.setStatus({ error })
 			} else {
 				formRef.reset()
 			}
 		},
 		{
-			name: "signInWithEmailPassword",
+			name: "signInEmailPassword",
 		}
 	)
 
