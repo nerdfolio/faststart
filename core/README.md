@@ -1,4 +1,4 @@
-# fastcore
+# core
 
 Package under `faststart`. Meant to be the server-side foundation of `faststart` to get monorepo app (or apps)
 up and running quickly.

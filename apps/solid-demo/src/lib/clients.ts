@@ -1,7 +1,7 @@
 import { guestListClient } from "@nerdfolio/ba-guest-list"
 import { inferAdditionalFields, magicLinkClient } from "better-auth/client/plugins"
 import { createAuthClient } from "better-auth/solid"
-import { makeSessionAccessors } from "fastcore/auth/solidstart"
+import { makeSessionAccessors } from "core/auth/solidstart"
 import { Remult } from "remult"
 import type { auth } from "./auth"
 

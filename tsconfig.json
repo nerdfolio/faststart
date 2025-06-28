@@ -1,9 +1,8 @@
 {
 	"extends": "./tsconfig.base.json",
 	"references": [
-		{ "path": "fastcore" },
-		{ "path": "fastapps/remult-todo" },
-		{ "path": "fastapps/solid-demo" },
+		{ "path": "core" },
+		{ "path": "apps/solid-demo" },
 		{ "path": "packages/platform-helpers" },
 		{ "path": "packages/remult-d1" },
 		{ "path": "packages/ui-base-solid" },

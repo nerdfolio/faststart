@@ -1,6 +1,6 @@
 import { IconDeviceFloppy, IconPlus, IconTrash } from "@nerdfolio/ui-base-solid/icons"
-import { Alert, Button, Checkbox, Input } from "@nerdfolio/ui-base-solid/ui"
-import { Task, TasksController } from "fastcore/models/task"
+import { Button, Checkbox, Input } from "@nerdfolio/ui-base-solid/ui"
+import { Task, TasksController } from "core/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { remultClient } from "~/lib/clients"

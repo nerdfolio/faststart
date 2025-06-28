@@ -18,7 +18,7 @@ import {
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
 import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
-import { baToRemultUser } from "fastcore/utils/remult-ba"
+import { baToRemultUser } from "core/utils/remult-ba"
 import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"

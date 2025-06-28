@@ -1,5 +1,5 @@
 {
-	"name": "fastcore",
+	"name": "core",
 	"version": "0.1.0",
 	"description": "core server-side code for database, migrations, data scaffolding, auth to get a monorepo set up apps quickly started",
 	"private": true,

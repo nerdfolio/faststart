@@ -1,6 +1,6 @@
 packages:
-  - fastcore
-  - fastapps/*
+  - core
+  - apps/*
   - packages/*
 
 catalog:

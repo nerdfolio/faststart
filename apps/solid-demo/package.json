@@ -23,7 +23,7 @@
 		"@solidjs/start": "catalog:",
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
-		"fastcore": "workspace:*",
+		"core": "workspace:*",
 		"lodash-es": "^4.17.21",
 		"platform-helpers": "workspace:*",
 		"remult": "catalog:",

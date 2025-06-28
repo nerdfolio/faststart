@@ -7,7 +7,7 @@
       "label": "Debug with node",
       "adapter": "JavaScript",
       //"program": "$ZED_FILE",
-      "program": "pnpm --filter fastcore generate-auth-models",
+      "program": "pnpm --filter core generate-auth-models",
       "request": "launch",
       "console": "integratedTerminal",
       "type": "pwa-node"
