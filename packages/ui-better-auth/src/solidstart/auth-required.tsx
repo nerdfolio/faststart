@@ -1,6 +1,6 @@
 import { Navigate } from "@solidjs/router"
 import type { User } from "better-auth"
-import { createSignal, type ParentProps, Show } from "solid-js"
+import { createEffect, createSignal, type ParentProps, Show } from "solid-js"
 import type { BetterAuthClient } from "./types"
 
 type AuthRequiredProps = ParentProps & {
@@ -15,7 +15,13 @@ export default function AuthRequired(props: AuthRequiredProps) {
 	props.session()
 	setTimeout(() => {
 		setReady(true)
-	}, 10)
+	}, 50)
+
+	createEffect(() => {
+		if (props.session().data?.user) {
+			props.userCallback?.(props.session().data?.user!)
+		}
+	})
 
 	return (
 		<Show when={!props.session().isPending && ready()}>

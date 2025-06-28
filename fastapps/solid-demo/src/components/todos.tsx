@@ -1,4 +1,5 @@
-import { Alert, Button, Input } from "@nerdfolio/ui-base-solid/ui"
+import { IconDeviceFloppy, IconTrash } from "@nerdfolio/ui-base-solid/icons"
+import { Alert, Button, Checkbox, Input } from "@nerdfolio/ui-base-solid/ui"
 import { Task, TasksController } from "fastcore/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"
@@ -36,18 +37,24 @@ export default function Todos() {
 	)
 
 	return (
-		<main class="flex flex-col gap-4">
+		<main class="flex flex-col gap-4 min-w-xl">
 			<Show
 				when={taskRepo.metadata.apiInsertAllowed()}
-				fallback={<Alert>You don't have permission to create tasks</Alert>}
+				fallback={<Alert class="text-muted-foreground">You don't have permission to create tasks</Alert>}
 			>
-				<form onSubmit={addTask}>
-					<Input
-						value={newTaskTitle()}
-						placeholder="What needs to be done?"
-						onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
-					/>
-					<Button type="submit">Add</Button>
+				<form onSubmit={addTask} class="w-full">
+					<div class="flex w-full items-center gap-2">
+						<Input
+							type="text"
+							name="task"
+							value={newTaskTitle()}
+							placeholder="What needs to be done?"
+							onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
+						/>
+						<Button type="submit" variant="outline">
+							Add
+						</Button>
+					</div>
 				</form>
 			</Show>
 
@@ -55,7 +62,7 @@ export default function Todos() {
 				{(task, i) => {
 					async function setCompleted(completed: boolean) {
 						const updatedTask = await taskRepo.update(task, { completed })
-						setTasks(i(), updatedTask)
+						setTasks(i(), { ...updatedTask })
 					}
 
 					async function saveTask() {
@@ -76,15 +83,15 @@ export default function Todos() {
 					}
 
 					return (
-						<div>
-							<Input type="checkbox" checked={task.completed} oninput={(e) => setCompleted(e.target.checked)} />
+						<div class="flex w-full items-center gap-2">
+							<Checkbox checked={task.completed} onChange={setCompleted} />
 							<Input value={task.title} onInput={(e) => setTasks(i(), "title", e.target.value)} />
-							<Button type="button" onClick={saveTask}>
-								Save
+							<Button size="sm" type="button" onClick={saveTask}>
+								<IconDeviceFloppy />
 							</Button>
 							<Show when={taskRepo.metadata.apiDeleteAllowed()}>
-								<Button type="button" onClick={deleteTask}>
-									Delete
+								<Button size="sm" type="button" onClick={deleteTask}>
+									<IconTrash />
 								</Button>
 							</Show>
 						</div>
@@ -92,13 +99,19 @@ export default function Todos() {
 				}}
 			</For>
 
-			<div class="flex flex-row gap-2 justify-between">
-				<Button type="button" onClick={() => setAllCompleted(true)}>
+			<div class="flex flex-row gap-2 justify-end">
+				<Button type="button" variant="outline" onClick={() => setAllCompleted(true)}>
 					Set All Completed
 				</Button>
-				<Button type="button" onClick={() => setAllCompleted(false)}>
+				<Button type="button" variant="outline" onClick={() => setAllCompleted(false)}>
 					Set All Uncompleted
 				</Button>
+			</div>
+
+			<div class="flex flex-row gap-2 justify-end text-muted-foreground text-sm">
+				<span>{remultClient.user?.name}</span>
+				:
+				<span>{remultClient.user?.roles?.join(", ")}</span>
 			</div>
 		</main>
 	)

@@ -27,13 +27,14 @@ export { default as IconCheckList } from "~icons/tabler/checklist"
 export { default as IconChevronRight } from "~icons/tabler/chevron-right"
 export { default as IconCreditCard } from "~icons/tabler/credit-card"
 export { default as IconDashboard } from "~icons/tabler/dashboard"
+//
+// tabler icons
+//
+export { default as IconDeviceFloppy } from "~icons/tabler/device-floppy"
 export { default as IconExternalLink } from "~icons/tabler/external-link"
 export { default as IconHome } from "~icons/tabler/home"
 export { default as IconListCheck } from "~icons/tabler/list-check"
 export { default as IconSpinner } from "~icons/tabler/loader-3"
-//
-// tabler icons
-//
 export { default as IconLogout } from "~icons/tabler/logout"
 export { default as IconMail } from "~icons/tabler/mail"
 export { default as IconMathXPlusY } from "~icons/tabler/math-x-plus-y"
@@ -43,6 +44,7 @@ export { default as IconSelector } from "~icons/tabler/selector"
 export { default as IconSettings } from "~icons/tabler/settings"
 export { default as IconSparkes } from "~icons/tabler/sparkles"
 export { default as IconTerminal } from "~icons/tabler/terminal-2"
+export { default as IconTrash } from "~icons/tabler/trash"
 export { default as IconWWW } from "~icons/tabler/world-www"
 
 import type anyIcon from "~icons/tabler/external-link"
