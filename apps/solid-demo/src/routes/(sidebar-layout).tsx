@@ -21,18 +21,16 @@ import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
 import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired, useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
-import { authClient } from "~/lib/clients"
 
 export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
-	const { signOut } = useBetterAuth()
+	const { signOut, session } = useBetterAuth()
 
-	const s = authClient.useSession()
-	const user: Accessor<AvatarUser | undefined> = () => s().data?.user
+	const user: Accessor<AvatarUser | undefined> = () => session().data?.user
 
 	return (
-		<AuthRequired session={s}>
+		<AuthRequired>
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
