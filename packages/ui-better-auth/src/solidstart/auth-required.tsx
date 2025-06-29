@@ -1,6 +1,6 @@
 import { Navigate } from "@solidjs/router"
 import { createEffect, createSignal, type ParentProps, Show } from "solid-js"
-import { useBetterAuth } from "~/solid/context"
+import { useBetterAuth } from "../solid/context"
 import type { BetterAuthClient } from "./types"
 
 type AuthRequiredProps = ParentProps & {
@@ -19,6 +19,7 @@ export function AuthRequired(props: AuthRequiredProps) {
 	const { onAuthenticated } = useBetterAuth()
 
 	createEffect(() => {
+		// a way to initialize user in related subsystems like remult
 		if (props.session().data?.user) {
 			onAuthenticated?.(props.session().data?.user!)
 		}

@@ -13,13 +13,6 @@ export const authClient = createAuthClient({
 	],
 })
 
-export async function signOutWithRemult() {
-	const res = await authClient.signOut()
-	remultClient.user = undefined
-	return res
-}
-
-
 
 export const { authUser } = makeSessionAccessors(authClient)
 

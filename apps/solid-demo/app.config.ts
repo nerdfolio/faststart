@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite"
 import Icons from "unplugin-icons/vite"
 import { mergeConfig } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
-import { viteBaseConfig } from "../../root-config"
+import { viteBaseConfig } from "../../vite.config.base"
 
 export default defineConfig({
 	vite: mergeConfig(viteBaseConfig, {

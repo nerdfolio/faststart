@@ -3,9 +3,10 @@ import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
 import { A } from "@solidjs/router"
 import type { ComponentProps } from "solid-js"
+import { useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
-import { authUser, signOutWithRemult } from "~/lib/clients"
+import { authUser } from "~/lib/clients"
 
 const navMenus = [
 	{
@@ -20,11 +21,13 @@ const navMenus = [
 ]
 
 export default function AppNavbarLayout(props: ComponentProps<typeof NavbarLayout>) {
+	const { signOut } = useBetterAuth()
+
 	return (
 		<NavbarLayout>
 			<NavbarLayout.Navbar
 				Branding={<AppBranding href="/" />}
-				UserMenu={<UserNavbarMenu signInUrl="/login" signOut={signOutWithRemult} user={authUser} Link={A} />}
+				UserMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={authUser} Link={A} />}
 				Menus={<NavMenus menus={navMenus} />}
 			/>
 			<NavbarLayout.ContentArea>{props.children}</NavbarLayout.ContentArea>
