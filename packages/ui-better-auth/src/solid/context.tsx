@@ -1,5 +1,5 @@
 import type { User } from "better-auth"
-import type { createAuthClient } from "better-auth/client"
+import type { createAuthClient } from "better-auth/solid"
 import { createContext, type ParentProps, useContext } from "solid-js"
 
 type AuthClient = ReturnType<typeof createAuthClient>
@@ -25,8 +25,8 @@ export function useBetterAuth() {
 export function BetterAuthProvider<C extends AuthClient>(
 	props: ParentProps<{
 		authClient: C
-		onAuthenticated?: (user: User) => void
-		onSignout?: (signOutRes?: unknown) => Promise<void>
+		onAuthenticated?: ContextValue["onAuthenticated"]
+		onSignout?: ContextValue["onSignout"]
 	}>
 ) {
 	const ctx = {
@@ -37,7 +37,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 			}),
 		onSignout: props.onSignout,
 		onAuthenticated: props.onAuthenticated, // may be triggered for login or auth-guard scenarios
-	}
+	} as ContextValue
 
 	return <BetterAuthContext.Provider value={ctx}>{props.children}</BetterAuthContext.Provider>
 }

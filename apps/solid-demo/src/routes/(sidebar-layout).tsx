@@ -18,11 +18,10 @@ import {
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
 import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
-import { baToRemultUser } from "core/utils/remult-ba"
 import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
-import { authClient, remultClient, signOutWithRemult } from "~/lib/clients"
+import { authClient, signOutWithRemult } from "~/lib/clients"
 
 export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
@@ -31,12 +30,7 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 	const user: Accessor<AvatarUser | undefined> = () => s().data?.user
 
 	return (
-		<AuthRequired
-			session={s}
-			userCallback={(user) => {
-				remultClient.user = baToRemultUser(user)
-			}}
-		>
+		<AuthRequired session={s}>
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
