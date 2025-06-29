@@ -9,17 +9,15 @@ import { BetterAuthProvider } from "ui-better-auth/solidstart"
 import { appVersion } from "./components/app-branding"
 import { authClient, remultClient } from "./lib/clients"
 
-export default function App() {
-	const onAuthenticated = (u: User) => {
-		console.log("onAuthenticated. Setting remult user", u)
+function syncRemultUser(u: User | undefined) {
+	if (u) {
 		remultClient.user = baToRemultUser(u)
-	}
-
-	const onSignout = () => {
-		console.log("onSignout. Clearing remult user")
+	} else {
 		remultClient.user = undefined
 	}
+}
 
+export default function App() {
 	return (
 		<Router
 			root={(props) => (
@@ -27,7 +25,7 @@ export default function App() {
 					<Title>SolidStart - with Vitest</Title>
 					<Meta name="appVersion" content={appVersion} />
 					<Suspense>
-						<BetterAuthProvider authClient={authClient} onAuthenticated={onAuthenticated} onSignout={onSignout}>
+						<BetterAuthProvider authClient={authClient} onAuthChange={syncRemultUser}>
 							{props.children}
 						</BetterAuthProvider>
 					</Suspense>

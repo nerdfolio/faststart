@@ -1,6 +1,6 @@
 import type { User } from "better-auth"
 import type { createAuthClient } from "better-auth/solid"
-import { createContext, type ParentProps, useContext } from "solid-js"
+import { createContext, createEffect, type ParentProps, useContext } from "solid-js"
 
 type AuthClient = ReturnType<typeof createAuthClient>
 type ContextValue = {
@@ -9,8 +9,7 @@ type ContextValue = {
 	sessionPending: () => boolean
 	sessionUser: () => User | undefined
 	signOut: AuthClient["signOut"]
-	onSignout?: (signOutRes?: unknown) => void
-	onAuthenticated?: (user: User) => void
+	onAuthChange?: (user: User | undefined) => void
 }
 
 const BetterAuthContext = createContext<ContextValue>()
@@ -28,22 +27,25 @@ export function useBetterAuth() {
 export function BetterAuthProvider<C extends AuthClient>(
 	props: ParentProps<{
 		authClient: C
-		onAuthenticated?: ContextValue["onAuthenticated"]
-		onSignout?: ContextValue["onSignout"]
+		onAuthChange?: ContextValue["onAuthChange"]
 	}>
 ) {
+	const session = props.authClient.useSession()
+	const sessionPending = () => session().isPending
+	const sessionUser = () => session().data?.user
+
+	createEffect(() => {
+		// a way to initialize user in related subsystems like remult
+		props.onAuthChange?.(sessionUser())
+	})
+
 	const ctx = {
 		authClient: props.authClient,
-		session: props.authClient.useSession(),
-		sessionPending: () => ctx.session().isPending,
-		sessionUser: () => ctx.session().data?.user,
-		signOut: async () =>
-			props.authClient.signOut({
-				fetchOptions: { onSuccess: props.onSignout },
-			}),
-		onSignout: props.onSignout,
-		onAuthenticated: props.onAuthenticated, // may be triggered for login or auth-guard scenarios
-	} as ContextValue
+		session,
+		sessionPending,
+		sessionUser,
+		signOut: props.authClient.signOut,
+	}
 
 	return <BetterAuthContext.Provider value={ctx}>{props.children}</BetterAuthContext.Provider>
 }
