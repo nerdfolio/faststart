@@ -22,7 +22,7 @@ import { baToRemultUser } from "core/utils/remult-ba"
 import type { Accessor, ParentProps } from "solid-js"
 import { AuthRequired } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
-import { authClient, remultClient } from "~/lib/clients"
+import { authClient, remultClient, signOutWithRemult } from "~/lib/clients"
 
 export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
@@ -40,7 +40,7 @@ export default function ProtectedSidebarLayout(props: ParentProps) {
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
-					UserMenu={<UserSidebarMenu user={user} signOut={authClient.signOut} />}
+					UserMenu={<UserSidebarMenu user={user} signOut={signOutWithRemult} />}
 					Menus={<NavMenus menus={menus} />}
 				/>
 				<SidebarLayout.ContentArea crumbs={useBreadcrumbs()}>{props.children}</SidebarLayout.ContentArea>

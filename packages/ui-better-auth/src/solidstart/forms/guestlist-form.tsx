@@ -1,6 +1,6 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
-import { createDeferred, type Setter, Suspense } from "solid-js"
+import { type Setter, Suspense } from "solid-js"
 import type { LoginStatus } from "../login-card"
 import type { BetterAuthClient } from "../types"
 
@@ -15,7 +15,7 @@ export default function GuestListForm(props: {
 
 	const signInAction = action(
 		async (formData: FormData) => {
-			const { error } = await props.authClient.signIn.guestList({
+			const {error} = await props.authClient.signIn.guestList({
 				name: formData.get("name")?.toString() ?? "",
 			})
 
