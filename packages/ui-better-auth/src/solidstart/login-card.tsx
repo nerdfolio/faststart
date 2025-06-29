@@ -17,7 +17,7 @@ export type LoginStatus = {
 	message?: string
 }
 
-export default function LoginCard(
+export function LoginCard(
 	props: ComponentProps<"div"> & {
 		successUrl: string
 		authClient: BetterAuthClient

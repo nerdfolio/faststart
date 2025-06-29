@@ -1,2 +1,3 @@
-export { default as AuthRequired } from "./auth-required"
-export { default as LoginCard } from "./login-card"
+export * from "../solid/context"
+export { AuthRequired } from "./auth-required"
+export { LoginCard } from "./login-card"
