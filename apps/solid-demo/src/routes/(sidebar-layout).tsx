@@ -17,24 +17,21 @@ import {
 	UserSidebarMenu,
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
-import type { AvatarUser } from "@nerdfolio/ui-base-solid/ui"
-import type { Accessor, ParentProps } from "solid-js"
+import type { ParentProps } from "solid-js"
 import { AuthRequired, useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 
 export default function ProtectedSidebarLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
-	const { signOut, session } = useBetterAuth()
-
-	const user: Accessor<AvatarUser | undefined> = () => session().data?.user
+	const { signOut, sessionUser } = useBetterAuth()
 
 	return (
 		<AuthRequired>
 			<SidebarLayout>
 				<SidebarLayout.Sidebar
 					Branding={<AppBranding />}
-					UserMenu={<UserSidebarMenu user={user} signOut={signOut} />}
+					UserMenu={<UserSidebarMenu user={sessionUser} signOut={signOut} />}
 					Menus={<NavMenus menus={menus} />}
 				/>
 				<SidebarLayout.ContentArea crumbs={useBreadcrumbs()}>{props.children}</SidebarLayout.ContentArea>

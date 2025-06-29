@@ -11,7 +11,7 @@ import { authClient, remultClient } from "./lib/clients"
 
 export default function App() {
 	const onAuthenticated = (u: User) => {
-		console.log("onAuthenticated. Setting remult user", u.name)
+		console.log("onAuthenticated. Setting remult user", u)
 		remultClient.user = baToRemultUser(u)
 	}
 

@@ -6,7 +6,6 @@ import type { ComponentProps } from "solid-js"
 import { useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
-import { authUser } from "~/lib/clients"
 
 const navMenus = [
 	{
@@ -21,13 +20,13 @@ const navMenus = [
 ]
 
 export default function AppNavbarLayout(props: ComponentProps<typeof NavbarLayout>) {
-	const { signOut } = useBetterAuth()
+	const { signOut, sessionUser } = useBetterAuth()
 
 	return (
 		<NavbarLayout>
 			<NavbarLayout.Navbar
 				Branding={<AppBranding href="/" />}
-				UserMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={authUser} Link={A} />}
+				UserMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={A} />}
 				Menus={<NavMenus menus={navMenus} />}
 			/>
 			<NavbarLayout.ContentArea>{props.children}</NavbarLayout.ContentArea>
