@@ -3,6 +3,13 @@
 
 	"configurations": [
 		{
+			"name": "Launch Chrome",
+			"request": "launch",
+			"type": "chrome",
+			"url": "http://localhost:3000",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
 			"command": "pnpm --filter solid-demo dev",
 			"name": "Launch Program",
 			"request": "launch",

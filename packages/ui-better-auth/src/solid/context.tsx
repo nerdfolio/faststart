@@ -31,8 +31,8 @@ export function BetterAuthProvider<C extends AuthClient>(
 	}>
 ) {
 	const session = props.authClient.useSession()
-	const sessionPending = () => session().isPending
 	const sessionUser = () => session().data?.user
+	const sessionPending = () => session().isPending
 
 	createEffect(() => {
 		// a way to initialize user in related subsystems like remult
