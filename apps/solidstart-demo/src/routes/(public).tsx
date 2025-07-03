@@ -15,6 +15,7 @@ const navMenus = [
 			{ label: "About", href: "/about" },
 			{ label: "Road map", href: "/roadmap" },
 			{ label: "Dashboard", href: "/dashboard" },
+			{ label: "Remult Todos", href: "/todos" },
 		],
 	},
 ]

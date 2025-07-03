@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@nerdfolio/ui-base-solid/ui"
 import { cn } from "@nerdfolio/ui-base-solid/utils"
-import { A, useNavigate } from "@solidjs/router"
+import { A, useNavigate, useSearchParams } from "@solidjs/router"
 import { type ComponentProps, createSignal, Show, splitProps } from "solid-js"
 import { useBetterAuth } from "../solid/context"
 import EmailPasswordForm from "./forms/emailpassword-form"
@@ -10,7 +10,6 @@ import type { OnAuthFormError, OnAuthFormSuccess } from "./types"
 
 export function LoginCard(
 	props: ComponentProps<"div"> & {
-		successUrl?: string
 		magicLink?: boolean
 		emailPassword?: boolean
 		guestList?: boolean
@@ -18,11 +17,15 @@ export function LoginCard(
 ) {
 	const { authClient, signInRedirect } = useBetterAuth()
 	const navigate = useNavigate()
+	const [searchParams] = useSearchParams()
 
-	const [local, rest] = splitProps(props, ["class", "successUrl", "magicLink", "emailPassword", "guestList"])
+	const redirectTo = Array.isArray(searchParams.next)
+		? searchParams.next[0]
+		: (searchParams.next ?? signInRedirect)
+	if (!redirectTo)
+		throw new Error("pass `next` search parameter in url or set `signInRedirect` in BetterAuthProvider")
 
-	const redirectTo = props.successUrl ?? signInRedirect
-	if (!redirectTo) throw new Error("pass `successUrl` prop or set `signInRedirect` in BetterAuthProvider")
+	const [local, rest] = splitProps(props, ["class", "magicLink", "emailPassword", "guestList"])
 
 	const [status, setStatus] = createSignal<{ success: boolean; msg: string }>()
 	const onError: OnAuthFormError = (error) => {
