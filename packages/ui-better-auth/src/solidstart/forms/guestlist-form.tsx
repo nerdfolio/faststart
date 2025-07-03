@@ -1,29 +1,28 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
-import { type Setter, Suspense } from "solid-js"
-import type { LoginStatus } from "../login-card"
-import type { BetterAuthClient } from "../types"
+import { Suspense } from "solid-js"
+import type { BetterAuthClient, OnAuthFormError, OnAuthFormSuccess } from "../types"
 
 export default function GuestListForm(props: {
-	successUrl: string
 	authClient: BetterAuthClient
-	setStatus: Setter<LoginStatus>
+	onError?: OnAuthFormError
+	onSuccess?: OnAuthFormSuccess
 }) {
 	let formRef!: HTMLFormElement
 
-	const navigate = useNavigate()
+	const _navigate = useNavigate()
 
 	const signInAction = action(
 		async (formData: FormData) => {
-			const {error} = await props.authClient.signIn.guestList({
+			const { error, user } = await props.authClient.signIn.guestList({
 				name: formData.get("name")?.toString() ?? "",
 			})
 
 			if (error) {
-				props.setStatus({ error })
+				props.onError?.(error)
 			} else {
 				formRef.reset()
-				navigate(props.successUrl)
+				props.onSuccess?.({ user })
 			}
 		},
 		{

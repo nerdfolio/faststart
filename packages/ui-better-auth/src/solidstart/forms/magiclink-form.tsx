@@ -1,13 +1,12 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
 import { action, useSubmission } from "@solidjs/router"
-import type { Setter } from "solid-js"
-import type { BetterAuthClient } from "~/solidstart/types"
-import type { LoginStatus } from "../login-card"
+import type { BetterAuthClient, OnAuthFormError, OnAuthFormSuccess } from "~/solidstart/types"
 
 export default function MagicLinkForm(props: {
-	successUrl: string
+	callbackUrl: string
 	authClient: BetterAuthClient
-	setStatus: Setter<LoginStatus>
+	onError?: OnAuthFormError
+	onSuccess?: OnAuthFormSuccess
 }) {
 	let formRef!: HTMLFormElement
 
@@ -15,14 +14,17 @@ export default function MagicLinkForm(props: {
 		async (formData: FormData) => {
 			const { error } = await props.authClient.signIn.magicLink({
 				email: formData.get("email")?.toString() ?? "",
-				callbackURL: props.successUrl,
+				callbackURL: props.callbackUrl,
 			})
 
 			if (error) {
-				props.setStatus({ error })
+				props.onError?.(error)
 			} else {
 				formRef.reset()
-				props.setStatus({ message: `Check ${formData.get("email")} for your magic link.` })
+				props.onSuccess?.({
+					authFlowCompleted: false,
+					message: `Check ${formData.get("email")} for your magic link.`,
+				})
 			}
 		},
 		{

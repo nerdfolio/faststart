@@ -25,7 +25,12 @@ export default function App() {
 					<Title>SolidStart - with Vitest</Title>
 					<Meta name="appVersion" content={appVersion} />
 					<Suspense>
-						<BetterAuthProvider authClient={authClient} onAuthChange={syncRemultUser}>
+						<BetterAuthProvider
+							authClient={authClient}
+							onAuthChange={syncRemultUser}
+							signInRedirect="/dashboard"
+							signOutRedirect="/"
+						>
 							{props.children}
 						</BetterAuthProvider>
 					</Suspense>
