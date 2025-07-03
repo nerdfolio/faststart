@@ -3,12 +3,6 @@
 	"version": "0.0.2",
 	"private": true,
 	"scripts": {
-		"dev": "pnpm --filter solid-demo dev",
-		"build": "pnpm --filter solid-demo build",
-		"start": "pnpm --filter solid-demo start",
-		"preview": "pnpm --filter solid-demo preview",
-		"deploy": "pnpm --filter solid-demo run deploy",
-		"typegen": "wrangler types",
 		"test": "vitest run",
 		"test-watch": "vitest",
 		"test-ui": "vitest --ui",

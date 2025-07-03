@@ -8,15 +8,11 @@ observability = { enabled = true }
 
 [vars]
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "solid-startup"
-# database_id = "af1e900f-06b9-4d71-9ed7-78639cd7dc79"
-# preview_database_id = "solid-faststart-local"
-# migrations_dir = "database/migrations"
-# migrations_table = "__d1_migrations"
-
-
+[[d1_databases]]
+binding = "D1DB"
+database_name = "faststart"
+database_id = "473c14bc-cd41-4c07-a34e-be805b01de1b"
+preview_database_id = "faststart-local"
 
 #
 # Smart Placement
