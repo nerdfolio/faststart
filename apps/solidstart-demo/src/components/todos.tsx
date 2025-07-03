@@ -37,7 +37,7 @@ export default function Todos() {
 	)
 
 	return (
-		<main class="flex flex-col gap-4 min-w-xl">
+		<main class="flex flex-col gap-4 px-4 min-w-xl">
 			<form onSubmit={addTask} class="w-full">
 				<div class="flex w-full items-center gap-2">
 					<Input
@@ -45,7 +45,9 @@ export default function Todos() {
 						name="task"
 						disabled={!taskRepo.metadata.apiInsertAllowed()}
 						value={newTaskTitle()}
-						placeholder={taskRepo.metadata.apiInsertAllowed() ? "What needs to be done?" : "Task creation disabled"}
+						placeholder={
+							taskRepo.metadata.apiInsertAllowed() ? "What needs to be done?" : "Task creation disabled"
+						}
 						onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
 					/>
 					<Button type="submit" variant="outline" disabled={!taskRepo.metadata.apiInsertAllowed()}>

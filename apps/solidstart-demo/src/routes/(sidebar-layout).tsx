@@ -57,7 +57,7 @@ function getPagesMenu() {
 				icon: IconMathXPlusY,
 			},
 			{
-				label: "Todos",
+				label: "Remult Todos",
 				href: "/todos",
 				icon: IconCheckList,
 			},
