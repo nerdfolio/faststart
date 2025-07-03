@@ -22,3 +22,4 @@ catalog:
   cloudflare: ^4.4.1
   remult: ^3.0.5
   better-auth: 1.2.12
+  lodash-es: "^4.17.21"

@@ -5,7 +5,7 @@ import { mergeConfig } from "vite"
 import tsconfigPaths from "vite-tsconfig-paths"
 import { viteBaseConfig } from "../../vite.config.base"
 
-export default defineConfig({
+const appConfig = defineConfig({
 	vite: mergeConfig(viteBaseConfig, {
 		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
 		define: {
@@ -41,3 +41,5 @@ export default defineConfig({
 	},
 	middleware: "./src/middleware.ts",
 })
+
+export default appConfig

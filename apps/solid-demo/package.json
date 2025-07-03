@@ -24,7 +24,7 @@
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
 		"core": "workspace:*",
-		"lodash-es": "^4.17.21",
+		"lodash-es": "catalog:",
 		"platform-helpers": "workspace:*",
 		"remult": "catalog:",
 		"tailwindcss": "catalog:",
