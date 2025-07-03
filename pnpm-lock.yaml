@@ -36,6 +36,9 @@ catalogs:
     cloudflare:
       specifier: ^4.4.1
       version: 4.4.1
+    lodash-es:
+      specifier: ^4.17.21
+      version: 4.17.21
     remult:
       specifier: ^3.0.5
       version: 3.0.5
@@ -60,9 +63,6 @@ catalogs:
     zod:
       specifier: ^3.25.69
       version: 3.25.69
-
-overrides:
-  jose: 6.0.11
 
 importers:
 
@@ -175,7 +175,7 @@ importers:
         specifier: workspace:*
         version: link:../../core
       lodash-es:
-        specifier: ^4.17.21
+        specifier: 'catalog:'
         version: 4.17.21
       platform-helpers:
         specifier: workspace:*
