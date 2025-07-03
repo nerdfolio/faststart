@@ -46,7 +46,7 @@ export default function Todos() {
 						disabled={!taskRepo.metadata.apiInsertAllowed()}
 						value={newTaskTitle()}
 						placeholder={
-							taskRepo.metadata.apiInsertAllowed() ? "What needs to be done?" : "Task creation disabled"
+							taskRepo.metadata.apiInsertAllowed() ? "What needs to be done?" : "Only admins can create tasks"
 						}
 						onInput={(e) => setNewTaskTitle(e.currentTarget.value)}
 					/>

@@ -21,20 +21,20 @@ import type { ParentProps } from "solid-js"
 import { AuthRequired, useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 
-export default function ProtectedSidebarLayout(props: ParentProps) {
+export default function ProtectedRoutesLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
 	const { signOut, sessionUser } = useBetterAuth()
 
 	return (
 		<AuthRequired>
-			<SidebarLayout>
-				<SidebarLayout.Sidebar
-					Branding={<AppBranding />}
-					UserMenu={<UserSidebarMenu user={sessionUser} signOut={signOut} />}
-					Menus={<NavMenus menus={menus} />}
-				/>
-				<SidebarLayout.ContentArea crumbs={useBreadcrumbs()}>{props.children}</SidebarLayout.ContentArea>
+			<SidebarLayout
+				branding={<AppBranding />}
+				userMenu={<UserSidebarMenu user={sessionUser} signOut={signOut} />}
+				menus={<NavMenus menus={menus} />}
+				crumbs={useBreadcrumbs()}
+			>
+				{props.children}
 			</SidebarLayout>
 		</AuthRequired>
 	)

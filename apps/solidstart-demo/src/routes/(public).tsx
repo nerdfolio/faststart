@@ -19,18 +19,17 @@ const navMenus = [
 	},
 ]
 
-export default function AppNavbarLayout(props: ComponentProps<typeof NavbarLayout>) {
+export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLayout>) {
 	const { signOut, sessionUser } = useBetterAuth()
 
 	return (
-		<NavbarLayout>
-			<NavbarLayout.Navbar
-				Branding={<AppBranding href="/" />}
-				UserMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={A} />}
-				Menus={<NavMenus menus={navMenus} />}
-			/>
-			<NavbarLayout.ContentArea>{props.children}</NavbarLayout.ContentArea>
-			<AppFooter />
+		<NavbarLayout
+			branding={<AppBranding href="/" />}
+			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={A} />}
+			menus={<NavMenus menus={navMenus} />}
+			footer={<AppFooter />}
+		>
+			{props.children}
 		</NavbarLayout>
 	)
 }
