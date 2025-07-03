@@ -2,7 +2,7 @@
 	"extends": "./tsconfig.base.json",
 	"references": [
 		{ "path": "core" },
-		{ "path": "apps/solid-demo" },
+		{ "path": "apps/solidstart-demo" },
 		{ "path": "packages/platform-helpers" },
 		{ "path": "packages/remult-d1" },
 		{ "path": "packages/ui-base-solid" },
