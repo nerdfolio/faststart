@@ -1,0 +1,49 @@
+name = "solid-faststart"
+compatibility_date = "2025-04-29"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = "./apps/solid-demo/dist"
+
+observability = { enabled = true }
+
+[[d1_databases]]
+binding = "DB"
+database_name = "solid-startup"
+database_id = "af1e900f-06b9-4d71-9ed7-78639cd7dc79"
+preview_database_id = "solid-faststart-local"
+migrations_dir = "database/migrations"
+migrations_table = "__d1_migrations"
+
+
+[vars]
+
+
+#
+# Smart Placement
+# Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+#
+# "placement": { "mode": "smart" },
+
+#
+# Bindings
+# Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+# databases, object storage, AI inference, real-time communication and more.
+# https://developers.cloudflare.com/workers/runtime-apis/bindings/
+#
+
+#
+# Note: Use secrets to store sensitive data.
+# https://developers.cloudflare.com/workers/configuration/secrets/
+#
+
+#
+# Static Assets
+# https://developers.cloudflare.com/workers/static-assets/binding/
+#
+# "assets": { "directory": "./public/", "binding": "ASSETS" },
+
+#
+# Service Bindings (communicate between multiple Workers)
+# https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+#
+# "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
