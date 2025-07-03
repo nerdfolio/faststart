@@ -38,10 +38,17 @@ export function BetterAuthProvider<C extends AuthClient>(
 	const sessionUser = () => session().data?.user
 	const sessionPending = () => session().isPending
 
-	createEffect(() => {
+	createEffect((hadUser: boolean) => {
 		// a way to initialize user in related subsystems like remult
-		props.onAuthChange?.(sessionUser())
-	})
+		const user = sessionUser()
+		props.onAuthChange?.(user)
+
+		if (hadUser && !user) {
+			// if user was previously defined but now undefined, then logout just happened
+			window.location.href = props.signOutRedirect ?? "/"
+		}
+		return !!user
+	}, false)
 
 	const ctx = {
 		authClient: props.authClient,
