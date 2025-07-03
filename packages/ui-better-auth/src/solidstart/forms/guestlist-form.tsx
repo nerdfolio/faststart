@@ -22,7 +22,7 @@ export default function GuestListForm(props: {
 				props.onError?.(error)
 			} else {
 				formRef.reset()
-				props.onSuccess?.({ user })
+				props.onSuccess?.({})
 			}
 		},
 		{
@@ -34,7 +34,9 @@ export default function GuestListForm(props: {
 
 	const placeholder = createAsync<string>(
 		async () => {
-			const names = await props.authClient.signIn.guestList.reveal().then(({ data, error: _e }) => data?.join(", "))
+			const names = await props.authClient.signIn.guestList
+				.reveal()
+				.then(({ data, error: _e }) => data?.join(", "))
 			return names
 		},
 		{ initialValue: "Enter guest name" }
