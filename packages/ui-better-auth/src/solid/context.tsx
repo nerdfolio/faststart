@@ -50,31 +50,31 @@ export function BetterAuthProvider<C extends AuthClient>(
 	// is passed to subsequent checks without isPending being reset to true.
 	//
 	// Work around: reload page with window.location to clear up memory caches on signOut
-	const signOut: AuthClient["signOut"] = (opts = {}) => {
-		const { fetchOptions } = opts
+	// const _signOut: AuthClient["signOut"] = (opts = {}) => {
+	// 	const { fetchOptions } = opts
 
-		const onSuccess: NonNullable<typeof fetchOptions>["onSuccess"] = (successsCtx) => {
-			fetchOptions?.onSuccess?.(successsCtx)
+	// 	const onSuccess: NonNullable<typeof fetchOptions>["onSuccess"] = (successsCtx) => {
+	// 		fetchOptions?.onSuccess?.(successsCtx)
 
-			console.log("reload to clear page memory on logout")
-			//window.location.replace(props.signOutRedirect ?? "/")
-		}
+	// 		console.log("reload to clear page memory on logout")
+	// 		//window.location.replace(props.signOutRedirect ?? "/")
+	// 	}
 
-		return props.authClient.signOut({
-			...opts,
-			fetchOptions: {
-				...fetchOptions,
-				onSuccess,
-			},
-		})
-	}
+	// 	return props.authClient.signOut({
+	// 		...opts,
+	// 		fetchOptions: {
+	// 			...fetchOptions,
+	// 			onSuccess,
+	// 		},
+	// 	})
+	// }
 
 	const ctx = {
 		authClient: props.authClient,
 		session,
 		sessionPending,
 		sessionUser,
-		signOut,
+		signOut: props.authClient.signOut,
 		signInRedirect: props.signInRedirect,
 	}
 

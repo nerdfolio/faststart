@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@nerdfolio/ui-base-solid/ui"
 import { cn } from "@nerdfolio/ui-base-solid/utils"
-import { A, redirect } from "@solidjs/router"
+import { A, useNavigate } from "@solidjs/router"
 import { type ComponentProps, createSignal, Show, splitProps } from "solid-js"
 import { useBetterAuth } from "../solid/context"
 import EmailPasswordForm from "./forms/emailpassword-form"
@@ -17,6 +17,7 @@ export function LoginCard(
 	}
 ) {
 	const { authClient, signInRedirect } = useBetterAuth()
+	const navigate = useNavigate()
 
 	const [local, rest] = splitProps(props, ["class", "successUrl", "magicLink", "emailPassword", "guestList"])
 
@@ -37,9 +38,12 @@ export function LoginCard(
 				success: true,
 				msg: message ?? "Login successful. Redirecting...",
 			})
-			// not necessary but start fetching session here so it happens during the page transition time
-			authClient.getSession()
-			throw redirect(redirectTo)
+			// put in brief delay before redirecting to work around bug in better-auth + possible solidjs proxy object
+			// that returns {isPrending: false, data: null, error: null} in session() even though user is logged in
+			// It seems that better-auth + solidjs needs a bit of time for various states to be consistent
+			setTimeout(() => {
+				navigate(redirectTo)
+			}, 20)
 		} else {
 			setStatus({
 				success: true,
