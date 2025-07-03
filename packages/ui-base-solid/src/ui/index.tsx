@@ -1,5 +1,6 @@
 export * from "./alert"
 export * from "./avatar"
+export * from "./branding"
 export * from "./breadcrumb"
 export * from "./breadcrumbs"
 export * from "./button"

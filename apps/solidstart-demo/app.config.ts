@@ -10,16 +10,8 @@ const appConfig = defineConfig({
 		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
 		define: {
 			__APP_INFO__: {
-				name: "Solid Demo",
-				legalName: "Solid Demo, Inc.",
-				copyrightStatement: "© 2025 Solid Demo, Inc. All rights reserved.",
 				// biome-ignore lint/style/noProcessEnv: whatev
 				version: process.env.npm_package_version,
-				socialLinks: {
-					github: "https://github.com/solidjs/solid-start",
-					bluesky: "https://bsky.app/profile/solidjs.com",
-					x: "https://x.com/solid_js",
-				},
 			},
 		},
 	}),

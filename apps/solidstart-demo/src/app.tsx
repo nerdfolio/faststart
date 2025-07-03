@@ -6,7 +6,7 @@ import "./app.css"
 import type { User } from "better-auth"
 import { baUserToRemultUser } from "core/utils/remult-ba"
 import { BetterAuthProvider } from "ui-better-auth/solidstart"
-import { appVersion } from "./components/app-branding"
+import { appVersion } from "./app-info"
 import { authClient, remultClient } from "./lib/clients"
 
 function syncRemultUser(u: User | undefined) {

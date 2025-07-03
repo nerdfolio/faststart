@@ -9,7 +9,8 @@
 		"./auth/*": "./auth/*.ts",
 		"./utils/*": "./utils/*.ts",
 		"./models/*": "./models/*.ts",
-		"./data-scaffold/*": "./data-scaffold/*.ts"
+		"./data-scaffold/*": "./data-scaffold/*.ts",
+		"./company-info": "./company-info.ts"
 	},
 	"keywords": [],
 	"type": "module",

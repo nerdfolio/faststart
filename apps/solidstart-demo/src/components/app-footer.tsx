@@ -1,7 +1,7 @@
 import { MenuAsNavLinks } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
 import { Footer, SocialLinks } from "@nerdfolio/ui-base-solid/ui"
-import { copyrightStatement } from "./app-branding"
+import { appCopyright, appSocialLinks } from "~/app-info"
 
 const footerLinks = [
 	{ href: "/about", label: "About" },
@@ -17,9 +17,9 @@ export default function AppFooter() {
 			<SocialLinks
 				class="flex flex-row gap-8 justify-center my-8"
 				linkClass="text-muted-foreground brightness-80 hover:brightness-130"
-				socialLinks={__APP_INFO__.socialLinks}
+				socialLinks={appSocialLinks}
 			/>
-			<p class="text-sm text-center text-muted-foreground">{copyrightStatement}</p>
+			<p class="text-sm text-center text-muted-foreground">{appCopyright}</p>
 		</Footer>
 	)
 }
