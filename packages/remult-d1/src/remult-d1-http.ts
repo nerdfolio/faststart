@@ -2,6 +2,7 @@ import Cloudflare from "cloudflare"
 import { SqlDatabase } from "remult"
 import { type D1Client, D1DataProvider, type D1RowObject } from "./remult-d1.js"
 
+export { D1DataProvider }
 type D1Credentials = { accountId: string; apiToken: string; databaseId: string }
 export function createD1HttpDataProvider(creds: D1Credentials) {
 	return new SqlDatabase(new D1DataProvider(new D1HttpClient(creds)))
