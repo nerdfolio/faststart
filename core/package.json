@@ -15,7 +15,7 @@
 	"keywords": [],
 	"type": "module",
 	"scripts": {
-		"generate-auth": "pnpm remult-better-auth generate --config ./utils/auth-gen.ts --output ./models/auth-models.ts"
+		"generate-auth": "pnpx @better-auth/cli generate --config ./utils/auth-gen.ts --output ./models/auth-models.ts"
 	},
 	"packageManager": "pnpm@10.10.0",
 	"engines": {

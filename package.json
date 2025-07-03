@@ -6,8 +6,6 @@
 		"test": "vitest run",
 		"test-watch": "vitest",
 		"test-ui": "vitest --ui",
-		"auth:generate-schema": "pnpx @better-auth/cli generate --output ./drizzle/schema/auth-schema.ts",
-		"ui:add": "pnpx solidui-cli@latest add",
 		"knip": "knip"
 	},
 	"type": "module",
