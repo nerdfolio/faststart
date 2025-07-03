@@ -9,10 +9,10 @@ import { auth } from "./auth"
 export const remultApi = solidStartRemultApi({
 	entities: [Task, User, Session, Account, Verification],
 	controllers: [TasksController],
-	rootPath: import.meta.env.VITE_REMULT_ROOT_PATH,
+	rootPath: __REMULT_API_PATH__,
 	logApiEndPoints: true,
 	admin: true,
-	// dataProvider: new JsonFileDataProvider(import.meta.env.VITE_REMULT_DB_PATH ?? "./db"),
+	// dataProvider: new JsonFileDataProvider(__REMULT_LOCAL_DB_DIR__ ?? "./db"),
 	dataProvider: new InMemoryDataProvider(),
 	getUser: async ({ request }: { request: Request }) => getRemultUserFromBetterAuth(auth, request),
 })

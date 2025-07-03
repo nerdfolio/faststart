@@ -9,10 +9,10 @@ const appConfig = defineConfig({
 	vite: mergeConfig(viteBaseConfig, {
 		plugins: [tsconfigPaths(), tailwindcss(), Icons({ compiler: "solid", autoInstall: true })],
 		define: {
-			__APP_INFO__: {
-				// biome-ignore lint/style/noProcessEnv: whatev
-				version: process.env.npm_package_version,
-			},
+			__REMULT_API_PATH__: JSON.stringify("/api/r"),
+			__REMULT_LOCAL_DB_DIR__: JSON.stringify("../../zztemp"),
+			// biome-ignore lint/style/noProcessEnv: whatev
+			__APP_VERSION__: JSON.stringify(process.env.npm_package_version),
 		},
 	}),
 	solid: {
