@@ -2,7 +2,7 @@ name = "solid-faststart"
 compatibility_date = "2025-04-29"
 compatibility_flags = ["nodejs_compat"]
 
-pages_build_output_dir = "./apps/solid-demo/dist"
+pages_build_output_dir = "./dist"
 
 observability = { enabled = true }
 
