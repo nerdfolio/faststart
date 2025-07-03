@@ -8,9 +8,10 @@ const ICON_MAP = {
 	x: IconX,
 } as const
 type SocialType = keyof typeof ICON_MAP
+export type SocialLinksType = Record<keyof typeof ICON_MAP, string>
 
 export function SocialLinks(
-	props: ComponentProps<"div"> & { linkClass?: string; socialLinks: Record<SocialType, string> }
+	props: ComponentProps<"div"> & { linkClass?: string; socialLinks: SocialLinksType }
 ) {
 	return (
 		<div class={cn("flex flex-row gap-8", props.class)}>
