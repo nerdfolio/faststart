@@ -3,6 +3,7 @@ import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
 import { A } from "@solidjs/router"
 import type { ComponentProps } from "solid-js"
+import { Transition } from "solid-transition-group"
 import { useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
@@ -30,7 +31,7 @@ export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLa
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
 		>
-			{props.children}
+			<Transition name="fade">{props.children}</Transition>
 		</NavbarLayout>
 	)
 }
