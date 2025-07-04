@@ -1,0 +1,27 @@
+{
+	"name": "tanstart-demo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"start": "node .output/server/index.mjs",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.12.4",
+	"dependencies": {
+		"@tanstack/solid-router": "^1.124.0",
+		"@tanstack/solid-start": "^1.124.1",
+		"solid-js": "catalog:"
+	},
+	"devDependencies": {
+		"vite": "catalog:",
+		"typescript": "catalog:",
+		"vite-tsconfig-paths": "catalog:"
+	}
+}

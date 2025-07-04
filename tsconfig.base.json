@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
+		"target": "ES2022",
 		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"allowSyntheticDefaultImports": true,
@@ -14,7 +14,13 @@
 		//"noEmit": true,
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
-		"types": ["vinxi/types/client", "vitest/globals", "@testing-library/jest-dom", "unplugin-icons/types/solid"],
+		"verbatimModuleSyntax": false,
+		"types": [
+			"vinxi/types/client",
+			"vitest/globals",
+			"@testing-library/jest-dom",
+			"unplugin-icons/types/solid"
+		],
 		"paths": {
 			"~/*": ["${configDir}/src/*"]
 		}

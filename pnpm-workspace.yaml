@@ -4,7 +4,7 @@ packages:
   - packages/*
 
 catalog:
-  typescript: ^5.8.3
+  typescript: 5.8.3
   solid-js: 1.9.7
   '@solidjs/start': ^1.1.6
   '@solidjs/router': ^0.15.3
@@ -23,3 +23,8 @@ catalog:
   remult: ^3.0.5
   better-auth: 1.2.12
   lodash-es: ^4.17.21
+  vite: ^7.0.2
+  vite-plugin-doctest: ^1.1.1
+  vite-plugin-solid: ^2.11.7
+  vite-tsconfig-paths: 5.1.4
+  vitest: 3.2.4

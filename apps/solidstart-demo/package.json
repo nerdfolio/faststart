@@ -53,10 +53,10 @@
 		"solid-js": "catalog:",
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
-		"vite": "^7.0.2",
-		"vite-plugin-doctest": "^1.1.1",
-		"vite-plugin-solid": "^2.11.7",
-		"vite-tsconfig-paths": "^5.1.4",
+		"vite": "catalog:",
+		"vite-plugin-doctest": "catalog:",
+		"vite-plugin-solid": "catalog:",
+		"vite-tsconfig-paths": "catalog:",
 		"vitest": "3.2.4"
 	},
 	"engines": {
