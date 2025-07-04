@@ -73,7 +73,7 @@ catalogs:
       specifier: 5.1.4
       version: 5.1.4
     zod:
-      specifier: ^3.25.72
+      specifier: 3.25.72
       version: 3.25.72
 
 importers:
@@ -292,6 +292,9 @@ importers:
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.72
     devDependencies:
       typescript:
         specifier: 'catalog:'

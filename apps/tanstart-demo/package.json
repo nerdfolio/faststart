@@ -17,11 +17,12 @@
 	"dependencies": {
 		"@tanstack/solid-router": "^1.124.0",
 		"@tanstack/solid-start": "^1.124.1",
-		"solid-js": "catalog:"
+		"solid-js": "catalog:",
+		"zod": "catalog:"
 	},
 	"devDependencies": {
-		"vite": "catalog:",
 		"typescript": "catalog:",
+		"vite": "catalog:",
 		"vite-tsconfig-paths": "catalog:"
 	}
 }
