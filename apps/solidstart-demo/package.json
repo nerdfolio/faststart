@@ -17,7 +17,7 @@
 		"@kobalte/core": "catalog:",
 		"@kobalte/tailwindcss": "catalog:",
 		"@nerdfolio/ba-guest-list": "^0.1.0",
-		"@nerdfolio/remult-better-auth": "^0.2.23",
+		"@nerdfolio/remult-better-auth": "^0.2.26",
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
@@ -57,7 +57,7 @@
 		"vite-plugin-doctest": "catalog:",
 		"vite-plugin-solid": "catalog:",
 		"vite-tsconfig-paths": "catalog:",
-		"vitest": "3.2.4"
+		"vitest": "catalog:"
 	},
 	"engines": {
 		"node": ">=22"
