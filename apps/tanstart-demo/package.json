@@ -15,9 +15,13 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.12.4",
 	"dependencies": {
+		"@kobalte/tailwindcss": "catalog:",
+		"@tailwindcss/vite": "^4.1.11",
 		"@tanstack/solid-router": "^1.125.2",
 		"@tanstack/solid-start": "^1.125.2",
 		"solid-js": "catalog:",
+		"tailwindcss": "catalog:",
+		"tw-animate-css": "catalog:",
 		"zod": "catalog:"
 	},
 	"devDependencies": {

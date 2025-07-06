@@ -47,7 +47,8 @@
 				"useValidAnchor": "off"
 			},
 			"nursery": {
-				"recommended": true
+				"recommended": true,
+				"noUnknownAtRule": "off"
 			}
 		}
 	},
@@ -55,6 +56,11 @@
 		"formatter": {
 			"semicolons": "asNeeded",
 			"trailingCommas": "es5"
+		}
+	},
+	"css": {
+		"formatter": {
+			"enabled": true
 		}
 	}
 }

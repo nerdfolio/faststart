@@ -1,5 +1,8 @@
 // src/routes/__root.tsx
+/// <referece types="vite/client" />
 import { createRootRoute, Outlet } from "@tanstack/solid-router"
+
+import appCss from "../app.css?url"
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -15,6 +18,7 @@ export const Route = createRootRoute({
 				title: "TanStack Start Starter",
 			},
 		],
+		links: [{ rel: "stylesheet", href: appCss }],
 	}),
 	component: RootComponent,
 })
