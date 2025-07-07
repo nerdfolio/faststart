@@ -40,7 +40,7 @@ catalogs:
       specifier: ^4.17.21
       version: 4.17.21
     remult:
-      specifier: ^3.0.5
+      specifier: 3.0.5
       version: 3.0.5
     solid-js:
       specifier: 1.9.7
@@ -207,9 +207,6 @@ importers:
       tw-animate-css:
         specifier: 'catalog:'
         version: 1.3.5
-      ui-better-auth:
-        specifier: workspace:*
-        version: link:../../packages/ui-better-auth
       vinxi:
         specifier: 'catalog:'
         version: 0.5.8(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(@types/node@24.0.10)(better-sqlite3@11.10.0)(db0@0.3.2(@libsql/client@0.15.8)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250705.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(sqlite3@5.1.7))(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250705.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(ioredis@5.6.1)(jiti@2.4.2)(lightningcss@1.30.1)(sqlite3@5.1.7)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
@@ -289,6 +286,18 @@ importers:
       '@kobalte/tailwindcss':
         specifier: 'catalog:'
         version: 0.9.0(tailwindcss@4.1.11)
+      '@nerdfolio/ba-guest-list':
+        specifier: ^0.1.0
+        version: 0.1.0(better-auth@1.2.12)
+      '@nerdfolio/remult-better-auth':
+        specifier: ^0.2.26
+        version: 0.2.26(better-auth@1.2.12)(remult@3.0.5)
+      '@nerdfolio/ui-base-solid':
+        specifier: workspace:*
+        version: link:../../packages/ui-base-solid
+      '@nerdfolio/ui-better-auth':
+        specifier: workspace:*
+        version: link:../../packages/ui-better-auth
       '@tailwindcss/vite':
         specifier: ^4.1.11
         version: 4.1.11(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -298,6 +307,15 @@ importers:
       '@tanstack/solid-start':
         specifier: ^1.125.2
         version: 1.125.2(@libsql/client@0.15.8)(@netlify/blobs@8.2.0)(better-sqlite3@11.10.0)(drizzle-orm@0.44.2(@cloudflare/workers-types@4.20250705.0)(@libsql/client@0.15.8)(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(gel@2.0.2)(kysely@0.28.2)(sqlite3@5.1.7))(encoding@0.1.13)(solid-js@1.9.7)(sqlite3@5.1.7)(vite-plugin-solid@2.11.7(@testing-library/jest-dom@6.6.3)(solid-js@1.9.7)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)))(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+      better-auth:
+        specifier: 'catalog:'
+        version: 1.2.12
+      core:
+        specifier: workspace:*
+        version: link:../../core
+      remult:
+        specifier: 'catalog:'
+        version: 3.0.5
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
@@ -320,6 +338,9 @@ importers:
       vite-tsconfig-paths:
         specifier: 'catalog:'
         version: 5.1.4(typescript@5.8.3)(vite@7.0.2(@types/node@24.0.10)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+      wrangler:
+        specifier: ^4.23.0
+        version: 4.23.0(@cloudflare/workers-types@4.20250705.0)
 
   core:
     dependencies:

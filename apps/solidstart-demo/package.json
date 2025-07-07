@@ -31,7 +31,6 @@
 		"solid-transition-group": "^0.3.0",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
-		"ui-better-auth": "workspace:*",
 		"vinxi": "catalog:",
 		"zod": "catalog:"
 	},

@@ -1,7 +1,9 @@
 // src/routes/__root.tsx
 /// <referece types="vite/client" />
-import { createRootRoute, Outlet } from "@tanstack/solid-router"
 
+import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/solidstart"
+import { createRootRoute, Outlet } from "@tanstack/solid-router"
+import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
 
 export const Route = createRootRoute({
@@ -24,5 +26,14 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
-	return <Outlet />
+	return (
+		<BetterAuthProvider
+			authClient={authClient}
+			onAuthChange={syncRemultUser}
+			signInRedirect="/dashboard"
+			signOutRedirect="/"
+		>
+			<Outlet />
+		</BetterAuthProvider>
+	)
 }

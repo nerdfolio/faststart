@@ -1,5 +1,5 @@
 {
-	"name": "ui-better-auth",
+	"name": "@nerdfolio/ui-better-auth",
 	"version": "0.1.0",
 	"description": "better-auth ui: ui components for better-auth",
 	"private": true,

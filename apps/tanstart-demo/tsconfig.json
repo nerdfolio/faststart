@@ -1,4 +1,23 @@
 {
-	"extends": "../../tsconfig.base.json",
-	"include": ["src/**/*"]
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true,
+		"composite": true,
+		"declaration": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"allowJs": false,
+		"strict": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"verbatimModuleSyntax": false,
+		"types": ["./vite-env", "vitest/globals"],
+		"paths": {
+			"~/*": ["./src/*"]
+		}
+	},
+	"include": ["src/**/*", "declaration.d.ts"]
 }

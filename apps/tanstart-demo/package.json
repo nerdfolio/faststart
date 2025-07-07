@@ -8,6 +8,9 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"start": "node .output/server/index.mjs",
+		"preview": "pnpm build && wrangler pages dev",
+		"deploy": "pnpm build && wrangler pages deploy",
+		"typegen": "wrangler types",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -16,9 +19,16 @@
 	"packageManager": "pnpm@10.12.4",
 	"dependencies": {
 		"@kobalte/tailwindcss": "catalog:",
+		"@nerdfolio/ba-guest-list": "^0.1.0",
+		"@nerdfolio/remult-better-auth": "^0.2.26",
+		"@nerdfolio/ui-base-solid": "workspace:*",
+		"@nerdfolio/ui-better-auth": "workspace:*",
 		"@tailwindcss/vite": "^4.1.11",
 		"@tanstack/solid-router": "^1.125.2",
 		"@tanstack/solid-start": "^1.125.2",
+		"better-auth": "catalog:",
+		"core": "workspace:*",
+		"remult": "catalog:",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
@@ -27,6 +37,7 @@
 	"devDependencies": {
 		"typescript": "catalog:",
 		"vite": "catalog:",
-		"vite-tsconfig-paths": "catalog:"
+		"vite-tsconfig-paths": "catalog:",
+		"wrangler": "^4.23.0"
 	}
 }
