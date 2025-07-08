@@ -1,7 +1,7 @@
 // src/routes/__root.tsx
 /// <referece types="vite/client" />
 
-import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/solidstart"
+import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/tanstart"
 import { createRootRoute, Outlet } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
