@@ -26,7 +26,7 @@ const navMenus = [
 ]
 
 function PublicLayout() {
-	const { signOut, sessionUser } = useBetterAuth()
+	const { logOut: signOut, sessionUser } = useBetterAuth()
 
 	return (
 		<NavbarLayout

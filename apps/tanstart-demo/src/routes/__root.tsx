@@ -1,8 +1,8 @@
 // src/routes/__root.tsx
-/// <referece types="vite/client" />
+/// <reference types="vite/client" />
 
 import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/tanstart"
-import { createRootRoute, Outlet } from "@tanstack/solid-router"
+import { createRootRoute, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
@@ -26,14 +26,18 @@ export const Route = createRootRoute({
 	component: RootComponent,
 })
 
+const navigate = useNavigate()
+const currentPathname = useLocation({ select: (location) => location.pathname })
+
 function RootComponent() {
 	return (
 		<>
 			<BetterAuthProvider
 				authClient={authClient}
+				navigateTo={(to) => navigate({ to, viewTransition: true })}
 				onAuthChange={syncRemultUser}
-				signInRedirect="/dashboard"
-				signOutRedirect="/"
+				logInUrl="/login"
+				logInSuccessUrl={currentPathname}
 			>
 				<Outlet />
 			</BetterAuthProvider>

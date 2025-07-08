@@ -15,7 +15,7 @@ export function LoginCard(
 		guestList?: boolean
 	}
 ) {
-	const { authClient, signInRedirect } = useBetterAuth()
+	const { authClient, logInSuccessUrl: signInRedirect } = useBetterAuth()
 	const navigate = useNavigate()
 	const [searchParams] = useSearchParams()
 
