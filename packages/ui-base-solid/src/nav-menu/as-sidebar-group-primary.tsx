@@ -57,7 +57,11 @@ export function MenuAsSidebarGroupPrimary(
 											<For each={item.children} fallback={<div>Loading submenu...</div>}>
 												{(subItem) => (
 													<SidebarMenuSubItem>
-														<SidebarMenuSubButton as={Link} href={subItem.href ?? ""} class={item.itemsLinkClass}>
+														<SidebarMenuSubButton
+															as={Link}
+															href={subItem.href ?? ""}
+															class={item.itemsLinkClass}
+														>
 															<span>{subItem.label}</span>
 														</SidebarMenuSubButton>
 													</SidebarMenuSubItem>

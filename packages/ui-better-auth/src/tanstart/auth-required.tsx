@@ -1,5 +1,5 @@
-import { Navigate, useLocation } from "@solidjs/router"
-import { createMemo, type ParentProps } from "solid-js"
+import { Navigate, useLocation } from "@tanstack/solid-router"
+import type { ParentProps } from "solid-js"
 import { AuthGuard } from "../solid/auth-guard"
 
 export function AuthRequired(props: ParentProps<{ loginUrl: string }>) {
@@ -7,6 +7,6 @@ export function AuthRequired(props: ParentProps<{ loginUrl: string }>) {
 }
 
 export function NavigateToLogin(props: { loginUrl: string }) {
-	const pathname = createMemo(() => useLocation().pathname)
-	return <Navigate href={`${props.loginUrl}?next=${pathname()}`} />
+	const pathname = useLocation({ select: (location) => location.pathname })
+	return <Navigate to={`${props.loginUrl}?next=${pathname()}`} viewTransition />
 }

@@ -18,12 +18,14 @@
 	},
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
+		"@tanstack/solid-router": "^1.125.2",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
 		"@solidjs/router": "catalog:",
+		"@tanstack/solid-router": "^1.125.2",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:"
 	},

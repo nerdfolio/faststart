@@ -3,6 +3,7 @@
 
 import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/solidstart"
 import { createRootRoute, Outlet } from "@tanstack/solid-router"
+import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
 
@@ -27,13 +28,16 @@ export const Route = createRootRoute({
 
 function RootComponent() {
 	return (
-		<BetterAuthProvider
-			authClient={authClient}
-			onAuthChange={syncRemultUser}
-			signInRedirect="/dashboard"
-			signOutRedirect="/"
-		>
-			<Outlet />
-		</BetterAuthProvider>
+		<>
+			<BetterAuthProvider
+				authClient={authClient}
+				onAuthChange={syncRemultUser}
+				signInRedirect="/dashboard"
+				signOutRedirect="/"
+			>
+				<Outlet />
+			</BetterAuthProvider>
+			<TanStackRouterDevtools />
+		</>
 	)
 }
