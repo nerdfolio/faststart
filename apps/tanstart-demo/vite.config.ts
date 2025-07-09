@@ -17,5 +17,15 @@ export default defineConfig({
 	server: {
 		port: 3000,
 	},
-	plugins: [tsConfigPaths(), tanstackStart(), tailwindcss(), Icons({ compiler: "solid" })],
+	plugins: [tsConfigPaths(), tanstackStart({
+		solid: {
+			babel: {
+				plugins: [
+					["@babel/plugin-proposal-decorators", { version: "legacy" }],
+					["@babel/plugin-transform-class-properties"],
+					["@babel/plugin-transform-private-methods"],
+				],
+			},
+		}
+	}), tailwindcss(), Icons({ compiler: "solid" })],
 })

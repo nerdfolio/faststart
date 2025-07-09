@@ -20,26 +20,29 @@
 	"dependencies": {
 		"@kobalte/tailwindcss": "catalog:",
 		"@nerdfolio/ba-guest-list": "^0.1.0",
-		"@nerdfolio/remult-better-auth": "^0.2.26",
+		"@nerdfolio/remult-better-auth": "^0.3.1",
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@nerdfolio/ui-better-auth": "workspace:*",
 		"@tailwindcss/vite": "^4.1.11",
-		"@tanstack/solid-router": "^1.125.2",
+		"@tanstack/solid-router": "^1.125.6",
 		"@tanstack/solid-router-devtools": "^1.125.6",
-		"@tanstack/solid-start": "^1.125.2",
+		"@tanstack/solid-start": "^1.125.6",
 		"better-auth": "catalog:",
 		"core": "workspace:*",
 		"remult": "catalog:",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
-		"zod": "catalog:"
+		"zod": "^3.25.76"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-decorators": "^7.28.0",
+		"@babel/plugin-transform-class-properties": "^7.27.1",
+		"@babel/plugin-transform-private-methods": "^7.27.1",
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
-		"vite": "catalog:",
+		"vite": "^7.0.3",
 		"vite-tsconfig-paths": "catalog:",
-		"wrangler": "^4.23.0"
+		"wrangler": "^4.24.0"
 	}
 }
