@@ -14,6 +14,7 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"verbatimModuleSyntax": false,
+		"experimentalDecorators": true,
 		"types": ["./vite-env", "vitest/globals"],
 		"paths": {
 			"~/*": ["./src/*"]
