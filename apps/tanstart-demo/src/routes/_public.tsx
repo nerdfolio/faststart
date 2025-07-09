@@ -1,7 +1,7 @@
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
 import type { LinkComponent } from "@nerdfolio/ui-base-solid/ui"
-import { useBetterAuth } from "@nerdfolio/ui-better-auth/solidstart"
+import { useBetterAuth } from "@nerdfolio/ui-better-auth/tanstart"
 import { createFileRoute, Link, Outlet } from "@tanstack/solid-router"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"

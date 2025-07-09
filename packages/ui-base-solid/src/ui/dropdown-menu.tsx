@@ -1,8 +1,7 @@
-import type { Component, ComponentProps, JSX, ValidComponent } from "solid-js"
-import { splitProps } from "solid-js"
-
 import * as DropdownMenuPrimitive from "@kobalte/core/dropdown-menu"
 import type { PolymorphicProps } from "@kobalte/core/polymorphic"
+import type { Component, ComponentProps, JSX, ValidComponent } from "solid-js"
+import { splitProps } from "solid-js"
 
 import { cn } from "../utils"
 
@@ -16,9 +15,10 @@ const DropdownMenu: Component<DropdownMenuPrimitive.DropdownMenuRootProps> = (pr
 	return <DropdownMenuPrimitive.Root gutter={4} {...props} />
 }
 
-type DropdownMenuContentProps<T extends ValidComponent = "div"> = DropdownMenuPrimitive.DropdownMenuContentProps<T> & {
-	class?: string | undefined
-}
+type DropdownMenuContentProps<T extends ValidComponent = "div"> =
+	DropdownMenuPrimitive.DropdownMenuContentProps<T> & {
+		class?: string | undefined
+	}
 
 const DropdownMenuContent = <T extends ValidComponent = "div">(
 	props: PolymorphicProps<T, DropdownMenuContentProps<T>>
@@ -37,11 +37,14 @@ const DropdownMenuContent = <T extends ValidComponent = "div">(
 	)
 }
 
-type DropdownMenuItemProps<T extends ValidComponent = "div"> = DropdownMenuPrimitive.DropdownMenuItemProps<T> & {
-	class?: string | undefined
-}
+type DropdownMenuItemProps<T extends ValidComponent = "div"> =
+	DropdownMenuPrimitive.DropdownMenuItemProps<T> & {
+		class?: string | undefined
+	}
 
-const DropdownMenuItem = <T extends ValidComponent = "div">(props: PolymorphicProps<T, DropdownMenuItemProps<T>>) => {
+const DropdownMenuItem = <T extends ValidComponent = "div">(
+	props: PolymorphicProps<T, DropdownMenuItemProps<T>>
+) => {
 	const [, rest] = splitProps(props as DropdownMenuItemProps, ["class"])
 	return (
 		<DropdownMenuPrimitive.Item
@@ -181,7 +184,12 @@ const DropdownMenuGroupLabel = <T extends ValidComponent = "span">(
 	props: PolymorphicProps<T, DropdownMenuGroupLabelProps<T>>
 ) => {
 	const [, rest] = splitProps(props as DropdownMenuGroupLabelProps, ["class"])
-	return <DropdownMenuPrimitive.GroupLabel class={cn("px-2 py-1.5 text-sm font-semibold", props.class)} {...rest} />
+	return (
+		<DropdownMenuPrimitive.GroupLabel
+			class={cn("px-2 py-1.5 text-sm font-semibold", props.class)}
+			{...rest}
+		/>
+	)
 }
 
 type DropdownMenuRadioItemProps<T extends ValidComponent = "div"> =

@@ -6,7 +6,6 @@ import { createRootRoute, Outlet, useLocation, useNavigate } from "@tanstack/sol
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
-
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -26,10 +25,14 @@ export const Route = createRootRoute({
 	component: RootComponent,
 })
 
-const navigate = useNavigate()
-const currentPathname = useLocation({ select: (location) => location.pathname })
-
 function RootComponent() {
+	return <RootLayout />
+}
+
+function RootLayout() {
+	const navigate = useNavigate()
+	const currentPathname = useLocation({ select: (location) => location.pathname })
+
 	return (
 		<>
 			<BetterAuthProvider
@@ -39,6 +42,7 @@ function RootComponent() {
 				logInUrl="/login"
 				logInSuccessUrl={currentPathname}
 			>
+				<div>zzzzz</div>
 				<Outlet />
 			</BetterAuthProvider>
 			<TanStackRouterDevtools />

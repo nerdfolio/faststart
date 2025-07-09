@@ -1,5 +1,5 @@
 import { Button, Input, Spinner } from "@nerdfolio/ui-base-solid/ui"
-import { action, createAsync, useNavigate, useSubmission } from "@solidjs/router"
+import { action, createAsync, useSubmission } from "@solidjs/router"
 import { Suspense } from "solid-js"
 import type { BetterAuthClient, OnAuthFormError, OnAuthFormSuccess } from "../types"
 
@@ -9,8 +9,6 @@ export default function GuestListForm(props: {
 	onSuccess?: OnAuthFormSuccess
 }) {
 	let formRef!: HTMLFormElement
-
-	const _navigate = useNavigate()
 
 	const signInAction = action(
 		async (formData: FormData) => {

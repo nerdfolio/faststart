@@ -15,7 +15,7 @@ catalog:
   tailwindcss: 4.1.11
   tw-animate-css: 1.3.5
   class-variance-authority: ^0.7.1
-  unplugin-icons: ^22.1.0
+  unplugin-icons: 22.1.0
   '@dotenvx/dotenvx': ^1.45.2
   '@kobalte/core': ^0.13.10
   '@kobalte/tailwindcss': 0.9.0

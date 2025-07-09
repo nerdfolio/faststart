@@ -1,3 +1,4 @@
+import { setTimeout } from "node:timers/promises"
 import type { User } from "better-auth"
 import type { createAuthClient } from "better-auth/solid"
 import {
@@ -19,6 +20,7 @@ type ContextValue = {
 	onAuthChange?: (user: User | undefined) => void
 	logOut: AuthClient["signOut"]
 	navigateTo: (to: string) => Promise<void>
+	navigateToLoginSuccess: () => Promise<void>
 	NavigateToLogin: Component
 }
 
@@ -65,8 +67,19 @@ export function BetterAuthProvider<C extends AuthClient>(
 	}, false)
 
 	function NavigateToLogin() {
-		onMount(() => props.navigateTo(props.logInUrl))
+		onMount(() =>
+			props.navigateTo(`props.logInUrl?next=${props.logInSuccessUrl}&test=${window.location.pathname}`)
+		)
 		return null
+	}
+
+	async function navigateToLoginSuccess() {
+		// put in brief delay before redirecting to work around bug in better-auth + possible solidjs proxy object
+		// that returns {isPrending: false, data: null, error: null} in session() even though user is logged in
+		// It seems that better-auth + solidjs needs a bit of time for various states to be consistent
+		await setTimeout(25)
+		const successUrl = new URLSearchParams(window.location.search).get("next")
+		return props.navigateTo(successUrl ?? "/dashboard")
 	}
 
 	const ctx = {
@@ -76,6 +89,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 		sessionUser,
 		logOut: props.authClient.signOut,
 		navigateTo: props.navigateTo,
+		navigateToLoginSuccess,
 		NavigateToLogin,
 	}
 
