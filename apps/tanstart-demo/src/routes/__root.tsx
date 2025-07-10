@@ -2,7 +2,7 @@
 /// <reference types="vite/client" />
 
 import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/tanstart"
-import { createRootRoute, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
+import { createRootRoute, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
@@ -23,6 +23,7 @@ export const Route = createRootRoute({
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),
 	component: RootComponent,
+	notFoundComponent: () => <Navigate to="/404" />,
 })
 
 function RootComponent() {
@@ -42,7 +43,6 @@ function RootLayout() {
 				logInUrl="/login"
 				logInSuccessUrl={currentPathname}
 			>
-				<div>zzzzz</div>
 				<Outlet />
 			</BetterAuthProvider>
 			<TanStackRouterDevtools />

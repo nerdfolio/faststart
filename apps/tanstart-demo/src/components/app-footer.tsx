@@ -1,6 +1,6 @@
 import { SimpleFooter } from "@nerdfolio/ui-base-solid/layouts"
-import { A } from "@solidjs/router"
 import { appCopyright, appSocialLinks } from "~/app-info"
+import { LinkWrap } from "./link-wrap"
 
 const footerLinks = [
 	{ href: "/about", label: "About" },
@@ -12,7 +12,7 @@ const footerLinks = [
 export default function AppFooter() {
 	return (
 		<SimpleFooter
-			Link={A}
+			Link={LinkWrap}
 			footerLinks={footerLinks}
 			socialLinks={appSocialLinks}
 			copyrightStatement={appCopyright}

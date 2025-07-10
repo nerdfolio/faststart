@@ -1,4 +1,3 @@
-import { setTimeout } from "node:timers/promises"
 import type { User } from "better-auth"
 import type { createAuthClient } from "better-auth/solid"
 import {
@@ -77,9 +76,8 @@ export function BetterAuthProvider<C extends AuthClient>(
 		// put in brief delay before redirecting to work around bug in better-auth + possible solidjs proxy object
 		// that returns {isPrending: false, data: null, error: null} in session() even though user is logged in
 		// It seems that better-auth + solidjs needs a bit of time for various states to be consistent
-		await setTimeout(25)
 		const successUrl = new URLSearchParams(window.location.search).get("next")
-		return props.navigateTo(successUrl ?? "/dashboard")
+		setTimeout(() => props.navigateTo(successUrl ?? "/dashboard"), 25)
 	}
 
 	const ctx = {
