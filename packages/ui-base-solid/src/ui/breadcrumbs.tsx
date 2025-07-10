@@ -1,10 +1,14 @@
 import { type Accessor, For, Show } from "solid-js"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "../ui/breadcrumb"
-import type { LinkComponent } from "./default-link"
-import DefaultLink from "./default-link"
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbSeparator,
+} from "../ui/breadcrumb"
+import type { AdaptedLink } from "./link-adapter"
 
-export function Breadcrumbs(props: { crumbs: Accessor<string[]>; Link?: LinkComponent }) {
-	const Link = props.Link ?? DefaultLink
+export function Breadcrumbs(props: { crumbs: Accessor<string[]>; Link: AdaptedLink }) {
 	return (
 		<Breadcrumb>
 			<BreadcrumbList>
@@ -16,7 +20,7 @@ export function Breadcrumbs(props: { crumbs: Accessor<string[]>; Link?: LinkComp
 									when={idx() < props.crumbs().length - 1}
 									fallback={<BreadcrumbLink current>{crumb}</BreadcrumbLink>}
 								>
-									<BreadcrumbLink as={Link} href={`/${crumb}`}>
+									<BreadcrumbLink as={props.Link} href={`/${crumb}`}>
 										{crumb}
 									</BreadcrumbLink>
 									<BreadcrumbSeparator />

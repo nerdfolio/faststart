@@ -1,7 +1,13 @@
 import type { ComponentProps } from "solid-js"
 import { For } from "solid-js"
-import DefaultLink, { type LinkComponent } from "../ui/default-link"
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
+import type { AdaptedLink } from "../ui/link-adapter"
+import {
+	SidebarGroup,
+	SidebarGroupContent,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+} from "../ui/sidebar"
 import type { NavMenuItem } from "./types"
 
 /*
@@ -12,12 +18,10 @@ export function MenuAsSidebarGroupSecondary(
 	props: ComponentProps<typeof SidebarGroup> & {
 		label?: string
 		items: NavMenuItem[]
-		linkComponent?: LinkComponent
+		Link: AdaptedLink
 		linkClass?: string
 	}
 ) {
-	const Link = props.linkComponent ?? DefaultLink
-
 	return (
 		<SidebarGroup {...props} class={props.class}>
 			<SidebarGroupContent>
@@ -25,7 +29,7 @@ export function MenuAsSidebarGroupSecondary(
 					<For each={props.items}>
 						{(item) => (
 							<SidebarMenuItem>
-								<SidebarMenuButton as={Link} href={item.href ?? ""} class={props.linkClass} size="sm">
+								<SidebarMenuButton as={props.Link} href={item.href ?? ""} class={props.linkClass} size="sm">
 									{item.icon ? <item.icon /> : null}
 									<span>{item.label}</span>
 								</SidebarMenuButton>

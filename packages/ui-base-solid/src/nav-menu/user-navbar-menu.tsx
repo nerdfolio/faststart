@@ -1,6 +1,6 @@
 import { type Accessor, Show } from "solid-js"
 import { IconLogout } from "../icons"
-import type { LinkComponent } from "../ui/default-link"
+import type { AdaptedLink } from "../ui/link-adapter"
 import {
 	NavigationMenu as NavMenu,
 	NavigationMenuContent as NavMenuContent,
@@ -14,7 +14,7 @@ export function UserNavbarMenu(props: {
 	user: Accessor<AvatarUser | undefined>
 	signInUrl: string
 	signOut: () => Promise<unknown>
-	Link: LinkComponent
+	Link: AdaptedLink
 }) {
 	return (
 		<NavMenu class="min-w-18 text-center">

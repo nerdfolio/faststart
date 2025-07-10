@@ -1,5 +1,5 @@
 import { type ComponentProps, For } from "solid-js"
-import type { LinkComponent } from "../ui/default-link"
+import type { AdaptedLink } from "../ui/link-adapter"
 import { cn } from "../utils"
 import type { NavMenuItem } from "./types"
 
@@ -7,7 +7,7 @@ export function MenuAsNavLinks(
 	props: ComponentProps<"nav"> & {
 		items: NavMenuItem[]
 		label?: string
-		Link: LinkComponent
+		Link: AdaptedLink
 		linkClass?: string
 	}
 ) {
