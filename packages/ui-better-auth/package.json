@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.125.2",
+		"@tanstack/solid-router": "^1.125.7",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:"
@@ -33,6 +33,6 @@
 	"dependencies": {
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@tanstack/solid-form": "^1.14.0",
-		"@tanstack/solid-query": "^5.81.5"
+		"@tanstack/solid-query": "^5.82.0"
 	}
 }

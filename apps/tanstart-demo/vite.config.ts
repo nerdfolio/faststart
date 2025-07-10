@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite"
 import { tanstackStart } from "@tanstack/solid-start/plugin/vite"
 import Icons from "unplugin-icons/vite"
 import { defineConfig } from "vite"
+import solidPlugin from "vite-plugin-solid"
 import tsConfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
@@ -17,15 +18,20 @@ export default defineConfig({
 	server: {
 		port: 3000,
 	},
-	plugins: [tsConfigPaths(), tanstackStart({
-		solid: {
-			babel: {
-				plugins: [
-					["@babel/plugin-proposal-decorators", { version: "legacy" }],
-					["@babel/plugin-transform-class-properties"],
-					["@babel/plugin-transform-private-methods"],
-				],
-			},
-		}
-	}), tailwindcss(), Icons({ compiler: "solid" })],
+	plugins: [
+		tsConfigPaths(),
+		tanstackStart({ customViteSolidPlugin: true }),
+		solidPlugin({
+			// babel: {
+			// 	plugins: [
+			// 		["@babel/plugin-proposal-decorators", { version: "legacy" }],
+			// 		["@babel/plugin-transform-class-properties"],
+			// 		["@babel/plugin-transform-private-methods"],
+			// 	],
+			// },
+			ssr: true
+		}),
+		tailwindcss(),
+		Icons({ compiler: "solid" }),
+	],
 })
