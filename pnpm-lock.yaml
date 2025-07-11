@@ -166,8 +166,8 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(better-auth@1.2.12)
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.3.2
-        version: 0.3.2(better-auth@1.2.12)(remult@3.0.6)
+        specifier: ^0.3.3
+        version: 0.3.3(better-auth@1.2.12)(remult@3.0.6)
       '@nerdfolio/ui-base-solid':
         specifier: workspace:*
         version: link:../../packages/ui-base-solid
@@ -293,8 +293,8 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(better-auth@1.2.12)
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.3.2
-        version: 0.3.2(better-auth@1.2.12)(remult@3.0.6)
+        specifier: ^0.3.3
+        version: 0.3.3(better-auth@1.2.12)(remult@3.0.6)
       '@nerdfolio/ui-base-solid':
         specifier: workspace:*
         version: link:../../packages/ui-base-solid
@@ -366,8 +366,8 @@ importers:
   core:
     dependencies:
       '@nerdfolio/remult-better-auth':
-        specifier: ^0.3.2
-        version: 0.3.2(better-auth@1.2.12)(remult@3.0.6)
+        specifier: ^0.3.3
+        version: 0.3.3(better-auth@1.2.12)(remult@3.0.6)
       better-auth:
         specifier: 'catalog:'
         version: 1.2.12
@@ -1711,8 +1711,8 @@ packages:
     peerDependencies:
       better-auth: 1.2.12
 
-  '@nerdfolio/remult-better-auth@0.3.2':
-    resolution: {integrity: sha512-or9pQ0UdI7E+7m/DloTn/ql2O0URe+Db4gYIk98537d/5JBcv9etpnrur10OAMz8C0v6gsmYx/y3vHYmNrbJDA==}
+  '@nerdfolio/remult-better-auth@0.3.3':
+    resolution: {integrity: sha512-FT92URYSUEjf/r5xJ1ogCshcFyhQOvyNluX7Hw5PbpRorNtsE+e6kylXMw/4mGn0S1LGqmYhkUlIxGBJ1FiKiA==}
     engines: {node: '>=22', pnpm: '>=10'}
     peerDependencies:
       better-auth: ^1.2.8
@@ -7614,7 +7614,7 @@ snapshots:
       lodash-es: 4.17.21
       zod: 3.25.76
 
-  '@nerdfolio/remult-better-auth@0.3.2(better-auth@1.2.12)(remult@3.0.6)':
+  '@nerdfolio/remult-better-auth@0.3.3(better-auth@1.2.12)(remult@3.0.6)':
     dependencies:
       better-auth: 1.2.12
       remult: 3.0.6

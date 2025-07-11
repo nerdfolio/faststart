@@ -8,7 +8,7 @@ import { remultApi } from "./remult-api"
 export const auth = initBetterAuth({
 	database: remultAdapter({
 		authEntities: { Account, Session, User, Verification },
-		remult: remultApi.getRemult()
+		dataProvider: remultApi.getRemult().then(r => r.dataProvider)
 	}),
 	plugins: [
 		guestList({

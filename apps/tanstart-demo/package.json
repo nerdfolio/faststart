@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@kobalte/tailwindcss": "catalog:",
 		"@nerdfolio/ba-guest-list": "^0.1.1",
-		"@nerdfolio/remult-better-auth": "^0.3.2",
+		"@nerdfolio/remult-better-auth": "^0.3.3",
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@nerdfolio/ui-better-auth": "workspace:*",
 		"@tailwindcss/vite": "^4.1.11",
