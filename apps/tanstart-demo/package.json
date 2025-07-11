@@ -19,21 +19,21 @@
 	"packageManager": "pnpm@10.12.4",
 	"dependencies": {
 		"@kobalte/tailwindcss": "catalog:",
-		"@nerdfolio/ba-guest-list": "^0.1.0",
-		"@nerdfolio/remult-better-auth": "^0.3.1",
+		"@nerdfolio/ba-guest-list": "^0.1.1",
+		"@nerdfolio/remult-better-auth": "^0.3.2",
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@nerdfolio/ui-better-auth": "workspace:*",
 		"@tailwindcss/vite": "^4.1.11",
-		"@tanstack/solid-router": "^1.125.7",
-		"@tanstack/solid-router-devtools": "^1.125.7",
-		"@tanstack/solid-start": "^1.126.0",
+		"@tanstack/solid-router": "^1.127.0",
+		"@tanstack/solid-router-devtools": "^1.127.0",
+		"@tanstack/solid-start": "^1.127.0",
 		"better-auth": "catalog:",
 		"core": "workspace:*",
 		"remult": "catalog:",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
 		"tw-animate-css": "catalog:",
-		"zod": "^4.0.1"
+		"zod": "^4.0.5"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "^7.28.0",
@@ -41,9 +41,9 @@
 		"@babel/plugin-transform-private-methods": "^7.27.1",
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
-		"vite": "^7.0.3",
+		"vite": "catalog:",
 		"vite-plugin-solid": "catalog:",
 		"vite-tsconfig-paths": "catalog:",
-		"wrangler": "^4.24.0"
+		"wrangler": "^4.24.3"
 	}
 }

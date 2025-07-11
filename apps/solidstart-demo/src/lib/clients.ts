@@ -5,11 +5,9 @@ import { Remult } from "remult"
 import type { auth } from "./auth"
 
 export const authClient = createAuthClient({
-	plugins: [
-		magicLinkClient(),
-		guestListClient(),
-		inferAdditionalFields<typeof auth>()
-	],
+	plugins: [magicLinkClient(), guestListClient(), inferAdditionalFields<typeof auth>()],
 })
 
 export const remultClient = new Remult({ url: __REMULT_API_PATH__ })
+
+console.log("remult path", __REMULT_API_PATH__)

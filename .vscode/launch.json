@@ -10,8 +10,8 @@
 			"webRoot": "${workspaceFolder}"
 		},
 		{
-			"command": "pnpm --filter solid-demo dev",
-			"name": "Launch Program",
+			"command": "pnpm --filter solidstart-demo dev",
+			"name": "Launch solidstart-demo dev",
 			"request": "launch",
 			"type": "node-terminal",
 			"cwd": "${workspaceFolder}"

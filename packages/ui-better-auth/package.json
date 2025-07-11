@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.125.7",
+		"@tanstack/solid-router": "^1.127.0",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:"

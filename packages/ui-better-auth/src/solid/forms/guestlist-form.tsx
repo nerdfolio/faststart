@@ -10,8 +10,9 @@ export function GuestListForm() {
 		defaultValues: {
 			name: "",
 		},
-		onSubmit: async (values) => {
-			console.log("form values", values)
+		onSubmit: async ({ value }) => {
+			console.log("form value", value)
+			await authClient.signIn.guestList(value)
 		},
 	}))
 
@@ -20,6 +21,7 @@ export function GuestListForm() {
 		initialData: ["guestlist placeholder"],
 		queryFn: authClient.signIn.guestList.reveal,
 		select: (data) => data.join(", "),
+		experimental_prefetchInRender: true,
 	}))
 	const isSubmitting = form.useStore((state) => state.isSubmitting)
 
@@ -33,7 +35,16 @@ export function GuestListForm() {
 		>
 			<div class="flex flex-col gap-6">
 				<form.Field name="name">
-					{(field) => <Input name={field().name} type="text" placeholder={placeholderQuery.data} required />}
+					{(field) => (
+						<Input
+							name={field().name}
+							type="text"
+							value={field().state.value}
+							placeholder={placeholderQuery.data}
+							onInput={(e) => field().handleChange(e.target.value)}
+							required
+						/>
+					)}
 				</form.Field>
 
 				<Button type="submit" class="w-full relative" disabled={isSubmitting()}>

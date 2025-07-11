@@ -61,7 +61,7 @@
 		"@kobalte/core": "catalog:",
 		"@kobalte/tailwindcss": "catalog:",
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.125.7",
+		"@tanstack/solid-router": "^1.127.0",
 		"barrelize": "^1.6.2",
 		"class-variance-authority": "catalog:",
 		"solid-js": "catalog:",
