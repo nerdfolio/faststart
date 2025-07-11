@@ -6,6 +6,7 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
+		"./context": "./src/context.tsx",
 		"./icons": "./src/icons.tsx",
 		"./utils": "./src/utils.ts",
 		"./layouts": "./src/layouts/index.tsx",
@@ -38,6 +39,10 @@
 			"./utils": {
 				"import": "./dist/utils.js",
 				"types": "./dist/utils.d.ts"
+			},
+			"./context": {
+				"import": "./dist/context.js",
+				"types": "./dist/context.d.ts"
 			}
 		}
 	},

@@ -1,6 +1,6 @@
 import { type Accessor, Show } from "solid-js"
+import { useUi } from "../context"
 import { IconLogout } from "../icons"
-import type { AdaptedLink } from "../ui/link-adapter"
 import {
 	NavigationMenu as NavMenu,
 	NavigationMenuContent as NavMenuContent,
@@ -14,14 +14,15 @@ export function UserNavbarMenu(props: {
 	user: Accessor<AvatarUser | undefined>
 	signInUrl: string
 	signOut: () => Promise<unknown>
-	Link: AdaptedLink
 }) {
+	const { LinkComponent } = useUi()
+
 	return (
 		<NavMenu class="min-w-18 text-center">
 			<Show
 				when={props.user()}
 				fallback={
-					<NavMenuTrigger as={props.Link} href={props.signInUrl}>
+					<NavMenuTrigger as={LinkComponent} href={props.signInUrl}>
 						Log in
 					</NavMenuTrigger>
 				}

@@ -1,5 +1,5 @@
 import { type ComponentProps, For } from "solid-js"
-import type { AdaptedLink } from "../ui/link-adapter"
+import { useUi } from "../context"
 import { cn } from "../utils"
 import type { NavMenuItem } from "./types"
 
@@ -7,17 +7,17 @@ export function MenuAsNavLinks(
 	props: ComponentProps<"nav"> & {
 		items: NavMenuItem[]
 		label?: string
-		Link: AdaptedLink
 		linkClass?: string
 	}
 ) {
+	const { LinkComponent } = useUi()
 	return (
 		<nav class={cn("flex flex-wrap justify-center gap-10", props.class)}>
 			<For each={props.items}>
 				{(item) => (
-					<props.Link href={item.href ?? ""} class={props.linkClass}>
+					<LinkComponent href={item.href ?? ""} class={props.linkClass}>
 						{item.label}
-					</props.Link>
+					</LinkComponent>
 				)}
 			</For>
 		</nav>

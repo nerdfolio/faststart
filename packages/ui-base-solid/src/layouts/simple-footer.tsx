@@ -1,11 +1,10 @@
 import { type ComponentProps, Show } from "solid-js"
 import { MenuAsNavLinks } from "../nav-menu"
-import { type AdaptedLink, Footer, SocialLinks, type SocialLinksType } from "../ui"
+import { Footer, SocialLinks, type SocialLinksType } from "../ui"
 
 export function SimpleFooter(
 	props: ComponentProps<typeof Footer> & {
 		footerLinks: { href: string; label: string }[]
-		Link: AdaptedLink
 		socialLinks?: SocialLinksType
 		copyrightStatement?: string
 	}
@@ -14,11 +13,7 @@ export function SimpleFooter(
 
 	return (
 		<Footer class="border-t-1">
-			<MenuAsNavLinks
-				items={props.footerLinks}
-				Link={props.Link}
-				linkClass="text-muted-foreground hover:brightness-130"
-			/>
+			<MenuAsNavLinks items={props.footerLinks} linkClass="text-muted-foreground hover:brightness-130" />
 			<Show when={socialLinks}>
 				<SocialLinks
 					class="flex flex-row gap-8 justify-center my-8"
