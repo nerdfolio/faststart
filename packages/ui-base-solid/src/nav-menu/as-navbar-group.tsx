@@ -4,12 +4,12 @@ import { NavigationMenu, NavigationMenuTrigger } from "../ui/navigation-menu"
 import type { NavMenuItem } from "./types"
 
 export function MenuAsNavbarGroup(props: { items: NavMenuItem[]; linkClass?: string }) {
-	const { LinkComponent } = useUi()
+	const { HrefLink } = useUi()
 	return (
 		<NavigationMenu class="flex">
 			<For each={props.items}>
 				{({ label, href }) => (
-					<NavigationMenuTrigger as={LinkComponent} href={href ?? ""} class={props.linkClass}>
+					<NavigationMenuTrigger as={HrefLink} href={href ?? ""} class={props.linkClass}>
 						{label}
 					</NavigationMenuTrigger>
 				)}

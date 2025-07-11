@@ -15,14 +15,14 @@ export function UserNavbarMenu(props: {
 	signInUrl: string
 	signOut: () => Promise<unknown>
 }) {
-	const { LinkComponent } = useUi()
+	const { HrefLink } = useUi()
 
 	return (
 		<NavMenu class="min-w-18 text-center">
 			<Show
 				when={props.user()}
 				fallback={
-					<NavMenuTrigger as={LinkComponent} href={props.signInUrl}>
+					<NavMenuTrigger as={HrefLink} href={props.signInUrl}>
 						Log in
 					</NavMenuTrigger>
 				}

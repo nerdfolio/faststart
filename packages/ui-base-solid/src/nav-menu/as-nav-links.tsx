@@ -10,14 +10,14 @@ export function MenuAsNavLinks(
 		linkClass?: string
 	}
 ) {
-	const { LinkComponent } = useUi()
+	const { HrefLink } = useUi()
 	return (
 		<nav class={cn("flex flex-wrap justify-center gap-10", props.class)}>
 			<For each={props.items}>
 				{(item) => (
-					<LinkComponent href={item.href ?? ""} class={props.linkClass}>
+					<HrefLink href={item.href ?? ""} class={props.linkClass}>
 						{item.label}
-					</LinkComponent>
+					</HrefLink>
 				)}
 			</For>
 		</nav>

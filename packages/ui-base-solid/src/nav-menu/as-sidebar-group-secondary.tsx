@@ -21,7 +21,7 @@ export function MenuAsSidebarGroupSecondary(
 		linkClass?: string
 	}
 ) {
-	const { LinkComponent } = useUi()
+	const { HrefLink } = useUi()
 	return (
 		<SidebarGroup {...props} class={props.class}>
 			<SidebarGroupContent>
@@ -29,12 +29,7 @@ export function MenuAsSidebarGroupSecondary(
 					<For each={props.items}>
 						{(item) => (
 							<SidebarMenuItem>
-								<SidebarMenuButton
-									as={LinkComponent}
-									href={item.href ?? ""}
-									class={props.linkClass}
-									size="sm"
-								>
+								<SidebarMenuButton as={HrefLink} href={item.href ?? ""} class={props.linkClass} size="sm">
 									{item.icon ? <item.icon /> : null}
 									<span>{item.label}</span>
 								</SidebarMenuButton>
