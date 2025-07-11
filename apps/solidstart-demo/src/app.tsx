@@ -1,5 +1,5 @@
 import { Meta, MetaProvider, Title } from "@solidjs/meta"
-import { A, Router, useNavigate } from "@solidjs/router"
+import { A, Router, useLocation, useNavigate } from "@solidjs/router"
 import { FileRoutes } from "@solidjs/start/router"
 import { type ParentProps, Suspense } from "solid-js"
 import "./app.css"
@@ -39,13 +39,14 @@ export default function App() {
 
 function AppContent(props: ParentProps) {
 	const navigate = useNavigate()
+
 	return (
 		<UiProvider HrefLink={wrapLink(A, "href")}>
 			<BetterAuthProvider
 				authClient={authClient}
 				onAuthChange={syncRemultUser}
 				logInUrl="/login"
-				logInSuccessUrl="/dashboard"
+				logInSuccessUrl={useLocation().pathname}
 				navigateTo={navigate}
 			>
 				{props.children}
