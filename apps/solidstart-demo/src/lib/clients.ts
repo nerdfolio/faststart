@@ -9,5 +9,3 @@ export const authClient = createAuthClient({
 })
 
 export const remultClient = new Remult({ url: __REMULT_API_PATH__ })
-
-console.log("remult path", __REMULT_API_PATH__)
