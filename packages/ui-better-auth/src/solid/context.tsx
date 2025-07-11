@@ -67,9 +67,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 	}, false)
 
 	function NavigateToLogin() {
-		onMount(() =>
-			props.navigateTo(`${props.logInUrl}?next=${props.logInSuccessUrl}&test=${window.location.pathname}`)
-		)
+		onMount(() => props.navigateTo(`${props.logInUrl}?next=${props.logInSuccessUrl}`))
 		return null
 	}
 

@@ -6,7 +6,7 @@ import { AppBranding } from "~/components/app-branding"
 export default function LoginPage() {
 	const footer = (
 		<div>
-			By continuing, you agree to our <A href="/terms">Terms of Service</A> and
+			By continuing, you agree to our <A href="/terms">Terms of Service</A> and&nbsp;
 			<A href="/privacy">Privacy Policy</A>.
 		</div>
 	)

@@ -11,16 +11,18 @@ export function GuestListForm() {
 			name: "",
 		},
 		onSubmit: async ({ value }) => {
-			console.log("form value", value)
 			await authClient.signIn.guestList(value)
+			navigateToLoginSuccess()
 		},
 	}))
 
 	const placeholderQuery = useQuery(() => ({
 		queryKey: ["revealGuestList"],
-		initialData: ["guestlist placeholder"],
-		queryFn: authClient.signIn.guestList.reveal,
-		select: (data) => data.join(", "),
+		initialData: "guestlist placeholder",
+		queryFn: async () => {
+			const resp = await authClient.signIn.guestList.reveal()
+			return resp.data.join(", ")
+		},
 		experimental_prefetchInRender: true,
 	}))
 	const isSubmitting = form.useStore((state) => state.isSubmitting)
