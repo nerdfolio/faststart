@@ -1,11 +1,13 @@
 import { Meta, MetaProvider, Title } from "@solidjs/meta"
-import { Router } from "@solidjs/router"
+import { A, Router, useNavigate } from "@solidjs/router"
 import { FileRoutes } from "@solidjs/start/router"
-import { Suspense } from "solid-js"
+import { type ParentProps, Suspense } from "solid-js"
 import "./app.css"
+import { UiProvider } from "@nerdfolio/ui-base-solid/context"
+import { wrapLink } from "@nerdfolio/ui-base-solid/ui"
+import { BetterAuthProvider } from "@nerdfolio/ui-better-auth/solidstart"
 import type { User } from "better-auth"
 import { baUserToRemultUser } from "core/utils/remult-ba"
-import { BetterAuthProvider } from "ui-better-auth/solidstart"
 import { appVersion } from "./app-info"
 import { authClient, remultClient } from "./lib/clients"
 
@@ -25,19 +27,29 @@ export default function App() {
 					<Title>SolidStart - with Vitest</Title>
 					<Meta name="appVersion" content={appVersion} />
 					<Suspense>
-						<BetterAuthProvider
-							authClient={authClient}
-							onAuthChange={syncRemultUser}
-							signInRedirect="/dashboard"
-							signOutRedirect="/"
-						>
-							{props.children}
-						</BetterAuthProvider>
+						<AppContent>{props.children}</AppContent>
 					</Suspense>
 				</MetaProvider>
 			)}
 		>
 			<FileRoutes />
 		</Router>
+	)
+}
+
+function AppContent(props: ParentProps) {
+	const navigate = useNavigate()
+	return (
+		<UiProvider HrefLink={wrapLink(A, "href")}>
+			<BetterAuthProvider
+				authClient={authClient}
+				onAuthChange={syncRemultUser}
+				logInUrl="/login"
+				logInSuccessUrl="/dashboard"
+				navigateTo={navigate}
+			>
+				{props.children}
+			</BetterAuthProvider>
+		</UiProvider>
 	)
 }

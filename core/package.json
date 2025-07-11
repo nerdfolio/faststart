@@ -6,11 +6,11 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./auth/*": "./auth/*.ts",
+		"./*": "./*.ts",
+		"./auth": "./auth/index.ts",
 		"./utils/*": "./utils/*.ts",
 		"./models/*": "./models/*.ts",
-		"./data-scaffold/*": "./data-scaffold/*.ts",
-		"./company-info": "./company-info.ts"
+		"./data-scaffold/*": "./data-scaffold/*.ts"
 	},
 	"keywords": [],
 	"type": "module",

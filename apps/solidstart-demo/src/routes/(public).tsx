@@ -1,10 +1,9 @@
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
-import { A } from "@solidjs/router"
+import { useBetterAuth } from "@nerdfolio/ui-better-auth/solidstart"
 import type { ComponentProps } from "solid-js"
 import { Transition } from "solid-transition-group"
-import { useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
 
@@ -22,12 +21,12 @@ const navMenus = [
 ]
 
 export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLayout>) {
-	const { signOut, sessionUser } = useBetterAuth()
+	const { logOut, sessionUser } = useBetterAuth()
 
 	return (
 		<NavbarLayout
 			branding={<AppBranding href="/" />}
-			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={A} />}
+			userMenu={<UserNavbarMenu signInUrl="/login" signOut={logOut} user={sessionUser} />}
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
 		>

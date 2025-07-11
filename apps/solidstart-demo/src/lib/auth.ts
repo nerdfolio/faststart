@@ -1,12 +1,11 @@
 "user server"
 import { guestList } from "@nerdfolio/ba-guest-list"
 import { remultAdapter } from "@nerdfolio/remult-better-auth"
-import { initBetterAuth } from "core/auth/solidstart"
+import { initBetterAuth } from "core/auth"
 import { Account, Session, User, Verification } from "core/models/auth-models"
-import { remultApi } from "./remult-api"
 
 export const auth = initBetterAuth({
-	database: remultAdapter(remultApi.getRemult(), {
+	database: remultAdapter({
 		authEntities: { Account, Session, User, Verification },
 	}),
 	plugins: [

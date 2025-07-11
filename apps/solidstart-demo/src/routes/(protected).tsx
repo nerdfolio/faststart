@@ -17,20 +17,20 @@ import {
 	UserSidebarMenu,
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
+import { AuthRequired, useBetterAuth } from "@nerdfolio/ui-better-auth/solidstart"
 import type { ParentProps } from "solid-js"
-import { AuthRequired, useBetterAuth } from "ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 
 export default function ProtectedRoutesLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
-	const { signOut, sessionUser } = useBetterAuth()
+	const { logOut, sessionUser } = useBetterAuth()
 
 	return (
 		<AuthRequired>
 			<SidebarLayout
 				branding={<AppBranding />}
-				userMenu={<UserSidebarMenu user={sessionUser} signOut={signOut} />}
+				userMenu={<UserSidebarMenu user={sessionUser} signOut={logOut} />}
 				menus={<NavMenus menus={menus} />}
 				crumbs={useBreadcrumbs()}
 			>

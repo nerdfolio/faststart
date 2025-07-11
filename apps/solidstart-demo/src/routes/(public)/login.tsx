@@ -1,4 +1,4 @@
-import { LoginCard } from "ui-better-auth/solidstart"
+import { LoginCard } from "@nerdfolio/ui-better-auth/solidstart"
 import { AppBranding } from "~/components/app-branding"
 
 export default function LoginPage() {

@@ -18,7 +18,7 @@ type ContextValue = {
 	sessionUser: () => User | undefined
 	onAuthChange?: (user: User | undefined) => void
 	logOut: AuthClient["signOut"]
-	navigateTo: (to: string) => Promise<void>
+	navigateTo: (to: string) => Promise<void> | void
 	navigateToLoginSuccess: () => Promise<void>
 	NavigateToLogin: Component
 }

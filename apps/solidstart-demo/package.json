@@ -19,6 +19,7 @@
 		"@nerdfolio/ba-guest-list": "^0.1.0",
 		"@nerdfolio/remult-better-auth": "^0.3.1",
 		"@nerdfolio/ui-base-solid": "workspace:*",
+		"@nerdfolio/ui-better-auth": "workspace:*",
 		"@solidjs/meta": "catalog:",
 		"@solidjs/router": "catalog:",
 		"@solidjs/start": "catalog:",
