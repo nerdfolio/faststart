@@ -1,7 +1,7 @@
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
-import { useBetterAuth } from "@nerdfolio/ui-better-auth/solidstart"
+import { useBetterAuth } from "@nerdfolio/ui-better-auth/solid"
 import type { ComponentProps } from "solid-js"
 import { Transition } from "solid-transition-group"
 import { AppBranding } from "~/components/app-branding"

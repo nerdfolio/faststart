@@ -17,7 +17,7 @@ import {
 	UserSidebarMenu,
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
-import { AuthRequired, useBetterAuth } from "@nerdfolio/ui-better-auth/solidstart"
+import { AuthRequired, useBetterAuth } from "@nerdfolio/ui-better-auth/solid"
 import type { ParentProps } from "solid-js"
 import { AppBranding } from "~/components/app-branding"
 

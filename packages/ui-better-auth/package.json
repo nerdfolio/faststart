@@ -6,8 +6,8 @@
 	"license": "UNLICENSED",
 	"author": "taivo",
 	"exports": {
-		"./solidstart": "./src/solidstart/index.tsx",
-		"./tanstart": "./src/tanstart/index.tsx"
+		"./solid": "./src/solid/index.tsx",
+		"./solid/forms": "./src/solid/forms/index.tsx"
 	},
 	"keywords": [],
 	"type": "module",
