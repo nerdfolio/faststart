@@ -2,7 +2,7 @@ import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { createForm } from "@tanstack/solid-form"
 import { useBetterAuth } from "~/context"
 
-export default function MagicLinkForm(props: { callbackUrl?: string }) {
+export function MagicLinkForm(props: { callbackUrl?: string }) {
 	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
 
 	const form = createForm(() => ({

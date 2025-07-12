@@ -2,7 +2,7 @@ import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { createForm } from "@tanstack/solid-form"
 import { useBetterAuth } from "../context"
 
-export default function EmailPasswordForm() {
+export function EmailPasswordForm() {
 	const { authClient, navigateToLoginSuccess } = useBetterAuth()
 
 	const form = createForm(() => ({
@@ -46,7 +46,7 @@ export default function EmailPasswordForm() {
 							name={field().name}
 							type="password"
 							value={field().state.value}
-							placeholder="***"
+							placeholder="*****"
 							onInput={(e) => field().handleChange(e.target.value)}
 							required
 						/>

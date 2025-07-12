@@ -14,7 +14,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as ProtectedRouteRouteImport } from './routes/_protected/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicTermsRouteImport } from './routes/_public.terms'
 import { Route as PublicRoadmapRouteImport } from './routes/_public.roadmap'
+import { Route as PublicPrivacyRouteImport } from './routes/_public.privacy'
 import { Route as PublicLoginRouteImport } from './routes/_public.login'
 import { Route as PublicContactRouteImport } from './routes/_public.contact'
 import { Route as PublicAboutRouteImport } from './routes/_public.about'
@@ -38,9 +40,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PublicTermsRoute = PublicTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => PublicRoute,
+} as any)
 const PublicRoadmapRoute = PublicRoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPrivacyRoute = PublicPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicLoginRoute = PublicLoginRouteImport.update({
@@ -86,7 +98,9 @@ export interface FileRoutesByFullPath {
   '/about': typeof PublicAboutRoute
   '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
+  '/privacy': typeof PublicPrivacyRoute
   '/roadmap': typeof PublicRoadmapRoute
+  '/terms': typeof PublicTermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -95,7 +109,9 @@ export interface FileRoutesByTo {
   '/about': typeof PublicAboutRoute
   '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
+  '/privacy': typeof PublicPrivacyRoute
   '/roadmap': typeof PublicRoadmapRoute
+  '/terms': typeof PublicTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,7 +123,9 @@ export interface FileRoutesById {
   '/_public/about': typeof PublicAboutRoute
   '/_public/contact': typeof PublicContactRoute
   '/_public/login': typeof PublicLoginRoute
+  '/_public/privacy': typeof PublicPrivacyRoute
   '/_public/roadmap': typeof PublicRoadmapRoute
+  '/_public/terms': typeof PublicTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -118,7 +136,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/login'
+    | '/privacy'
     | '/roadmap'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -127,7 +147,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/login'
+    | '/privacy'
     | '/roadmap'
+    | '/terms'
   id:
     | '__root__'
     | '/'
@@ -138,7 +160,9 @@ export interface FileRouteTypes {
     | '/_public/about'
     | '/_public/contact'
     | '/_public/login'
+    | '/_public/privacy'
     | '/_public/roadmap'
+    | '/_public/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -195,11 +219,25 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_public/terms': {
+      id: '/_public/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof PublicTermsRouteImport
+      parentRoute: typeof PublicRoute
+    }
     '/_public/roadmap': {
       id: '/_public/roadmap'
       path: '/roadmap'
       fullPath: '/roadmap'
       preLoaderRoute: typeof PublicRoadmapRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/privacy': {
+      id: '/_public/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PublicPrivacyRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/login': {
@@ -275,7 +313,9 @@ interface PublicRouteChildren {
   PublicAboutRoute: typeof PublicAboutRoute
   PublicContactRoute: typeof PublicContactRoute
   PublicLoginRoute: typeof PublicLoginRoute
+  PublicPrivacyRoute: typeof PublicPrivacyRoute
   PublicRoadmapRoute: typeof PublicRoadmapRoute
+  PublicTermsRoute: typeof PublicTermsRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
@@ -283,7 +323,9 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicAboutRoute: PublicAboutRoute,
   PublicContactRoute: PublicContactRoute,
   PublicLoginRoute: PublicLoginRoute,
+  PublicPrivacyRoute: PublicPrivacyRoute,
   PublicRoadmapRoute: PublicRoadmapRoute,
+  PublicTermsRoute: PublicTermsRoute,
 }
 
 const PublicRouteWithChildren =
