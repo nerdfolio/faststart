@@ -168,6 +168,9 @@ importers:
       '@nerdfolio/remult-better-auth':
         specifier: ^0.3.3
         version: 0.3.3(better-auth@1.2.12)(remult@3.0.6)
+      '@nerdfolio/solid-better-auth':
+        specifier: workspace:*
+        version: link:../../packages/solid-better-auth
       '@nerdfolio/ui-base-solid':
         specifier: workspace:*
         version: link:../../packages/ui-base-solid
@@ -292,6 +295,9 @@ importers:
       '@nerdfolio/remult-better-auth':
         specifier: ^0.3.3
         version: 0.3.3(better-auth@1.2.12)(remult@3.0.6)
+      '@nerdfolio/solid-better-auth':
+        specifier: workspace:*
+        version: link:../../packages/solid-better-auth
       '@nerdfolio/ui-base-solid':
         specifier: workspace:*
         version: link:../../packages/ui-base-solid

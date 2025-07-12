@@ -21,6 +21,7 @@
 		"@kobalte/tailwindcss": "catalog:",
 		"@nerdfolio/ba-guest-list": "^0.1.1",
 		"@nerdfolio/remult-better-auth": "^0.3.3",
+		"@nerdfolio/solid-better-auth": "workspace:*",
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@tailwindcss/vite": "^4.1.11",
 		"@tanstack/solid-router": "^1.127.0",

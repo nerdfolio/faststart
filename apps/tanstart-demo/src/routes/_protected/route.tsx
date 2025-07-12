@@ -1,4 +1,4 @@
-import { AuthRequired } from "@nerdfolio/ui-better-auth/tanstart"
+import { AuthRequired } from "@nerdfolio/solid-better-auth"
 import { createFileRoute, Outlet } from "@tanstack/solid-router"
 
 export const Route = createFileRoute("/_protected")({

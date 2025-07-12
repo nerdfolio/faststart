@@ -1,5 +1,5 @@
-import { LoginCard } from "@nerdfolio/ui-better-auth/solid"
-import { GuestListForm } from "@nerdfolio/ui-better-auth/solid/forms"
+import { LoginCard } from "@nerdfolio/solid-better-auth"
+import { GuestListForm } from "@nerdfolio/solid-better-auth/forms"
 import { A } from "@solidjs/router"
 import { AppBranding } from "~/components/app-branding"
 
