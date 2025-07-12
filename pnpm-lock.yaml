@@ -10,7 +10,7 @@ catalogs:
       specifier: ^1.47.3
       version: 1.47.3
     '@kobalte/core':
-      specifier: ^0.13.10
+      specifier: 0.13.10
       version: 0.13.10
     '@kobalte/tailwindcss':
       specifier: 0.9.0
@@ -31,7 +31,7 @@ catalogs:
       specifier: 1.2.12
       version: 1.2.12
     class-variance-authority:
-      specifier: ^0.7.1
+      specifier: 0.7.1
       version: 0.7.1
     cloudflare:
       specifier: ^4.4.1
@@ -286,6 +286,9 @@ importers:
 
   apps/tanstart-demo:
     dependencies:
+      '@kobalte/core':
+        specifier: 'catalog:'
+        version: 0.13.10(solid-js@1.9.7)
       '@kobalte/tailwindcss':
         specifier: 'catalog:'
         version: 0.9.0(tailwindcss@4.1.11)
@@ -443,6 +446,12 @@ importers:
 
   packages/ui-base-solid:
     dependencies:
+      '@kobalte/core':
+        specifier: 'catalog:'
+        version: 0.13.10(solid-js@1.9.7)
+      class-variance-authority:
+        specifier: 'catalog:'
+        version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -450,9 +459,6 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
-      '@kobalte/core':
-        specifier: 'catalog:'
-        version: 0.13.10(solid-js@1.9.7)
       '@kobalte/tailwindcss':
         specifier: 'catalog:'
         version: 0.9.0(tailwindcss@4.1.11)
@@ -465,9 +471,6 @@ importers:
       barrelize:
         specifier: ^1.6.2
         version: 1.6.2
-      class-variance-authority:
-        specifier: 'catalog:'
-        version: 0.7.1
       solid-js:
         specifier: 'catalog:'
         version: 1.9.7
