@@ -31,6 +31,6 @@
 	"dependencies": {
 		"@nerdfolio/ui-base-solid": "workspace:*",
 		"@tanstack/solid-form": "^1.14.0",
-		"@tanstack/solid-query": "^5.82.0"
+		"@tanstack/solid-query": "^5.83.0"
 	}
 }
