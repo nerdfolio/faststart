@@ -24,13 +24,13 @@ import { AppBranding } from "~/components/app-branding"
 export default function ProtectedRoutesLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
 
-	const { logOut, sessionUser } = useBetterAuth()
+	const { logout, sessionUser } = useBetterAuth()
 
 	return (
 		<AuthRequired>
 			<SidebarLayout
 				branding={<AppBranding />}
-				userMenu={<UserSidebarMenu user={sessionUser} signOut={logOut} />}
+				userMenu={<UserSidebarMenu user={sessionUser} signOut={logout} />}
 				menus={<NavMenus menus={menus} />}
 				crumbs={useBreadcrumbs()}
 			>

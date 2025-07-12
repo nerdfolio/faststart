@@ -45,8 +45,8 @@ function AppContent(props: ParentProps) {
 			<BetterAuthProvider
 				authClient={authClient}
 				onAuthChange={syncRemultUser}
-				logInUrl="/login"
-				logInSuccessUrl={useLocation().pathname}
+				loginUrl="/login"
+				loginSuccessUrl={useLocation().pathname}
 				navigateTo={navigate}
 			>
 				{props.children}

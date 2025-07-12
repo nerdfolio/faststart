@@ -18,7 +18,7 @@ type ContextValue = {
 	sessionPending: () => boolean
 	sessionUser: () => User | undefined
 	onAuthChange?: (user: User | undefined) => void
-	logOut: AuthClient["signOut"]
+	logout: AuthClient["signOut"]
 	navigateTo: (to: string) => Promise<void> | void
 	navigateToLoginSuccess: () => Promise<void>
 	NavigateToLogin: Component
@@ -26,7 +26,7 @@ type ContextValue = {
 	 * callback for multi-step flows like magic-link or social login
 	 * @default to loginSuccessUrl
 	 */
-	callbackURL: Accessor<string>
+	callbackUrl: Accessor<string>
 }
 
 const BetterAuthContext = createContext<ContextValue>()
@@ -45,10 +45,10 @@ export function BetterAuthProvider<C extends AuthClient>(
 	props: ParentProps<
 		{
 			authClient: C
-			logInUrl: string
-			logInSuccessUrl: string | Accessor<string>
+			loginUrl: string
+			loginSuccessUrl: string | Accessor<string>
 			logOutSuccessUrl?: string
-			callbackURL?: string
+			callbackUrl?: string
 		} & Pick<ContextValue, "navigateTo" | "onAuthChange">
 	>
 ) {
@@ -73,7 +73,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 	}, false)
 
 	function NavigateToLogin() {
-		onMount(() => props.navigateTo(`${props.logInUrl}?next=${props.logInSuccessUrl}`))
+		onMount(() => props.navigateTo(`${props.loginUrl}?next=${props.loginSuccessUrl}`))
 		return null
 	}
 
@@ -90,7 +90,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 		session,
 		sessionPending,
 		sessionUser,
-		logOut: async () => {
+		logout: async () => {
 			const _ = await props.authClient.signOut()
 			setTimeout(() => {
 				// hard reload page to clear memory
@@ -103,9 +103,9 @@ export function BetterAuthProvider<C extends AuthClient>(
 		navigateTo: props.navigateTo,
 		navigateToLoginSuccess,
 		NavigateToLogin,
-		callbackURL: () =>
-			props.callbackURL ??
-			(typeof props.logInSuccessUrl === "function" ? props.logInSuccessUrl() : props.logInSuccessUrl),
+		callbackUrl: () =>
+			props.callbackUrl ??
+			(typeof props.loginSuccessUrl === "function" ? props.loginSuccessUrl() : props.loginSuccessUrl),
 	}
 
 	const queryClient = new QueryClient()

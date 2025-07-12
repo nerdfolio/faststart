@@ -21,12 +21,12 @@ const navMenus = [
 ]
 
 export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLayout>) {
-	const { logOut, sessionUser } = useBetterAuth()
+	const { logout, sessionUser } = useBetterAuth()
 
 	return (
 		<NavbarLayout
 			branding={<AppBranding href="/" />}
-			userMenu={<UserNavbarMenu signInUrl="/login" signOut={logOut} user={sessionUser} />}
+			userMenu={<UserNavbarMenu signInUrl="/login" signOut={logout} user={sessionUser} />}
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
 		>

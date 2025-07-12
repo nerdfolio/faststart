@@ -2,8 +2,8 @@ import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { createForm } from "@tanstack/solid-form"
 import { useBetterAuth } from "~/context"
 
-export default function MagicLinkForm(props: { callbackURL?: string }) {
-	const { authClient, callbackURL: getCallbackURL } = useBetterAuth()
+export default function MagicLinkForm(props: { callbackUrl?: string }) {
+	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
 
 	const form = createForm(() => ({
 		defaultValues: {
@@ -11,7 +11,7 @@ export default function MagicLinkForm(props: { callbackURL?: string }) {
 		},
 		onSubmit: async ({ value: { email } }) => {
 			console.log("form value", email)
-			await authClient.signIn.magicLink({ email, callbackURL: props.callbackURL ?? getCallbackURL() })
+			await authClient.signIn.magicLink({ email, callbackURL: props.callbackUrl ?? getCallbackURL() })
 			console.log("DO SOMETHING")
 		},
 	}))

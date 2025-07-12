@@ -40,8 +40,8 @@ function RootLayout() {
 				authClient={authClient}
 				navigateTo={(to) => navigate({ to, viewTransition: true })}
 				onAuthChange={syncRemultUser}
-				logInUrl="/login"
-				logInSuccessUrl={currentPathname}
+				loginUrl="/login"
+				loginSuccessUrl={currentPathname}
 			>
 				<Outlet />
 			</BetterAuthProvider>
