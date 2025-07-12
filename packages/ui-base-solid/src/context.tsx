@@ -1,5 +1,5 @@
 import { type Accessor, createContext, type ParentProps, useContext } from "solid-js"
-import type { HrefLink } from "./ui/href-link"
+import type { HrefLink } from "./wrap-link"
 
 type ContextValue = {
 	HrefLink: HrefLink

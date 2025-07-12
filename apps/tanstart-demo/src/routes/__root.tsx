@@ -2,7 +2,9 @@
 /// <reference types="vite/client" />
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
-import { createRootRoute, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
+import { UiProvider } from "@nerdfolio/ui-base-solid/context"
+import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
+import { createRootRoute, Link, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
@@ -35,7 +37,7 @@ function RootLayout() {
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
 	return (
-		<>
+		<UiProvider HrefLink={wrapLink(Link, "to")}>
 			<BetterAuthProvider
 				authClient={authClient}
 				navigateTo={(to) => navigate({ to, viewTransition: true })}
@@ -46,6 +48,6 @@ function RootLayout() {
 				<Outlet />
 			</BetterAuthProvider>
 			<TanStackRouterDevtools />
-		</>
+		</UiProvider>
 	)
 }
