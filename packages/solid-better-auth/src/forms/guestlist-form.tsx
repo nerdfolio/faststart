@@ -1,13 +1,12 @@
-import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
-import { createForm } from "@tanstack/solid-form"
 import { useQuery } from "@tanstack/solid-query"
 import { Suspense } from "solid-js"
 import { useBetterAuth } from "../context"
+import { useBaForm } from "./use-ba-form"
 
 export function GuestListForm() {
 	const { authClient, navigateToLoginSuccess } = useBetterAuth()
 
-	const form = createForm(() => ({
+	const form = useBaForm(() => ({
 		defaultValues: {
 			name: "",
 		},
@@ -16,7 +15,6 @@ export function GuestListForm() {
 			navigateToLoginSuccess()
 		},
 	}))
-	const isSubmitting = form.useStore((state) => state.isSubmitting)
 
 	const placeholderQuery = useQuery(() => ({
 		queryKey: ["revealGuestList"],
@@ -29,32 +27,14 @@ export function GuestListForm() {
 
 	return (
 		<Suspense>
-			<form
-				onSubmit={(e) => {
-					e.preventDefault()
-					e.stopPropagation()
-					form.handleSubmit()
-				}}
-			>
+			<form.AppForm>
 				<div class="flex flex-col gap-6">
-					<form.Field name="name">
-						{(field) => (
-							<Input
-								name={field().name}
-								type="text"
-								value={field().state.value}
-								placeholder={placeholderQuery.data}
-								onInput={(e) => field().handleChange(e.target.value)}
-								required
-							/>
-						)}
-					</form.Field>
-
-					<Button type="submit" class="w-full relative" disabled={isSubmitting()}>
-						Sign in
-					</Button>
+					<form.AppField name="name">
+						{(field) => <field.TextField placeholder={placeholderQuery.data} required />}
+					</form.AppField>
+					<form.SubmitButton />
 				</div>
-			</form>
+			</form.AppForm>
 		</Suspense>
 	)
 }

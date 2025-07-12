@@ -1,11 +1,10 @@
-import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
-import { createForm } from "@tanstack/solid-form"
 import { useBetterAuth } from "~/context"
+import { useBaForm } from "./use-ba-form"
 
 export function MagicLinkForm(props: { callbackUrl?: string }) {
 	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
 
-	const form = createForm(() => ({
+	const form = useBaForm(() => ({
 		defaultValues: {
 			email: "",
 		},
@@ -15,34 +14,14 @@ export function MagicLinkForm(props: { callbackUrl?: string }) {
 			console.log("DO SOMETHING")
 		},
 	}))
-	const isSubmitting = form.useStore((state) => state.isSubmitting)
 
 	return (
-		<form
-			onSubmit={(e) => {
-				e.preventDefault()
-				e.stopPropagation()
-				form.handleSubmit()
-			}}
-		>
+		<form.AppForm>
 			<div class="flex flex-col gap-6">
-				<form.Field name="email">
-					{(field) => (
-						<Input
-							name={field().name}
-							type="email"
-							value={field().state.value}
-							placeholder="user@example.com"
-							onInput={(e) => field().handleChange(e.target.value)}
-							required
-						/>
-					)}
-				</form.Field>
+				<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
 
-				<Button type="submit" class="w-full relative" disabled={isSubmitting()}>
-					Send magic link
-				</Button>
+				<form.SubmitButton label="Send magic link" />
 			</div>
-		</form>
+		</form.AppForm>
 	)
 }
