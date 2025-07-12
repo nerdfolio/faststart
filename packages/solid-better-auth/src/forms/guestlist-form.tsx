@@ -27,14 +27,22 @@ export function GuestListForm() {
 
 	return (
 		<Suspense>
-			<form.AppForm>
-				<div class="flex flex-col gap-6">
-					<form.AppField name="name">
-						{(field) => <field.TextField placeholder={placeholderQuery.data} required />}
-					</form.AppField>
-					<form.SubmitButton />
-				</div>
-			</form.AppForm>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault()
+					e.stopPropagation()
+					form.handleSubmit()
+				}}
+			>
+				<form.AppForm>
+					<div class="flex flex-col gap-6">
+						<form.AppField name="name">
+							{(field) => <field.TextField placeholder={placeholderQuery.data} required />}
+						</form.AppField>
+						<form.SubmitButton />
+					</div>
+				</form.AppForm>
+			</form>
 		</Suspense>
 	)
 }

@@ -6,7 +6,7 @@ import * as authEntities from "core/models/auth-models"
 
 export const auth = initBetterAuth({
 	database: remultAdapter({ authEntities }),
-	plugins: [
+	additionalPlugins: [
 		guestList({
 			allowGuests: [
 				{ name: "Alice", role: "admin" },

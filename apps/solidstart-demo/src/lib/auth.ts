@@ -10,7 +10,7 @@ export const auth = initBetterAuth({
 		authEntities: { Account, Session, User, Verification },
 		dataProvider: remultApi.getRemult().then(r => r.dataProvider)
 	}),
-	plugins: [
+	additionalPlugins: [
 		guestList({
 			allowGuests: [
 				{ name: "Alice", role: "admin" },

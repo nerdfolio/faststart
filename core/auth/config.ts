@@ -20,10 +20,10 @@ export const coreBetterAuthConfig = {
 } as const
 
 
-export function initBetterAuth(opts: BetterAuthOptions) {
+export function initBetterAuth(opts: Omit<BetterAuthOptions, "plugins"> & { additionalPlugins?: BetterAuthOptions["plugins"] }) {
 	"user server"
 
-	const plugins = [...(coreBetterAuthConfig.plugins ?? []), ...(opts.plugins ?? [])]
+	const plugins = [...(coreBetterAuthConfig.plugins ?? []), ...(opts.additionalPlugins ?? [])]
 	const mergedOpts = {
 		...coreBetterAuthConfig,
 		...opts,

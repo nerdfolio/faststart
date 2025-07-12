@@ -17,16 +17,24 @@ export function EmailPasswordForm() {
 	}))
 
 	return (
-		<form.AppForm>
-			<div class="flex flex-col gap-6">
-				<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
+		<form
+			onSubmit={(e) => {
+				e.preventDefault()
+				e.stopPropagation()
+				form.handleSubmit()
+			}}
+		>
+			<form.AppForm>
+				<div class="flex flex-col gap-6">
+					<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
 
-				<form.AppField name="password">
-					{(field) => <field.TextField type="password" required />}
-				</form.AppField>
+					<form.AppField name="password">
+						{(field) => <field.TextField type="password" required />}
+					</form.AppField>
 
-				<form.SubmitButton />
-			</div>
-		</form.AppForm>
+					<form.SubmitButton />
+				</div>
+			</form.AppForm>
+		</form>
 	)
 }

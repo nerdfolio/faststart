@@ -1,8 +1,12 @@
+import { Alert } from "@nerdfolio/ui-base-solid/ui"
+import { createSignal, Show } from "solid-js"
 import { useBetterAuth } from "~/context"
 import { useBetterAuthForm } from "./form-hook"
 
-export function MagicLinkForm(props: { callbackUrl?: string }) {
+export function MagicLinkForm(_props: { callbackUrl?: string }) {
 	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
+
+	const [linkSent, setLinkSent] = createSignal(false)
 
 	const form = useBetterAuthForm(() => ({
 		defaultValues: {
@@ -11,17 +15,27 @@ export function MagicLinkForm(props: { callbackUrl?: string }) {
 		onSubmit: async ({ value: { email } }) => {
 			console.log("form value", email)
 			await authClient.signIn.magicLink({ email, callbackURL: props.callbackUrl ?? getCallbackURL() })
-			console.log("SHOW USER A MESSAGE ABOUT LINK SENT")
+			setLinkSent(true)
 		},
 	}))
 
 	return (
-		<form.AppForm>
-			<div class="flex flex-col gap-6">
-				<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
+		<Show when={!linkSent()} fallback={<Alert>Magic link sent to {form.state.values.email}</Alert>}>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault()
+					e.stopPropagation()
+					form.handleSubmit()
+				}}
+			>
+				<div class="flex flex-col gap-6">
+					<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
 
-				<form.SubmitButton label="Send magic link" />
-			</div>
-		</form.AppForm>
+					<form.AppForm>
+						<form.SubmitButton label="Send Magic Link" />
+					</form.AppForm>
+				</div>
+			</form>
+		</Show>
 	)
 }
