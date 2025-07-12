@@ -431,9 +431,6 @@ importers:
         specifier: ^5.83.0
         version: 5.83.0(solid-js@1.9.7)
     devDependencies:
-      '@solidjs/router':
-        specifier: 'catalog:'
-        version: 0.15.3(solid-js@1.9.7)
       better-auth:
         specifier: 'catalog:'
         version: 1.2.12
