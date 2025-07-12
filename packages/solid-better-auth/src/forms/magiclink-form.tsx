@@ -13,14 +13,16 @@ export function MagicLinkForm(_props: { callbackUrl?: string }) {
 			email: "",
 		},
 		onSubmit: async ({ value: { email } }) => {
-			console.log("form value", email)
 			await authClient.signIn.magicLink({ email, callbackURL: props.callbackUrl ?? getCallbackURL() })
 			setLinkSent(true)
 		},
 	}))
 
 	return (
-		<Show when={!linkSent()} fallback={<Alert>Magic link sent to {form.state.values.email}</Alert>}>
+		<Show
+			when={!linkSent()}
+			fallback={<Alert class="text-center">Magic link sent to {form.state.values.email}</Alert>}
+		>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault()
