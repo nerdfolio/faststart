@@ -1,13 +1,13 @@
 {
-	"name": "@nerdfolio/ui-better-auth",
+	"name": "@nerdfolio/solid-better-auth",
 	"version": "0.1.0",
-	"description": "better-auth ui: ui components for better-auth",
+	"description": "solidjs components for better-auth",
 	"private": true,
-	"license": "UNLICENSED",
+	"license": "ISC",
 	"author": "taivo",
 	"exports": {
-		"./solid": "./src/solid/index.tsx",
-		"./solid/forms": "./src/solid/forms/index.tsx"
+		".": "./src/index.tsx",
+		"./forms": "./src/forms/index.tsx"
 	},
 	"keywords": [],
 	"type": "module",
@@ -19,14 +19,12 @@
 	},
 	"devDependencies": {
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.127.0",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.125.2",
 		"better-auth": "catalog:",
 		"solid-js": "catalog:"
 	},

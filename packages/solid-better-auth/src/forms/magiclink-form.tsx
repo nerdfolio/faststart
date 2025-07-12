@@ -1,29 +1,19 @@
 import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
 import { createForm } from "@tanstack/solid-form"
-import { useQuery } from "@tanstack/solid-query"
-import { useBetterAuth } from "../context"
+import { useBetterAuth } from "~/context"
 
-export function GuestListForm() {
-	const { authClient, navigateToLoginSuccess } = useBetterAuth()
+export default function MagicLinkForm(props: { callbackUrl: string }) {
+	const { authClient } = useBetterAuth()
 
 	const form = createForm(() => ({
 		defaultValues: {
-			name: "",
+			email: "",
 		},
-		onSubmit: async ({ value }) => {
-			await authClient.signIn.guestList(value)
-			navigateToLoginSuccess()
+		onSubmit: async ({ value: { email } }) => {
+			console.log("form value", email)
+			await authClient.signIn.magicLink({ email, callbackURL: props.callbackUrl })
+			console.log("DO SOMETHING")
 		},
-	}))
-
-	const placeholderQuery = useQuery(() => ({
-		queryKey: ["revealGuestList"],
-		initialData: "guestlist placeholder",
-		queryFn: async () => {
-			const resp = await authClient.signIn.guestList.reveal()
-			return resp.data.join(", ")
-		},
-		experimental_prefetchInRender: true,
 	}))
 	const isSubmitting = form.useStore((state) => state.isSubmitting)
 
@@ -36,13 +26,13 @@ export function GuestListForm() {
 			}}
 		>
 			<div class="flex flex-col gap-6">
-				<form.Field name="name">
+				<form.Field name="email">
 					{(field) => (
 						<Input
 							name={field().name}
-							type="text"
+							type="email"
 							value={field().state.value}
-							placeholder={placeholderQuery.data}
+							placeholder="user@example.com"
 							onInput={(e) => field().handleChange(e.target.value)}
 							required
 						/>
@@ -50,7 +40,7 @@ export function GuestListForm() {
 				</form.Field>
 
 				<Button type="submit" class="w-full relative" disabled={isSubmitting()}>
-					Sign in
+					Send magic link
 				</Button>
 			</div>
 		</form>
