@@ -60,16 +60,16 @@ export function BetterAuthProvider<C extends AuthClient>(
 	const sessionUser = () => session().data?.user
 	const sessionPending = () => session().isPending
 
-	createEffect((hadUser: boolean) => {
+	createEffect(() => {
 		// a way to initialize user in related subsystems like remult
 		const user = sessionUser()
 		props.onAuthChange?.(user)
 
-		if (hadUser && !user) {
-			// if user was previously defined but now undefined, then logout just happened
-			window.location.href = props.logOutSuccessUrl ?? defaultProps.logOutSuccessUrl
-		}
-		return !!user
+		// if (hadUser && !user) {
+		// 	// if user was previously defined but now undefined, then logout just happened
+		// 	window.location.href = props.logOutSuccessUrl ?? defaultProps.logOutSuccessUrl
+		// }
+		// return !!user
 	}, false)
 
 	function NavigateToLogin() {
@@ -90,7 +90,16 @@ export function BetterAuthProvider<C extends AuthClient>(
 		session,
 		sessionPending,
 		sessionUser,
-		logOut: props.authClient.signOut,
+		logOut: async () => {
+			const _ = await props.authClient.signOut()
+			setTimeout(() => {
+				// hard reload page to clear memory
+				window.location.href = props.logOutSuccessUrl ?? defaultProps.logOutSuccessUrl
+			}, 10)
+
+			// return to make typescript happy
+			return _ as ReturnType<AuthClient["signOut"]>
+		},
 		navigateTo: props.navigateTo,
 		navigateToLoginSuccess,
 		NavigateToLogin,
