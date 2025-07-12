@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/solid-query"
 import { Suspense } from "solid-js"
 import { useBetterAuth } from "../context"
-import { useBaForm } from "./use-ba-form"
+import { useBetterAuthForm } from "./form-hook"
 
 export function GuestListForm() {
 	const { authClient, navigateToLoginSuccess } = useBetterAuth()
 
-	const form = useBaForm(() => ({
+	const form = useBetterAuthForm(() => ({
 		defaultValues: {
 			name: "",
 		},
@@ -18,7 +18,7 @@ export function GuestListForm() {
 
 	const placeholderQuery = useQuery(() => ({
 		queryKey: ["revealGuestList"],
-		initialData: "guestlist placeholder",
+		initialData: "Enter guest name",
 		queryFn: async () => {
 			const resp = await authClient.signIn.guestList.reveal()
 			return resp.data.join(", ")

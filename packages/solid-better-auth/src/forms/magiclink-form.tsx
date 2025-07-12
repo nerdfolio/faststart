@@ -1,17 +1,17 @@
 import { useBetterAuth } from "~/context"
-import { useBaForm } from "./use-ba-form"
+import { useBetterAuthForm } from "./form-hook"
 
 export function MagicLinkForm(props: { callbackUrl?: string }) {
 	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
 
-	const form = useBaForm(() => ({
+	const form = useBetterAuthForm(() => ({
 		defaultValues: {
 			email: "",
 		},
 		onSubmit: async ({ value: { email } }) => {
 			console.log("form value", email)
 			await authClient.signIn.magicLink({ email, callbackURL: props.callbackUrl ?? getCallbackURL() })
-			console.log("DO SOMETHING")
+			console.log("SHOW USER A MESSAGE ABOUT LINK SENT")
 		},
 	}))
 

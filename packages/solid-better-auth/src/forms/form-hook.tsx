@@ -5,9 +5,7 @@ import { type ComponentProps, splitProps } from "solid-js"
 
 export const { fieldContext, formContext, useFieldContext, useFormContext } = createFormHookContexts()
 
-export function TextField(
-	props: Omit<ComponentProps<"input">, "type"> & { type?: "text" | "email" | "password" }
-) {
+function TextField(props: Omit<ComponentProps<"input">, "type"> & { type?: "text" | "email" | "password" }) {
 	// The `Field` infers that it should have a `value` type of `string`
 	const field = useFieldContext<string>()
 
@@ -27,7 +25,7 @@ export function TextField(
 	)
 }
 
-export function SubmitButton(props: { label?: string; class?: string }) {
+function SubmitButton(props: { label?: string; class?: string }) {
 	const form = useFormContext()
 
 	return (
@@ -46,7 +44,7 @@ export function SubmitButton(props: { label?: string; class?: string }) {
 	)
 }
 
-export const { useAppForm: useBaForm } = createFormHook({
+export const { useAppForm: useBetterAuthForm } = createFormHook({
 	fieldContext,
 	formContext,
 	fieldComponents: {

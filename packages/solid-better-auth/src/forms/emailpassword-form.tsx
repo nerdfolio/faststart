@@ -1,10 +1,10 @@
 import { useBetterAuth } from "../context"
-import { useBaForm } from "./use-ba-form"
+import { useBetterAuthForm } from "./form-hook"
 
 export function EmailPasswordForm() {
 	const { authClient, navigateToLoginSuccess } = useBetterAuth()
 
-	const form = useBaForm(() => ({
+	const form = useBetterAuthForm(() => ({
 		defaultValues: {
 			email: "",
 			password: "",
