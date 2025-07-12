@@ -22,6 +22,11 @@ type ContextValue = {
 	navigateTo: (to: string) => Promise<void> | void
 	navigateToLoginSuccess: () => Promise<void>
 	NavigateToLogin: Component
+	/**
+	 * callback for multi-step flows like magic-link or social login
+	 * @default to loginSuccessUrl
+	 */
+	callbackURL: Accessor<string>
 }
 
 const BetterAuthContext = createContext<ContextValue>()
@@ -43,6 +48,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 			logInUrl: string
 			logInSuccessUrl: string | Accessor<string>
 			logOutSuccessUrl?: string
+			callbackURL?: string
 		} & Pick<ContextValue, "navigateTo" | "onAuthChange">
 	>
 ) {
@@ -88,6 +94,9 @@ export function BetterAuthProvider<C extends AuthClient>(
 		navigateTo: props.navigateTo,
 		navigateToLoginSuccess,
 		NavigateToLogin,
+		callbackURL: () =>
+			props.callbackURL ??
+			(typeof props.logInSuccessUrl === "function" ? props.logInSuccessUrl() : props.logInSuccessUrl),
 	}
 
 	const queryClient = new QueryClient()
