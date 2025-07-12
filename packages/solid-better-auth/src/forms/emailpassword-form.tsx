@@ -26,10 +26,12 @@ export function EmailPasswordForm() {
 		>
 			<form.AppForm>
 				<div class="flex flex-col gap-6">
-					<form.AppField name="email">{(field) => <field.TextField type="email" required />}</form.AppField>
+					<form.AppField name="email">
+						{(field) => <field.TextField type="email" required autocomplete="username" />}
+					</form.AppField>
 
 					<form.AppField name="password">
-						{(field) => <field.TextField type="password" required />}
+						{(field) => <field.TextField type="password" required autocomplete="current-password" />}
 					</form.AppField>
 
 					<form.SubmitButton />
