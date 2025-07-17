@@ -3,8 +3,7 @@
 	"references": [
 		{ "path": "core" },
 		{ "path": "apps/solidstart-demo" },
-		{ "path": "packages/platform-helpers" },
-		{ "path": "packages/remult-d1" },
+		{ "path": "packages/cloudflare-utils" },
 		{ "path": "packages/ui-base-solid" },
 		{ "path": "packages/solid-better-auth" }
 	]

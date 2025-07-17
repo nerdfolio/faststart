@@ -1,5 +1,5 @@
 import { createMiddleware } from "@solidjs/start/middleware"
-import { injectServerEnvMiddleware } from "platform-helpers/cloudflare/solidstart"
+import { injectServerEnvMiddleware } from "cloudflare-utils/solidstart"
 export default createMiddleware({
 	onRequest: injectServerEnvMiddleware,
 })

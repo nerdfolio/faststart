@@ -2,14 +2,12 @@ import { getRequestEvent, type RequestEvent } from "solid-js/web"
 
 // declare this so we don't have to depend on @solidjs/start/server just for the FetchEvent type
 type FetchEvent = RequestEvent & {
+	clientAddress?: string
 	locals: Record<string, unknown>
 	nativeEvent: {
-		context: {
-			cloudflare: Record<string, unknown>
-		}
+		context: Record<string, unknown>
 	}
 }
-
 export function getServerEnv() {
 	"use server"
 

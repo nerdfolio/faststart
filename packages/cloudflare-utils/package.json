@@ -1,13 +1,13 @@
 {
-	"name": "platform-helpers",
+	"name": "cloudflare-utils",
 	"version": "0.1.0",
-	"description": "helpers for platforms like cloudflare to simplify working with various frameworks like solidstart",
+	"description": "helpers for platforms like cloudflare to simplify working with various frameworks. Should be moved to cloudflare-helpers repo",
 	"private": true,
 	"license": "UNLICENSED",
 	"author": "taivo@github",
 	"exports": {
-		"./cloudflare/*": "./src/cloudflare/*.ts",
-		"./cloudflare/solidstart": "./src/cloudflare/solidstart/index.ts"
+		"./*": "./src/*.ts",
+		"./solidstart": "./src/solidstart/index.ts"
 	},
 	"keywords": [],
 	"type": "module",
