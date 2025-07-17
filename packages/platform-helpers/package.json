@@ -24,7 +24,7 @@
 		"@solidjs/start": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:",
-		"wrangler": "^4.24.3"
+		"wrangler": "^4.24.4"
 	},
 	"peerDependencies": {
 		"@solidjs/start": "^1.1.4",
