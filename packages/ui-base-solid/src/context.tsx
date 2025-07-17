@@ -1,17 +1,11 @@
-import {
-	type Accessor,
-	createContext,
-	createSignal,
-	type ParentProps,
-	type Setter,
-	useContext,
-} from "solid-js"
+import { type Accessor, createContext, createSignal, type ParentProps, useContext } from "solid-js"
 import type { HrefLink } from "./wrap-link"
 
+type BinaryTheme = "light" | "dark"
 type ContextValue = {
 	HrefLink: HrefLink
 	useBreadcrumbs: () => Accessor<string[]>
-	theme: Accessor<"light" | "dark">
+	theme: Accessor<BinaryTheme>
 	toggleTheme: () => string
 }
 
@@ -28,9 +22,13 @@ export function useUi() {
 }
 
 export function UiProvider(
-	props: ParentProps<{ HrefLink: HrefLink; useBreadcrumbs?: ContextValue["useBreadcrumbs"] }>
+	props: ParentProps<{
+		HrefLink: HrefLink
+		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
+		defaultTheme?: BinaryTheme
+	}>
 ) {
-	const [theme, setTheme] = createSignal<"light" | "dark">("dark")
+	const [theme, setTheme] = createSignal<BinaryTheme>(props.defaultTheme ?? "dark")
 	const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"))
 
 	const ctx = {
@@ -45,5 +43,9 @@ export function UiProvider(
 		toggleTheme,
 	}
 
-	return <UiContext.Provider value={ctx}>{props.children}</UiContext.Provider>
+	return (
+		<UiContext.Provider value={ctx}>
+			<div class={theme()}>{props.children}</div>
+		</UiContext.Provider>
+	)
 }
