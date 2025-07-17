@@ -28,7 +28,8 @@ export function UiProvider(
 		defaultTheme?: BinaryTheme
 	}>
 ) {
-	const [theme, setTheme] = createSignal<BinaryTheme>(props.defaultTheme ?? "dark")
+	const defaultTheme = props.defaultTheme === "light" ? "light" : "dark"
+	const [theme, setTheme] = createSignal<BinaryTheme>(defaultTheme)
 	const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"))
 
 	const ctx = {
