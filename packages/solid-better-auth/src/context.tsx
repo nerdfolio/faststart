@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/solid-query"
 import type { User } from "better-auth"
 import type { createAuthClient } from "better-auth/solid"
 import {
@@ -108,11 +107,5 @@ export function BetterAuthProvider<C extends AuthClient>(
 			(typeof props.loginSuccessUrl === "function" ? props.loginSuccessUrl() : props.loginSuccessUrl),
 	}
 
-	const queryClient = new QueryClient()
-
-	return (
-		<QueryClientProvider client={queryClient}>
-			<BetterAuthContext.Provider value={ctx}>{props.children}</BetterAuthContext.Provider>
-		</QueryClientProvider>
-	)
+	return <BetterAuthContext.Provider value={ctx}>{props.children}</BetterAuthContext.Provider>
 }

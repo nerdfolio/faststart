@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/solid-query"
-import { Show } from "solid-js"
+import { createResource, Show } from "solid-js"
 import { useBetterAuth } from "../context"
 import { useBetterAuthForm } from "./form-hook"
 
@@ -16,16 +15,14 @@ export function GuestListForm() {
 		},
 	}))
 
-	const guestListQuery = useQuery(() => ({
-		queryKey: ["guestListQuery"],
-		queryFn: async () => {
-			const resp = await authClient.signIn.guestList.reveal()
-			return resp.data.join(", ")
-		},
-	}))
+	const [guestNames] = createResource(async () => {
+		const resp = await authClient.signIn.guestList.reveal()
+		console.log("createResource resp", resp)
+		return resp.data.join(", ") || "Enter guest name"
+	})
 
 	return (
-		<Show when={!guestListQuery.isLoading}>
+		<Show when={!guestNames.loading}>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault()
@@ -36,7 +33,7 @@ export function GuestListForm() {
 				<form.AppForm>
 					<div class="flex flex-col gap-6">
 						<form.AppField name="name">
-							{(field) => <field.TextField placeholder={guestListQuery.data} required />}
+							{(field) => <field.TextField placeholder={guestNames()} required />}
 						</form.AppField>
 						<form.SubmitButton />
 					</div>
