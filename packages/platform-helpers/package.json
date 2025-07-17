@@ -21,13 +21,11 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"@solidjs/start": "catalog:",
 		"solid-js": "catalog:",
 		"typescript": "catalog:",
 		"wrangler": "^4.24.4"
 	},
 	"peerDependencies": {
-		"@solidjs/start": "^1.1.4",
 		"solid-js": "catalog:"
 	}
 }

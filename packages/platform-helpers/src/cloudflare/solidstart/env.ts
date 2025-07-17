@@ -1,5 +1,14 @@
-import type { FetchEvent } from "@solidjs/start/server"
 import { getRequestEvent, type RequestEvent } from "solid-js/web"
+
+// declare this so we don't have to depend on @solidjs/start/server just for the FetchEvent type
+type FetchEvent = RequestEvent & {
+	locals: Record<string, unknown>
+	nativeEvent: {
+		context: {
+			cloudflare: Record<string, unknown>
+		}
+	}
+}
 
 export function getServerEnv() {
 	"use server"
@@ -13,7 +22,7 @@ export function getServerEnv() {
 	//
 	// Having a synchronous getServerEnv() makes many things simpler, including defining and exporting lib.db
 	// synchronously.
-	const event = getRequestEvent()
+	const event = getRequestEvent() as FetchEvent | undefined
 	const env = event?.locals.serverEnv
 
 	if (event && !env) {
@@ -29,7 +38,7 @@ export async function injectServerEnvMiddleware(event: FetchEvent) {
 
 export const isCfRuntime = navigator.userAgent === "Cloudflare-Workers"
 
-async function getCfEnv(event: RequestEvent) {
+async function getCfEnv(event: FetchEvent) {
 	return import.meta.env.DEV ? await __devEnv() : (event.nativeEvent.context.cloudflare?.env as Env)
 }
 
