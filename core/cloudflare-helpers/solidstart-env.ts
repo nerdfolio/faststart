@@ -44,5 +44,5 @@ async function getCfEnv(event: FetchEvent) {
 // wrap in DEV check and use dynamic import so it it doesn't break the build
 //
 const __devEnv = import.meta.env.DEV
-	? () => import("../dev-platform-proxy").then(({ devPlatformEnv }) => devPlatformEnv())
+	? () => import("./dev-platform-proxy").then(({ devPlatformEnv }) => devPlatformEnv())
 	: () => Promise.reject("devPlatformProxy is only available in DEV mode")

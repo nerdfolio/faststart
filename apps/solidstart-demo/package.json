@@ -25,7 +25,6 @@
 		"@solidjs/start": "catalog:",
 		"better-auth": "catalog:",
 		"class-variance-authority": "catalog:",
-		"cloudflare-utils": "workspace:*",
 		"core": "workspace:*",
 		"lodash-es": "catalog:",
 		"remult": "catalog:",

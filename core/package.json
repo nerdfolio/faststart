@@ -8,9 +8,10 @@
 	"exports": {
 		"./*": "./*.ts",
 		"./auth": "./auth/index.ts",
-		"./utils/*": "./utils/*.ts",
 		"./models/*": "./models/*.ts",
-		"./data-scaffold/*": "./data-scaffold/*.ts"
+		"./data-scaffold/*": "./data-scaffold/*.ts",
+		"./utils/*": "./utils/*.ts",
+		"./cloudflare-helpers/*": "./cloudflare-helpers/*.ts"
 	},
 	"keywords": [],
 	"type": "module",
@@ -23,11 +24,17 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"typescript": "catalog:"
+		"solid-js": "catalog:",
+		"typescript": "catalog:",
+		"wrangler": "^4.24.4"
 	},
 	"dependencies": {
 		"@nerdfolio/remult-better-auth": "^0.3.3",
 		"better-auth": "catalog:",
 		"remult": "catalog:"
+	},
+	"peerDependencies": {
+		"solid-js": "catalog:",
+		"wrangler": "^4.24.4"
 	}
 }
