@@ -3,7 +3,7 @@
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { UiProvider } from "@nerdfolio/ui-base-solid/context"
-import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
+import { initDarkModeScript, wrapLink } from "@nerdfolio/ui-base-solid/utils"
 import { createRootRoute, Link, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
@@ -26,20 +26,13 @@ export const Route = createRootRoute({
 		links: [{ rel: "stylesheet", href: appCss }],
 		scripts: [
 			{
-				children: `(${initTheme.toString()})()`,
+				children: initDarkModeScript,
 			},
 		],
 	}),
 	component: RootComponent,
 	notFoundComponent: () => <Navigate to="/404" />,
 })
-
-function initTheme() {
-	if (localStorage.getItem("isDarkMode")) {
-		console.log("setting dark mode")
-		document.documentElement.classList.add("dark")
-	}
-}
 
 function RootComponent() {
 	return <RootLayout />

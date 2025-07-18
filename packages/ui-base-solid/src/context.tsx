@@ -1,14 +1,5 @@
-import { makePersisted } from "@solid-primitives/storage"
-import {
-	type Accessor,
-	createContext,
-	createEffect,
-	createSignal,
-	onMount,
-	type ParentProps,
-	Signal,
-	useContext,
-} from "solid-js"
+import { cookieStorage, makePersisted } from "@solid-primitives/storage"
+import { type Accessor, createContext, createSignal, onMount, type ParentProps, useContext } from "solid-js"
 import type { HrefLink } from "./internal/wrap-link"
 
 type ContextValue = {
@@ -37,10 +28,11 @@ export function UiProvider(
 	}>
 ) {
 	//
-	// dark mode handling
+	// dark mode handling. Initialized to true, after that, it's based on the cookie value
 	//
 	const [isDarkMode, setDarkMode] = makePersisted(createSignal(true), {
-		name: "isDarkMode",
+		name: "ui-base-solid-isDarkMode",
+		storage: cookieStorage,
 	})
 	onMount(() => {
 		// rely on an outer mechanism to already set <html class="dark">
@@ -49,9 +41,7 @@ export function UiProvider(
 
 	const toggleDarkMode = () => {
 		setDarkMode((prev) => !prev)
-		if (document.startViewTransition) {
-			document.startViewTransition()
-		}
+		document.startViewTransition?.()
 		document.documentElement.classList.toggle("dark", isDarkMode())
 	}
 
