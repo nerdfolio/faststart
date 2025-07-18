@@ -22,7 +22,6 @@ function Login() {
 				<LoginCard footer={footer}>
 					<GuestListForm />
 					<MagicLinkForm />
-					<EmailPasswordForm />
 				</LoginCard>
 			</div>
 		</div>

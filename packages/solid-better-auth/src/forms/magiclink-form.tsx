@@ -21,7 +21,7 @@ export function MagicLinkForm(props: { callbackUrl?: string }) {
 	return (
 		<Show
 			when={!linkSent()}
-			fallback={<Alert class="text-center">Magic link sent to {form.state.values.email}</Alert>}
+			fallback={<Alert class="text-center">Link sent to {form.state.values.email}</Alert>}
 		>
 			<form
 				onSubmit={(e) => {
