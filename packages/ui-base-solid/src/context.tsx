@@ -1,4 +1,11 @@
-import { type Accessor, createContext, createSignal, type ParentProps, useContext } from "solid-js"
+import {
+	type Accessor,
+	createContext,
+	createEffect,
+	createSignal,
+	type ParentProps,
+	useContext,
+} from "solid-js"
 import type { HrefLink } from "./wrap-link"
 
 type BinaryTheme = "light" | "dark"
@@ -31,6 +38,7 @@ export function UiProvider(
 	const defaultTheme = props.defaultTheme === "light" ? "light" : "dark"
 	const [theme, setTheme] = createSignal<BinaryTheme>(defaultTheme)
 	const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"))
+	createEffect(() => document.body.classList.toggle("dark", theme() === "dark"))
 
 	const ctx = {
 		HrefLink: props.HrefLink,
@@ -46,7 +54,7 @@ export function UiProvider(
 
 	return (
 		<UiContext.Provider value={ctx}>
-			<div class={theme()}>{props.children}</div>
+			{props.children}
 		</UiContext.Provider>
 	)
 }
