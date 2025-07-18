@@ -3,7 +3,7 @@
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { UiProvider } from "@nerdfolio/ui-base-solid/context"
-import { initDarkModeScript, wrapLink } from "@nerdfolio/ui-base-solid/utils"
+import { generateInitDarkModeScript, wrapLink } from "@nerdfolio/ui-base-solid/utils"
 import { createRootRoute, Link, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
@@ -26,7 +26,7 @@ export const Route = createRootRoute({
 		links: [{ rel: "stylesheet", href: appCss }],
 		scripts: [
 			{
-				children: initDarkModeScript,
+				children: generateInitDarkModeScript(),
 			},
 		],
 	}),

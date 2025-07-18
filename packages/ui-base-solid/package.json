@@ -8,7 +8,7 @@
 	"exports": {
 		"./context": "./src/context.tsx",
 		"./icons": "./src/icons.tsx",
-		"./utils": "./src/utils.ts",
+		"./utils": "./src/utils/index.ts",
 		"./layouts": "./src/layouts/index.tsx",
 		"./nav-menu": "./src/nav-menu/index.tsx",
 		"./ui": "./src/ui/index.tsx",

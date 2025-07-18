@@ -5,7 +5,6 @@ import { Button } from "."
 
 export function ThemeToggle() {
 	const { isDarkMode, toggleDarkMode } = useUi()
-
 	return (
 		<Button variant="outline" onClick={() => toggleDarkMode()}>
 			<Show when={isDarkMode()} fallback={<IconMoon />}>
