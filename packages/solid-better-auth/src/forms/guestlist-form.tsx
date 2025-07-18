@@ -17,7 +17,7 @@ export function GuestListForm() {
 
 	const [guestNames] = createResource(async () => {
 		const resp = await authClient.signIn.guestList.reveal()
-		return resp.data.join(", ") || "Enter guest name"
+		return resp.data?.join(", ") ?? "Enter guest name"
 	})
 
 	return (

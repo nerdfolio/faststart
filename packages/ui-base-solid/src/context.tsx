@@ -6,14 +6,13 @@ import {
 	type ParentProps,
 	useContext,
 } from "solid-js"
-import type { HrefLink } from "./wrap-link"
+import type { HrefLink } from "./internal/wrap-link"
 
-type BinaryTheme = "light" | "dark"
 type ContextValue = {
 	HrefLink: HrefLink
 	useBreadcrumbs: () => Accessor<string[]>
-	theme: Accessor<BinaryTheme>
-	toggleTheme: () => string
+	isDarkMode: Accessor<boolean>
+	toggleDarkMode: () => boolean
 }
 
 const UiContext = createContext<ContextValue>()
@@ -32,13 +31,12 @@ export function UiProvider(
 	props: ParentProps<{
 		HrefLink: HrefLink
 		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
-		defaultTheme?: BinaryTheme
+		darkModeOff?: boolean
 	}>
 ) {
-	const defaultTheme = props.defaultTheme === "light" ? "light" : "dark"
-	const [theme, setTheme] = createSignal<BinaryTheme>(defaultTheme)
-	const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"))
-	createEffect(() => document.body.classList.toggle("dark", theme() === "dark"))
+	const [isDarkMode, setDarkMode] = createSignal<boolean>(!props.darkModeOff)
+	const toggleDarkMode = () => setDarkMode((prev) => !prev)
+	createEffect(() => document.documentElement.classList.toggle("dark", isDarkMode()))
 
 	const ctx = {
 		HrefLink: props.HrefLink,
@@ -48,13 +46,9 @@ export function UiProvider(
 			}
 			return props.useBreadcrumbs()
 		},
-		theme,
-		toggleTheme,
+		isDarkMode,
+		toggleDarkMode,
 	}
 
-	return (
-		<UiContext.Provider value={ctx}>
-			{props.children}
-		</UiContext.Provider>
-	)
+	return <UiContext.Provider value={ctx}>{props.children}</UiContext.Provider>
 }

@@ -8,6 +8,7 @@ import { createRootRoute, Link, Navigate, Outlet, useLocation, useNavigate } fro
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
+
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -23,10 +24,19 @@ export const Route = createRootRoute({
 			},
 		],
 		links: [{ rel: "stylesheet", href: appCss }],
+		scripts: [
+			{
+				children: `(${initTheme.toString()})()`,
+			},
+		],
 	}),
 	component: RootComponent,
 	notFoundComponent: () => <Navigate to="/404" />,
 })
+
+function initTheme() {
+	document.documentElement.classList.add("dark")
+}
 
 function RootComponent() {
 	return <RootLayout />

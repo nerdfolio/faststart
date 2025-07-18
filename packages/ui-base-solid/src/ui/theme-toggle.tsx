@@ -4,11 +4,11 @@ import { IconMoon, IconSunFilled } from "../icons"
 import { Button } from "."
 
 export function ThemeToggle() {
-	const { theme, toggleTheme } = useUi()
+	const { isDarkMode, toggleDarkMode } = useUi()
 
 	return (
-		<Button variant="outline" onClick={() => toggleTheme()}>
-			<Show when={theme() === "dark"} fallback={<IconMoon />}>
+		<Button variant="outline" onClick={() => toggleDarkMode()}>
+			<Show when={isDarkMode()} fallback={<IconMoon />}>
 				<IconSunFilled />
 			</Show>
 		</Button>
