@@ -156,3 +156,7 @@
 		@apply bg-muted animate-pulse;
 	}
 }
+
+::view-transition-group(root) {
+  animation-duration: 1s;
+}

@@ -35,7 +35,10 @@ export const Route = createRootRoute({
 })
 
 function initTheme() {
-	document.documentElement.classList.add("dark")
+	if (localStorage.getItem("isDarkMode")) {
+		console.log("setting dark mode")
+		document.documentElement.classList.add("dark")
+	}
 }
 
 function RootComponent() {

@@ -1,9 +1,12 @@
+import { makePersisted } from "@solid-primitives/storage"
 import {
 	type Accessor,
 	createContext,
 	createEffect,
 	createSignal,
+	onMount,
 	type ParentProps,
+	Signal,
 	useContext,
 } from "solid-js"
 import type { HrefLink } from "./internal/wrap-link"
@@ -31,12 +34,26 @@ export function UiProvider(
 	props: ParentProps<{
 		HrefLink: HrefLink
 		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
-		darkModeOff?: boolean
 	}>
 ) {
-	const [isDarkMode, setDarkMode] = createSignal<boolean>(!props.darkModeOff)
-	const toggleDarkMode = () => setDarkMode((prev) => !prev)
-	createEffect(() => document.documentElement.classList.toggle("dark", isDarkMode()))
+	//
+	// dark mode handling
+	//
+	const [isDarkMode, setDarkMode] = makePersisted(createSignal(true), {
+		name: "isDarkMode",
+	})
+	onMount(() => {
+		// rely on an outer mechanism to already set <html class="dark">
+		setDarkMode(document.documentElement.classList.contains("dark"))
+	})
+
+	const toggleDarkMode = () => {
+		setDarkMode((prev) => !prev)
+		if (document.startViewTransition) {
+			document.startViewTransition()
+		}
+		document.documentElement.classList.toggle("dark", isDarkMode())
+	}
 
 	const ctx = {
 		HrefLink: props.HrefLink,

@@ -63,12 +63,6 @@ export function BetterAuthProvider<C extends AuthClient>(
 		// a way to initialize user in related subsystems like remult
 		const user = sessionUser()
 		props.onAuthChange?.(user)
-
-		// if (hadUser && !user) {
-		// 	// if user was previously defined but now undefined, then logout just happened
-		// 	window.location.href = props.logOutSuccessUrl ?? defaultProps.logOutSuccessUrl
-		// }
-		// return !!user
 	}, false)
 
 	function NavigateToLogin() {
