@@ -3,7 +3,7 @@ import { createSignal, Show } from "solid-js"
 import { useBetterAuth } from "../context"
 import { useBetterAuthForm } from "./form-hook"
 
-export function MagicLinkForm(_props: { callbackUrl?: string }) {
+export function MagicLinkForm(props: { callbackUrl?: string }) {
 	const { authClient, callbackUrl: getCallbackURL } = useBetterAuth()
 
 	const [linkSent, setLinkSent] = createSignal(false)

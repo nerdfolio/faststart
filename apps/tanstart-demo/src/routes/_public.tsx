@@ -1,19 +1,21 @@
 import { useBetterAuth } from "@nerdfolio/solid-better-auth"
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
-import { createFileRoute, Outlet } from "@tanstack/solid-router"
+import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
+import { createFileRoute, Link, Outlet } from "@tanstack/solid-router"
 import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
-import { LinkWrap } from "~/components/link-wrap"
 
 export const Route = createFileRoute("/_public")({
 	component: PublicLayout,
 })
 
+const LinkHref = wrapLink(Link, "to")
+
 const navMenus = [
 	{
 		renderer: MenuAsNavbarGroup,
-		linkComponent: LinkWrap,
+		linkComponent: LinkHref,
 		items: [
 			{ label: "About", href: "/about" },
 			{ label: "Road map", href: "/roadmap" },
@@ -29,7 +31,7 @@ function PublicLayout() {
 	return (
 		<NavbarLayout
 			branding={<AppBranding href="/" />}
-			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={LinkWrap} />}
+			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={LinkHref} />}
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
 		>
