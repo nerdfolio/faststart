@@ -1,5 +1,5 @@
 import { type JSXElement, type ParentProps, Show } from "solid-js"
-import { ThemeSelector } from "~/ui/theme-selector"
+import { ThemeSelector } from "../theming/theme-selector"
 import { cn } from "../utils"
 
 export function NavbarLayout(

@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @plugin "@kobalte/tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *, [data-kb-theme="dark"] *));
 
 @theme {
 	/* Your theme styles go here */
@@ -55,7 +55,7 @@
 	--sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
-.dark {
+.dark, [data-kb-theme="dark"] {
 	--background: hsl(240 10% 3.9%);
 	--foreground: hsl(0 0% 98%);
 	--card: hsl(240 10% 3.9%);
