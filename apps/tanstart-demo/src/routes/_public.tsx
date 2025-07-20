@@ -34,6 +34,7 @@ function PublicLayout() {
 			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} Link={LinkHref} />}
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
+			themeSelector={true}
 		>
 			<Outlet />
 		</NavbarLayout>
