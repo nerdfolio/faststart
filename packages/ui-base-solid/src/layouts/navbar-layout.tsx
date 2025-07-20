@@ -1,5 +1,6 @@
 import { type JSXElement, type ParentProps, Show } from "solid-js"
-import { ThemeToggle } from "../ui/theme-toggle"
+import { ThemeSelector } from "~/ui/theme-selector"
+import { cn } from "../utils"
 
 export function NavbarLayout(
 	props: ParentProps<{
@@ -7,20 +8,20 @@ export function NavbarLayout(
 		userMenu: JSXElement
 		menus: JSXElement
 		footer?: JSXElement
-		hideThemeToggle?: boolean
+		hideThemeSelector?: boolean
 	}>
 ) {
 	const footer = props.footer ?? null
 	return (
 		<div>
-			<div class="flex justify-between px-8 py-2 border-b">
+			<div class={cn("flex justify-between py-2 border-b", props.hideThemeSelector ? "px-6" : "pl-6 pr-1")}>
 				{props.branding}
 				{props.menus}
 				<div class="flex flex-row gap-1">
-					<Show when={!props.hideThemeToggle}>
-						<ThemeToggle />
-					</Show>
 					{props.userMenu}
+					<Show when={!props.hideThemeSelector}>
+						<ThemeSelector />
+					</Show>
 				</div>
 			</div>
 			<div class="min-h-svh">{props.children}</div>

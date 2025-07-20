@@ -12,6 +12,7 @@
 		"./layouts": "./src/layouts/index.tsx",
 		"./nav-menu": "./src/nav-menu/index.tsx",
 		"./ui": "./src/ui/index.tsx",
+		"./theming": "./src/theming/index.tsx",
 		"./solidstart": "./src/solidstart/index.tsx"
 	},
 	"publishConfig": {
@@ -19,6 +20,10 @@
 			"./ui": {
 				"import": "./dist/ui.js",
 				"types": "./dist/ui.d.ts"
+			},
+			"./theming": {
+				"import": "./dist/theming.js",
+				"types": "./dist/theming.d.ts"
 			},
 			"./layouts": {
 				"import": "./dist/layouts.js",

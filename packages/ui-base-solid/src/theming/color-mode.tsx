@@ -2,6 +2,8 @@ import { ColorModeProvider as CMP, type ColorModeProviderProps, cookieStorageMan
 import { splitProps } from "solid-js"
 import { getRequestEvent, isServer } from "solid-js/web"
 
+export { ColorModeScript } from "@kobalte/core"
+
 export function ColorModeProvider(
 	props: Omit<ColorModeProviderProps, "storageManager"> & { useLocalStorage?: boolean }
 ) {

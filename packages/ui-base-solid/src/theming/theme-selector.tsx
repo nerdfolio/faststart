@@ -1,7 +1,7 @@
 import { type ConfigColorMode, type MaybeConfigColorMode, useColorMode } from "@kobalte/core/color-mode"
 import { Select } from "@kobalte/core/select"
 import { createSignal, type JSX, onMount } from "solid-js"
-import { IconDesktop, IconMoon, IconSunFilled } from "~/icons"
+import { IconDesktop, IconMoon, IconSunFilled } from "../icons"
 
 interface ThemeOption {
 	value: ConfigColorMode

@@ -2,7 +2,6 @@ import { cookieStorage, makePersisted } from "@solid-primitives/storage"
 import {
 	type Accessor,
 	createContext,
-	createEffect,
 	createSignal,
 	onMount,
 	type ParentProps,
