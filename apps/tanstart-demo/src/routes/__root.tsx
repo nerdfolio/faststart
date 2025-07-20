@@ -3,7 +3,7 @@
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { UiProvider } from "@nerdfolio/ui-base-solid/context"
-import { ColorModeProvider, ColorModeScript } from "@nerdfolio/ui-base-solid/theming"
+import { ColorModeProvider } from "@nerdfolio/ui-base-solid/theming"
 import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
 import { createRootRoute, Link, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
@@ -25,11 +25,6 @@ export const Route = createRootRoute({
 			},
 		],
 		links: [{ rel: "stylesheet", href: appCss }],
-		scripts: [
-			// {
-			// 	children: generateInitDarkModeScript(),
-			// },
-		],
 	}),
 	component: RootComponent,
 	notFoundComponent: () => <Navigate to="/404" />,
