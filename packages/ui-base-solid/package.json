@@ -65,7 +65,7 @@
 	"devDependencies": {
 		"@kobalte/tailwindcss": "catalog:",
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.128.0",
+		"@tanstack/solid-router": "^1.128.8",
 		"barrelize": "^1.6.2",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
