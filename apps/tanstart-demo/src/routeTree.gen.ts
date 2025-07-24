@@ -13,7 +13,7 @@ import { createServerRootRoute } from '@tanstack/solid-start/server'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PublicRouteImport } from './routes/_public'
 import { Route as ProtectedRouteRouteImport } from './routes/_protected/route'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as PublicIndexRouteImport } from './routes/_public.index'
 import { Route as PublicTermsRouteImport } from './routes/_public.terms'
 import { Route as PublicRoadmapRouteImport } from './routes/_public.roadmap'
 import { Route as PublicPrivacyRouteImport } from './routes/_public.privacy'
@@ -36,10 +36,10 @@ const ProtectedRouteRoute = ProtectedRouteRouteImport.update({
   id: '/_protected',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => PublicRoute,
 } as any)
 const PublicTermsRoute = PublicTermsRouteImport.update({
   id: '/terms',
@@ -98,7 +98,6 @@ const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
@@ -108,9 +107,9 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PublicPrivacyRoute
   '/roadmap': typeof PublicRoadmapRoute
   '/terms': typeof PublicTermsRoute
+  '/': typeof PublicIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
@@ -120,10 +119,10 @@ export interface FileRoutesByTo {
   '/privacy': typeof PublicPrivacyRoute
   '/roadmap': typeof PublicRoadmapRoute
   '/terms': typeof PublicTermsRoute
+  '/': typeof PublicIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_protected': typeof ProtectedRouteRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
   '/_protected/dashboard': typeof ProtectedDashboardRoute
@@ -135,11 +134,11 @@ export interface FileRoutesById {
   '/_public/privacy': typeof PublicPrivacyRoute
   '/_public/roadmap': typeof PublicRoadmapRoute
   '/_public/terms': typeof PublicTermsRoute
+  '/_public/': typeof PublicIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/dashboard'
     | '/todos'
     | '/404'
@@ -149,9 +148,9 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/roadmap'
     | '/terms'
+    | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/dashboard'
     | '/todos'
     | '/404'
@@ -161,9 +160,9 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/roadmap'
     | '/terms'
+    | '/'
   id:
     | '__root__'
-    | '/'
     | '/_protected'
     | '/_public'
     | '/_protected/dashboard'
@@ -175,10 +174,10 @@ export interface FileRouteTypes {
     | '/_public/privacy'
     | '/_public/roadmap'
     | '/_public/terms'
+    | '/_public/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   ProtectedRouteRoute: typeof ProtectedRouteRouteWithChildren
   PublicRoute: typeof PublicRouteWithChildren
 }
@@ -224,12 +223,12 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof ProtectedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof PublicIndexRouteImport
+      parentRoute: typeof PublicRoute
     }
     '/_public/terms': {
       id: '/_public/terms'
@@ -337,6 +336,7 @@ interface PublicRouteChildren {
   PublicPrivacyRoute: typeof PublicPrivacyRoute
   PublicRoadmapRoute: typeof PublicRoadmapRoute
   PublicTermsRoute: typeof PublicTermsRoute
+  PublicIndexRoute: typeof PublicIndexRoute
 }
 
 const PublicRouteChildren: PublicRouteChildren = {
@@ -347,13 +347,13 @@ const PublicRouteChildren: PublicRouteChildren = {
   PublicPrivacyRoute: PublicPrivacyRoute,
   PublicRoadmapRoute: PublicRoadmapRoute,
   PublicTermsRoute: PublicTermsRoute,
+  PublicIndexRoute: PublicIndexRoute,
 }
 
 const PublicRouteWithChildren =
   PublicRoute._addFileChildren(PublicRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   ProtectedRouteRoute: ProtectedRouteRouteWithChildren,
   PublicRoute: PublicRouteWithChildren,
 }
