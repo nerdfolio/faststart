@@ -4,10 +4,7 @@ import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 
 export default defineConfig({
-	plugins: [
-		Icons({ compiler: "solid" }),
-		dts({ rollupTypes: true })
-	],
+	plugins: [Icons({ compiler: "solid" }), dts({ rollupTypes: true })],
 	build: {
 		copyPublicDir: false,
 		lib: {
@@ -15,9 +12,10 @@ export default defineConfig({
 				ui: resolve(__dirname, "src/ui/index.tsx"),
 				layouts: resolve(__dirname, "src/layouts/index.tsx"),
 				"nav-menu": resolve(__dirname, "src/nav-menu/index.tsx"),
-				solidstart: resolve(__dirname, "src/solidstart/index.tsx"),
+				solidstart: resolve(__dirname, "src/frameworks/solidstart/index.tsx"),
+				tanstart: resolve(__dirname, "src/frameworks/tanstart/index.tsx"),
 				icons: resolve(__dirname, "src/icons.tsx"),
-				utils: resolve(__dirname, "src/utils.ts")
+				utils: resolve(__dirname, "src/utils/index.ts"),
 			},
 			name: "ui-base-solid",
 			formats: ["es"],
@@ -31,7 +29,7 @@ export default defineConfig({
 				"clsx",
 				"tailwind-merge",
 				"@iconify-json/lucide",
-				"@iconify-json/tabler"
+				"@iconify-json/tabler",
 			],
 		},
 	},

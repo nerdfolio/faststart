@@ -1,8 +1,8 @@
 import { type Accessor, createContext, type ParentProps, useContext } from "solid-js"
-import type { HrefLink } from "./utils"
+import type { HrefLinkComponent } from "./utils"
 
 type ContextValue = {
-	HrefLink: HrefLink
+	HrefLink: HrefLinkComponent
 	useBreadcrumbs: () => Accessor<string[]>
 }
 
@@ -20,7 +20,7 @@ export function useUi() {
 
 export function UiProvider(
 	props: ParentProps<{
-		HrefLink: HrefLink
+		HrefLink: HrefLinkComponent
 		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
 	}>
 ) {

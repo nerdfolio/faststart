@@ -5,6 +5,7 @@ import { type ParentProps, Suspense } from "solid-js"
 import "./app.css"
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { UiProvider } from "@nerdfolio/ui-base-solid/context"
+import { SolidStartUiProvider } from "@nerdfolio/ui-base-solid/solidstart"
 import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
 import type { User } from "better-auth"
 import { baUserToRemultUser } from "core/utils/remult-ba"
@@ -41,7 +42,7 @@ function AppContent(props: ParentProps) {
 	const navigate = useNavigate()
 
 	return (
-		<UiProvider HrefLink={wrapLink(A, "href")}>
+		<SolidStartUiProvider>
 			<BetterAuthProvider
 				authClient={authClient}
 				onAuthChange={syncRemultUser}
@@ -51,6 +52,6 @@ function AppContent(props: ParentProps) {
 			>
 				{props.children}
 			</BetterAuthProvider>
-		</UiProvider>
+		</SolidStartUiProvider>
 	)
 }

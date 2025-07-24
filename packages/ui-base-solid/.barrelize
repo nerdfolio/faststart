@@ -27,15 +27,6 @@
 			"replace": {
 				"/\\.tsx?$/": ""
 			}
-		},
-		{
-			"root": "src/solidstart",
-			"name": "index.tsx",
-			"include": ["**/*.ts", "**/*.tsx"],
-			"exclude": ["**/*.test.ts", "**/*.test.tsx", "index.tsx"],
-			"replace": {
-				"/\\.tsx?$/": ""
-			}
 		}
 	]
 }

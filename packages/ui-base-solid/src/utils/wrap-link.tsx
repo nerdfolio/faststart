@@ -1,59 +1,49 @@
 import { type Component, type ComponentProps, type JSXElement, splitProps } from "solid-js"
 
-type HrefLinkProps = ComponentProps<"a"> & {
-	href: string
-}
+type LinkKey = "to" | "href"
+type FrameworkLinkComponent<T extends LinkKey> = Component<
+	ComponentProps<"a"> & {
+		[K in T]: string
+	}
+>
 
-type HrefKey = "to" | "href"
-type FrameworkLinkProps<T extends HrefKey> = ComponentProps<"a"> & {
-	[K in T]: string
-} & Record<string, any>
-
-/**
- * To adapt the rest of the components to various routing frameworks, the LinkComponent will need
- * to be defined by user to leverage framework-specific linking
- */
-export type HrefLink = (props: HrefLinkProps) => JSXElement
+//
+// The link component used internally by this ui library. For ui components that use linking to work,
+// this internal link component needs to be adapted to the framework link being used
+// (e.g. `A` from @solidstart/router or `Link` from @tanstack/solid-router).
+// Note: This file provides utility to do that adaptation. The intended place to do the adaptation
+// is at the UiProvider level
+//
+export type HrefLinkComponent = (
+	props: ComponentProps<"a"> & {
+		href: string
+	}
+) => JSXElement
 
 /**
  * Helper to simplify wrapping of framework Link component to the version we need
  * @param FrameworkLink
  * @param hrefKey
- * @returns
+ * @returns an HrefLinkComponents that can receive an href from this library and convert to
+ *          the appropriate framework link
  */
-export function wrapLink<T extends HrefKey>(
-	FrameworkLink: Component<ComponentProps<"a"> & FrameworkLinkProps<T>>,
-	hrefKey: T
-) {
+export function wrapLink<T extends LinkKey>(FrameworkLink: FrameworkLinkComponent<T>, hrefKey: T) {
 	if (hrefKey === "to") {
-		const linkTo: HrefLink = (props: HrefLinkProps) => {
+		// meant for @tanstack/solid-router `Link`
+		const linkTo: HrefLinkComponent = (props) => {
 			const [local, rest] = splitProps(props, ["href"])
+			const LinkComp = FrameworkLink as FrameworkLinkComponent<"to">
 			return (
-				<FrameworkLink to={local.href} {...rest}>
+				<LinkComp to={local.href} {...rest}>
 					{props.children}
-				</FrameworkLink>
+				</LinkComp>
 			)
 		}
 		return linkTo
 	}
 
-	const linkHref: HrefLink = (props: HrefLinkProps) => (
-		<FrameworkLink {...props}>{props.children}</FrameworkLink>
-	)
+	// meant for solidstart `A`
+	const LinkComp = FrameworkLink as FrameworkLinkComponent<"href">
+	const linkHref: HrefLinkComponent = (props) => <LinkComp {...props}>{props.children}</LinkComp>
 	return linkHref
 }
-
-// export function wrapHrefLink(FrameworkLink: Component<ComponentProps<"a"> & { href: string }>) {
-// 	return (props: AdaptedLinkProps) => <FrameworkLink {...props}>{props.children}</FrameworkLink>
-// }
-
-// export function wrapToLink(FrameworkLink: Component<ComponentProps<"a"> & { to: string }>) {
-// 	return (props: AdaptedLinkProps) => {
-// 		const [local, rest] = splitProps(props, ["href"])
-// 		return (
-// 			<FrameworkLink to={local.href} {...rest}>
-// 				{props.children}
-// 			</FrameworkLink>
-// 		)
-// 	}
-// }

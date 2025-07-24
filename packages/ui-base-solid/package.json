@@ -13,7 +13,8 @@
 		"./nav-menu": "./src/nav-menu/index.tsx",
 		"./ui": "./src/ui/index.tsx",
 		"./theming": "./src/theming/index.tsx",
-		"./solidstart": "./src/solidstart/index.tsx"
+		"./solidstart": "./src/frameworks/solidstart/index.tsx",
+		"./tanstart": "./src/frameworks/tanstart/index.tsx"
 	},
 	"publishConfig": {
 		"exports": {
@@ -36,6 +37,10 @@
 			"./solidstart": {
 				"import": "./dist/solidstart.js",
 				"types": "./dist/solidstart.d.ts"
+			},
+			"./tanstart": {
+				"import": "./dist/tanstart.js",
+				"types": "./dist/tanstart.d.ts"
 			},
 			"./icons": {
 				"import": "./dist/icons.js",
