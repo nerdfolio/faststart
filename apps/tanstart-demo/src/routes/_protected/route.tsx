@@ -55,11 +55,6 @@ function getPagesMenu() {
 				icon: IconDashboard,
 			},
 			{
-				label: "Counter",
-				href: "/counter",
-				icon: IconMathXPlusY,
-			},
-			{
 				label: "Remult Todos",
 				href: "/todos",
 				icon: IconCheckList,
@@ -91,6 +86,16 @@ function getGuidesMenu() {
 				children: [
 					{ label: "Getting started", href: "https://docs.solidjs.com/solid-start/getting-started" },
 					{ label: "Solid Router", href: "https://docs.solidjs.com/solid-router" },
+				],
+			},
+			{
+				label: "Tanstack Start",
+				href: "#",
+				icon: IconRocket,
+				children: [
+					{ label: "Tanstack Start", href: "https://tanstack.com/start/latest" },
+					{ label: "Tanstack Router", href: "https://tanstack.com/router/latest" },
+					{ label: "Tanstack Form", href: "https://tanstack.com/form/latest" },
 				],
 			},
 		],

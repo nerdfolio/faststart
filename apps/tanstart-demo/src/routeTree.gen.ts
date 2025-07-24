@@ -21,6 +21,7 @@ import { Route as PublicLoginRouteImport } from './routes/_public.login'
 import { Route as PublicContactRouteImport } from './routes/_public.contact'
 import { Route as PublicAboutRouteImport } from './routes/_public.about'
 import { Route as Public404RouteImport } from './routes/_public.404'
+import { Route as ProtectedTodosRouteImport } from './routes/_protected/todos'
 import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
 import { ServerRoute as ApiRemultSplatServerRouteImport } from './routes/api/remult.$'
 import { ServerRoute as ApiAuthSplatServerRouteImport } from './routes/api/auth.$'
@@ -75,6 +76,11 @@ const Public404Route = Public404RouteImport.update({
   path: '/404',
   getParentRoute: () => PublicRoute,
 } as any)
+const ProtectedTodosRoute = ProtectedTodosRouteImport.update({
+  id: '/todos',
+  path: '/todos',
+  getParentRoute: () => ProtectedRouteRoute,
+} as any)
 const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -94,6 +100,7 @@ const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof ProtectedDashboardRoute
+  '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
   '/about': typeof PublicAboutRoute
   '/contact': typeof PublicContactRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof ProtectedDashboardRoute
+  '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
   '/about': typeof PublicAboutRoute
   '/contact': typeof PublicContactRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/_protected': typeof ProtectedRouteRouteWithChildren
   '/_public': typeof PublicRouteWithChildren
   '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/todos': typeof ProtectedTodosRoute
   '/_public/404': typeof Public404Route
   '/_public/about': typeof PublicAboutRoute
   '/_public/contact': typeof PublicContactRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
+    | '/todos'
     | '/404'
     | '/about'
     | '/contact'
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dashboard'
+    | '/todos'
     | '/404'
     | '/about'
     | '/contact'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/_protected'
     | '/_public'
     | '/_protected/dashboard'
+    | '/_protected/todos'
     | '/_public/404'
     | '/_public/about'
     | '/_public/contact'
@@ -268,6 +280,13 @@ declare module '@tanstack/solid-router' {
       preLoaderRoute: typeof Public404RouteImport
       parentRoute: typeof PublicRoute
     }
+    '/_protected/todos': {
+      id: '/_protected/todos'
+      path: '/todos'
+      fullPath: '/todos'
+      preLoaderRoute: typeof ProtectedTodosRouteImport
+      parentRoute: typeof ProtectedRouteRoute
+    }
     '/_protected/dashboard': {
       id: '/_protected/dashboard'
       path: '/dashboard'
@@ -298,10 +317,12 @@ declare module '@tanstack/solid-start/server' {
 
 interface ProtectedRouteRouteChildren {
   ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedTodosRoute: typeof ProtectedTodosRoute
 }
 
 const ProtectedRouteRouteChildren: ProtectedRouteRouteChildren = {
   ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedTodosRoute: ProtectedTodosRoute,
 }
 
 const ProtectedRouteRouteWithChildren = ProtectedRouteRoute._addFileChildren(
