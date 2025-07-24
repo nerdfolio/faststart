@@ -1,6 +1,5 @@
 import type { ComponentProps, JSXElement } from "solid-js"
 import type { Icon } from "../icons"
-import type { AdaptedLink } from "../ui/link-adapter"
 
 type NavMenuItemData = {
 	label: string
@@ -17,8 +16,9 @@ export type NavMenuItem = NavMenuItemData & {
 
 export type NavMenu = {
 	label?: string
-	renderer: (props: ComponentProps<"div"> & { items: NavMenuItem[]; label?: string; linkClass?: string }) => JSXElement
-	linkComponent: AdaptedLink
+	renderer: (
+		props: ComponentProps<"div"> & { items: NavMenuItem[]; label?: string; linkClass?: string }
+	) => JSXElement
 
 	rendererClass?: string
 	linkClass?: string

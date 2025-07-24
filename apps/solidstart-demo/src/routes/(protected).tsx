@@ -17,7 +17,7 @@ import {
 	NavMenus,
 	UserSidebarMenu,
 } from "@nerdfolio/ui-base-solid/nav-menu"
-import { AA, useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
+import { useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
 import type { ParentProps } from "solid-js"
 import { AppBranding } from "~/components/app-branding"
 
@@ -43,7 +43,6 @@ export default function ProtectedRoutesLayout(props: ParentProps) {
 function getPagesMenu() {
 	const pagesMenu: NavMenu = {
 		renderer: MenuAsSidebarGroupPrimary,
-		linkComponent: AA,
 		label: "Pages",
 		items: [
 			{
@@ -69,7 +68,6 @@ function getPagesMenu() {
 function getGuidesMenu() {
 	return {
 		renderer: MenuAsSidebarGroupPrimary,
-		linkComponent: AA,
 		label: "Guides",
 		items: [
 			{
@@ -98,7 +96,6 @@ function getGuidesMenu() {
 function getSecondaryMenu() {
 	return {
 		renderer: MenuAsSidebarGroupSecondary,
-		linkComponent: AA,
 		rendererClass: "mt-auto",
 		items: [
 			{

@@ -1,5 +1,5 @@
 import { LoginCard } from "@nerdfolio/solid-better-auth"
-import { EmailPasswordForm, GuestListForm, MagicLinkForm } from "@nerdfolio/solid-better-auth/forms"
+import { GuestListForm } from "@nerdfolio/solid-better-auth/forms"
 import { createFileRoute, Link } from "@tanstack/solid-router"
 import { AppBranding } from "~/components/app-branding"
 
@@ -21,7 +21,6 @@ function Login() {
 				<AppBranding class="text-muted-foreground" />
 				<LoginCard footer={footer}>
 					<GuestListForm />
-					<MagicLinkForm />
 				</LoginCard>
 			</div>
 		</div>

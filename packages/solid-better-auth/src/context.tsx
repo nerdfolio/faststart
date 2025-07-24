@@ -55,6 +55,9 @@ export function BetterAuthProvider<C extends AuthClient>(
 		logOutSuccessUrl: "/",
 	} as const
 
+	const loginSuccessUrl = () =>
+		typeof props.loginSuccessUrl === "function" ? props.loginSuccessUrl() : props.loginSuccessUrl
+
 	const session = props.authClient.useSession()
 	const sessionUser = () => session().data?.user
 	const sessionPending = () => session().isPending
@@ -66,7 +69,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 	}, false)
 
 	function NavigateToLogin() {
-		onMount(() => props.navigateTo(`${props.loginUrl}?next=${props.loginSuccessUrl}`))
+		onMount(() => props.navigateTo(`${props.loginUrl}?next=${loginSuccessUrl()}`))
 		return null
 	}
 
@@ -96,9 +99,7 @@ export function BetterAuthProvider<C extends AuthClient>(
 		navigateTo: props.navigateTo,
 		navigateToLoginSuccess,
 		NavigateToLogin,
-		callbackUrl: () =>
-			props.callbackUrl ??
-			(typeof props.loginSuccessUrl === "function" ? props.loginSuccessUrl() : props.loginSuccessUrl),
+		callbackUrl: () => props.callbackUrl ?? loginSuccessUrl(),
 	}
 
 	return <BetterAuthContext.Provider value={ctx}>{props.children}</BetterAuthContext.Provider>
