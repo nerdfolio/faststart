@@ -5,7 +5,7 @@ import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { IconSolidjs } from "@nerdfolio/ui-base-solid/icons"
 import { TanStartUiProvider } from "@nerdfolio/ui-base-solid/tanstart"
 import { ColorModeProvider } from "@nerdfolio/ui-base-solid/theming"
-import { Logo } from "@nerdfolio/ui-base-solid/ui"
+import { generateLogoComponents, Logo } from "@nerdfolio/ui-base-solid/ui"
 import {
 	createRootRoute,
 	ErrorComponent,
@@ -48,11 +48,13 @@ function RootLayout() {
 	const navigate = useNavigate()
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
-	const BrandIconLogo = () => <Logo icon={IconSolidjs} />
-	const BrandWideLogo = () => <Logo brand={appName} icon={IconSolidjs} />
+	const { IconLogo, WideLogo } = generateLogoComponents({
+		brandIcon: IconSolidjs,
+		brandName: appName,
+	})
 
 	return (
-		<TanStartUiProvider IconLogo={BrandIconLogo} WideLogo={BrandWideLogo}>
+		<TanStartUiProvider IconLogo={IconLogo} WideLogo={WideLogo}>
 			<ColorModeProvider storageType="cookie">
 				<BetterAuthProvider
 					authClient={authClient}

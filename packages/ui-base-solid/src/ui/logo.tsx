@@ -34,6 +34,21 @@ export function Logo(props: {
 	return logo
 }
 
-function BrandName(props: ComponentProps<"div"> & { name: string }) {
+export function BrandName(props: ComponentProps<"div"> & { name: string }) {
 	return <div {...props}>{props.name}</div>
+}
+
+export function generateLogoComponents({
+	brandIcon,
+	brandName,
+}: {
+	brandIcon: Component
+	brandName: string
+}) {
+	return {
+		IconLogo: (props: Omit<ComponentProps<typeof Logo>, "icon">) => <Logo icon={brandIcon} {...props} />,
+		WideLogo: (props: Omit<ComponentProps<typeof Logo>, "icon" | "brand">) => (
+			<Logo icon={brandIcon} brand={brandName} {...props} />
+		),
+	}
 }
