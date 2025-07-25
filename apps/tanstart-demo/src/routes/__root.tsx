@@ -2,14 +2,14 @@
 /// <reference types="vite/client" />
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
+import { IconSolidjs } from "@nerdfolio/ui-base-solid/icons"
 import { TanStartUiProvider } from "@nerdfolio/ui-base-solid/tanstart"
 import { ColorModeProvider } from "@nerdfolio/ui-base-solid/theming"
-import { BrandNameAndLogo } from "@nerdfolio/ui-base-solid/ui"
+import { Logo } from "@nerdfolio/ui-base-solid/ui"
 import { createRootRoute, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
 import type { ComponentProps } from "solid-js"
 import { appName } from "~/app-info"
-import { AppBranding } from "~/components/app-branding"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
 
@@ -41,12 +41,12 @@ function RootLayout() {
 	const navigate = useNavigate()
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
-	function AppBranding(props: Omit<ComponentProps<typeof BrandNameAndLogo>, "name">) {
-		return <BrandNameAndLogo {...props} name={appName} />
+	function AppBranding() {
+		return <Logo withName={appName} withIcon={IconSolidjs} />
 	}
 
 	return (
-		<TanStartUiProvider Branding={AppBranding}>
+		<TanStartUiProvider Logo={AppBranding}>
 			<ColorModeProvider storageType="cookie">
 				<BetterAuthProvider
 					authClient={authClient}
