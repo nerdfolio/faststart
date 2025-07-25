@@ -11,24 +11,24 @@
 import { createServerRootRoute } from '@tanstack/solid-start/server'
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PublicRouteImport } from './routes/_public'
+import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as ProtectedRouteRouteImport } from './routes/_protected/route'
-import { Route as PublicIndexRouteImport } from './routes/_public.index'
-import { Route as PublicTermsRouteImport } from './routes/_public.terms'
-import { Route as PublicRoadmapRouteImport } from './routes/_public.roadmap'
-import { Route as PublicPrivacyRouteImport } from './routes/_public.privacy'
-import { Route as PublicLoginRouteImport } from './routes/_public.login'
-import { Route as PublicContactRouteImport } from './routes/_public.contact'
-import { Route as PublicAboutRouteImport } from './routes/_public.about'
-import { Route as Public404RouteImport } from './routes/_public.404'
+import { Route as PublicIndexRouteImport } from './routes/_public/index'
+import { Route as PublicLoginRouteImport } from './routes/_public/login'
+import { Route as Public404RouteImport } from './routes/_public/404'
 import { Route as ProtectedTodosRouteImport } from './routes/_protected/todos'
 import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as PublicCompanyTermsRouteImport } from './routes/_public/_company.terms'
+import { Route as PublicCompanyRoadmapRouteImport } from './routes/_public/_company.roadmap'
+import { Route as PublicCompanyPrivacyRouteImport } from './routes/_public/_company.privacy'
+import { Route as PublicCompanyContactRouteImport } from './routes/_public/_company.contact'
+import { Route as PublicCompanyAboutRouteImport } from './routes/_public/_company.about'
 import { ServerRoute as ApiRemultSplatServerRouteImport } from './routes/api/remult.$'
 import { ServerRoute as ApiAuthSplatServerRouteImport } from './routes/api/auth.$'
 
 const rootServerRouteImport = createServerRootRoute()
 
-const PublicRoute = PublicRouteImport.update({
+const PublicRouteRoute = PublicRouteRouteImport.update({
   id: '/_public',
   getParentRoute: () => rootRouteImport,
 } as any)
@@ -39,42 +39,17 @@ const ProtectedRouteRoute = ProtectedRouteRouteImport.update({
 const PublicIndexRoute = PublicIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicTermsRoute = PublicTermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicRoadmapRoute = PublicRoadmapRouteImport.update({
-  id: '/roadmap',
-  path: '/roadmap',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicPrivacyRoute = PublicPrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => PublicRoute,
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 const PublicLoginRoute = PublicLoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicContactRoute = PublicContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => PublicRoute,
-} as any)
-const PublicAboutRoute = PublicAboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => PublicRoute,
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 const Public404Route = Public404RouteImport.update({
   id: '/404',
   path: '/404',
-  getParentRoute: () => PublicRoute,
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 const ProtectedTodosRoute = ProtectedTodosRouteImport.update({
   id: '/todos',
@@ -85,6 +60,31 @@ const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => ProtectedRouteRoute,
+} as any)
+const PublicCompanyTermsRoute = PublicCompanyTermsRouteImport.update({
+  id: '/_company/terms',
+  path: '/terms',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+const PublicCompanyRoadmapRoute = PublicCompanyRoadmapRouteImport.update({
+  id: '/_company/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+const PublicCompanyPrivacyRoute = PublicCompanyPrivacyRouteImport.update({
+  id: '/_company/privacy',
+  path: '/privacy',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+const PublicCompanyContactRoute = PublicCompanyContactRouteImport.update({
+  id: '/_company/contact',
+  path: '/contact',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+const PublicCompanyAboutRoute = PublicCompanyAboutRouteImport.update({
+  id: '/_company/about',
+  path: '/about',
+  getParentRoute: () => PublicRouteRoute,
 } as any)
 const ApiRemultSplatServerRoute = ApiRemultSplatServerRouteImport.update({
   id: '/api/remult/$',
@@ -101,40 +101,40 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof ProtectedDashboardRoute
   '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
-  '/about': typeof PublicAboutRoute
-  '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
-  '/privacy': typeof PublicPrivacyRoute
-  '/roadmap': typeof PublicRoadmapRoute
-  '/terms': typeof PublicTermsRoute
   '/': typeof PublicIndexRoute
+  '/about': typeof PublicCompanyAboutRoute
+  '/contact': typeof PublicCompanyContactRoute
+  '/privacy': typeof PublicCompanyPrivacyRoute
+  '/roadmap': typeof PublicCompanyRoadmapRoute
+  '/terms': typeof PublicCompanyTermsRoute
 }
 export interface FileRoutesByTo {
   '/dashboard': typeof ProtectedDashboardRoute
   '/todos': typeof ProtectedTodosRoute
   '/404': typeof Public404Route
-  '/about': typeof PublicAboutRoute
-  '/contact': typeof PublicContactRoute
   '/login': typeof PublicLoginRoute
-  '/privacy': typeof PublicPrivacyRoute
-  '/roadmap': typeof PublicRoadmapRoute
-  '/terms': typeof PublicTermsRoute
   '/': typeof PublicIndexRoute
+  '/about': typeof PublicCompanyAboutRoute
+  '/contact': typeof PublicCompanyContactRoute
+  '/privacy': typeof PublicCompanyPrivacyRoute
+  '/roadmap': typeof PublicCompanyRoadmapRoute
+  '/terms': typeof PublicCompanyTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_protected': typeof ProtectedRouteRouteWithChildren
-  '/_public': typeof PublicRouteWithChildren
+  '/_public': typeof PublicRouteRouteWithChildren
   '/_protected/dashboard': typeof ProtectedDashboardRoute
   '/_protected/todos': typeof ProtectedTodosRoute
   '/_public/404': typeof Public404Route
-  '/_public/about': typeof PublicAboutRoute
-  '/_public/contact': typeof PublicContactRoute
   '/_public/login': typeof PublicLoginRoute
-  '/_public/privacy': typeof PublicPrivacyRoute
-  '/_public/roadmap': typeof PublicRoadmapRoute
-  '/_public/terms': typeof PublicTermsRoute
   '/_public/': typeof PublicIndexRoute
+  '/_public/_company/about': typeof PublicCompanyAboutRoute
+  '/_public/_company/contact': typeof PublicCompanyContactRoute
+  '/_public/_company/privacy': typeof PublicCompanyPrivacyRoute
+  '/_public/_company/roadmap': typeof PublicCompanyRoadmapRoute
+  '/_public/_company/terms': typeof PublicCompanyTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -142,25 +142,25 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/todos'
     | '/404'
+    | '/login'
+    | '/'
     | '/about'
     | '/contact'
-    | '/login'
     | '/privacy'
     | '/roadmap'
     | '/terms'
-    | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/dashboard'
     | '/todos'
     | '/404'
+    | '/login'
+    | '/'
     | '/about'
     | '/contact'
-    | '/login'
     | '/privacy'
     | '/roadmap'
     | '/terms'
-    | '/'
   id:
     | '__root__'
     | '/_protected'
@@ -168,18 +168,18 @@ export interface FileRouteTypes {
     | '/_protected/dashboard'
     | '/_protected/todos'
     | '/_public/404'
-    | '/_public/about'
-    | '/_public/contact'
     | '/_public/login'
-    | '/_public/privacy'
-    | '/_public/roadmap'
-    | '/_public/terms'
     | '/_public/'
+    | '/_public/_company/about'
+    | '/_public/_company/contact'
+    | '/_public/_company/privacy'
+    | '/_public/_company/roadmap'
+    | '/_public/_company/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   ProtectedRouteRoute: typeof ProtectedRouteRouteWithChildren
-  PublicRoute: typeof PublicRouteWithChildren
+  PublicRouteRoute: typeof PublicRouteRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
   '/api/auth/$': typeof ApiAuthSplatServerRoute
@@ -213,7 +213,7 @@ declare module '@tanstack/solid-router' {
       id: '/_public'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof PublicRouteImport
+      preLoaderRoute: typeof PublicRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_protected': {
@@ -228,56 +228,21 @@ declare module '@tanstack/solid-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PublicIndexRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/terms': {
-      id: '/_public/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof PublicTermsRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/roadmap': {
-      id: '/_public/roadmap'
-      path: '/roadmap'
-      fullPath: '/roadmap'
-      preLoaderRoute: typeof PublicRoadmapRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/privacy': {
-      id: '/_public/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PublicPrivacyRouteImport
-      parentRoute: typeof PublicRoute
+      parentRoute: typeof PublicRouteRoute
     }
     '/_public/login': {
       id: '/_public/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof PublicLoginRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/contact': {
-      id: '/_public/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof PublicContactRouteImport
-      parentRoute: typeof PublicRoute
-    }
-    '/_public/about': {
-      id: '/_public/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof PublicAboutRouteImport
-      parentRoute: typeof PublicRoute
+      parentRoute: typeof PublicRouteRoute
     }
     '/_public/404': {
       id: '/_public/404'
       path: '/404'
       fullPath: '/404'
       preLoaderRoute: typeof Public404RouteImport
-      parentRoute: typeof PublicRoute
+      parentRoute: typeof PublicRouteRoute
     }
     '/_protected/todos': {
       id: '/_protected/todos'
@@ -292,6 +257,41 @@ declare module '@tanstack/solid-router' {
       fullPath: '/dashboard'
       preLoaderRoute: typeof ProtectedDashboardRouteImport
       parentRoute: typeof ProtectedRouteRoute
+    }
+    '/_public/_company/terms': {
+      id: '/_public/_company/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof PublicCompanyTermsRouteImport
+      parentRoute: typeof PublicRouteRoute
+    }
+    '/_public/_company/roadmap': {
+      id: '/_public/_company/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof PublicCompanyRoadmapRouteImport
+      parentRoute: typeof PublicRouteRoute
+    }
+    '/_public/_company/privacy': {
+      id: '/_public/_company/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PublicCompanyPrivacyRouteImport
+      parentRoute: typeof PublicRouteRoute
+    }
+    '/_public/_company/contact': {
+      id: '/_public/_company/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof PublicCompanyContactRouteImport
+      parentRoute: typeof PublicRouteRoute
+    }
+    '/_public/_company/about': {
+      id: '/_public/_company/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof PublicCompanyAboutRouteImport
+      parentRoute: typeof PublicRouteRoute
     }
   }
 }
@@ -328,34 +328,35 @@ const ProtectedRouteRouteWithChildren = ProtectedRouteRoute._addFileChildren(
   ProtectedRouteRouteChildren,
 )
 
-interface PublicRouteChildren {
+interface PublicRouteRouteChildren {
   Public404Route: typeof Public404Route
-  PublicAboutRoute: typeof PublicAboutRoute
-  PublicContactRoute: typeof PublicContactRoute
   PublicLoginRoute: typeof PublicLoginRoute
-  PublicPrivacyRoute: typeof PublicPrivacyRoute
-  PublicRoadmapRoute: typeof PublicRoadmapRoute
-  PublicTermsRoute: typeof PublicTermsRoute
   PublicIndexRoute: typeof PublicIndexRoute
+  PublicCompanyAboutRoute: typeof PublicCompanyAboutRoute
+  PublicCompanyContactRoute: typeof PublicCompanyContactRoute
+  PublicCompanyPrivacyRoute: typeof PublicCompanyPrivacyRoute
+  PublicCompanyRoadmapRoute: typeof PublicCompanyRoadmapRoute
+  PublicCompanyTermsRoute: typeof PublicCompanyTermsRoute
 }
 
-const PublicRouteChildren: PublicRouteChildren = {
+const PublicRouteRouteChildren: PublicRouteRouteChildren = {
   Public404Route: Public404Route,
-  PublicAboutRoute: PublicAboutRoute,
-  PublicContactRoute: PublicContactRoute,
   PublicLoginRoute: PublicLoginRoute,
-  PublicPrivacyRoute: PublicPrivacyRoute,
-  PublicRoadmapRoute: PublicRoadmapRoute,
-  PublicTermsRoute: PublicTermsRoute,
   PublicIndexRoute: PublicIndexRoute,
+  PublicCompanyAboutRoute: PublicCompanyAboutRoute,
+  PublicCompanyContactRoute: PublicCompanyContactRoute,
+  PublicCompanyPrivacyRoute: PublicCompanyPrivacyRoute,
+  PublicCompanyRoadmapRoute: PublicCompanyRoadmapRoute,
+  PublicCompanyTermsRoute: PublicCompanyTermsRoute,
 }
 
-const PublicRouteWithChildren =
-  PublicRoute._addFileChildren(PublicRouteChildren)
+const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
+  PublicRouteRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   ProtectedRouteRoute: ProtectedRouteRouteWithChildren,
-  PublicRoute: PublicRouteWithChildren,
+  PublicRouteRoute: PublicRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

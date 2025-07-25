@@ -10,6 +10,7 @@
 		"./icons": "./src/icons.tsx",
 		"./utils": "./src/utils/index.ts",
 		"./layouts": "./src/layouts/index.tsx",
+		"./mockups": "./src/mockups/index.tsx",
 		"./nav-menu": "./src/nav-menu/index.tsx",
 		"./ui": "./src/ui/index.tsx",
 		"./theming": "./src/theming/index.tsx",
@@ -19,39 +20,43 @@
 	"publishConfig": {
 		"exports": {
 			"./ui": {
-				"import": "./dist/ui.js",
+				"import": "./dist/ui.mjs",
 				"types": "./dist/ui.d.ts"
 			},
 			"./theming": {
-				"import": "./dist/theming.js",
+				"import": "./dist/theming.mjs",
 				"types": "./dist/theming.d.ts"
 			},
 			"./layouts": {
-				"import": "./dist/layouts.js",
+				"import": "./dist/layouts.mjs",
 				"types": "./dist/layouts.d.ts"
 			},
+			"./mockups": {
+				"import": "./dist/mockups.mjs",
+				"types": "./dist/mockups.d.ts"
+			},
 			"./nav-menu": {
-				"import": "./dist/nav-menu.js",
+				"import": "./dist/nav-menu.mjs",
 				"types": "./dist/nav-menu.d.ts"
 			},
 			"./solidstart": {
-				"import": "./dist/solidstart.js",
+				"import": "./dist/solidstart.mjs",
 				"types": "./dist/solidstart.d.ts"
 			},
 			"./tanstart": {
-				"import": "./dist/tanstart.js",
+				"import": "./dist/tanstart.mjs",
 				"types": "./dist/tanstart.d.ts"
 			},
 			"./icons": {
-				"import": "./dist/icons.js",
+				"import": "./dist/icons.mjs",
 				"types": "./dist/icons.d.ts"
 			},
 			"./utils": {
-				"import": "./dist/utils.js",
+				"import": "./dist/utils.mjs",
 				"types": "./dist/utils.d.ts"
 			},
 			"./context": {
-				"import": "./dist/context.js",
+				"import": "./dist/context.mjs",
 				"types": "./dist/context.d.ts"
 			}
 		}

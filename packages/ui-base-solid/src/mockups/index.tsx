@@ -1,0 +1,6 @@
+export * from "./about-us"
+export * from "./contact-us"
+export * from "./dashboard"
+export * from "./privacy"
+export * from "./roadmap"
+export * from "./terms"

@@ -5,7 +5,6 @@ import {
 	IconDashboard,
 	IconHome,
 	IconListCheck,
-	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
 } from "@nerdfolio/ui-base-solid/icons"
