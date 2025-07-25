@@ -1,6 +1,4 @@
 import { SimpleFooter } from "@nerdfolio/ui-base-solid/layouts"
-import { wrapLink } from "@nerdfolio/ui-base-solid/utils"
-import { Link } from "@tanstack/solid-router"
 import { appCopyright, appSocialLinks } from "~/app-info"
 
 const footerLinks = [
@@ -12,11 +10,6 @@ const footerLinks = [
 
 export default function AppFooter() {
 	return (
-		<SimpleFooter
-			Link={wrapLink(Link, "to")}
-			footerLinks={footerLinks}
-			socialLinks={appSocialLinks}
-			copyrightStatement={appCopyright}
-		/>
+		<SimpleFooter footerLinks={footerLinks} socialLinks={appSocialLinks} copyrightStatement={appCopyright} />
 	)
 }
