@@ -1,17 +1,11 @@
-import {
-	type Accessor,
-	type Component,
-	type ComponentProps,
-	createContext,
-	type ParentProps,
-	useContext,
-} from "solid-js"
-import { BrandNameAndLogo, Logo } from "./ui"
+import { type Accessor, type Component, createContext, type ParentProps, useContext } from "solid-js"
+import { IconSolidjs } from "./icons"
+import { Logo } from "./ui"
 import type { HrefLinkComponent } from "./utils"
 
 type ContextValue = {
 	HrefLink: HrefLinkComponent
-	Branding: Component
+	Logo: Component
 	useBreadcrumbs: () => Accessor<string[]>
 }
 
@@ -36,7 +30,7 @@ export function UiProvider(
 ) {
 	const ctx = {
 		HrefLink: props.HrefLink,
-		Branding: props.Logo ?? DefaultBranding,
+		Logo: props.Logo ?? LogoPlaceholder,
 		useBreadcrumbs: () => {
 			if (!props.useBreadcrumbs) {
 				throw new Error("Please specify the useBreadcrumbs hook at the UiProvider level")
@@ -48,6 +42,6 @@ export function UiProvider(
 	return <UiContext.Provider value={ctx}>{props.children}</UiContext.Provider>
 }
 
-function DefaultBranding(props: Omit<ComponentProps<typeof Logo>, "withName">) {
-	return <Logo withName="solidJs" {...props} />
+function LogoPlaceholder() {
+	return <Logo brand="solidJs" icon={IconSolidjs} />
 }

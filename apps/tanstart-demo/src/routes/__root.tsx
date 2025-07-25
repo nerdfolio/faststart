@@ -6,9 +6,15 @@ import { IconSolidjs } from "@nerdfolio/ui-base-solid/icons"
 import { TanStartUiProvider } from "@nerdfolio/ui-base-solid/tanstart"
 import { ColorModeProvider } from "@nerdfolio/ui-base-solid/theming"
 import { Logo } from "@nerdfolio/ui-base-solid/ui"
-import { createRootRoute, Navigate, Outlet, useLocation, useNavigate } from "@tanstack/solid-router"
+import {
+	createRootRoute,
+	ErrorComponent,
+	Navigate,
+	Outlet,
+	useLocation,
+	useNavigate,
+} from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
-import type { ComponentProps } from "solid-js"
 import { appName } from "~/app-info"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
@@ -31,6 +37,7 @@ export const Route = createRootRoute({
 	}),
 	component: RootComponent,
 	notFoundComponent: () => <Navigate to="/404" />,
+	errorComponent: ErrorComponent,
 })
 
 function RootComponent() {
@@ -41,12 +48,8 @@ function RootLayout() {
 	const navigate = useNavigate()
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
-	function AppBranding() {
-		return <Logo withName={appName} withIcon={IconSolidjs} />
-	}
-
 	return (
-		<TanStartUiProvider Logo={AppBranding}>
+		<TanStartUiProvider>
 			<ColorModeProvider storageType="cookie">
 				<BetterAuthProvider
 					authClient={authClient}

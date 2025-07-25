@@ -1,39 +1,39 @@
 import type { Component, ComponentProps } from "solid-js"
-import { cn } from "../utils"
 
 export function Logo(props: {
-	withIcon: Component<{ class?: string }>
+	icon: Component<{ class?: string }>
+	iconContainerClass?: string
 	class?: string
-	noBackground?: boolean
-	withName?: string
+	brand?: string
 }) {
-	const Icon = props.withIcon
+	const Icon = props.icon
 	const icon = <Icon class="size-full text-blue-500" />
-	const logo = props.noBackground ? (
-		icon
-	) : (
+
+	const logo = (
 		<div
-			class={cn(
-				"flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground",
-				props.class
-			)}
+			class={
+				props.iconContainerClass ??
+				"flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground"
+			}
 		>
 			{icon}
 		</div>
 	)
 
-	if (props.withName) {
+	if (props.brand) {
+		// wide logo with brand on the right
 		return (
 			<div class="flex items-center gap-2 self-center font-medium">
 				{logo}
-				<BrandName name={props.withName} />
+				<BrandName name={props.brand} />
 			</div>
 		)
 	}
 
+	// else, logo icon only
 	return logo
 }
 
-function BrandName(props: ComponentProps<"span"> & { name: string }) {
+export function BrandName(props: ComponentProps<"span"> & { name: string }) {
 	return <span {...props}>{props.name}</span>
 }

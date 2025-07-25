@@ -18,7 +18,6 @@ import {
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { useBreadcrumbs } from "@nerdfolio/ui-base-solid/tanstart"
 import { createFileRoute, Outlet } from "@tanstack/solid-router"
-import { AppBranding } from "~/components/app-branding"
 
 export const Route = createFileRoute("/_protected")({
 	component: ProtectedRoutesLayout,
@@ -32,7 +31,6 @@ function ProtectedRoutesLayout() {
 	return (
 		<AuthRequired>
 			<SidebarLayout
-				branding={<AppBranding />}
 				userMenu={<UserSidebarMenu user={sessionUser} signOut={logout} />}
 				menus={<NavMenus menus={menus} />}
 				crumbs={useBreadcrumbs()}

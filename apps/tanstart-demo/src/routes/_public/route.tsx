@@ -2,7 +2,6 @@ import { useBetterAuth } from "@nerdfolio/solid-better-auth"
 import { NavbarLayout } from "@nerdfolio/ui-base-solid/layouts"
 import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-solid/nav-menu"
 import { createFileRoute, Outlet } from "@tanstack/solid-router"
-import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
 
 export const Route = createFileRoute("/_public")({

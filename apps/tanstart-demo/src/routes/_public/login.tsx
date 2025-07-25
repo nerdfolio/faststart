@@ -1,7 +1,6 @@
 import { LoginCard } from "@nerdfolio/solid-better-auth"
 import { GuestListForm } from "@nerdfolio/solid-better-auth/forms"
 import { createFileRoute, Link } from "@tanstack/solid-router"
-import { AppBranding } from "~/components/app-branding"
 
 export const Route = createFileRoute("/_public/login")({
 	component: Login,
@@ -18,7 +17,7 @@ function Login() {
 	return (
 		<div class="flex min-h-[75svh] flex-col items-center justify-center">
 			<div class="flex w-full max-w-sm flex-col gap-6">
-				<AppBranding class="text-muted-foreground" />
+				<div>App Logo</div>
 				<LoginCard footer={footer}>
 					<GuestListForm />
 				</LoginCard>

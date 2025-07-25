@@ -1,4 +1,5 @@
 import { type Accessor, type JSXElement, type ParentProps, Show } from "solid-js"
+import { useUi } from "~/context"
 import { Breadcrumbs } from "../ui/breadcrumbs"
 import { Separator } from "../ui/separator"
 import {
@@ -16,19 +17,20 @@ import {
 
 export function SidebarLayout(
 	props: ParentProps<{
-		branding: JSXElement
 		userMenu: JSXElement
 		menus: JSXElement
 		crumbs?: Accessor<string[]>
 	}>
 ) {
+	const { Logo } = useUi()
+
 	return (
 		<SidebarProvider>
 			<Sidebar variant="inset" {...props}>
 				<SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<SidebarMenuButton size="lg" as={props.branding} />
+							<SidebarMenuButton size="lg" as={Logo} />
 						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarHeader>
