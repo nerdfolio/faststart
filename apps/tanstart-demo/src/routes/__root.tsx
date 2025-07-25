@@ -48,8 +48,11 @@ function RootLayout() {
 	const navigate = useNavigate()
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
+	const BrandIconLogo = () => <Logo icon={IconSolidjs} />
+	const BrandWideLogo = () => <Logo brand={appName} icon={IconSolidjs} />
+
 	return (
-		<TanStartUiProvider>
+		<TanStartUiProvider IconLogo={BrandIconLogo} WideLogo={BrandWideLogo}>
 			<ColorModeProvider storageType="cookie">
 				<BetterAuthProvider
 					authClient={authClient}

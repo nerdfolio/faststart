@@ -3,8 +3,8 @@ import type { Component, ComponentProps } from "solid-js"
 export function Logo(props: {
 	icon: Component<{ class?: string }>
 	iconContainerClass?: string
-	class?: string
 	brand?: string
+	brandContainerClass?: string
 }) {
 	const Icon = props.icon
 	const icon = <Icon class="size-full text-blue-500" />
@@ -25,7 +25,7 @@ export function Logo(props: {
 		return (
 			<div class="flex items-center gap-2 self-center font-medium">
 				{logo}
-				<BrandName name={props.brand} />
+				<BrandName name={props.brand} class={props.brandContainerClass} />
 			</div>
 		)
 	}
@@ -34,6 +34,6 @@ export function Logo(props: {
 	return logo
 }
 
-export function BrandName(props: ComponentProps<"span"> & { name: string }) {
-	return <span {...props}>{props.name}</span>
+function BrandName(props: ComponentProps<"div"> & { name: string }) {
+	return <div {...props}>{props.name}</div>
 }

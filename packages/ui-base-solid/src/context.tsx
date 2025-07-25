@@ -5,7 +5,8 @@ import type { HrefLinkComponent } from "./utils"
 
 type ContextValue = {
 	HrefLink: HrefLinkComponent
-	Logo: Component
+	IconLogo: Component
+	WideLogo: Component
 	useBreadcrumbs: () => Accessor<string[]>
 }
 
@@ -24,13 +25,15 @@ export function useUi() {
 export function UiProvider(
 	props: ParentProps<{
 		HrefLink: HrefLinkComponent
-		Logo?: Component
+		IconLogo?: Component
+		WideLogo?: Component
 		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
 	}>
 ) {
 	const ctx = {
 		HrefLink: props.HrefLink,
-		Logo: props.Logo ?? LogoPlaceholder,
+		IconLogo: props.IconLogo ?? IconLogoPlaceholder,
+		WideLogo: props.WideLogo ?? WideLogoPlaceholder,
 		useBreadcrumbs: () => {
 			if (!props.useBreadcrumbs) {
 				throw new Error("Please specify the useBreadcrumbs hook at the UiProvider level")
@@ -42,6 +45,9 @@ export function UiProvider(
 	return <UiContext.Provider value={ctx}>{props.children}</UiContext.Provider>
 }
 
-function LogoPlaceholder() {
+function IconLogoPlaceholder() {
+	return <Logo icon={IconSolidjs} />
+}
+function WideLogoPlaceholder() {
 	return <Logo brand="solidJs" icon={IconSolidjs} />
 }

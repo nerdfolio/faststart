@@ -12,9 +12,9 @@ Provider adapter to simplify common usage of this ui context.
 User can always go directly to UiProvider if needed
 */
 export function TanStartUiProvider(props: Omit<ComponentProps<typeof UiProvider>, "HrefLink">) {
-	return <UiProvider HrefLink={wrapLink(Link, "to")} Logo={LogoPlaceholder} {...props} />
+	return <UiProvider HrefLink={wrapLink(Link, "to")} WideLogo={WideLogoPlaceholder} {...props} />
 }
 
-function LogoPlaceholder() {
+function WideLogoPlaceholder() {
 	return <Logo brand="tanstackStart" icon={IconSolidjs} />
 }

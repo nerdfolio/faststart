@@ -11,13 +11,13 @@ export function NavbarLayout(
 		themeSelector?: boolean
 	}>
 ) {
-	const { Logo } = useUi()
+	const { WideLogo } = useUi()
 
 	const footer = props.footer ?? null
 	return (
 		<div>
 			<div class={cn("flex justify-between py-2 border-b", props.themeSelector ? "pl-6 pr-1" : "px-6")}>
-				<Logo />
+				<WideLogo />
 				{props.menus}
 				<div class="flex flex-row gap-1">
 					{props.userMenu}

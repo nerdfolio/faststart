@@ -22,7 +22,7 @@ export function SidebarLayout(
 		crumbs?: Accessor<string[]>
 	}>
 ) {
-	const { Logo } = useUi()
+	const { WideLogo } = useUi()
 
 	return (
 		<SidebarProvider>
@@ -30,7 +30,7 @@ export function SidebarLayout(
 				<SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<SidebarMenuButton size="lg" as={Logo} />
+							<SidebarMenuButton size="lg" as={WideLogo} />
 						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarHeader>

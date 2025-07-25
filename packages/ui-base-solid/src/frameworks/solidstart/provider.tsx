@@ -12,9 +12,9 @@ Provider adapter to simplify common usage of this ui context.
 User can always go directly to UiProvider if needed
 */
 export function SolidStartUiProvider(props: Omit<ComponentProps<typeof UiProvider>, "HrefLink">) {
-	return <UiProvider HrefLink={wrapLink(A, "href")} Logo={LogoPlaceholder} {...props} />
+	return <UiProvider HrefLink={wrapLink(A, "href")} WideLogo={WideLogoPlaceholder} {...props} />
 }
 
-function LogoPlaceholder() {
+function WideLogoPlaceholder() {
 	return <Logo brand="solidStart" icon={IconSolidjs} />
 }
