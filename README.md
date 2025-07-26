@@ -1,7 +1,6 @@
 # Faststart monorepo
 
-Quickly get a startup project up and running. Meant to be platform agnostic. When generic support is not possible or
-convenient, platform-specific support is done within their own directories.
+Quickly get a Solidjs startup project up and running
 
 
 ## What is included in this starter template:
@@ -11,8 +10,8 @@ convenient, platform-specific support is done within their own directories.
 - tailwindcss v4
 - cloudflare + wrangler
 - solid-ui https://www.solid-ui.com/docs/introduction
-- drizzle ORM with D1 + drizzle-kit + seeding (for both local and remote)
 - better-auth (with magic link that mocks email sending via server console.log)
+- Remult
 
 Basic navbar and sidebar layouts are also provided. User avatar, login, logout menus are setup.
 
