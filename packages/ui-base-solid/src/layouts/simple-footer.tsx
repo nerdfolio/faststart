@@ -4,7 +4,7 @@ import { Footer, SocialLinks, type SocialLinksType } from "../ui"
 
 export function SimpleFooter(
 	props: ComponentProps<typeof Footer> & {
-		footerLinks: { href: string; label: string }[]
+		navLinks: { href: string; label: string }[]
 		socialLinks?: SocialLinksType
 		copyrightStatement?: string
 	}
@@ -13,7 +13,7 @@ export function SimpleFooter(
 
 	return (
 		<Footer class="border-t-1">
-			<MenuAsNavLinks items={props.footerLinks} linkClass="text-muted-foreground hover:brightness-130" />
+			<MenuAsNavLinks items={props.navLinks} linkClass="text-muted-foreground hover:brightness-130" />
 			<Show when={socialLinks}>
 				<SocialLinks
 					class="flex flex-row gap-8 justify-center my-8"

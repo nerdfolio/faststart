@@ -14,7 +14,7 @@ import {
 	useNavigate,
 } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
-import { companyName } from "~/constants"
+import { companyName } from "~/company-info"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
 
