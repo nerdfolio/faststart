@@ -30,7 +30,7 @@ function PublicLayout() {
 			footer={<AppFooter />}
 			themeSelector={true}
 		>
-			<main class="px-4">
+			<main class="p-4">
 				<Outlet />
 			</main>
 		</NavbarLayout>
