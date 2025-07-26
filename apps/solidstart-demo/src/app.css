@@ -1,6 +1,7 @@
 @import "tailwindcss" source("../../../"); /*source points to monorepo root*/
 @import "tw-animate-css";
 @plugin "@kobalte/tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 

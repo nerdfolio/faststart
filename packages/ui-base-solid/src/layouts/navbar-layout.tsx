@@ -6,7 +6,7 @@ import { cn } from "../utils"
 export function NavbarLayout(
 	props: ParentProps<{
 		userMenu: JSXElement
-		menus: JSXElement
+		navMenus: JSXElement
 		footer?: JSXElement
 		themeSelector?: boolean
 	}>
@@ -18,7 +18,7 @@ export function NavbarLayout(
 		<div>
 			<div class={cn("flex justify-between py-2 border-b", props.themeSelector ? "pl-6 pr-1" : "px-6")}>
 				<BrandLogo />
-				{props.menus}
+				{props.navMenus}
 				<div class="flex flex-row gap-1">
 					{props.userMenu}
 					<Show when={props.themeSelector}>

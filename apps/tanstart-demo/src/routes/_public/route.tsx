@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_public")({
 	component: PublicLayout,
 })
 
-const navMenus = [
+const menus = [
 	{
 		renderer: MenuAsNavbarGroup,
 		items: [
@@ -26,11 +26,13 @@ function PublicLayout() {
 	return (
 		<NavbarLayout
 			userMenu={<UserNavbarMenu signInUrl="/login" signOut={signOut} user={sessionUser} />}
-			menus={<NavMenus menus={navMenus} />}
+			navMenus={<NavMenus menus={menus} />}
 			footer={<AppFooter />}
 			themeSelector={true}
 		>
-			<Outlet />
+			<main class="px-4">
+				<Outlet />
+			</main>
 		</NavbarLayout>
 	)
 }

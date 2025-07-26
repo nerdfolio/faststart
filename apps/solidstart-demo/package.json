@@ -39,6 +39,7 @@
 		"@babel/plugin-transform-class-properties": "^7.27.1",
 		"@babel/plugin-transform-private-methods": "^7.27.1",
 		"@solidjs/testing-library": "catalog:",
+		"@tailwindcss/typography": "^0.5.16",
 		"@tailwindcss/vite": "^4.1.11",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/user-event": "^14.6.1",

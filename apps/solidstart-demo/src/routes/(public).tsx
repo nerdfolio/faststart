@@ -6,7 +6,7 @@ import type { ComponentProps } from "solid-js"
 import { Transition } from "solid-transition-group"
 import AppFooter from "~/components/app-footer"
 
-const navMenus = [
+const menus = [
 	{
 		renderer: MenuAsNavbarGroup,
 		linkComponent: AA,
@@ -25,7 +25,7 @@ export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLa
 	return (
 		<NavbarLayout
 			userMenu={<UserNavbarMenu signInUrl="/login" signOut={logout} user={sessionUser} />}
-			menus={<NavMenus menus={navMenus} />}
+			navMenus={<NavMenus menus={menus} />}
 			footer={<AppFooter />}
 		>
 			<Transition name="fade">{props.children}</Transition>

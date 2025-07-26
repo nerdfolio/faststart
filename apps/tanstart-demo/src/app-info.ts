@@ -1,4 +1,4 @@
-export { socialLinks as appSocialLinks } from "core/project-info"
+export { socialLinks as appSocialLinks } from "core/company-info"
 
 export const appName = "Tanstack Start Demo" as const
 export const appLegalName = "Tanstack Start Demo, Inc." as const
