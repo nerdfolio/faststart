@@ -14,7 +14,7 @@ import {
 	useNavigate,
 } from "@tanstack/solid-router"
 import { TanStackRouterDevtools } from "@tanstack/solid-router-devtools"
-import { appName } from "~/app-info"
+import { companyName } from "~/constants"
 import { authClient, syncRemultUser } from "~/lib/clients"
 import appCss from "../app.css?url"
 
@@ -48,7 +48,7 @@ function RootLayout() {
 	const currentPathname = useLocation({ select: (location) => location.pathname })
 
 	return (
-		<TanStartUiProvider brandIcon={<IconSolidjs class="size-full text-blue-500" />} brandName={appName}>
+		<TanStartUiProvider brandIcon={<IconSolidjs class="size-full text-blue-500" />} brandName={companyName}>
 			<ColorModeProvider storageType="cookie">
 				<BetterAuthProvider
 					authClient={authClient}

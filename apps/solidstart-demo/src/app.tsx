@@ -7,7 +7,6 @@ import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { SolidStartUiProvider } from "@nerdfolio/ui-base-solid/solidstart"
 import type { User } from "better-auth"
 import { baUserToRemultUser } from "core/utils/remult-ba"
-import { appVersion } from "./app-info"
 import { authClient, remultClient } from "./lib/clients"
 
 function syncRemultUser(u: User | undefined) {
@@ -24,7 +23,7 @@ export default function App() {
 			root={(props) => (
 				<MetaProvider>
 					<Title>SolidStart - with Vitest</Title>
-					<Meta name="appVersion" content={appVersion} />
+					<Meta name="appVersion" content={__APP_VERSION__} />
 					<Suspense>
 						<AppContent>{props.children}</AppContent>
 					</Suspense>

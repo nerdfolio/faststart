@@ -1,5 +1,5 @@
 import { SimpleFooter } from "@nerdfolio/ui-base-solid/layouts"
-import { appCopyright, appSocialLinks } from "~/app-info"
+import { companySocials, companyCopyright } from "~/company-info"
 
 const footerLinks = [
 	{ href: "/about", label: "About" },
@@ -10,6 +10,10 @@ const footerLinks = [
 
 export default function AppFooter() {
 	return (
-		<SimpleFooter footerLinks={footerLinks} socialLinks={appSocialLinks} copyrightStatement={appCopyright} />
+		<SimpleFooter
+			footerLinks={footerLinks}
+			socialLinks={companySocials}
+			copyrightStatement={companyCopyright}
+		/>
 	)
 }
