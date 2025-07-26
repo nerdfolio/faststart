@@ -1,7 +1,7 @@
 import { LoginCard } from "@nerdfolio/solid-better-auth"
 import { GuestListForm } from "@nerdfolio/solid-better-auth/forms"
+import { useUi } from "@nerdfolio/ui-base-solid/solidstart"
 import { A } from "@solidjs/router"
-import { AppBranding } from "~/components/app-branding"
 
 export default function LoginPage() {
 	const footer = (
@@ -11,10 +11,12 @@ export default function LoginPage() {
 		</div>
 	)
 
+	const { BrandLogo } = useUi()
+
 	return (
 		<div class="flex min-h-[75svh] flex-col items-center justify-center">
 			<div class="flex w-full max-w-sm flex-col gap-6">
-				<AppBranding class="text-muted-foreground" />
+				<BrandLogo class="text-muted-foreground" />
 				<LoginCard footer={footer}>
 					<GuestListForm />
 				</LoginCard>

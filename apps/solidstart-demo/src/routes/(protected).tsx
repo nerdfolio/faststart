@@ -19,7 +19,6 @@ import {
 } from "@nerdfolio/ui-base-solid/nav-menu"
 import { useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
 import type { ParentProps } from "solid-js"
-import { AppBranding } from "~/components/app-branding"
 
 export default function ProtectedRoutesLayout(props: ParentProps) {
 	const menus = [getPagesMenu(), getGuidesMenu(), getSecondaryMenu()]
@@ -29,7 +28,6 @@ export default function ProtectedRoutesLayout(props: ParentProps) {
 	return (
 		<AuthRequired>
 			<SidebarLayout
-				branding={<AppBranding />}
 				userMenu={<UserSidebarMenu user={sessionUser} signOut={logout} />}
 				menus={<NavMenus menus={menus} />}
 				crumbs={useBreadcrumbs()}

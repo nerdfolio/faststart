@@ -4,7 +4,6 @@ import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "@nerdfolio/ui-base-
 import { AA } from "@nerdfolio/ui-base-solid/solidstart"
 import type { ComponentProps } from "solid-js"
 import { Transition } from "solid-transition-group"
-import { AppBranding } from "~/components/app-branding"
 import AppFooter from "~/components/app-footer"
 
 const navMenus = [
@@ -25,7 +24,6 @@ export default function PublicRoutesLayout(props: ComponentProps<typeof NavbarLa
 
 	return (
 		<NavbarLayout
-			branding={<AppBranding href="/" />}
 			userMenu={<UserNavbarMenu signInUrl="/login" signOut={logout} user={sessionUser} />}
 			menus={<NavMenus menus={navMenus} />}
 			footer={<AppFooter />}
