@@ -1,12 +1,13 @@
-import { type Accessor, type Component, createContext, type ParentProps, useContext } from "solid-js"
+import { type Accessor, createContext, type JSXElement, type ParentProps, useContext } from "solid-js"
 import { IconSolidjs } from "./icons"
-import { Logo } from "./ui"
+import { BrandIcon, BrandLogo, BrandName } from "./ui"
 import type { HrefLinkComponent } from "./utils"
 
 type ContextValue = {
 	HrefLink: HrefLinkComponent
-	IconLogo: Component
-	WideLogo: Component
+	BrandName: ReturnType<typeof BrandName.with>
+	BrandIcon: ReturnType<typeof BrandIcon.with>
+	BrandLogo: ReturnType<typeof BrandLogo.with>
 	useBreadcrumbs: () => Accessor<string[]>
 }
 
@@ -25,15 +26,20 @@ export function useUi() {
 export function UiProvider(
 	props: ParentProps<{
 		HrefLink: HrefLinkComponent
-		IconLogo?: Component
-		WideLogo?: Component
+		brandIcon?: JSXElement
+		brandName?: JSXElement
+		brandLogo?: JSXElement
 		useBreadcrumbs?: ContextValue["useBreadcrumbs"]
 	}>
 ) {
+	const name = props.brandName ?? "solidJS"
+	const icon = props.brandIcon ?? <IconSolidjs class="size-full text-blue-500" />
+
 	const ctx = {
 		HrefLink: props.HrefLink,
-		IconLogo: props.IconLogo ?? IconLogoPlaceholder,
-		WideLogo: props.WideLogo ?? WideLogoPlaceholder,
+		BrandName: BrandName.with({ name }),
+		BrandIcon: BrandIcon.with({ icon }),
+		BrandLogo: BrandLogo.with({ logo: props.brandLogo, name, icon }),
 		useBreadcrumbs: () => {
 			if (!props.useBreadcrumbs) {
 				throw new Error("Please specify the useBreadcrumbs hook at the UiProvider level")
@@ -43,11 +49,4 @@ export function UiProvider(
 	}
 
 	return <UiContext.Provider value={ctx}>{props.children}</UiContext.Provider>
-}
-
-function IconLogoPlaceholder() {
-	return <Logo icon={IconSolidjs} />
-}
-function WideLogoPlaceholder() {
-	return <Logo brand="solidJs" icon={IconSolidjs} />
 }

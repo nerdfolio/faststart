@@ -1,5 +1,5 @@
 import { type Accessor, type JSXElement, type ParentProps, Show } from "solid-js"
-import { useUi } from "~/context"
+import { useUi } from "../context"
 import { Breadcrumbs } from "../ui/breadcrumbs"
 import { Separator } from "../ui/separator"
 import {
@@ -22,7 +22,7 @@ export function SidebarLayout(
 		crumbs?: Accessor<string[]>
 	}>
 ) {
-	const { WideLogo } = useUi()
+	const { BrandLogo } = useUi()
 
 	return (
 		<SidebarProvider>
@@ -30,7 +30,7 @@ export function SidebarLayout(
 				<SidebarHeader>
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<SidebarMenuButton size="lg" as={WideLogo} />
+							<SidebarMenuButton size="lg" as={BrandLogo} />
 						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarHeader>

@@ -1,5 +1,5 @@
 import { type JSXElement, type ParentProps, Show } from "solid-js"
-import { useUi } from "~/context"
+import { useUi } from "../context"
 import { ThemeSelector } from "../theming/theme-selector"
 import { cn } from "../utils"
 
@@ -11,13 +11,13 @@ export function NavbarLayout(
 		themeSelector?: boolean
 	}>
 ) {
-	const { WideLogo } = useUi()
+	const { BrandLogo } = useUi()
 
 	const footer = props.footer ?? null
 	return (
 		<div>
 			<div class={cn("flex justify-between py-2 border-b", props.themeSelector ? "pl-6 pr-1" : "px-6")}>
-				<WideLogo />
+				<BrandLogo />
 				{props.menus}
 				<div class="flex flex-row gap-1">
 					{props.userMenu}
