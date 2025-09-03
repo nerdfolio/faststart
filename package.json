@@ -6,7 +6,9 @@
 		"test": "vitest run",
 		"test-watch": "vitest",
 		"test-ui": "vitest --ui",
-		"knip": "knip"
+		"knip": "knip",
+		"dev:solidstart": "pnpm --filter solidstart-demo dev",
+		"dev:tanstart": "pnpm --filter tanstart-demo dev"
 	},
 	"type": "module",
 	"devDependencies": {
