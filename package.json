@@ -1,6 +1,6 @@
 {
 	"name": "faststart",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"private": true,
 	"scripts": {
 		"test": "vitest run",
@@ -8,24 +8,24 @@
 		"test-ui": "vitest --ui",
 		"knip": "knip",
 		"dev:solidstart": "pnpm --filter solidstart-demo dev",
-		"dev:tanstart": "pnpm --filter tanstart-demo dev"
+		"dev": "pnpm --filter tanstart-demo dev"
 	},
 	"type": "module",
 	"devDependencies": {
-		"@biomejs/biome": "^2.1.2",
-		"@iconify-json/lucide": "^1.2.58",
-		"@iconify-json/tabler": "^1.2.20",
-		"@inquirer/prompts": "^7.7.1",
+		"@biomejs/biome": "^2.2.2",
+		"@iconify-json/lucide": "^1.2.66",
+		"@iconify-json/tabler": "^1.2.22",
+		"@inquirer/prompts": "^7.8.4",
 		"@solidjs/testing-library": "catalog:",
-		"@tailwindcss/vite": "^4.1.11",
-		"@testing-library/jest-dom": "^6.6.3",
+		"@tailwindcss/vite": "^4.1.12",
+		"@testing-library/jest-dom": "^6.8.0",
 		"@testing-library/user-event": "^14.6.1",
 		"@types/lodash-es": "^4.17.12",
-		"@types/node": "^24.1.0",
+		"@types/node": "^24.3.0",
 		"@vitest/ui": "3.2.4",
 		"globals": "^16.3.0",
 		"jsdom": "^26.1.0",
-		"knip": "^5.62.0",
+		"knip": "^5.63.1",
 		"typescript": "catalog:",
 		"unplugin-icons": "catalog:",
 		"vinxi": "catalog:",
@@ -33,12 +33,12 @@
 		"vite-plugin-solid": "catalog:",
 		"vite-tsconfig-paths": "^5.1.4",
 		"vitest": "catalog:",
-		"wrangler": "^4.26.0"
+		"wrangler": "^4.33.2"
 	},
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "pnpm@10.12.4+sha256.cadfd9e6c9fcc2cb76fe7c0779a5250b632898aea5f53d833a73690c77a778d9",
+	"packageManager": "pnpm@10.15.1+sha512.34e538c329b5553014ca8e8f4535997f96180a1d0f614339357449935350d924e22f8614682191264ec33d1462ac21561aff97f6bb18065351c162c7e8f6de67",
 	"dependencies": {
 		"@dotenvx/dotenvx": "catalog:"
 	}
