@@ -8,16 +8,20 @@ import {
 	IconMathXPlusY,
 	IconRocket,
 	IconSparkes,
-} from "@nerdfolio/ui-base-solid/icons"
-import { SidebarLayout } from "@nerdfolio/ui-base-solid/layouts"
+} from "ui-solid/icons"
+import { SidebarLayout } from
+"ui-solid
 import {
 	MenuAsSidebarGroupPrimary,
 	MenuAsSidebarGroupSecondary,
 	type NavMenu,
 	NavMenus,
 	UserSidebarMenu,
-} from "@nerdfolio/ui-base-solid/nav-menu"
-import { useBreadcrumbs } from "@nerdfolio/ui-base-solid/solidstart"
+} from
+"ui-solid
+import { useBreadcrumbs } from
+"ui-solid
+
 import type { ParentProps } from "solid-js"
 
 export default function ProtectedRoutesLayout(props: ParentProps) {

@@ -1,5 +1,5 @@
 {
-	"name": "@nerdfolio/ui-base-solid",
+	"name": "ui-solid",
 	"version": "0.1.0",
 	"description": "ui component and utilities that can be reuseable for solidjs",
 	"private": true,

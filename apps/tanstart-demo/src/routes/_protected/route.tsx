@@ -7,16 +7,20 @@ import {
 	IconListCheck,
 	IconRocket,
 	IconSparkes,
-} from "@nerdfolio/ui-base-solid/icons"
-import { SidebarLayout } from "@nerdfolio/ui-base-solid/layouts"
+} from "ui-solid/icons"
+import { SidebarLayout } from
+"ui-solid
 import {
 	MenuAsSidebarGroupPrimary,
 	MenuAsSidebarGroupSecondary,
 	type NavMenu,
 	NavMenus,
 	UserSidebarMenu,
-} from "@nerdfolio/ui-base-solid/nav-menu"
-import { useBreadcrumbs } from "@nerdfolio/ui-base-solid/tanstart"
+} from
+"ui-solid
+import { useBreadcrumbs } from
+"ui-solid
+
 import { createFileRoute, Outlet } from "@tanstack/solid-router"
 
 export const Route = createFileRoute("/_protected")({

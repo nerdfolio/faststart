@@ -1,5 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@nerdfolio/ui-base-solid/ui"
-import { cn } from "@nerdfolio/ui-base-solid/utils"
+import { Card, CardContent, CardHeader, CardTitle } from "ui-solid/ui"
+import { cn } from
+"ui-solid
+
 import { type ComponentProps, type JSXElement, Show, splitProps } from "solid-js"
 
 export function LoginCard(props: ComponentProps<typeof Card> & { footer?: JSXElement }) {

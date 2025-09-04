@@ -27,7 +27,7 @@
 		"solid-js": "catalog:"
 	},
 	"dependencies": {
-		"@nerdfolio/ui-base-solid": "workspace:*",
-		"@tanstack/solid-form": "^1.19.3"
+		"@tanstack/solid-form": "^1.19.3",
+		"ui-solid": "workspace:*"
 	}
 }

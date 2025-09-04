@@ -1,5 +1,7 @@
-import { Button, Input } from "@nerdfolio/ui-base-solid/ui"
-import { cn } from "@nerdfolio/ui-base-solid/utils"
+import { Button, Input } from "ui-solid/ui"
+import { cn } from
+"ui-solid
+
 import { createFormHook, createFormHookContexts } from "@tanstack/solid-form"
 import { type ComponentProps, splitProps } from "solid-js"
 

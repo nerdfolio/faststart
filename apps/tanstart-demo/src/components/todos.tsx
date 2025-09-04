@@ -1,5 +1,7 @@
-import { IconDeviceFloppy, IconPlus, IconTrash } from "@nerdfolio/ui-base-solid/icons"
-import { Button, Checkbox, Input } from "@nerdfolio/ui-base-solid/ui"
+import { IconDeviceFloppy, IconPlus, IconTrash } from "ui-solid/icons"
+import { Button, Checkbox, Input } from
+"ui-solid
+
 import { Task, TasksController } from "core/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"
 import { createStore } from "solid-js/store"

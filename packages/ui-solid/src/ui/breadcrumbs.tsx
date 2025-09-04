@@ -6,7 +6,7 @@ import {
 	BreadcrumbLink,
 	BreadcrumbList,
 	BreadcrumbSeparator,
-} from "../ui/breadcrumb"
+} from "./breadcrumb"
 
 export function Breadcrumbs(props: { crumbs: Accessor<string[]> }) {
 	const { HrefLink: LinkComponent } = useUi()

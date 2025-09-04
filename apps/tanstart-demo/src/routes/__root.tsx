@@ -2,9 +2,12 @@
 /// <reference types="vite/client" />
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
-import { IconSolidjs } from "@nerdfolio/ui-base-solid/icons"
-import { TanStartUiProvider } from "@nerdfolio/ui-base-solid/tanstart"
-import { ColorModeProvider } from "@nerdfolio/ui-base-solid/theming"
+import { IconSolidjs } from "ui-solid/icons"
+import { TanStartUiProvider } from
+"ui-solid
+import { ColorModeProvider } from
+"ui-solid
+
 import {
 	createRootRoute,
 	ErrorComponent,
