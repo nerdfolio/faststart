@@ -1,6 +1,5 @@
 import { IconDeviceFloppy, IconPlus, IconTrash } from "ui-solid/icons"
-import { Button, Checkbox, Input } from
-"ui-solid
+import { Button, Checkbox, Input } from "ui-solid/ui"
 
 import { Task, TasksController } from "core/models/task"
 import { createSignal, For, onMount, Show } from "solid-js"

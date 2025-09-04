@@ -1,9 +1,7 @@
 import { useBetterAuth } from "@nerdfolio/solid-better-auth"
 import { NavbarLayout } from "ui-solid/layouts"
-import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from
-"ui-solid
-import { AA } from
-"ui-solid
+import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "ui-solid/nav-menu"
+import { AA } from "ui-solid/solidstart"
 
 import type { ComponentProps } from "solid-js"
 import { Transition } from "solid-transition-group"

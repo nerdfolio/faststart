@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "ui-solid/ui"
-import { cn } from
-"ui-solid
+import { cn } from "ui-solid/utils"
 
 import { type ComponentProps, type JSXElement, Show, splitProps } from "solid-js"
 

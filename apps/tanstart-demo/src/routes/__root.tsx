@@ -3,10 +3,8 @@
 
 import { BetterAuthProvider } from "@nerdfolio/solid-better-auth"
 import { IconSolidjs } from "ui-solid/icons"
-import { TanStartUiProvider } from
-"ui-solid
-import { ColorModeProvider } from
-"ui-solid
+import { TanStartUiProvider } from "ui-solid/tanstart"
+import { ColorModeProvider } from "ui-solid/theming"
 
 import {
 	createRootRoute,

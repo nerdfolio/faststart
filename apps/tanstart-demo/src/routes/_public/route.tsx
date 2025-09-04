@@ -1,7 +1,6 @@
 import { useBetterAuth } from "@nerdfolio/solid-better-auth"
 import { NavbarLayout } from "ui-solid/layouts"
-import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from
-"ui-solid
+import { MenuAsNavbarGroup, NavMenus, UserNavbarMenu } from "ui-solid/nav-menu"
 
 import { createFileRoute, Outlet } from "@tanstack/solid-router"
 import AppFooter from "~/components/app-footer"

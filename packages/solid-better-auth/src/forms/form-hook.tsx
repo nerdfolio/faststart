@@ -1,6 +1,5 @@
 import { Button, Input } from "ui-solid/ui"
-import { cn } from
-"ui-solid
+import { cn } from "ui-solid/utils"
 
 import { createFormHook, createFormHookContexts } from "@tanstack/solid-form"
 import { type ComponentProps, splitProps } from "solid-js"

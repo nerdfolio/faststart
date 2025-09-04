@@ -9,18 +9,15 @@ import {
 	IconRocket,
 	IconSparkes,
 } from "ui-solid/icons"
-import { SidebarLayout } from
-"ui-solid
+import { SidebarLayout } from "ui-solid/layouts"
 import {
 	MenuAsSidebarGroupPrimary,
 	MenuAsSidebarGroupSecondary,
 	type NavMenu,
 	NavMenus,
 	UserSidebarMenu,
-} from
-"ui-solid
-import { useBreadcrumbs } from
-"ui-solid
+} from "ui-solid/nav-menu"
+import { useBreadcrumbs } from "ui-solid/solidstart"
 
 import type { ParentProps } from "solid-js"
 
