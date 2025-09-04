@@ -28,6 +28,6 @@
 	},
 	"dependencies": {
 		"@nerdfolio/ui-base-solid": "workspace:*",
-		"@tanstack/solid-form": "^1.14.0"
+		"@tanstack/solid-form": "^1.19.3"
 	}
 }

@@ -75,7 +75,7 @@
 	"devDependencies": {
 		"@kobalte/tailwindcss": "catalog:",
 		"@solidjs/router": "catalog:",
-		"@tanstack/solid-router": "^1.128.8",
+		"@tanstack/solid-router": "^1.131.34",
 		"barrelize": "^1.6.3",
 		"solid-js": "catalog:",
 		"tailwindcss": "catalog:",
@@ -83,12 +83,6 @@
 		"unplugin-icons": "catalog:",
 		"vite": "catalog:",
 		"vite-plugin-dts": "^4.5.4"
-	},
-	"peerDependencies": {
-		"@solidjs/router": "^0.15.3",
-		"@tanstack/solid-router": "^1.125.7",
-		"solid-js": "catalog:",
-		"unplugin-icons": "catalog:"
 	},
 	"dependencies": {
 		"@kobalte/core": "catalog:",
