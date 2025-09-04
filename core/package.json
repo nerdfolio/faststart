@@ -30,7 +30,7 @@
 	},
 	"dependencies": {
 		"@nerdfolio/remult-better-auth": "^0.3.3",
-		"better-auth": "catalog:",
+		"better-auth": "1.2.12",
 		"remult": "catalog:"
 	},
 	"peerDependencies": {

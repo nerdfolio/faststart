@@ -6,10 +6,9 @@
 //
 
 import { remultAdapter } from "@nerdfolio/remult-better-auth"
-import { Remult } from "remult"
 import { initBetterAuth } from "../auth/config"
 
 // with the proper database adapter.
 export const auth = initBetterAuth({
-	database: remultAdapter(new Remult(), { authEntities: {} }),
+	database: remultAdapter({ authEntities: {} }),
 })

@@ -18,7 +18,7 @@
 		"pnpm": ">=10"
 	},
 	"devDependencies": {
-		"better-auth": "catalog:",
+		"better-auth": "1.2.12",
 		"solid-js": "catalog:",
 		"typescript": "catalog:"
 	},
