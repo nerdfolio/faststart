@@ -1,6 +1,6 @@
 import { LoginCard } from "@nerdfolio/solid-better-auth"
 import { GuestListForm } from "@nerdfolio/solid-better-auth/forms"
-import { useUi } from "@nerdfolio/ui-base-solid/solidstart"
+import { useUi } from "ui-solid/solidstart"
 import { A } from "@solidjs/router"
 
 export default function LoginPage() {

@@ -1,4 +1,4 @@
-import { SimpleFooter } from "@nerdfolio/ui-base-solid/layouts"
+import { SimpleFooter } from "ui-solid/layouts"
 import { companyCopyright, companySocialLinks } from "~/company-info"
 
 const navLinks = [

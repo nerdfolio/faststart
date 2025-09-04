@@ -1,4 +1,4 @@
-import { Alert } from "@nerdfolio/ui-base-solid/ui"
+import { Alert } from "ui-solid/ui"
 import { createSignal, Show } from "solid-js"
 import { useBetterAuth } from "../context"
 import { useBetterAuthForm } from "./form-hook"

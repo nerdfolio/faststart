@@ -8,7 +8,8 @@
 		"test-ui": "vitest --ui",
 		"knip": "knip",
 		"dev:solidstart": "pnpm --filter solidstart-demo dev",
-		"dev": "pnpm --filter tanstart-demo dev"
+		"dev": "pnpm --filter tanstart-demo dev",
+		"build": "pnpm --filter tanstart-demo build"
 	},
 	"type": "module",
 	"devDependencies": {
