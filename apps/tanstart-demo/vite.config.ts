@@ -20,7 +20,7 @@ export default defineConfig({
 	},
 	plugins: [
 		tsConfigPaths(),
-		tanstackStart({ customViteSolidPlugin: true }),
+		tanstackStart({ customViteSolidPlugin: true, target: "cloudflare-module" }),
 		viteSolid({ ssr: true }),
 		tailwindcss(),
 		Icons({ compiler: "solid" }),
